@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Square Singapore — Reuse. Repurpose. Repair.</title>
+  <meta name="description" content="Singapore's leading textile recycling platform. 250+ drop-off points island-wide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+/* ── TOKENS ── */
+:root{
+  --c:#F7F9ED; --l:#92CD00; --g:#4B9F5F; --f:#0B4C09; --k:#0E130F; --w:#fff;
+  --D:'Unbounded',sans-serif; --B:'Fira Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--B);background:var(--c);color:var(--k);overflow-x:hidden}
+img{display:block;max-width:100%}
+
+/* ── CUSTOM CURSOR ── */
+#cur,#curR{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:8px;height:8px;background:var(--l);transition:width .15s,height .15s}
+#curR{width:32px;height:32px;border:1.5px solid rgba(146,205,0,.45);transition:all .2s ease}
+body:has(a:hover) #cur,body:has(button:hover) #cur{width:14px;height:14px}
+body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;border-color:var(--l)}
+@media(max-width:768px){#cur,#curR{display:none}body{cursor:auto}}
+
+/* ── ANNOUNCE BAR ── */
+#ann{background:var(--f);color:var(--c);text-align:center;padding:9px 52px;font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:.5px;position:relative;z-index:300}
+#ann a{color:var(--l);text-decoration:none;font-weight:700}
+#ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;line-height:1;opacity:.6}
+#ann-x:hover{opacity:1}
+
+/* ── LOADER ── */
+#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
+.ldr-logo img{height:52px;width:auto}
+.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.8s ease .5s forwards;border-radius:2px}
+@keyframes lIn{to{opacity:1;transform:none}}
+@keyframes lBar{to{width:200px}}
+.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1.1s forwards}
+@keyframes lFade{to{opacity:1}}
+#ldr.out{animation:lOut .4s ease forwards}
+@keyframes lOut{to{opacity:0;pointer-events:none}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:20px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+.nl img{height:28px;width:auto;transition:height .3s}
+nav.s .nl img{height:24px}
+.nlinks{display:flex;gap:28px;list-style:none;align-items:center}
+.nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
+.nlinks a:hover::after,.nlinks a.ac::after{width:100%}
+.nlinks a.nc{background:var(--f);color:var(--c)!important;padding:10px 22px;border-radius:100px;font-family:var(--D)!important;font-size:10px!important;transition:all .2s!important}
+.nlinks a.nc::after{display:none!important}
+.nlinks a.nc:hover{background:var(--l);color:var(--k)!important;transform:translateY(-1px)}
+.brg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.brg span{display:block;width:24px;height:1.5px;background:var(--f);transition:.3s;border-radius:1px}
+
+/* ── MOBILE NAV ── */
+.mnav{display:none;position:fixed;inset:0;background:var(--f);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.mnav.o{display:flex}
+.mnav a{font-family:var(--D);font-size:28px;font-weight:700;color:var(--c);text-decoration:none;transition:color .2s}
+.mnav a:hover{color:var(--l)}
+.mnav-x{position:absolute;top:20px;right:28px;font-size:26px;color:var(--l);background:none;border:none;cursor:pointer}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:all .25s}
+.btn-dark{background:var(--f);color:var(--c)}
+.btn-dark:hover{background:var(--k);transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,76,9,.25)}
+.btn-lime{background:var(--l);color:var(--k)}
+.btn-lime:hover{background:#a3e000;transform:translateY(-2px);box-shadow:0 10px 28px rgba(146,205,0,.3)}
+.btn-out{background:transparent;border-color:var(--f);color:var(--f)}
+.btn-out:hover{background:var(--f);color:var(--c);transform:translateY(-2px)}
+.btn-cout{background:transparent;border-color:rgba(247,249,237,.35);color:var(--c)}
+.btn-cout:hover{background:rgba(247,249,237,.1);border-color:var(--c);transform:translateY(-2px)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ── MONO LABEL ── */
+.mono{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px}
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+#hero{min-height:100vh;background:var(--c);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;padding-top:0}
+/* Subtle dot grid bg */
+#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(11,76,9,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.hero-top{display:flex;align-items:flex-end;justify-content:space-between;padding:140px 52px 0;position:relative;z-index:2}
+/* Massive headline */
+.hero-hl{flex:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(11,76,9,.07);border:1px solid rgba(11,76,9,.14);border-radius:100px;padding:8px 16px;font-family:var(--B);font-size:11px;font-weight:600;color:var(--f);margin-bottom:32px}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:bdPulse 1.5s ease-in-out infinite}
+@keyframes bdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.h1w{font-family:var(--D);font-weight:900;line-height:.92;overflow:hidden;display:block}
+.h1w span{display:block;transform:translateY(110%);animation:hUp .8s cubic-bezier(.22,1,.36,1) forwards}
+.h1w:nth-child(2) span{animation-delay:2.3s}
+.h1w:nth-child(3) span{animation-delay:2.5s}
+.h1w:nth-child(4) span{animation-delay:2.7s}
+@keyframes hUp{to{transform:translateY(0)}}
+.line-reuse    {font-size:clamp(72px,12vw,168px);color:var(--f)}
+.line-repurpose{font-size:clamp(52px,8.8vw,126px);color:var(--l)}
+.line-repair   {font-size:clamp(72px,12vw,168px);color:var(--f)}
+/* Rotating badge right */
+.spin-wrap{flex-shrink:0;width:160px;height:160px;display:flex;align-items:center;justify-content:center;margin-left:48px;margin-bottom:8px;opacity:0;animation:fadeUp .5s ease 3.1s forwards}
+@keyframes fadeUp{to{opacity:1}}
+.spin-svg{animation:spinBadge 14s linear infinite;transform-origin:center}
+@keyframes spinBadge{to{transform:rotate(360deg)}}
+/* Hero meta row */
+.hero-meta{display:flex;align-items:center;gap:28px;padding:32px 52px 0;position:relative;z-index:2;opacity:0;animation:fadeUp .5s ease 2.9s forwards}
+.hero-sub{font-size:16px;color:rgba(14,19,15,.55);line-height:1.65;max-width:420px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;margin-left:auto}
+/* Bottom stat bar */
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(11,76,9,.1);margin-top:52px;position:relative;z-index:2}
+.hstat{padding:28px 52px;border-right:1px solid rgba(11,76,9,.1);opacity:0;animation:fadeUp .5s ease forwards}
+.hstat:nth-child(1){animation-delay:3.1s}.hstat:nth-child(2){animation-delay:3.25s}
+.hstat:nth-child(3){animation-delay:3.4s}.hstat:nth-child(4){animation-delay:3.55s}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:var(--D);font-size:clamp(28px,3.5vw,42px);font-weight:900;color:var(--f);line-height:1;margin-bottom:4px}
+.hstat-l{font-size:11px;font-weight:600;color:rgba(14,19,15,.45);text-transform:uppercase;letter-spacing:2px}
+
+/* ════════════════════════════════════════
+   TICKER STRIP
+════════════════════════════════════════ */
+.ticker-wrap{background:var(--k);padding:14px 0;overflow:hidden}
+.ticker{display:flex;animation:tkr 24s linear infinite;width:max-content}
+.ticker:hover{animation-play-state:paused}
+@keyframes tkr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ti{font-family:var(--D);font-size:11px;font-weight:700;color:var(--l);letter-spacing:2px;text-transform:uppercase;padding:0 28px;white-space:nowrap;display:inline-flex;align-items:center;gap:14px}
+.ti::after{content:'✦';font-size:8px;opacity:.6}
+
+/* ════════════════════════════════════════
+   IMPACT (lime punch)
+════════════════════════════════════════ */
+#impact{background:var(--l);padding:80px 52px}
+.impact-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.impact-left .mono{color:rgba(14,19,15,.5)}
+.impact-hl{font-family:var(--D);font-size:clamp(32px,4.5vw,56px);font-weight:900;color:var(--k);line-height:1.06;margin-bottom:24px}
+.impact-note{font-size:14px;color:rgba(14,19,15,.6);line-height:1.65;max-width:380px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.sbox{background:rgba(14,19,15,.06);padding:36px 32px;position:relative;overflow:hidden;transition:background .3s}
+.sbox:hover{background:rgba(14,19,15,.1)}
+.sbox::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--k);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.sbox.in::after{transform:scaleX(1)}
+.sn{font-family:var(--D);font-size:clamp(36px,4.5vw,56px);font-weight:900;color:var(--k);line-height:1;margin-bottom:6px}
+.sl{font-size:11px;font-weight:600;color:rgba(14,19,15,.5);text-transform:uppercase;letter-spacing:2px}
+
+/* ════════════════════════════════════════
+   MANIFESTO STRIP
+════════════════════════════════════════ */
+.manifesto{background:var(--f);padding:72px 52px;overflow:hidden;position:relative}
+.manifesto-inner{display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.mtext{font-family:var(--D);font-size:clamp(18px,2.5vw,32px);font-weight:700;color:var(--c);line-height:1.3;flex:1;min-width:280px}
+.mtext em{color:var(--l);font-style:normal}
+.m-num{font-family:var(--D);font-size:clamp(100px,14vw,180px);font-weight:900;color:rgba(247,249,237,.04);line-height:1;flex-shrink:0;user-select:none}
+
+/* ════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════ */
+#services{background:var(--w);padding:100px 52px}
+#services .mono{color:var(--g)}
+.svc-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;flex-wrap:wrap;gap:16px}
+.svc-ttl{font-family:var(--D);font-size:clamp(32px,4.5vw,56px);font-weight:900;color:var(--f);line-height:1.06}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.sc{background:var(--c);padding:48px 36px;position:relative;overflow:hidden;transition:background .3s;border-radius:0}
+.sc:hover{background:var(--f)}
+.sc:hover .sc-num{color:rgba(146,205,0,.1)}
+.sc:hover .sc-title{color:var(--c)}
+.sc:hover .sc-desc{color:rgba(247,249,237,.6)}
+.sc:hover .sc-link{color:var(--l);gap:16px}
+.sc-num{font-family:var(--D);font-size:80px;font-weight:900;color:rgba(11,76,9,.06);line-height:1;margin-bottom:20px;transition:color .3s}
+.sc-icon{width:52px;height:52px;background:var(--l);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;transition:background .3s}
+.sc:hover .sc-icon{background:rgba(146,205,0,.2)}
+.sc-title{font-family:var(--D);font-size:20px;font-weight:700;color:var(--f);margin-bottom:14px;transition:color .3s}
+.sc-desc{font-size:14px;line-height:1.72;color:rgba(14,19,15,.6);margin-bottom:24px;transition:color .3s}
+.sc-link{font-family:var(--B);font-weight:700;font-size:11px;letter-spacing:2px;color:var(--l);text-decoration:none;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:gap .25s,color .3s}
+
+/* ════════════════════════════════════════
+   HOW IT WORKS
+════════════════════════════════════════ */
+#how{background:var(--c);padding:100px 52px}
+#how .mono{color:var(--g)}
+.how-ttl{font-family:var(--D);font-size:clamp(30px,4.5vw,52px);font-weight:900;color:var(--f);margin-bottom:72px;line-height:1.06}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.steps::before{content:'';position:absolute;top:27px;left:5%;right:5%;height:1px;background:rgba(11,76,9,.1)}
+.step{padding:0 16px;text-align:center;cursor:default}
+.sdot{width:54px;height:54px;background:var(--c);border:2px solid rgba(11,76,9,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--D);font-weight:900;font-size:14px;color:var(--f);margin:0 auto 22px;position:relative;z-index:1;transition:all .3s}
+.step:hover .sdot{background:var(--l);border-color:var(--l);color:var(--k);transform:scale(1.1)}
+.step h3{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+.step p{font-size:12px;color:rgba(14,19,15,.55);line-height:1.65}
+
+/* ════════════════════════════════════════
+   LOCATIONS
+════════════════════════════════════════ */
+#locs{background:var(--w);padding:100px 52px}
+#locs .mono{color:var(--g)}
+.loc-ttl{font-family:var(--D);font-size:clamp(28px,4vw,50px);font-weight:900;color:var(--f);margin-bottom:48px;line-height:1.06}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.search{width:100%;padding:14px 20px;border:1.5px solid rgba(11,76,9,.14);border-radius:100px;font-family:var(--B);font-size:14px;outline:none;transition:all .3s;background:var(--c);color:var(--k);margin-bottom:16px}
+.search:focus{border-color:var(--l);box-shadow:0 0 0 4px rgba(146,205,0,.12)}
+.llist{max-height:460px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}
+.llist::-webkit-scrollbar{width:3px}.llist::-webkit-scrollbar-thumb{background:var(--l);border-radius:2px}
+.lcard{background:var(--c);border:1.5px solid transparent;border-radius:12px;padding:18px 20px;cursor:pointer;transition:all .25s}
+.lcard:hover,.lcard.ac{border-color:var(--l);background:var(--w);transform:translateX(4px)}
+.lcard-n{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f);margin-bottom:4px}
+.lcard-a{font-size:11px;color:rgba(14,19,15,.5);margin-bottom:5px}
+.lcard-h{font-size:11px;color:rgba(14,19,15,.38);margin-bottom:7px}
+.lcard-d{font-size:10px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.mapbox{border-radius:16px;overflow:hidden;border:1.5px solid rgba(11,76,9,.1);width:100%;height:460px;background:linear-gradient(135deg,rgba(11,76,9,.04),rgba(146,205,0,.07));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.mapbox h3{font-family:var(--D);font-size:16px;font-weight:700;color:var(--f)}
+.mapbox p{font-size:12px;color:rgba(11,76,9,.4);max-width:180px}
+.loc-cta{margin-top:40px;text-align:center}
+.loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
+
+/* ════════════════════════════════════════
+   BOOKING
+════════════════════════════════════════ */
+#booking{background:var(--f);padding:100px 52px}
+#booking .mono{color:var(--l)}
+.bk-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--c);margin-bottom:10px;line-height:1.06}
+.bk-sub{font-size:15px;color:rgba(247,249,237,.45);max-width:460px;margin-bottom:52px}
+.bform{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg.full{grid-column:1/-1}
+.fg label{font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.35)}
+.fi,.fsel,.fta{background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;padding:13px 16px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;width:100%}
+.fi::placeholder,.fta::placeholder{color:rgba(247,249,237,.22)}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--l);background:rgba(146,205,0,.05);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+.fsel option{background:var(--f);color:var(--c)}
+.fta{resize:vertical;min-height:88px}
+.ferr{font-size:11px;color:#ff7a7a;display:none}
+.fg.err .ferr{display:block}
+.fg.err .fi,.fg.err .fsel,.fg.err .fta{border-color:#ff7a7a}
+.fsub{grid-column:1/-1;margin-top:4px}
+.suc{display:none;text-align:center;padding:64px 20px}
+.suc.show{display:block}
+.suc-ck{font-size:52px;animation:sBnc .5s ease;margin-bottom:18px}
+@keyframes sBnc{0%{transform:scale(0)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+.suc-t{font-family:var(--D);font-size:24px;font-weight:700;color:var(--l);margin-bottom:8px}
+.suc-d{font-size:14px;color:rgba(247,249,237,.45);line-height:1.6}
+
+/* ════════════════════════════════════════
+   QUIZ
+════════════════════════════════════════ */
+#quiz{background:var(--g);padding:100px 52px;text-align:center}
+#quiz .mono{color:rgba(247,249,237,.5)}
+.qq{font-family:var(--D);font-size:clamp(20px,3vw,40px);font-weight:900;color:var(--c);max-width:640px;margin:0 auto 44px;line-height:1.22}
+.qbtns{display:flex;gap:14px;justify-content:center;margin-bottom:40px}
+.qb{font-family:var(--D);font-size:18px;font-weight:900;padding:18px 52px;border-radius:100px;cursor:pointer;border:2px solid rgba(247,249,237,.4);background:transparent;color:var(--c);transition:all .2s}
+.qb:hover{background:var(--c);color:var(--g);border-color:var(--c)}
+.qans{max-width:520px;margin:0 auto;padding:28px 32px;background:var(--f);border-radius:16px;display:none;text-align:left}
+.qans.show{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.qai{font-size:32px;margin-bottom:10px}
+.qat{font-size:14px;color:var(--c);line-height:1.7}
+.qat strong{color:var(--l)}
+.qrst{margin-top:14px;background:none;border:1px solid rgba(247,249,237,.25);color:rgba(247,249,237,.6);font-family:var(--B);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:100px;cursor:pointer;transition:all .2s}
+.qrst:hover{background:rgba(247,249,237,.1);color:var(--c)}
+
+/* ════════════════════════════════════════
+   PROCESS
+════════════════════════════════════════ */
+#proc{background:var(--k);padding:100px 52px}
+#proc .mono{color:var(--l)}
+.proc-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--c);margin-bottom:72px;line-height:1.06}
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.pstep{background:rgba(247,249,237,.03);padding:48px 36px;position:relative;overflow:hidden;transition:background .3s}
+.pstep:hover{background:rgba(247,249,237,.06)}
+.pstep::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--l);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.pstep:hover::before{transform:scaleX(1)}
+.pn{font-family:var(--D);font-size:68px;font-weight:900;color:var(--l);line-height:1;margin-bottom:14px}
+.pstep h3{font-family:var(--D);font-size:16px;font-weight:700;color:var(--c);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.pstep p{font-size:13px;color:rgba(247,249,237,.5);line-height:1.7;margin-bottom:22px}
+.pimg{width:100%;aspect-ratio:4/3;background:rgba(146,205,0,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:40px;border:1px solid rgba(146,205,0,.1)}
+
+/* ════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════ */
+#testi{background:var(--c);padding:100px 52px}
+#testi .mono{color:var(--g)}
+.testi-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--f);margin-bottom:52px;line-height:1.06}
+.swiper{padding-bottom:52px!important}
+.swiper-slide{height:auto}
+.tcard{background:var(--w);border-radius:16px;padding:44px;height:100%;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.tcard::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--l),var(--g));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(11,76,9,.08)}
+.tcard:hover::after{transform:scaleX(1)}
+.qmk{font-family:var(--D);font-size:60px;color:var(--l);line-height:.5;display:block;margin-bottom:18px}
+.ttxt{font-size:15px;font-style:italic;color:rgba(14,19,15,.7);line-height:1.72;margin-bottom:28px}
+.tauth{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f)}
+.trole{font-size:11px;color:rgba(14,19,15,.4);margin-top:3px}
+.swiper-pagination-bullet{background:rgba(11,76,9,.2)!important}
+.swiper-pagination-bullet-active{background:var(--l)!important}
+
+/* ════════════════════════════════════════
+   PARTNERS
+════════════════════════════════════════ */
+#partners{background:var(--w);padding:56px 0;overflow:hidden;border-top:1px solid rgba(11,76,9,.07);border-bottom:1px solid rgba(11,76,9,.07)}
+.plbl{text-align:center;font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(14,19,15,.28);margin-bottom:32px}
+.mq{display:flex;gap:48px;animation:mqs 22s linear infinite;width:max-content}
+.mq:hover{animation-play-state:paused}
+@keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.plg{font-family:var(--D);font-size:12px;font-weight:700;color:rgba(14,19,15,.22);white-space:nowrap;padding:10px 20px;border:1px solid rgba(14,19,15,.07);border-radius:8px;transition:all .25s;cursor:default}
+.plg:hover{color:var(--f);border-color:var(--l);background:rgba(146,205,0,.06)}
+
+/* ════════════════════════════════════════
+   BLOG
+════════════════════════════════════════ */
+#blog{background:var(--c);padding:100px 52px}
+#blog .mono{color:var(--g)}
+.blog-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--f);margin-bottom:52px;line-height:1.06}
+/* Featured + 2 smaller — editorial layout */
+.blog-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.blog-feat{grid-row:1/3;background:var(--w);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.blog-feat:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(11,76,9,.08)}
+.bimg{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;overflow:hidden}
+.bimg .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,76,9,.5),transparent);opacity:0;transition:.3s}
+.bcard:hover .ov,.blog-feat:hover .ov{opacity:1}
+.bbody{padding:28px;flex:1;display:flex;flex-direction:column}
+.btag{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:8px}
+.bcard h3,.blog-feat h3{font-family:var(--D);font-size:17px;font-weight:700;color:var(--f);margin-bottom:8px;line-height:1.3}
+.blog-feat h3{font-size:22px}
+.bcard p,.blog-feat p{font-size:13px;color:rgba(14,19,15,.55);line-height:1.6;margin-bottom:14px}
+.rm{font-size:11px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:4px;transition:gap .2s;margin-top:auto}
+.rm:hover{gap:8px}
+.bcard{background:var(--w);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.bcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,76,9,.07)}
+.bcard .bimg{aspect-ratio:16/8}
+
+/* ════════════════════════════════════════
+   CONTACT
+════════════════════════════════════════ */
+#contact{background:var(--f);padding:100px 52px}
+#contact .mono{color:var(--l)}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.con-ttl{font-family:var(--D);font-size:clamp(26px,3.8vw,46px);font-weight:900;color:var(--c);margin-bottom:18px;line-height:1.06}
+.con-m{font-size:15px;color:rgba(247,249,237,.48);line-height:1.72;margin-bottom:36px}
+.con-e{font-family:var(--D);font-size:17px;font-weight:700;color:var(--l);text-decoration:none;display:block;margin-bottom:28px;transition:opacity .2s}
+.con-e:hover{opacity:.7}
+.socs{display:flex;gap:10px}
+.soc{width:40px;height:40px;border:1px solid rgba(247,249,237,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:15px;color:var(--c);transition:all .25s}
+.soc:hover{border-color:var(--l);background:var(--l);color:var(--k);transform:translateY(-2px)}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
+.ft-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.ft-logo img{height:24px;width:auto}
+.ft-tag{font-family:var(--D);font-size:clamp(11px,1.5vw,18px);font-weight:900;color:var(--l);letter-spacing:2px}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.ft-links a{font-family:var(--B);font-size:11px;font-weight:500;color:rgba(247,249,237,.32);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+.ft-links a:hover{color:var(--l)}
+.ft-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(247,249,237,.06);flex-wrap:wrap;gap:10px}
+.ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
+
+/* ════════════════════════════════════════
+   FLOATING CTA
+════════════════════════════════════════ */
+#fCta{position:fixed;bottom:24px;right:24px;z-index:190;background:var(--k);color:var(--l);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:.5px;padding:13px 22px;border-radius:100px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:all .4s;pointer-events:none}
+#fCta.show{opacity:1;transform:none;pointer-events:auto}
+#fCta:hover{background:var(--f);transform:translateY(-2px)}
+.fdot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:bdPulse 1.5s ease-in-out infinite}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media(max-width:1200px){
+  .spin-wrap{display:none}
+  .hero-meta{flex-direction:column;align-items:flex-start}
+  .hero-ctas{margin-left:0}
+}
+@media(max-width:1024px){
+  .impact-inner{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:28px}
+  .steps::before{display:none}
+  .loc-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr;gap:2px}
+  .con-grid{grid-template-columns:1fr;gap:44px}
+  .blog-layout{grid-template-columns:1fr}
+  .blog-feat{grid-row:auto}
+}
+@media(max-width:768px){
+  section,#impact,#services,#how,#locs,#booking,#quiz,#proc,#testi,#blog,#contact{padding:72px 24px}
+  nav{padding:14px 24px}
+  nav.s{padding:10px 24px}
+  .nlinks{display:none}
+  .brg{display:flex}
+  .hero-top{padding:120px 24px 0;flex-direction:column;gap:0}
+  .hero-meta{padding:24px 24px 0;flex-direction:column;gap:16px}
+  .hero-ctas{margin-left:0}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hstat{padding:20px 24px}
+  .ticker-wrap{display:none}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-hdr{flex-direction:column;align-items:flex-start}
+  .steps{grid-template-columns:1fr}
+  .bform{grid-template-columns:1fr}
+  .fg.full,.fsub{grid-column:1}
+  footer{padding:44px 24px 20px}
+  .ft-links{gap:14px}
+  #fCta{bottom:14px;right:14px}
+}
+</style>
+</head>
+<body>
+
+<div id="cur" aria-hidden="true"></div>
+<div id="curR" aria-hidden="true"></div>
+
+<!-- ANNOUNCE -->
+<div id="ann">
+  🌿 &nbsp;50 new drop-off points open in Jurong &amp; Woodlands — &nbsp;<a href="#locs">Find your nearest bin →</a>
+  <button id="ann-x" aria-label="Close">✕</button>
+</div>
+
+<!-- LOADER -->
+<div id="ldr" aria-hidden="true">
+  <div class="ldr-logo">
+    <img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore">
+  </div>
+  <div class="ldr-line"></div>
+  <span class="ldr-tag">Reuse · Repurpose · Repair</span>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
+  <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
+  <a href="#hero" onclick="cm()">Home</a>
+  <a href="#services" onclick="cm()">What We Do</a>
+  <a href="#locs" onclick="cm()">Drop-Off</a>
+  <a href="#booking" onclick="cm()">Book</a>
+  <a href="#blog" onclick="cm()">Blog</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nl" aria-label="Green Square Home">
+    <img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore">
+  </a>
+  <ul class="nlinks">
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#locs">Drop-Off</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#booking" class="nc">Book Collection</a></li>
+  </ul>
+  <button class="brg" id="brg" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="hero-top">
+    <div class="hero-hl">
+      <div class="hero-badge" style="opacity:0;animation:fadeUp .5s ease 2.2s forwards">
+        <span class="bdot"></span>Singapore's #1 Textile Recycling Platform
+      </div>
+
+      <div class="h1w line-reuse"><span>REUSE.</span></div>
+      <div class="h1w line-repurpose"><span>REPURPOSE.</span></div>
+      <div class="h1w line-repair"><span>REPAIR.</span></div>
+    </div>
+
+    <!-- Rotating circular badge -->
+    <div class="spin-wrap" aria-hidden="true">
+      <svg class="spin-svg" viewBox="0 0 200 200" width="160" height="160">
+        <defs>
+          <path id="cp" d="M100,100 m-68,0 a68,68 0 1,1 136,0 a68,68 0 1,1 -136,0"/>
+        </defs>
+        <text fill="var(--f)" font-family="'Fira Sans',sans-serif" font-size="11.5" font-weight="600" letter-spacing="1.5">
+          <textPath href="#cp">REUSE · REPURPOSE · REPAIR · GREEN SQ · </textPath>
+        </text>
+        <circle cx="100" cy="100" r="44" fill="var(--l)"/>
+        <text x="100" y="96" text-anchor="middle" fill="var(--k)" font-family="'Unbounded',sans-serif" font-size="13" font-weight="900">GREEN</text>
+        <text x="100" y="113" text-anchor="middle" fill="var(--k)" font-family="'Unbounded',sans-serif" font-size="13" font-weight="900">SQUARE</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <p class="hero-sub">We collect textiles across Singapore so they don't end up in Semakau. 250+ drop-off points. Home collection. Zero excuses.</p>
+    <div class="hero-ctas">
+      <a href="#locs" class="btn btn-dark">Find a Drop-Off →</a>
+      <a href="#booking" class="btn btn-out">Book Collection</a>
+    </div>
+  </div>
+
+  <!-- Stat bar -->
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-n">850+</div>
+      <div class="hstat-l">Tonnes Collected</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">1.2M+</div>
+      <div class="hstat-l">Items Reborn</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">250+</div>
+      <div class="hstat-l">Drop-Off Points</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">650K+</div>
+      <div class="hstat-l">kg from Landfill</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span class="ti">Reuse</span><span class="ti">Repurpose</span><span class="ti">Repair</span>
+    <span class="ti">Circular Fashion</span><span class="ti">Zero Waste SG</span>
+    <span class="ti">Semakau 2035</span><span class="ti">Drop Off Today</span>
+    <span class="ti">211,000 Tonnes a Year</span><span class="ti">NEA Approved</span>
+    <span class="ti">Reuse</span><span class="ti">Repurpose</span><span class="ti">Repair</span>
+    <span class="ti">Circular Fashion</span><span class="ti">Zero Waste SG</span>
+    <span class="ti">Semakau 2035</span><span class="ti">Drop Off Today</span>
+    <span class="ti">211,000 Tonnes a Year</span><span class="ti">NEA Approved</span>
+  </div>
+</div>
+
+<!-- ══════════════ IMPACT ══════════════ -->
+<section id="impact">
+  <div class="impact-inner">
+    <div class="impact-left">
+      <p class="mono rv" style="color:rgba(14,19,15,.5)">// 02 · IMPACT</p>
+      <h2 class="impact-hl rv d1">Singapore throws away <span style="text-decoration:underline;text-decoration-color:var(--k);text-decoration-thickness:2px">211,000 tonnes</span> of textiles a year. Less than 4% gets recycled.</h2>
+      <p class="impact-note rv d2">Every year, Semakau Landfill fills a little more. At current rates, it reaches capacity by <strong>2035</strong>. Green Square is part of the solution. Are you?</p>
+    </div>
+    <div class="stats-grid rv d2">
+      <div class="sbox"><div class="sn"><span class="ctr" data-t="850">0</span>+</div><p class="sl">Tonnes Collected</p></div>
+      <div class="sbox"><div class="sn"><span class="ctr" data-t="1200000">0</span>+</div><p class="sl">Items Reborn</p></div>
+      <div class="sbox"><div class="sn"><span class="ctr" data-t="250">0</span>+</div><p class="sl">Drop-Off Bins</p></div>
+      <div class="sbox"><div class="sn"><span class="ctr" data-t="650000">0</span>+</div><p class="sl">kg Saved</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO STRIP -->
+<div class="manifesto rv">
+  <div class="manifesto-inner">
+    <div class="m-num" aria-hidden="true">03</div>
+    <p class="mtext">Fashion moves fast. Landfills fill faster.<br><em>Green Square slows both down —</em> one collection, one garment, one community at a time.</p>
+    <a href="#services" class="btn btn-cout" style="flex-shrink:0">What We Do →</a>
+  </div>
+</div>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<section id="services">
+  <div class="svc-hdr">
+    <div>
+      <p class="mono rv">// 03 · WHAT WE DO</p>
+      <h2 class="svc-ttl rv d1">Three ways we<br>close the loop.</h2>
+    </div>
+    <a href="#how" class="btn btn-dark rv d2">See How It Works →</a>
+  </div>
+  <div class="svc-grid">
+    <div class="sc rv d1" data-tilt>
+      <div class="sc-num">01</div>
+      <div class="sc-icon">♻️</div>
+      <div class="sc-title">Textile Collection</div>
+      <p class="sc-desc">Drop-off bins at 250+ HDB estates, community centres, and partner sites. Or let us come to your door — home collection available island-wide.</p>
+      <a href="#locs" class="sc-link">Find a Location →</a>
+    </div>
+    <div class="sc rv d2" data-tilt>
+      <div class="sc-num">02</div>
+      <div class="sc-icon">👕</div>
+      <div class="sc-title">Sorting & Processing</div>
+      <p class="sc-desc">Every garment assessed, graded, and sorted. Wearable items enter resale or donation channels via our NEA-approved partner network.</p>
+      <a href="#proc" class="sc-link">See the Process →</a>
+    </div>
+    <div class="sc rv d3" data-tilt>
+      <div class="sc-num">03</div>
+      <div class="sc-icon">🔄</div>
+      <div class="sc-title">Downcycling</div>
+      <p class="sc-desc">Nothing is wasted. Worn, torn, or stained items are shredded into industrial cleaning rags — sold to factories and workshops across Singapore.</p>
+      <a href="#proc" class="sc-link">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section id="how">
+  <p class="mono rv">// 04 · HOW IT WORKS</p>
+  <h2 class="how-ttl rv d1">Five steps.<br>Zero to landfill.</h2>
+  <div class="steps">
+    <div class="step rv d1">
+      <div class="sdot">01</div>
+      <h3>Drop Off</h3>
+      <p>Clean, bagged clothes into any Green Square bin near your HDB block or CC.</p>
+    </div>
+    <div class="step rv d2">
+      <div class="sdot">02</div>
+      <h3>We Collect</h3>
+      <p>Our team empties bins regularly and transports textiles to our sorting hub.</p>
+    </div>
+    <div class="step rv d3">
+      <div class="sdot">03</div>
+      <h3>Sort & Grade</h3>
+      <p>Every item inspected and sorted by condition and material type.</p>
+    </div>
+    <div class="step rv d4">
+      <div class="sdot">04</div>
+      <h3>Reuse or Repurpose</h3>
+      <p>Wearables go to second-hand markets, donation drives, or social enterprises.</p>
+    </div>
+    <div class="step rv d5">
+      <div class="sdot">05</div>
+      <h3>Impact Tracked</h3>
+      <p>Every kg logged. Full transparency so you know where your clothes went.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LOCATIONS ══════════════ -->
+<section id="locs">
+  <p class="mono rv">// 05 · DROP-OFF</p>
+  <h2 class="loc-ttl rv d1">Find a bin<br>near you.</h2>
+  <div class="loc-grid">
+    <div>
+      <input type="text" id="lsrch" class="search" placeholder="🔍  Search by area, MRT, or postal code…" aria-label="Search locations">
+      <div class="llist" id="llist"></div>
+    </div>
+    <div>
+      <div class="mapbox" role="img" aria-label="Map of drop-off locations">
+        <span style="font-size:52px">🗺️</span>
+        <h3>Interactive Map</h3>
+        <p>All 250+ collection points across Singapore</p>
+        <a href="https://maps.google.com/maps?q=green+square+singapore+textile+recycling" target="_blank" rel="noopener noreferrer" class="btn btn-dark" style="margin-top:8px;font-size:10px">Open in Google Maps ↗</a>
+      </div>
+      <div class="loc-cta">
+        <p>Can't get to a bin?</p>
+        <a href="#booking" class="btn btn-dark">Book a Home Collection →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BOOKING ══════════════ -->
+<section id="booking">
+  <p class="mono rv">// 07 · BOOK</p>
+  <h2 class="bk-ttl rv d1">Book your<br>home collection.</h2>
+  <p class="bk-sub rv d2">We'll come to you. Schedule a pickup and we'll collect your pre-loved clothes right from your doorstep.</p>
+  <div id="bfw">
+    <form class="bform" id="bform" novalidate>
+      <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" class="fi" placeholder="Your full name" required><span class="ferr">Please enter your name</span></div>
+      <div class="fg"><label for="mob">Mobile Number *</label><input type="tel" id="mob" class="fi" placeholder="+65 9123 4567" required><span class="ferr">Please enter a valid number</span></div>
+      <div class="fg"><label for="em">Email Address *</label><input type="email" id="em" class="fi" placeholder="you@email.com" required><span class="ferr">Please enter a valid email</span></div>
+      <div class="fg"><label for="pc">Postal Code *</label><input type="text" id="pc" class="fi" placeholder="530123" maxlength="6" required><span class="ferr">6-digit postal code required</span></div>
+      <div class="fg full"><label for="addr">Collection Address *</label><input type="text" id="addr" class="fi" placeholder="Block, Street, Unit number" required><span class="ferr">Please enter your address</span></div>
+      <div class="fg"><label for="dt">Preferred Date *</label><input type="date" id="dt" class="fi" required><span class="ferr">Please select a date</span></div>
+      <div class="fg"><label for="ts">Time Slot *</label>
+        <select id="ts" class="fsel" required>
+          <option value="">Select a time slot</option>
+          <option value="morning">Morning — 9am to 12pm</option>
+          <option value="afternoon">Afternoon — 12pm to 5pm</option>
+          <option value="evening">Evening — 5pm to 8pm</option>
+        </select><span class="ferr">Please select a time slot</span></div>
+      <div class="fg"><label for="bags">No. of Bags *</label>
+        <select id="bags" class="fsel" required>
+          <option value="">Estimate quantity</option>
+          <option value="1">1 bag</option>
+          <option value="2-3">2–3 bags</option>
+          <option value="4-6">4–6 bags</option>
+          <option value="7+">7 or more</option>
+        </select><span class="ferr">Please select an estimate</span></div>
+      <div class="fg full"><label for="notes">Special Instructions</label><textarea id="notes" class="fta" placeholder="Access codes, notes for our team…"></textarea></div>
+      <div class="fsub"><button type="submit" class="btn btn-lime" style="width:100%;justify-content:center;font-size:12px;padding:18px;border-radius:12px">BOOK MY COLLECTION →</button></div>
+    </form>
+  </div>
+  <div class="suc" id="bsuc">
+    <div class="suc-ck">✅</div>
+    <div class="suc-t">Collection Booked!</div>
+    <p class="suc-d">We'll confirm via SMS and email within 24 hours.<br>Together we're keeping textiles out of Semakau.</p>
+  </div>
+</section>
+
+<!-- ══════════════ QUIZ ══════════════ -->
+<section id="quiz">
+  <p class="mono rv" style="color:rgba(247,249,237,.45)">// 08 · DID YOU KNOW?</p>
+  <h2 class="qq rv d1" id="qQ">"I can put my old clothes in the blue HDB recycling bins."</h2>
+  <div class="qbtns" id="qBtns">
+    <button class="qb rv d2" onclick="aQ(true)">TRUE</button>
+    <button class="qb rv d3" onclick="aQ(false)">FALSE</button>
+  </div>
+  <div class="qans" id="qAns">
+    <div class="qai" id="qI"></div>
+    <p class="qat" id="qT"></p>
+    <button class="qrst" onclick="nQ()">Next Question ↺</button>
+  </div>
+</section>
+
+<!-- ══════════════ PROCESS ══════════════ -->
+<section id="proc">
+  <p class="mono rv" style="color:var(--l)">// 09 · THE PROCESS</p>
+  <h2 class="proc-ttl rv d1">What happens<br>to your clothes?</h2>
+  <div class="proc-grid">
+    <div class="pstep rv d1">
+      <div class="pn">01</div>
+      <h3>Collected</h3>
+      <p>Collected from bins or home pickups, sealed and transported to our sorting hub — no clothing touches landfill at this stage.</p>
+      <div class="pimg">📦</div>
+    </div>
+    <div class="pstep rv d2">
+      <div class="pn">02</div>
+      <h3>Processed</h3>
+      <p>Trained sorters assess every item. Wearable clothes are baled for second-hand retail or donated via our NEA-approved network.</p>
+      <div class="pimg">🔍</div>
+    </div>
+    <div class="pstep rv d3">
+      <div class="pn">03</div>
+      <h3>Downcycled</h3>
+      <p>Torn, stained, or worn items are shredded into industrial wiping rags — sold to factories across Singapore as a circular product.</p>
+      <div class="pimg">⚙️</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TESTIMONIALS ══════════════ -->
+<section id="testi">
+  <p class="mono rv">// 10 · STORIES</p>
+  <h2 class="testi-ttl rv d1">Heard from<br>our community.</h2>
+  <div class="swiper" id="tSwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><div class="tcard"><span class="qmk">"</span><p class="ttxt">I cleared out 4 bags from my storeroom. Green Square picked them up in two days. Simple, guilt-free, and they sent me a report on what was reused. That accountability is everything.</p><p class="tauth">Mei Ling T.</p><p class="trole">Donor, Buona Vista</p></div></div>
+      <div class="swiper-slide"><div class="tcard"><span class="qmk">"</span><p class="ttxt">We installed a bin at our office block. Within a month, 87kg of textiles collected just from our building. This is what corporate sustainability actually looks like.</p><p class="tauth">Darren K.</p><p class="trole">Facilities Manager, Tanjong Pagar</p></div></div>
+      <div class="swiper-slide"><div class="tcard"><span class="qmk">"</span><p class="ttxt">Green Square doesn't just collect — they sort thoughtfully. The clothes that reach our beneficiaries are genuinely wearable and dignified. That means everything to us.</p><p class="tauth">Priya S.</p><p class="trole">Social Enterprise Partner</p></div></div>
+      <div class="swiper-slide"><div class="tcard"><span class="qmk">"</span><p class="ttxt">My kids grow out of clothes so fast. Green Square makes it easy to feel good instead of just throwing everything in a bin bag. My children now know what circular means.</p><p class="tauth">Jason L.</p><p class="trole">Parent, Sengkang</p></div></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- ══════════════ PARTNERS ══════════════ -->
+<section id="partners">
+  <p class="plbl">Trusted By</p>
+  <div style="overflow:hidden">
+    <div class="mq">
+      <span class="plg">NEA Singapore</span><span class="plg">NTUC FairPrice</span>
+      <span class="plg">Temasek Foundation</span><span class="plg">Singapore Environment Council</span>
+      <span class="plg">Textile &amp; Fashion Federation</span><span class="plg">CDL</span>
+      <span class="plg">Uniqlo Singapore</span><span class="plg">Salvation Army</span>
+      <span class="plg">Zero Waste SG</span><span class="plg">HDB</span>
+      <span class="plg">NEA Singapore</span><span class="plg">NTUC FairPrice</span>
+      <span class="plg">Temasek Foundation</span><span class="plg">Singapore Environment Council</span>
+      <span class="plg">Textile &amp; Fashion Federation</span><span class="plg">CDL</span>
+      <span class="plg">Uniqlo Singapore</span><span class="plg">Salvation Army</span>
+      <span class="plg">Zero Waste SG</span><span class="plg">HDB</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BLOG ══════════════ -->
+<section id="blog">
+  <p class="mono rv">// 12 · LATEST</p>
+  <h2 class="blog-ttl rv d1">From our world.</h2>
+  <div class="blog-layout">
+    <!-- Featured large card -->
+    <div class="blog-feat rv d1">
+      <div class="bimg" style="background:var(--f);aspect-ratio:16/9">🌿<div class="ov"></div></div>
+      <div class="bbody">
+        <p class="btag">// Impact Report</p>
+        <h3>2024 Annual Impact: 850+ Tonnes Diverted and Counting</h3>
+        <p>Our biggest year yet. Here's exactly where your clothes went and how many lives they touched across Singapore's heartlands.</p>
+        <a href="#" class="rm">Read More →</a>
+      </div>
+    </div>
+    <!-- Two smaller cards stacked -->
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="bcard rv d2">
+        <div class="bimg" style="background:var(--g)">♻️<div class="ov"></div></div>
+        <div class="bbody">
+          <p class="btag">// Education</p>
+          <h3>The Blue Bin Myth: Why Most Clothes Still End Up in Landfill</h3>
+          <p>HDB recycling bins aren't designed for textiles. Here's why, and what to do instead.</p>
+          <a href="#" class="rm">Read More →</a>
+        </div>
+      </div>
+      <div class="bcard rv d3">
+        <div class="bimg" style="background:rgba(11,76,9,.9)">📍<div class="ov"></div></div>
+        <div class="bbody">
+          <p class="btag">// Community</p>
+          <h3>50 New Drop-Off Points Now Open Across Jurong and Woodlands</h3>
+          <p>West and North Singapore, we heard you. Find your nearest new location.</p>
+          <a href="#" class="rm">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+  <p class="mono rv" style="color:var(--l)">// 13 · CONTACT</p>
+  <div class="con-grid">
+    <div class="rv d1">
+      <h2 class="con-ttl">Let's talk.<br>Work with us.</h2>
+      <p class="con-m">Green Square partners with corporates, government agencies, schools, and community organisations to build a more circular textile economy — one garment at a time.</p>
+      <a href="mailto:hello@greensquare.com.sg" class="con-e">hello@greensquare.com.sg</a>
+      <div class="socs">
+        <a href="#" class="soc" aria-label="Instagram">📸</a>
+        <a href="#" class="soc" aria-label="Facebook">📘</a>
+        <a href="#" class="soc" aria-label="LinkedIn">💼</a>
+        <a href="#" class="soc" aria-label="TikTok">🎵</a>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="fg" style="margin-bottom:14px"><label style="font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.32)">Name</label><input type="text" id="cn" class="fi" placeholder="Your name"></div>
+      <div class="fg" style="margin-bottom:14px"><label style="font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.32)">Email</label><input type="email" id="ce" class="fi" placeholder="your@email.com"></div>
+      <div class="fg" style="margin-bottom:24px"><label style="font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.32)">Message</label><textarea id="cm" class="fta" style="min-height:120px" placeholder="Tell us about your project…"></textarea></div>
+      <button class="btn btn-lime" style="width:100%;justify-content:center;border-radius:12px" id="csub" onclick="sC(event)">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <a href="#hero" aria-label="Green Square"><div class="ft-logo"><img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
+    <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
+  </div>
+  <div class="ft-links">
+    <a href="#hero">Home</a><a href="#services">What We Do</a>
+    <a href="#how">How It Works</a><a href="#locs">Find a Drop-Off</a>
+    <a href="#booking">Book Collection</a><a href="#quiz">Education</a>
+    <a href="#blog">Blog</a><a href="#contact">Contact</a>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2024 Green Square Singapore Pte Ltd. All rights reserved.</p>
+    <p class="ft-made">Made in Singapore 🇸🇬</p>
+  </div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="#booking" id="fCta" aria-label="Book a collection">
+  <span class="fdot"></span>Book a Collection
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script>
+/* CURSOR */
+const c1=document.getElementById('cur'),c2=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
+
+/* ANNOUNCE */
+document.getElementById('ann-x').addEventListener('click',()=>document.getElementById('ann').style.display='none');
+
+/* LOADER */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},2400);
+});
+
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('s',window.scrollY>60);
+  document.getElementById('fCta').classList.toggle('show',window.scrollY>window.innerHeight*.7);
+},{passive:true});
+
+/* HAMBURGER */
+const mn=document.getElementById('mnav');
+document.getElementById('brg').addEventListener('click',()=>{mn.classList.add('o');document.body.style.overflow='hidden'});
+document.getElementById('mnav-x').addEventListener('click',cm);
+function cm(){mn.classList.remove('o');document.body.style.overflow=''}
+
+/* REVEAL */
+const rvObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target)}});
+},{threshold:.12,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv,.sbox').forEach(el=>rvObs.observe(el));
+
+/* COUNTERS */
+const fmt=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1000?(n/1000).toFixed(0)+'K':String(n);
+new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,t=+el.dataset.t,d=1800,s=52;
+    let v=0;const ti=setInterval(()=>{v=Math.min(v+t/s,t);el.textContent=fmt(Math.round(v));if(v>=t)clearInterval(ti)},d/s);
+    e.target.parentElement.parentElement.classList.add('in');
+  });
+},{threshold:.5}).observe&&document.querySelectorAll('.ctr').forEach(el=>new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el2=e.target,t=+el2.dataset.t,d=1800,s=52;let v=0;
+    const ti=setInterval(()=>{v=Math.min(v+t/s,t);el2.textContent=fmt(Math.round(v));if(v>=t)clearInterval(ti)},d/s);
+    e.target.closest('.sbox')&&e.target.closest('.sbox').classList.add('in');
+  });
+},{threshold:.5}).observe(el));
+
+/* TILT */
+if(typeof VanillaTilt!=='undefined')VanillaTilt.init(document.querySelectorAll('[data-tilt]'),{max:6,speed:400,glare:true,'max-glare':.06});
+
+/* SWIPER */
+new Swiper('#tSwiper',{slidesPerView:1,spaceBetween:20,loop:true,autoplay:{delay:5500,disableOnInteraction:false},pagination:{el:'.swiper-pagination',clickable:true},breakpoints:{768:{slidesPerView:2},1100:{slidesPerView:3}}});
+
+/* LOCATIONS */
+const locs=[
+  {n:'Bishan MRT Station',a:'514 Bishan Road S(579826)',h:'Open 24/7',area:'bishan'},
+  {n:'Tampines Community Centre',a:'10 Tampines St 23 S(529341)',h:'Mon–Sat 9am–6pm',area:'tampines'},
+  {n:'Clementi Mall',a:'3155 Commonwealth Ave West S(129588)',h:'Open 24/7',area:'clementi'},
+  {n:'Jurong East MRT',a:'10 Jurong East St 12 S(609690)',h:'Open 24/7',area:'jurong'},
+  {n:'Woodlands Civic Centre',a:'900 South Woodlands Dr S(730900)',h:'Mon–Fri 9am–5pm',area:'woodlands'},
+  {n:'AMK Hub',a:'53 Ang Mo Kio Ave 3 S(569933)',h:'Open 24/7',area:'ang mo kio'},
+  {n:'Bedok North MRT',a:'811 New Upper Changi Rd S(467360)',h:'Open 24/7',area:'bedok'},
+  {n:'Pasir Ris Town Park',a:'1 Pasir Ris Green S(518139)',h:'Open 24/7',area:'pasir ris'},
+  {n:'Hougang Avenue 10 CC',a:'35 Hougang Ave 3 S(538839)',h:'Mon–Sat 8am–9pm',area:'hougang'},
+  {n:'Toa Payoh Hub',a:'480 Lor 6 Toa Payoh S(310480)',h:'Open 24/7',area:'toa payoh'},
+];
+function rL(d){document.getElementById('llist').innerHTML=d.length?d.map((l,i)=>`<div class="lcard" onclick="sL(this)"><div class="lcard-n">${l.n}</div><div class="lcard-a">${l.a}</div><div class="lcard-h">🕐 ${l.h}</div><a href="https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
+rL(locs);
+function sL(el){document.querySelectorAll('.lcard').forEach(c=>c.classList.remove('ac'));el.classList.add('ac')}
+document.getElementById('lsrch').addEventListener('input',function(){const v=this.value.toLowerCase();rL(locs.filter(l=>l.n.toLowerCase().includes(v)||l.a.toLowerCase().includes(v)||l.area.includes(v)))});
+
+/* BOOKING */
+const dtEl=document.getElementById('dt');
+if(dtEl)dtEl.min=new Date().toISOString().split('T')[0];
+const flds=['fn','mob','em','pc','addr','dt','ts','bags','notes'];
+flds.forEach(id=>{const el=document.getElementById(id);if(!el)return;const sv=localStorage.getItem('gs_'+id);if(sv)el.value=sv;el.addEventListener('input',()=>localStorage.setItem('gs_'+id,el.value))});
+document.getElementById('bform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const rules=[{id:'fn',ok:v=>v.trim().length>=2},{id:'mob',ok:v=>/^\+?[\d\s\-]{8,}$/.test(v.trim())},{id:'em',ok:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},{id:'pc',ok:v=>/^\d{6}$/.test(v.trim())},{id:'addr',ok:v=>v.trim().length>=5},{id:'dt',ok:v=>v!==''},{id:'ts',ok:v=>v!==''},{id:'bags',ok:v=>v!==''}];
+  let ok=true;
+  rules.forEach(({id,ok:fn})=>{const el=document.getElementById(id);const g=el.closest('.fg');fn(el.value)?g.classList.remove('err'):(g.classList.add('err'),ok=false)});
+  if(ok){document.getElementById('bfw').style.display='none';const s=document.getElementById('bsuc');s.classList.add('show');s.scrollIntoView({behavior:'smooth',block:'center'});flds.forEach(id=>localStorage.removeItem('gs_'+id))}
+});
+
+/* QUIZ */
+const Qs=[
+  {q:'"I can put my old clothes in the blue HDB recycling bins."',a:false,icon:'❌',txt:'<strong>FALSE.</strong> Singapore\'s blue HDB bins are for paper, plastic, metal, and glass — <strong>not textiles</strong>. Clothes there contaminate recyclables and often end up in landfill. Always use a dedicated textile bin like Green Square\'s.'},
+  {q:'"All donated clothes get worn by someone else."',a:false,icon:'❌',txt:'<strong>FALSE.</strong> Only 10–30% of donated textiles are actually reworn. The rest are downcycled into rags — still far better than landfill. <strong>Quality matters: donate clean, wearable items.</strong>'},
+  {q:'"Even worn-out fast fashion can be recycled."',a:true,icon:'✅',txt:'<strong>TRUE.</strong> Worn items can be downcycled into industrial rags or insulation fibre. <strong>No textile is too worn for Green Square</strong> — bring us your worst.'},
+];
+let qi=0;
+function aQ(g){const q=Qs[qi];document.getElementById('qI').textContent=g===q.a?'✅':'❌';document.getElementById('qT').innerHTML=q.txt;document.getElementById('qAns').classList.add('show');const b=document.getElementById('qBtns');b.style.opacity='.3';b.style.pointerEvents='none'}
+function nQ(){qi=(qi+1)%Qs.length;document.getElementById('qQ').textContent=Qs[qi].q;document.getElementById('qAns').classList.remove('show');const b=document.getElementById('qBtns');b.style.opacity='1';b.style.pointerEvents='auto'}
+
+/* CONTACT */
+function sC(e){e.preventDefault();const btn=document.getElementById('csub');btn.textContent='✓ Sent!';btn.style.background='var(--g)';btn.style.color='var(--c)';setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.style.color='';['cn','ce','cm'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''})},3000)}
+
+/* MAGNETIC */
+document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
+
+/* ACTIVE NAV */
+document.querySelectorAll('section[id]').forEach(s=>{
+  new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.nlinks a').forEach(a=>a.classList.toggle('ac',a.getAttribute('href')==='#'+e.target.id))})},{threshold:.35}).observe(s);
+});
+</script>
+</body>
+</html>
