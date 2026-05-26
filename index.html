@@ -480,40 +480,54 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
    RESPONSIVE — 768px (mobile)
 ════════════════════════════════════════ */
 @media(max-width:768px){
+  /* Prevent any horizontal overflow from blobs */
+  body{overflow-x:hidden}
+  #hero{overflow:hidden}
+
+  /* Hide blobs on mobile — they cause horizontal overflow */
+  .blob{display:none}
+
   /* Nav */
-  nav{padding:12px 20px}
+  nav{padding:12px 20px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
   nav.s{padding:10px 20px}
-  .nl img{height:36px}
-  nav.s .nl img{height:30px}
+  .nl img{height:34px}
+  nav.s .nl img{height:28px}
   .nlinks{display:none}
   .brg{display:flex}
   .mnav a{font-size:22px}
   .mnav{gap:24px}
 
   /* Announce bar */
-  #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.4}
+  #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.5}
 
   /* Sections */
   section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:64px 20px}
   #gallery{padding:56px 0}
 
-  /* Hero */
-  .hero-top{padding:100px 20px 0;flex-direction:column;gap:0}
+  /* ── HERO — critical font-size fix ── */
+  .hero-top{padding:96px 20px 0;flex-direction:column;gap:0}
+  /* Unbounded 900 is very wide — clamp min values must be small enough to fit */
+  .line-reuse    {font-size:clamp(38px,9.5vw,72px)}   /* REUSE. = 6 chars */
+  .line-repurpose{font-size:clamp(26px,6.2vw,52px)}   /* REPURPOSE. = 10 chars */
+  .line-repair   {font-size:clamp(38px,9.5vw,72px)}   /* REPAIR. = 7 chars */
+  .h1w{overflow-x:visible;overflow-y:hidden}          /* keep vertical clip for animation, allow horizontal */
   .hero-meta{padding:20px 20px 0;flex-direction:column;align-items:flex-start;gap:14px}
   .hero-ctas{margin-left:0;flex-direction:column;width:100%}
   .hero-ctas .btn{width:100%;justify-content:center}
-  .hero-sub{font-size:14px;max-width:100%}
-  .hero-badge{font-size:10px;padding:6px 12px}
+  .hero-sub{font-size:14px;max-width:100%;line-height:1.6}
+  .hero-badge{font-size:10px;padding:6px 12px;margin-bottom:20px}
   .hero-stats{grid-template-columns:1fr 1fr}
-  .hstat{padding:18px 20px}
+  .hstat{padding:16px 20px}
   .hstat-n{font-size:clamp(20px,6vw,32px)}
-  .hstat-l{font-size:9px}
+  .hstat-l{font-size:9px;letter-spacing:1px}
   .ticker-wrap{display:none}
 
-  /* Gallery */
+  /* Gallery — make touch-scrollable, pause animation */
   .gal-hdr{padding:0 20px;flex-direction:column;align-items:flex-start;gap:12px}
-  .gal-scroll{padding:0 20px;gap:12px}
-  .gcrd{width:220px;height:280px;padding:20px}
+  .gal-scroll{animation:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:0 20px 12px;gap:12px;width:100%}
+  .gal-scroll::-webkit-scrollbar{height:3px}
+  .gal-scroll::-webkit-scrollbar-thumb{background:rgba(146,205,0,.35);border-radius:2px}
+  .gcrd{width:220px;height:280px;padding:20px;scroll-snap-align:start;flex-shrink:0}
   .gcrd-stat{font-size:22px}
 
   /* Impact */
@@ -526,24 +540,34 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
   /* What We Accept */
   .acc-grid{grid-template-columns:1fr 1fr}
-  .acrd{padding:28px 20px}
-  .acrd-icon{font-size:28px}
+  .acrd{padding:28px 18px}
+  .acrd-icon{font-size:28px;margin-bottom:12px}
+  /* Touch devices: show active state instead of hover */
+  .acrd:active::before{transform:translateY(0)}
+  .acrd:active .acrd-name,.acrd:active .acrd-desc{color:var(--c)}
 
   /* Steps */
   .steps{grid-template-columns:1fr 1fr;gap:20px}
 
   /* Locations */
   .mapbox{height:260px}
-  .llist{max-height:280px}
+  .llist{max-height:280px;-webkit-overflow-scrolling:touch}
 
   /* Get Involved */
   .inv-cards{grid-template-columns:1fr}
   .icrd{padding:32px 20px}
   .inv-signup{grid-template-columns:1fr;gap:24px;padding:28px 20px}
+  /* Touch active state for icrd */
+  .icrd:active{background:rgba(247,249,237,.07);border-top-color:var(--l)}
+
+  /* Services touch active */
+  .sc:active{background:var(--f)}
+  .sc:active .sc-title{color:var(--c)}
+  .sc:active .sc-desc{color:rgba(247,249,237,.6)}
 
   /* Quiz */
   .qbtns{flex-direction:column;align-items:center;gap:10px}
-  .qb{width:100%;max-width:280px;padding:14px 20px;font-size:15px}
+  .qb{width:100%;max-width:300px;padding:14px 20px;font-size:15px}
   .qans{padding:20px}
 
   /* Process */
@@ -551,7 +575,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .pstep{padding:36px 24px}
 
   /* Testimonials */
-  .tcard{padding:28px 22px}
+  .tcard{padding:26px 20px}
   .ttxt{font-size:13px}
 
   /* Blog */
@@ -570,45 +594,50 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   /* Floating CTA */
   #fCta{bottom:14px;right:14px;font-size:9px;padding:10px 16px}
 
-  /* iOS input zoom fix — must be 16px to prevent auto-zoom */
+  /* iOS input zoom fix — must be 16px+ to prevent auto-zoom on focus */
   input,select,textarea{font-size:16px!important}
 
-  /* Touch target minimums */
+  /* Touch targets — Apple/Google minimum 44×44px */
   .btn{min-height:44px}
   .sdot{width:44px;height:44px}
   .soc{width:44px;height:44px;font-size:18px}
+  .brg{padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center}
+  .mnav-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
 }
 
 /* ════════════════════════════════════════
-   RESPONSIVE — 480px (small phones)
+   RESPONSIVE — 480px (small phones: iPhone SE, Galaxy A)
 ════════════════════════════════════════ */
 @media(max-width:480px){
-  /* Tighter padding */
   section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:52px 16px}
   #gallery{padding:44px 0}
   nav{padding:10px 16px}
   nav.s{padding:8px 16px}
-  .nl img{height:30px}
-  nav.s .nl img{height:26px}
+  .nl img{height:28px}
+  nav.s .nl img{height:24px}
 
-  /* Hero */
-  .hero-top{padding:86px 16px 0}
+  /* Hero — even tighter on small phones */
+  .hero-top{padding:82px 16px 0}
   .hero-meta{padding:14px 16px 0}
+  .line-reuse    {font-size:clamp(32px,9vw,48px)}
+  .line-repurpose{font-size:clamp(22px,5.8vw,36px)}
+  .line-repair   {font-size:clamp(32px,9vw,48px)}
   .hero-stats{grid-template-columns:1fr 1fr}
-  .hstat{padding:14px 16px}
+  .hstat{padding:12px 16px}
+  .hstat-n{font-size:clamp(18px,5.5vw,26px)}
 
-  /* Single column everywhere on small phones */
+  /* Single column on small phones */
   .acc-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
 
-  /* Gallery smaller cards */
-  .gal-scroll{padding:0 16px;gap:10px}
+  /* Gallery */
+  .gal-scroll{padding:0 16px 10px;gap:10px}
   .gal-hdr{padding:0 16px}
   .gcrd{width:180px;height:240px;padding:16px}
   .gcrd-stat{font-size:18px}
   .gcrd-title{font-size:13px}
 
-  /* Manifesto marquee */
+  /* Marquee text */
   .mq-item{font-size:clamp(14px,5vw,22px);padding:0 20px}
 
   /* Quiz */
@@ -621,13 +650,13 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   /* Blog */
   .bbody{padding:16px}
 
-  /* Footer — extra bottom padding for floating CTA */
+  /* Footer */
   footer{padding:36px 16px 76px}
   .ft-links{gap:10px;row-gap:8px}
 
-  /* Floating CTA — icon only on very small screens */
-  #fCta{padding:11px 14px;font-size:0;gap:0;border-radius:50%;width:44px;height:44px;justify-content:center;bottom:12px;right:12px}
-  #fCta .fdot{margin:0}
+  /* Floating CTA collapses to dot-only circle */
+  #fCta{padding:0;font-size:0;gap:0;border-radius:50%;width:44px;height:44px;justify-content:center;align-items:center;bottom:12px;right:12px}
+  #fCta .fdot{width:10px;height:10px;margin:0}
 }
 </style>
 </head>
