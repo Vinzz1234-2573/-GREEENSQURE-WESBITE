@@ -48,10 +48,10 @@ body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;bord
 @keyframes lOut{to{opacity:0;pointer-events:none}}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:20px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
-nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
-.nl img{height:28px;width:auto;transition:height .3s}
-nav.s .nl img{height:24px}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:26px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:16px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+.nl img{height:46px;width:auto;transition:height .3s}
+nav.s .nl img{height:36px}
 .nlinks{display:flex;gap:28px;list-style:none;align-items:center}
 .nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
 .nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
@@ -221,26 +221,33 @@ nav.s .nl img{height:24px}
 .loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
 
 /* ════════════════════════════════════════
-   BOOKING
+   GET INVOLVED
 ════════════════════════════════════════ */
-#booking{background:var(--f);padding:100px 52px}
-#booking .mono{color:var(--l)}
-.bk-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--c);margin-bottom:10px;line-height:1.06}
-.bk-sub{font-size:15px;color:rgba(247,249,237,.45);max-width:460px;margin-bottom:52px}
-.bform{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.fg{display:flex;flex-direction:column;gap:7px}
-.fg.full{grid-column:1/-1}
-.fg label{font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.35)}
-.fi,.fsel,.fta{background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;padding:13px 16px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;width:100%}
-.fi::placeholder,.fta::placeholder{color:rgba(247,249,237,.22)}
-.fi:focus,.fsel:focus,.fta:focus{border-color:var(--l);background:rgba(146,205,0,.05);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+#involve{background:var(--f);padding:100px 52px}
+#involve .mono{color:var(--l)}
+.inv-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--c);margin-bottom:14px;line-height:1.06}
+.inv-sub{font-size:15px;color:rgba(247,249,237,.45);max-width:500px;margin-bottom:64px;line-height:1.7}
+.inv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px}
+.icrd{background:rgba(247,249,237,.04);padding:48px 36px;border-top:2px solid transparent;transition:all .3s;cursor:default;position:relative;overflow:hidden}
+.icrd::after{content:'';position:absolute;inset:0;background:rgba(146,205,0,.04);opacity:0;transition:.3s}
+.icrd:hover{background:rgba(247,249,237,.07);border-top-color:var(--l)}
+.icrd:hover::after{opacity:1}
+.icrd-icon{font-size:44px;margin-bottom:22px;display:block}
+.icrd-title{font-family:var(--D);font-size:18px;font-weight:700;color:var(--c);margin-bottom:12px}
+.icrd-desc{font-size:13px;color:rgba(247,249,237,.5);line-height:1.72;margin-bottom:24px}
+.icrd-link{font-family:var(--B);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--l);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.icrd-link:hover{gap:12px}
+.inv-signup{background:rgba(247,249,237,.04);border:1px solid rgba(247,249,237,.08);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.inv-signup-left h3{font-family:var(--D);font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--c);margin-bottom:10px;line-height:1.2}
+.inv-signup-left p{font-size:13px;color:rgba(247,249,237,.45);line-height:1.65}
+.inv-form{display:flex;flex-direction:column;gap:14px}
+.fi{background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;padding:13px 16px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;width:100%}
+.fi::placeholder{color:rgba(247,249,237,.22)}
+.fi:focus{border-color:var(--l);background:rgba(146,205,0,.05);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+.fsel{background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;padding:13px 16px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;width:100%}
+.fsel:focus{border-color:var(--l);background:rgba(146,205,0,.05);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
 .fsel option{background:var(--f);color:var(--c)}
-.fta{resize:vertical;min-height:88px}
-.ferr{font-size:11px;color:#ff7a7a;display:none}
-.fg.err .ferr{display:block}
-.fg.err .fi,.fg.err .fsel,.fg.err .fta{border-color:#ff7a7a}
-.fsub{grid-column:1/-1;margin-top:4px}
-.suc{display:none;text-align:center;padding:64px 20px}
+.suc{display:none;text-align:center;padding:40px 20px}
 .suc.show{display:block}
 .suc-ck{font-size:52px;animation:sBnc .5s ease;margin-bottom:18px}
 @keyframes sBnc{0%{transform:scale(0)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
@@ -390,10 +397,73 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .blog-layout{grid-template-columns:1fr}
   .blog-feat{grid-row:auto}
 }
+/* ── SCROLL PROGRESS ── */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--l),var(--g));z-index:10000;width:0%;transition:width .08s linear;pointer-events:none;box-shadow:0 0 10px rgba(146,205,0,.5)}
+
+/* ── HERO BLOBS ── */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:bFloat 9s ease-in-out infinite}
+.blob1{width:520px;height:520px;background:radial-gradient(circle,rgba(146,205,0,.18),transparent 70%);top:-140px;right:-80px}
+.blob2{width:380px;height:380px;background:radial-gradient(circle,rgba(75,159,95,.15),transparent 70%);bottom:60px;left:-60px;animation-delay:-4s}
+.blob3{width:220px;height:220px;background:radial-gradient(circle,rgba(146,205,0,.12),transparent 70%);top:38%;right:18%;animation-delay:-7s}
+@keyframes bFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-48px) scale(1.06)}}
+
+/* ── SCROLLING MARQUEE MANIFESTO ── */
+.mq-overflow{overflow:hidden;position:relative}
+.mq-overflow::before,.mq-overflow::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.mq-overflow::before{left:0;background:linear-gradient(90deg,var(--f),transparent)}
+.mq-overflow::after{right:0;background:linear-gradient(-90deg,var(--f),transparent)}
+.mq-track{display:flex;width:max-content;animation:mqRun 28s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+@keyframes mqRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{font-family:var(--D);font-size:clamp(22px,3.5vw,44px);font-weight:900;color:var(--c);white-space:nowrap;padding:0 40px;line-height:1}
+.mq-item em{color:var(--l);font-style:normal}
+.mq-item .sep{color:rgba(146,205,0,.3);margin:0 12px}
+
+/* ── GALLERY STRIP ── */
+#gallery{background:var(--k);padding:80px 0;overflow:hidden}
+.gal-hdr{padding:0 52px;margin-bottom:40px;display:flex;align-items:flex-end;justify-content:space-between}
+.gal-ttl{font-family:var(--D);font-size:clamp(24px,3.5vw,42px);font-weight:900;color:var(--c);line-height:1.06}
+.gal-ttl span{color:var(--l)}
+.gal-scroll{display:flex;gap:18px;padding:0 52px;animation:galMove 35s linear infinite;width:max-content}
+.gal-scroll:hover{animation-play-state:paused}
+@keyframes galMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.gcrd{width:300px;height:380px;border-radius:20px;flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;cursor:default;transition:transform .3s}
+.gcrd:hover{transform:translateY(-8px) scale(1.02)}
+.gcrd-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:72px}
+.gcrd-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%)}
+.gcrd-tag{font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:6px;position:relative;z-index:1}
+.gcrd-title{font-family:var(--D);font-size:16px;font-weight:700;color:#fff;line-height:1.2;position:relative;z-index:1}
+.gcrd-stat{font-size:28px;font-weight:900;font-family:var(--D);color:var(--l);margin-bottom:4px;position:relative;z-index:1}
+
+/* ── WHAT WE ACCEPT ── */
+#accept{background:var(--w);padding:100px 52px}
+#accept .mono{color:var(--g)}
+.acc-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--f);margin-bottom:14px;line-height:1.06}
+.acc-sub{font-size:15px;color:rgba(14,19,15,.5);margin-bottom:52px;max-width:480px;line-height:1.65}
+.acc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.acrd{background:var(--c);padding:36px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.acrd::before{content:'';position:absolute;inset:0;background:var(--f);transform:translateY(100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.acrd:hover::before{transform:translateY(0)}
+.acrd-icon{font-size:36px;margin-bottom:18px;position:relative;z-index:1;display:block;transition:transform .3s}
+.acrd:hover .acrd-icon{transform:scale(1.15) rotate(-5deg)}
+.acrd-name{font-family:var(--D);font-size:14px;font-weight:700;color:var(--f);margin-bottom:8px;position:relative;z-index:1;transition:color .3s}
+.acrd:hover .acrd-name{color:var(--c)}
+.acrd-desc{font-size:11px;color:rgba(14,19,15,.5);line-height:1.65;position:relative;z-index:1;transition:color .3s}
+.acrd:hover .acrd-desc{color:rgba(247,249,237,.55)}
+.acrd-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-top:12px;position:relative;z-index:1;transition:all .3s}
+.acrd-yes .acrd-tag{background:rgba(146,205,0,.15);color:var(--g)}
+.acrd-no  .acrd-tag{background:rgba(255,80,80,.08);color:#d44}
+.acrd:hover .acrd-tag{background:rgba(247,249,237,.15);color:var(--c)}
+
+/* ── IMPACT NUMBER FEATURE ── */
+.big-number{font-family:var(--D);font-size:clamp(80px,13vw,160px);font-weight:900;line-height:1;color:var(--f);opacity:.06;position:absolute;right:-20px;top:-20px;user-select:none;pointer-events:none}
+
 @media(max-width:768px){
-  section,#impact,#services,#how,#locs,#booking,#quiz,#proc,#testi,#blog,#contact{padding:72px 24px}
+  section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:72px 24px}
   nav{padding:14px 24px}
   nav.s{padding:10px 24px}
+  .acc-grid{grid-template-columns:1fr 1fr}
+  .gal-hdr{padding:0 24px}
   .nlinks{display:none}
   .brg{display:flex}
   .hero-top{padding:120px 24px 0;flex-direction:column;gap:0}
@@ -405,8 +475,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .svc-grid{grid-template-columns:1fr}
   .svc-hdr{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr}
-  .bform{grid-template-columns:1fr}
-  .fg.full,.fsub{grid-column:1}
+  .inv-cards{grid-template-columns:1fr}
+  .inv-signup{grid-template-columns:1fr}
   footer{padding:44px 24px 20px}
   .ft-links{gap:14px}
   #fCta{bottom:14px;right:14px}
@@ -415,6 +485,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 </head>
 <body>
 
+<div id="prog" aria-hidden="true"></div>
 <div id="cur" aria-hidden="true"></div>
 <div id="curR" aria-hidden="true"></div>
 
@@ -439,7 +510,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   <a href="#hero" onclick="cm()">Home</a>
   <a href="#services" onclick="cm()">What We Do</a>
   <a href="#locs" onclick="cm()">Drop-Off</a>
-  <a href="#booking" onclick="cm()">Book</a>
+  <a href="#involve" onclick="cm()">Get Involved</a>
   <a href="#blog" onclick="cm()">Blog</a>
   <a href="#contact" onclick="cm()">Contact</a>
 </div>
@@ -455,7 +526,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <li><a href="#locs">Drop-Off</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#booking" class="nc">Book Collection</a></li>
+    <li><a href="#involve" class="nc">Get Involved</a></li>
   </ul>
   <button class="brg" id="brg" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -464,6 +535,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <!-- ══════════════ HERO ══════════════ -->
 <section id="hero">
+  <div class="blob blob1" aria-hidden="true"></div>
+  <div class="blob blob2" aria-hidden="true"></div>
+  <div class="blob blob3" aria-hidden="true"></div>
   <div class="hero-top">
     <div class="hero-hl">
       <div class="hero-badge" style="opacity:0;animation:fadeUp .5s ease 2.2s forwards">
@@ -495,7 +569,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <p class="hero-sub">We collect textiles across Singapore so they don't end up in Semakau. 250+ drop-off points. Home collection. Zero excuses.</p>
     <div class="hero-ctas">
       <a href="#locs" class="btn btn-dark">Find a Drop-Off →</a>
-      <a href="#booking" class="btn btn-out">Book Collection</a>
+      <a href="#involve" class="btn btn-out">Get Involved</a>
     </div>
   </div>
 
@@ -551,14 +625,169 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   </div>
 </section>
 
-<!-- MANIFESTO STRIP -->
-<div class="manifesto rv">
-  <div class="manifesto-inner">
-    <div class="m-num" aria-hidden="true">03</div>
-    <p class="mtext">Fashion moves fast. Landfills fill faster.<br><em>Green Square slows both down —</em> one collection, one garment, one community at a time.</p>
-    <a href="#services" class="btn btn-cout" style="flex-shrink:0">What We Do →</a>
+<!-- MANIFESTO MARQUEE -->
+<div class="manifesto" style="padding:0">
+  <div style="padding:48px 52px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+    <p class="mono" style="color:rgba(247,249,237,.35)">// 03 · MANIFESTO</p>
+    <a href="#services" class="btn btn-cout">What We Do →</a>
+  </div>
+  <div class="mq-overflow" style="padding:16px 0 52px">
+    <div class="mq-track">
+      <span class="mq-item">Fashion moves fast.<span class="sep">✦</span></span>
+      <span class="mq-item">Landfills fill <em>faster.</em><span class="sep">✦</span></span>
+      <span class="mq-item">Green Square <em>slows both down.</em><span class="sep">✦</span></span>
+      <span class="mq-item">One collection.<span class="sep">✦</span></span>
+      <span class="mq-item">One garment.<span class="sep">✦</span></span>
+      <span class="mq-item">One community at a time.<span class="sep">✦</span></span>
+      <span class="mq-item">Fashion moves fast.<span class="sep">✦</span></span>
+      <span class="mq-item">Landfills fill <em>faster.</em><span class="sep">✦</span></span>
+      <span class="mq-item">Green Square <em>slows both down.</em><span class="sep">✦</span></span>
+      <span class="mq-item">One collection.<span class="sep">✦</span></span>
+      <span class="mq-item">One garment.<span class="sep">✦</span></span>
+      <span class="mq-item">One community at a time.<span class="sep">✦</span></span>
+    </div>
   </div>
 </div>
+
+<!-- ══════════════ GALLERY STRIP ══════════════ -->
+<section id="gallery" aria-label="Impact highlights">
+  <div class="gal-hdr rv">
+    <h2 class="gal-ttl">Our impact,<br><span>by the numbers.</span></h2>
+    <a href="#impact" class="btn btn-cout rv d2">See Full Impact →</a>
+  </div>
+  <div class="gal-scroll">
+    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#1a7a1a)">
+      <div class="gcrd-bg">♻️</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Tonnes Diverted</p>
+      <p class="gcrd-stat">850+</p>
+      <p class="gcrd-title">Textiles rescued from Semakau landfill</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#1f3d00,#3a6600)">
+      <div class="gcrd-bg">👕</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Items Reborn</p>
+      <p class="gcrd-stat">1.2M+</p>
+      <p class="gcrd-title">Garments given a second life</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#4B9F5F,#2d7a45)">
+      <div class="gcrd-bg">📍</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Collection Points</p>
+      <p class="gcrd-stat">250+</p>
+      <p class="gcrd-title">Drop-off bins across Singapore</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#0a3308,#155a12)">
+      <div class="gcrd-bg">🏙️</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">kg from Landfill</p>
+      <p class="gcrd-stat">650K+</p>
+      <p class="gcrd-title">Keeping Semakau cleaner, longer</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#2a5c00,#4B9F5F)">
+      <div class="gcrd-bg">🤝</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Partner Network</p>
+      <p class="gcrd-stat">40+</p>
+      <p class="gcrd-title">NGOs, enterprises & corporates</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">
+      <div class="gcrd-bg">📦</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Home Pickups</p>
+      <p class="gcrd-stat">12K+</p>
+      <p class="gcrd-title">Doorstep collections island-wide</p>
+    </div>
+    <!-- duplicate for seamless loop -->
+    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#1a7a1a)">
+      <div class="gcrd-bg">♻️</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Tonnes Diverted</p>
+      <p class="gcrd-stat">850+</p>
+      <p class="gcrd-title">Textiles rescued from Semakau landfill</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#1f3d00,#3a6600)">
+      <div class="gcrd-bg">👕</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Items Reborn</p>
+      <p class="gcrd-stat">1.2M+</p>
+      <p class="gcrd-title">Garments given a second life</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#4B9F5F,#2d7a45)">
+      <div class="gcrd-bg">📍</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Collection Points</p>
+      <p class="gcrd-stat">250+</p>
+      <p class="gcrd-title">Drop-off bins across Singapore</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#0a3308,#155a12)">
+      <div class="gcrd-bg">🏙️</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">kg from Landfill</p>
+      <p class="gcrd-stat">650K+</p>
+      <p class="gcrd-title">Keeping Semakau cleaner, longer</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#2a5c00,#4B9F5F)">
+      <div class="gcrd-bg">🤝</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Partner Network</p>
+      <p class="gcrd-stat">40+</p>
+      <p class="gcrd-title">NGOs, enterprises & corporates</p>
+    </div>
+    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">
+      <div class="gcrd-bg">📦</div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Home Pickups</p>
+      <p class="gcrd-stat">12K+</p>
+      <p class="gcrd-title">Doorstep collections island-wide</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHAT WE ACCEPT ══════════════ -->
+<section id="accept">
+  <p class="mono rv">// 03.5 · WHAT WE ACCEPT</p>
+  <h2 class="acc-ttl rv d1">What can you<br>give us?</h2>
+  <p class="acc-sub rv d2">Almost everything textile. Hover each category to find out — if in doubt, bring it in.</p>
+  <div class="acc-grid rv d2">
+    <div class="acrd acrd-yes">
+      <span class="acrd-icon">👗</span>
+      <div class="acrd-name">Clothing</div>
+      <p class="acrd-desc">All types — tops, bottoms, dresses, outerwear, formalwear. Any condition, any brand, any size.</p>
+      <span class="acrd-tag">✓ Accepted</span>
+    </div>
+    <div class="acrd acrd-yes">
+      <span class="acrd-icon">👟</span>
+      <div class="acrd-name">Footwear</div>
+      <p class="acrd-desc">Shoes, sandals, boots, slippers. Pair them up and tie laces together so they stay matched.</p>
+      <span class="acrd-tag">✓ Accepted</span>
+    </div>
+    <div class="acrd acrd-yes">
+      <span class="acrd-icon">👜</span>
+      <div class="acrd-name">Bags & Accessories</div>
+      <p class="acrd-desc">Handbags, backpacks, belts, wallets, scarves, hats. Fabric and leather both welcome.</p>
+      <span class="acrd-tag">✓ Accepted</span>
+    </div>
+    <div class="acrd acrd-yes">
+      <span class="acrd-icon">🛏️</span>
+      <div class="acrd-name">Bedding & Linen</div>
+      <p class="acrd-desc">Bedsheets, pillowcases, towels, curtains, tablecloths. Clean and dry before dropping off.</p>
+      <span class="acrd-tag">✓ Accepted</span>
+    </div>
+    <div class="acrd acrd-yes">
+      <span class="acrd-icon">🧸</span>
+      <div class="acrd-name">Soft Toys</div>
+      <p class="acrd-desc">Plushies, stuffed animals — if they're intact and clean, they find a new home.</p>
+      <span class="acrd-tag">✓ Accepted</span>
+    </div>
+    <div class="acrd acrd-yes">
+      <span class="acrd-icon">🧵</span>
+      <div class="acrd-name">Worn & Torn Items</div>
+      <p class="acrd-desc">Even clothes too worn to wear are downcycled into industrial rags. Nothing goes to waste.</p>
+      <span class="acrd-tag">✓ Accepted</span>
+    </div>
+    <div class="acrd acrd-no">
+      <span class="acrd-icon">🧴</span>
+      <div class="acrd-name">Wet or Soiled Items</div>
+      <p class="acrd-desc">Damp or heavily soiled textiles contaminate the whole batch. Please dry and clean before donating.</p>
+      <span class="acrd-tag">✗ Not accepted</span>
+    </div>
+    <div class="acrd acrd-no">
+      <span class="acrd-icon">🪑</span>
+      <div class="acrd-name">Hard Furniture</div>
+      <p class="acrd-desc">We only accept textiles. For furniture, mattresses, or electronics, contact NEA's bulky waste service.</p>
+      <span class="acrd-tag">✗ Not accepted</span>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════ SERVICES ══════════════ -->
 <section id="services">
@@ -644,49 +873,65 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
         <a href="https://maps.google.com/maps?q=green+square+singapore+textile+recycling" target="_blank" rel="noopener noreferrer" class="btn btn-dark" style="margin-top:8px;font-size:10px">Open in Google Maps ↗</a>
       </div>
       <div class="loc-cta">
-        <p>Can't get to a bin?</p>
-        <a href="#booking" class="btn btn-dark">Book a Home Collection →</a>
+        <p>Want to install a bin at your building?</p>
+        <a href="#involve" class="btn btn-dark">Partner With Us →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ BOOKING ══════════════ -->
-<section id="booking">
-  <p class="mono rv">// 07 · BOOK</p>
-  <h2 class="bk-ttl rv d1">Book your<br>home collection.</h2>
-  <p class="bk-sub rv d2">We'll come to you. Schedule a pickup and we'll collect your pre-loved clothes right from your doorstep.</p>
-  <div id="bfw">
-    <form class="bform" id="bform" novalidate>
-      <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" class="fi" placeholder="Your full name" required><span class="ferr">Please enter your name</span></div>
-      <div class="fg"><label for="mob">Mobile Number *</label><input type="tel" id="mob" class="fi" placeholder="+65 9123 4567" required><span class="ferr">Please enter a valid number</span></div>
-      <div class="fg"><label for="em">Email Address *</label><input type="email" id="em" class="fi" placeholder="you@email.com" required><span class="ferr">Please enter a valid email</span></div>
-      <div class="fg"><label for="pc">Postal Code *</label><input type="text" id="pc" class="fi" placeholder="530123" maxlength="6" required><span class="ferr">6-digit postal code required</span></div>
-      <div class="fg full"><label for="addr">Collection Address *</label><input type="text" id="addr" class="fi" placeholder="Block, Street, Unit number" required><span class="ferr">Please enter your address</span></div>
-      <div class="fg"><label for="dt">Preferred Date *</label><input type="date" id="dt" class="fi" required><span class="ferr">Please select a date</span></div>
-      <div class="fg"><label for="ts">Time Slot *</label>
-        <select id="ts" class="fsel" required>
-          <option value="">Select a time slot</option>
-          <option value="morning">Morning — 9am to 12pm</option>
-          <option value="afternoon">Afternoon — 12pm to 5pm</option>
-          <option value="evening">Evening — 5pm to 8pm</option>
-        </select><span class="ferr">Please select a time slot</span></div>
-      <div class="fg"><label for="bags">No. of Bags *</label>
-        <select id="bags" class="fsel" required>
-          <option value="">Estimate quantity</option>
-          <option value="1">1 bag</option>
-          <option value="2-3">2–3 bags</option>
-          <option value="4-6">4–6 bags</option>
-          <option value="7+">7 or more</option>
-        </select><span class="ferr">Please select an estimate</span></div>
-      <div class="fg full"><label for="notes">Special Instructions</label><textarea id="notes" class="fta" placeholder="Access codes, notes for our team…"></textarea></div>
-      <div class="fsub"><button type="submit" class="btn btn-lime" style="width:100%;justify-content:center;font-size:12px;padding:18px;border-radius:12px">BOOK MY COLLECTION →</button></div>
-    </form>
+<!-- ══════════════ GET INVOLVED ══════════════ -->
+<section id="involve">
+  <p class="mono rv">// 07 · GET INVOLVED</p>
+  <h2 class="inv-ttl rv d1">More than a drop-off.<br>Join the movement.</h2>
+  <p class="inv-sub rv d2">There are many ways to be part of Green Square — volunteer your time, bring us into your building, or become an advocate in your community.</p>
+
+  <div class="inv-cards rv d2">
+    <div class="icrd">
+      <span class="icrd-icon">🙋</span>
+      <div class="icrd-title">Volunteer</div>
+      <p class="icrd-desc">Join our sorting team, assist at collection drives, or help educate your estate on sustainable textile habits. No experience needed — just passion.</p>
+      <a href="#inv-signup" class="icrd-link">Sign Up →</a>
+    </div>
+    <div class="icrd">
+      <span class="icrd-icon">🏢</span>
+      <div class="icrd-title">Corporate Partner</div>
+      <p class="icrd-desc">Get a Green Square bin installed in your office, condo, or retail space. We handle everything — logistics, signage, collections, and impact reporting for your ESG records.</p>
+      <a href="#inv-signup" class="icrd-link">Partner With Us →</a>
+    </div>
+    <div class="icrd">
+      <span class="icrd-icon">📣</span>
+      <div class="icrd-title">Community Ambassador</div>
+      <p class="icrd-desc">Spread the word in your HDB estate, school, or social circle. We'll give you resources, talking points, and support to make textile recycling the default in your neighbourhood.</p>
+      <a href="#inv-signup" class="icrd-link">Become an Ambassador →</a>
+    </div>
   </div>
-  <div class="suc" id="bsuc">
-    <div class="suc-ck">✅</div>
-    <div class="suc-t">Collection Booked!</div>
-    <p class="suc-d">We'll confirm via SMS and email within 24 hours.<br>Together we're keeping textiles out of Semakau.</p>
+
+  <div class="inv-signup rv d3" id="inv-signup">
+    <div class="inv-signup-left">
+      <h3>Ready to do more?<br>Let us reach out.</h3>
+      <p>Fill in your details and we'll be in touch within 3 working days to discuss how you can get involved.</p>
+    </div>
+    <div id="inv-fw">
+      <div class="suc" id="inv-suc">
+        <div class="suc-ck">🌿</div>
+        <div class="suc-t">We'll be in touch!</div>
+        <p class="suc-d">Thanks for stepping up. Together we're keeping textiles out of Semakau.</p>
+      </div>
+      <form class="inv-form" id="inv-form" novalidate>
+        <input type="text" id="inv-name" class="fi" placeholder="Your name *" required>
+        <input type="email" id="inv-email" class="fi" placeholder="Email address *" required>
+        <input type="text" id="inv-org" class="fi" placeholder="Organisation / Estate (optional)">
+        <select id="inv-type" class="fsel">
+          <option value="">How do you want to get involved?</option>
+          <option value="volunteer">Volunteer</option>
+          <option value="corporate">Corporate Partner — install a bin</option>
+          <option value="ambassador">Community Ambassador</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="submit" class="btn btn-lime" style="justify-content:center;border-radius:12px;padding:16px;font-size:12px">COUNT ME IN →</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -836,9 +1081,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   </div>
   <div class="ft-links">
     <a href="#hero">Home</a><a href="#services">What We Do</a>
-    <a href="#how">How It Works</a><a href="#locs">Find a Drop-Off</a>
-    <a href="#booking">Book Collection</a><a href="#quiz">Education</a>
-    <a href="#blog">Blog</a><a href="#contact">Contact</a>
+    <a href="#accept">What We Accept</a><a href="#how">How It Works</a>
+    <a href="#locs">Find a Drop-Off</a><a href="#involve">Get Involved</a>
+    <a href="#quiz">Education</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2024 Green Square Singapore Pte Ltd. All rights reserved.</p>
@@ -847,8 +1092,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 </footer>
 
 <!-- Floating CTA -->
-<a href="#booking" id="fCta" aria-label="Book a collection">
-  <span class="fdot"></span>Book a Collection
+<a href="#locs" id="fCta" aria-label="Find a drop-off">
+  <span class="fdot"></span>Find a Drop-Off
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -929,17 +1174,18 @@ rL(locs);
 function sL(el){document.querySelectorAll('.lcard').forEach(c=>c.classList.remove('ac'));el.classList.add('ac')}
 document.getElementById('lsrch').addEventListener('input',function(){const v=this.value.toLowerCase();rL(locs.filter(l=>l.n.toLowerCase().includes(v)||l.a.toLowerCase().includes(v)||l.area.includes(v)))});
 
-/* BOOKING */
-const dtEl=document.getElementById('dt');
-if(dtEl)dtEl.min=new Date().toISOString().split('T')[0];
-const flds=['fn','mob','em','pc','addr','dt','ts','bags','notes'];
-flds.forEach(id=>{const el=document.getElementById(id);if(!el)return;const sv=localStorage.getItem('gs_'+id);if(sv)el.value=sv;el.addEventListener('input',()=>localStorage.setItem('gs_'+id,el.value))});
-document.getElementById('bform').addEventListener('submit',e=>{
+/* GET INVOLVED FORM */
+document.getElementById('inv-form').addEventListener('submit',function(e){
   e.preventDefault();
-  const rules=[{id:'fn',ok:v=>v.trim().length>=2},{id:'mob',ok:v=>/^\+?[\d\s\-]{8,}$/.test(v.trim())},{id:'em',ok:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},{id:'pc',ok:v=>/^\d{6}$/.test(v.trim())},{id:'addr',ok:v=>v.trim().length>=5},{id:'dt',ok:v=>v!==''},{id:'ts',ok:v=>v!==''},{id:'bags',ok:v=>v!==''}];
-  let ok=true;
-  rules.forEach(({id,ok:fn})=>{const el=document.getElementById(id);const g=el.closest('.fg');fn(el.value)?g.classList.remove('err'):(g.classList.add('err'),ok=false)});
-  if(ok){document.getElementById('bfw').style.display='none';const s=document.getElementById('bsuc');s.classList.add('show');s.scrollIntoView({behavior:'smooth',block:'center'});flds.forEach(id=>localStorage.removeItem('gs_'+id))}
+  const name=document.getElementById('inv-name').value.trim();
+  const email=document.getElementById('inv-email').value.trim();
+  if(name.length<2||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    if(name.length<2)document.getElementById('inv-name').style.borderColor='#ff7a7a';
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))document.getElementById('inv-email').style.borderColor='#ff7a7a';
+    return;
+  }
+  document.getElementById('inv-fw').querySelector('form').style.display='none';
+  document.getElementById('inv-suc').classList.add('show');
 });
 
 /* QUIZ */
@@ -962,6 +1208,13 @@ document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('mousemove',e=>
 document.querySelectorAll('section[id]').forEach(s=>{
   new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.nlinks a').forEach(a=>a.classList.toggle('ac',a.getAttribute('href')==='#'+e.target.id))})},{threshold:.35}).observe(s);
 });
+
+/* SCROLL PROGRESS */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
+  if(prog)prog.style.width=(dh>0?(st/dh*100):0)+'%';
+},{passive:true});
 </script>
 </body>
 </html>
