@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Green Square Singapore — Reuse. Repurpose. Repair.</title>
   <meta name="description" content="Singapore's leading textile recycling platform. 250+ drop-off points island-wide.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,7 @@ body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;bord
 @keyframes lOut{to{opacity:0;pointer-events:none}}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:26px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:26px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
 nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:16px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
 .nl img{height:46px;width:auto;transition:height .3s}
 nav.s .nl img{height:36px}
@@ -63,7 +63,7 @@ nav.s .nl img{height:36px}
 .brg span{display:block;width:24px;height:1.5px;background:var(--f);transition:.3s;border-radius:1px}
 
 /* ── MOBILE NAV ── */
-.mnav{display:none;position:fixed;inset:0;background:var(--f);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.mnav{display:none;position:fixed;inset:0;background:var(--f);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:36px;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 .mnav.o{display:flex}
 .mnav a{font-family:var(--D);font-size:28px;font-weight:700;color:var(--c);text-decoration:none;transition:color .2s}
 .mnav a:hover{color:var(--l)}
@@ -91,7 +91,7 @@ nav.s .nl img{height:36px}
 /* ════════════════════════════════════════
    HERO
 ════════════════════════════════════════ */
-#hero{min-height:100vh;background:var(--c);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;padding-top:0}
+#hero{min-height:100vh;min-height:100svh;background:var(--c);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;padding-top:0}
 /* Subtle dot grid bg */
 #hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(11,76,9,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
 .hero-top{display:flex;align-items:flex-end;justify-content:space-between;padding:140px 52px 0;position:relative;z-index:2}
@@ -378,21 +378,39 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .fdot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:bdPulse 1.5s ease-in-out infinite}
 
 /* ════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — 1200px (large tablet / small laptop)
 ════════════════════════════════════════ */
 @media(max-width:1200px){
   .spin-wrap{display:none}
   .hero-meta{flex-direction:column;align-items:flex-start}
   .hero-ctas{margin-left:0}
+  .inv-cards{grid-template-columns:1fr 1fr}
+  .acc-grid{grid-template-columns:repeat(4,1fr)}
 }
+
+/* ════════════════════════════════════════
+   RESPONSIVE — 1024px (tablet)
+════════════════════════════════════════ */
 @media(max-width:1024px){
-  .impact-inner{grid-template-columns:1fr}
+  nav{padding:20px 36px}
+  nav.s{padding:14px 36px}
+  section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:80px 36px}
+  .hero-top{padding:130px 36px 0}
+  .hero-meta{padding:28px 36px 0}
+  .hstat{padding:24px 36px}
+  footer{padding:48px 36px 20px}
+  .gal-hdr{padding:0 36px}
+  .impact-inner{grid-template-columns:1fr;gap:40px}
   .stats-grid{grid-template-columns:1fr 1fr}
   .svc-grid{grid-template-columns:1fr 1fr}
-  .steps{grid-template-columns:1fr 1fr;gap:28px}
+  .inv-cards{grid-template-columns:1fr 1fr}
+  .inv-signup{grid-template-columns:1fr;gap:32px}
+  .acc-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(3,1fr);gap:28px}
   .steps::before{display:none}
   .loc-grid{grid-template-columns:1fr}
-  .proc-grid{grid-template-columns:1fr;gap:2px}
+  .mapbox{height:320px}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:2px}
   .con-grid{grid-template-columns:1fr;gap:44px}
   .blog-layout{grid-template-columns:1fr}
   .blog-feat{grid-row:auto}
@@ -458,28 +476,158 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 /* ── IMPACT NUMBER FEATURE ── */
 .big-number{font-family:var(--D);font-size:clamp(80px,13vw,160px);font-weight:900;line-height:1;color:var(--f);opacity:.06;position:absolute;right:-20px;top:-20px;user-select:none;pointer-events:none}
 
+/* ════════════════════════════════════════
+   RESPONSIVE — 768px (mobile)
+════════════════════════════════════════ */
 @media(max-width:768px){
-  section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:72px 24px}
-  nav{padding:14px 24px}
-  nav.s{padding:10px 24px}
-  .acc-grid{grid-template-columns:1fr 1fr}
-  .gal-hdr{padding:0 24px}
+  /* Nav */
+  nav{padding:12px 20px}
+  nav.s{padding:10px 20px}
+  .nl img{height:36px}
+  nav.s .nl img{height:30px}
   .nlinks{display:none}
   .brg{display:flex}
-  .hero-top{padding:120px 24px 0;flex-direction:column;gap:0}
-  .hero-meta{padding:24px 24px 0;flex-direction:column;gap:16px}
-  .hero-ctas{margin-left:0}
+  .mnav a{font-size:22px}
+  .mnav{gap:24px}
+
+  /* Announce bar */
+  #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.4}
+
+  /* Sections */
+  section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:64px 20px}
+  #gallery{padding:56px 0}
+
+  /* Hero */
+  .hero-top{padding:100px 20px 0;flex-direction:column;gap:0}
+  .hero-meta{padding:20px 20px 0;flex-direction:column;align-items:flex-start;gap:14px}
+  .hero-ctas{margin-left:0;flex-direction:column;width:100%}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .hero-sub{font-size:14px;max-width:100%}
+  .hero-badge{font-size:10px;padding:6px 12px}
   .hero-stats{grid-template-columns:1fr 1fr}
-  .hstat{padding:20px 24px}
+  .hstat{padding:18px 20px}
+  .hstat-n{font-size:clamp(20px,6vw,32px)}
+  .hstat-l{font-size:9px}
   .ticker-wrap{display:none}
+
+  /* Gallery */
+  .gal-hdr{padding:0 20px;flex-direction:column;align-items:flex-start;gap:12px}
+  .gal-scroll{padding:0 20px;gap:12px}
+  .gcrd{width:220px;height:280px;padding:20px}
+  .gcrd-stat{font-size:22px}
+
+  /* Impact */
+  .sbox{padding:24px 20px}
+
+  /* Services */
   .svc-grid{grid-template-columns:1fr}
   .svc-hdr{flex-direction:column;align-items:flex-start}
-  .steps{grid-template-columns:1fr}
+  .sc{padding:36px 24px}
+
+  /* What We Accept */
+  .acc-grid{grid-template-columns:1fr 1fr}
+  .acrd{padding:28px 20px}
+  .acrd-icon{font-size:28px}
+
+  /* Steps */
+  .steps{grid-template-columns:1fr 1fr;gap:20px}
+
+  /* Locations */
+  .mapbox{height:260px}
+  .llist{max-height:280px}
+
+  /* Get Involved */
   .inv-cards{grid-template-columns:1fr}
-  .inv-signup{grid-template-columns:1fr}
-  footer{padding:44px 24px 20px}
-  .ft-links{gap:14px}
-  #fCta{bottom:14px;right:14px}
+  .icrd{padding:32px 20px}
+  .inv-signup{grid-template-columns:1fr;gap:24px;padding:28px 20px}
+
+  /* Quiz */
+  .qbtns{flex-direction:column;align-items:center;gap:10px}
+  .qb{width:100%;max-width:280px;padding:14px 20px;font-size:15px}
+  .qans{padding:20px}
+
+  /* Process */
+  .proc-grid{grid-template-columns:1fr}
+  .pstep{padding:36px 24px}
+
+  /* Testimonials */
+  .tcard{padding:28px 22px}
+  .ttxt{font-size:13px}
+
+  /* Blog */
+  .bbody{padding:20px}
+
+  /* Contact */
+  .con-e{font-size:14px;word-break:break-all}
+
+  /* Footer */
+  footer{padding:40px 20px 80px}
+  .ft-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .ft-links{gap:12px}
+  .ft-bot{flex-direction:column;gap:6px}
+  .ft-logo img{height:28px}
+
+  /* Floating CTA */
+  #fCta{bottom:14px;right:14px;font-size:9px;padding:10px 16px}
+
+  /* iOS input zoom fix — must be 16px to prevent auto-zoom */
+  input,select,textarea{font-size:16px!important}
+
+  /* Touch target minimums */
+  .btn{min-height:44px}
+  .sdot{width:44px;height:44px}
+  .soc{width:44px;height:44px;font-size:18px}
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — 480px (small phones)
+════════════════════════════════════════ */
+@media(max-width:480px){
+  /* Tighter padding */
+  section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:52px 16px}
+  #gallery{padding:44px 0}
+  nav{padding:10px 16px}
+  nav.s{padding:8px 16px}
+  .nl img{height:30px}
+  nav.s .nl img{height:26px}
+
+  /* Hero */
+  .hero-top{padding:86px 16px 0}
+  .hero-meta{padding:14px 16px 0}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hstat{padding:14px 16px}
+
+  /* Single column everywhere on small phones */
+  .acc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+
+  /* Gallery smaller cards */
+  .gal-scroll{padding:0 16px;gap:10px}
+  .gal-hdr{padding:0 16px}
+  .gcrd{width:180px;height:240px;padding:16px}
+  .gcrd-stat{font-size:18px}
+  .gcrd-title{font-size:13px}
+
+  /* Manifesto marquee */
+  .mq-item{font-size:clamp(14px,5vw,22px);padding:0 20px}
+
+  /* Quiz */
+  .qb{max-width:100%}
+
+  /* Involve */
+  .inv-signup{padding:20px 16px}
+  .inv-cards{grid-template-columns:1fr}
+
+  /* Blog */
+  .bbody{padding:16px}
+
+  /* Footer — extra bottom padding for floating CTA */
+  footer{padding:36px 16px 76px}
+  .ft-links{gap:10px;row-gap:8px}
+
+  /* Floating CTA — icon only on very small screens */
+  #fCta{padding:11px 14px;font-size:0;gap:0;border-radius:50%;width:44px;height:44px;justify-content:center;bottom:12px;right:12px}
+  #fCta .fdot{margin:0}
 }
 </style>
 </head>
