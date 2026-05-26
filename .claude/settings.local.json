@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npx plugins add vercel/vercel-plugin)"
+    ]
+  }
+}
