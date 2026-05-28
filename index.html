@@ -48,11 +48,14 @@ body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;bord
 @keyframes lOut{to{opacity:0;pointer-events:none}}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:26px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
-nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:16px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
-.nl img{height:46px;width:auto;transition:height .3s}
-nav.s .nl img{height:36px}
-.nlinks{display:flex;gap:28px;list-style:none;align-items:center}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:16px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+.nl img{height:64px;width:auto;transition:height .3s}
+nav.s .nl img{height:50px}
+.nlinks{display:flex;gap:20px;list-style:none;align-items:center}
+.nav-socials{display:flex;gap:6px;align-items:center}
+.nav-soc{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid rgba(11,76,9,.15);border-radius:50%;color:var(--f);transition:all .25s;text-decoration:none;flex-shrink:0}
+.nav-soc:hover{background:var(--f);color:var(--c);border-color:var(--f);transform:translateY(-1px)}
 .nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
 .nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
 .nlinks a:hover::after,.nlinks a.ac::after{width:100%}
@@ -68,6 +71,9 @@ nav.s .nl img{height:36px}
 .mnav a{font-family:var(--D);font-size:28px;font-weight:700;color:var(--c);text-decoration:none;transition:color .2s}
 .mnav a:hover{color:var(--l)}
 .mnav-x{position:absolute;top:20px;right:28px;font-size:26px;color:var(--l);background:none;border:none;cursor:pointer}
+.mnav-socs{display:flex;gap:14px;margin-top:8px}
+.mnav-soc{width:44px;height:44px;border:1px solid rgba(247,249,237,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--c);transition:all .25s;text-decoration:none}
+.mnav-soc:hover{border-color:var(--l);color:var(--l)}
 
 /* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:all .25s}
@@ -360,8 +366,11 @@ nav.s .nl img{height:36px}
    FOOTER
 ════════════════════════════════════════ */
 footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
-.ft-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;gap:16px}
-.ft-logo img{height:24px;width:auto}
+.ft-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.ft-logo img{height:40px;width:auto}
+.ft-socs{display:flex;gap:10px;margin-bottom:28px}
+.ft-soc{width:36px;height:36px;border:1px solid rgba(247,249,237,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(247,249,237,.5);transition:all .25s;text-decoration:none}
+.ft-soc:hover{border-color:var(--l);background:var(--l);color:var(--k);transform:translateY(-2px)}
 .ft-tag{font-family:var(--D);font-size:clamp(11px,1.5vw,18px);font-weight:900;color:var(--l);letter-spacing:2px}
 .ft-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
 .ft-links a{font-family:var(--B);font-size:11px;font-weight:500;color:rgba(247,249,237,.32);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
@@ -491,6 +500,11 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .pcrd-type{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--l);margin-bottom:12px}
 .pcrd-quote{font-size:12px;color:rgba(14,19,15,.5);line-height:1.6;font-style:italic}
 
+/* ── HERO 3D GLASS HEADLINE ── */
+.hero-hl-glass{position:relative;display:inline-block;padding:20px 48px 20px 0;transform-style:preserve-3d;transition:transform .08s linear}
+.hero-hl-glass::before{content:'';position:absolute;inset:-16px -24px -16px -36px;background:rgba(247,249,237,.045);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:32px;border:1px solid rgba(146,205,0,.1);box-shadow:0 8px 48px rgba(11,76,9,.12),inset 0 1px 0 rgba(247,249,237,.06);z-index:0;pointer-events:none}
+.hero-hl-glass .hero-badge,.hero-hl-glass .h1w{position:relative;z-index:1}
+.hero-depth{transform-style:preserve-3d}
 /* ── HERO BACKGROUND GFX ── */
 .hero-gfx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
 .hero-glow{position:absolute;left:-60px;top:60px;width:min(780px,85vw);height:min(620px,75vh);border-radius:50%;background:radial-gradient(ellipse at 35% 38%,rgba(146,205,0,.18) 0%,rgba(75,159,95,.09) 30%,rgba(11,76,9,.04) 55%,transparent 70%);animation:glowPulse 7s ease-in-out infinite}
@@ -712,12 +726,15 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
   <a href="#hero" onclick="cm()">Home</a>
   <a href="about.html">About</a>
-  <a href="corporate.html">Corporate Events</a>
-  <a href="schools.html">School Events</a>
-  <a href="condos.html">Condo Events</a>
-  <a href="#locs" onclick="cm()">Drop-Off</a>
-  <a href="whats-new.html">What's New</a>
+  <a href="what-to-do.html">What To Do</a>
+  <a href="#locs" onclick="cm()">Drop Off</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
   <a href="#contact" onclick="cm()">Contact</a>
+  <div class="mnav-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="mnav-soc"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="mnav-soc"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -727,10 +744,15 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   </a>
   <ul class="nlinks">
     <li><a href="about.html">About</a></li>
-    <li><a href="#services">What We Do</a></li>
-    <li><a href="#locs">Drop-Off</a></li>
-    <li><a href="whats-new.html">What's New</a></li>
+    <li><a href="what-to-do.html">What To Do</a></li>
+    <li><a href="#locs">Drop Off</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li class="nav-socials">
+      <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" class="nav-soc" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" class="nav-soc" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    </li>
     <li><a href="#involve" class="nc">Get Involved</a></li>
   </ul>
   <button class="brg" id="brg" aria-label="Open menu">
@@ -750,13 +772,15 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   </div>
   <div class="hero-top">
     <div class="hero-hl">
-      <div class="hero-badge" style="opacity:0;animation:fadeUp .5s ease 2.2s forwards">
-        <span class="bdot"></span>Sustainability Starts With You
-      </div>
+      <div class="hero-hl-glass" id="hero3D">
+        <div class="hero-badge" style="opacity:0;animation:fadeUp .5s ease 2.2s forwards">
+          <span class="bdot"></span>Sustainability Starts With You
+        </div>
 
-      <div class="h1w line-reuse"><span>REUSE.</span></div>
-      <div class="h1w line-repurpose"><span>REPURPOSE.</span></div>
-      <div class="h1w line-repair"><span>REPAIR.</span></div>
+        <div class="h1w line-reuse"><span>REUSE.</span></div>
+        <div class="h1w line-repurpose"><span>REPURPOSE.</span></div>
+        <div class="h1w line-repair"><span>REPAIR.</span></div>
+      </div>
     </div>
 
     <!-- Rotating circular badge -->
@@ -839,7 +863,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <div class="manifesto" style="padding:0">
   <div style="padding:48px 52px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
     <p class="mono" style="color:rgba(247,249,237,.35)">// 03 · MANIFESTO</p>
-    <a href="#services" class="btn btn-cout">What We Do →</a>
+    <a href="what-to-do.html" class="btn btn-cout">What We Do →</a>
   </div>
   <div class="mq-overflow" style="padding:16px 0 52px">
     <div class="mq-track">
@@ -898,9 +922,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     </div>
     <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">
       <div class="gcrd-bg">📦</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Home Pickups</p>
-      <p class="gcrd-stat">12K+</p>
-      <p class="gcrd-title">Doorstep collections island-wide</p>
+      <p class="gcrd-tag">Events Hosted</p>
+      <p class="gcrd-stat">500+</p>
+      <p class="gcrd-title">Schools, offices & condos served</p>
     </div>
     <!-- duplicate for seamless loop -->
     <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#1a7a1a)">
@@ -935,9 +959,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     </div>
     <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">
       <div class="gcrd-bg">📦</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Home Pickups</p>
-      <p class="gcrd-stat">12K+</p>
-      <p class="gcrd-title">Doorstep collections island-wide</p>
+      <p class="gcrd-tag">Events Hosted</p>
+      <p class="gcrd-stat">500+</p>
+      <p class="gcrd-title">Schools, offices & condos served</p>
     </div>
   </div>
 </section>
@@ -999,76 +1023,47 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   </div>
 </section>
 
-<!-- ══════════════ SERVICES ══════════════ -->
-<section id="services">
+<!-- ══════════════ WHAT WE DO TEASER ══════════════ -->
+<section id="services" style="padding:72px 52px;background:var(--c)">
   <div class="svc-hdr">
     <div>
       <p class="mono rv">// 03 · WHAT WE DO</p>
       <h2 class="svc-ttl rv d1">Three ways we<br>close the loop.</h2>
     </div>
-    <a href="#how" class="btn btn-dark rv d2">See How It Works →</a>
+    <a href="what-to-do.html" class="btn btn-dark rv d2">See All Services →</a>
   </div>
+
+  <!-- SERVICE DISCONTINUED NOTICE -->
+  <div class="rv" style="background:#fffbea;border:1.5px solid #e8c800;border-radius:16px;padding:18px 24px;margin-bottom:28px;display:flex;align-items:flex-start;gap:14px">
+    <div style="font-size:22px;line-height:1;flex-shrink:0">📢</div>
+    <div>
+      <div style="font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7a6000;margin-bottom:4px">Service Update</div>
+      <p style="font-family:var(--B);font-size:13px;font-weight:600;color:#3d2f00;margin-bottom:3px">Doorstep collection has been discontinued.</p>
+      <p style="font-family:var(--B);font-size:12px;color:#6b5200;line-height:1.6">Please use one of our <strong>250+ drop-off bins</strong> across Singapore — free, no booking needed, most open 24/7. <a href="#locs" style="color:#7a6000;font-weight:700;text-decoration:none;border-bottom:1px solid #e8c800">Find a bin near you →</a></p>
+    </div>
+  </div>
+
   <div class="svc-grid">
     <div class="sc rv d1" data-tilt>
       <div class="sc-num">01</div>
-      <div class="sc-icon">🏠</div>
-      <div class="sc-title">Doorstep Collection</div>
-      <p class="sc-desc">We come to you. Schedule a free doorstep pickup and we'll collect your clean clothes, paired shoes, household linen, and accessories — all at no charge to you.</p>
-      <a href="#locs" class="sc-link">Find a Location →</a>
+      <div class="sc-icon">🏫</div>
+      <div class="sc-title">Events @ Schools</div>
+      <p class="sc-desc">Recycling drives and 3Rs workshops that make sustainability hands-on for students.</p>
+      <a href="schools.html" class="sc-link">Learn More →</a>
     </div>
     <div class="sc rv d2" data-tilt>
       <div class="sc-num">02</div>
-      <div class="sc-icon">🏫</div>
-      <div class="sc-title">Events @ Schools</div>
-      <p class="sc-desc">Free textile recycling drives and 3Rs education workshops for schools. We make sustainability hands-on and memorable for students island-wide.</p>
-      <a href="#contact" class="sc-link">Get In Touch →</a>
+      <div class="sc-icon">🏢</div>
+      <div class="sc-title">Events @ Corporates</div>
+      <p class="sc-desc">CSR textile drives for offices. Past partners: DBS, KPMG, Netflix, Grab, Visa.</p>
+      <a href="corporate.html" class="sc-link">Learn More →</a>
     </div>
     <div class="sc rv d3" data-tilt>
       <div class="sc-num">03</div>
-      <div class="sc-icon">🏢</div>
-      <div class="sc-title">Events @ Corporates</div>
-      <p class="sc-desc">CSR textile drives tailored for your office. Past partners include DBS, KPMG, Netflix, Grab, and Visa. We handle everything — just set a date.</p>
-      <a href="#contact" class="sc-link">Get In Touch →</a>
-    </div>
-    <div class="sc rv d4" data-tilt>
-      <div class="sc-num">04</div>
       <div class="sc-icon">🏘️</div>
       <div class="sc-title">Events @ Condominiums</div>
-      <p class="sc-desc">Bring Green Square to your condo. We run collection events for residents and manage the full logistics, so your MCST doesn't have to lift a finger.</p>
-      <a href="#contact" class="sc-link">Get In Touch →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ HOW IT WORKS ══════════════ -->
-<section id="how">
-  <p class="mono rv">// 04 · HOW IT WORKS</p>
-  <h2 class="how-ttl rv d1">Five steps.<br>Zero to landfill.</h2>
-  <div class="steps">
-    <div class="step rv d1">
-      <div class="sdot">01</div>
-      <h3>Drop Off</h3>
-      <p>Clean, bagged clothes into any Green Square bin near your HDB block or CC.</p>
-    </div>
-    <div class="step rv d2">
-      <div class="sdot">02</div>
-      <h3>We Collect</h3>
-      <p>Our team empties bins regularly and transports textiles to our sorting hub.</p>
-    </div>
-    <div class="step rv d3">
-      <div class="sdot">03</div>
-      <h3>Sort & Grade</h3>
-      <p>Every item inspected and sorted by condition and material type.</p>
-    </div>
-    <div class="step rv d4">
-      <div class="sdot">04</div>
-      <h3>Reuse or Repurpose</h3>
-      <p>Wearables go to second-hand markets, donation drives, or social enterprises.</p>
-    </div>
-    <div class="step rv d5">
-      <div class="sdot">05</div>
-      <h3>Impact Tracked</h3>
-      <p>Every kg logged. Full transparency so you know where your clothes went.</p>
+      <p class="sc-desc">Collection events for your condo residents — we handle all logistics end-to-end.</p>
+      <a href="condos.html" class="sc-link">Learn More →</a>
     </div>
   </div>
 </section>
@@ -1175,7 +1170,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <div class="pstep rv d1">
       <div class="pn">01</div>
       <h3>Collected</h3>
-      <p>Collected from bins or home pickups, sealed and transported to our sorting hub — no clothing touches landfill at this stage.</p>
+      <p>Collected from our 250+ drop-off bins across Singapore, sealed and transported to our sorting hub — no clothing touches landfill at this stage.</p>
       <div class="pimg">📦</div>
     </div>
     <div class="pstep rv d2">
@@ -1316,8 +1311,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
         <p style="font-size:13px;color:rgba(247,249,237,.45);line-height:1.65">Mon – Fri &nbsp;·&nbsp; 9am – 6pm SGT<br>We aim to reply within 2 working days.</p>
       </div>
       <div class="socs">
-        <a href="https://www.instagram.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Instagram @greensquare.sg">📸</a>
-        <a href="#" class="soc" aria-label="Facebook">📘</a>
+        <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Instagram @greensquare.sg">📸</a>
+        <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Facebook">📘</a>
         <a href="#" class="soc" aria-label="LinkedIn">💼</a>
         <a href="#" class="soc" aria-label="TikTok">🎵</a>
       </div>
@@ -1337,7 +1332,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
         <label style="font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.32);display:block;margin-bottom:6px">I'm reaching out about…</label>
         <select id="ctype" class="fsel">
           <option value="">Select a topic</option>
-          <option value="doorstep">Doorstep collection</option>
+
           <option value="school">Events @ Schools</option>
           <option value="corporate">Events @ Corporates</option>
           <option value="condo">Events @ Condominiums</option>
@@ -1360,12 +1355,17 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <a href="#hero" aria-label="Green Square"><div class="ft-logo"><img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
     <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
   </div>
+  <div class="ft-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
   <div class="ft-links">
     <a href="#hero">Home</a><a href="about.html">About</a>
-    <a href="#services">What We Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="what-to-do.html">What To Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="events.html">Events</a><a href="blog.html">Blog</a>
     <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
     <a href="condos.html">Condo Events</a><a href="#locs">Find a Drop-Off</a>
-    <a href="#involve">Get Involved</a><a href="whats-new.html">What's New</a><a href="#contact">Contact</a>
+    <a href="#involve">Get Involved</a><a href="#contact">Contact</a>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2025 Greensquare Pte Ltd (UEN: 201731590G). All rights reserved.</p>
@@ -1483,6 +1483,24 @@ function nQ(){qi=(qi+1)%Qs.length;document.getElementById('qQ').textContent=Qs[q
 
 /* CONTACT */
 function sC(e){e.preventDefault();const btn=document.getElementById('csub');btn.textContent='✓ Sent!';btn.style.background='var(--g)';btn.style.color='var(--c)';setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.style.color='';['cn','ce','cm','ctype'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''})},3000)}
+
+/* HERO 3D TILT */
+(function(){
+  const el=document.getElementById('hero3D');
+  if(!el)return;
+  const hero=document.getElementById('hero');
+  let active=true;
+  hero.addEventListener('mousemove',e=>{
+    if(!active)return;
+    const r=hero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*8}deg) translateZ(12px)`;
+  });
+  hero.addEventListener('mouseleave',()=>{el.style.transform='perspective(900px) rotateY(0deg) rotateX(0deg) translateZ(0)'});
+  window.matchMedia('(max-width:768px)').addEventListener('change',m=>{active=!m.matches;if(m.matches)el.style.transform=''});
+  if(window.innerWidth<=768){active=false}
+})();
 
 /* MAGNETIC */
 document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});

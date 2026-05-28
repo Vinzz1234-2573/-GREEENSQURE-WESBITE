@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin — Green Square CMS</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--c:#F7F9ED;--l:#92CD00;--g:#4B9F5F;--f:#0B4C09;--k:#0E130F;--w:#fff;--D:'Unbounded',sans-serif;--B:'Fira Sans',sans-serif;--err:#d44;--warn:#e8a000}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--B);background:#0f1a10;color:#e8edd4;min-height:100vh}
+a{color:var(--l)}
+
+/* LOGIN */
+#loginScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:linear-gradient(135deg,#0B4C09,#0E130F)}
+.login-box{background:#172718;border:1px solid rgba(146,205,0,.15);border-radius:20px;padding:52px 44px;max-width:400px;width:100%;text-align:center}
+.login-logo{height:40px;width:auto;margin:0 auto 32px}
+.login-title{font-family:var(--D);font-size:20px;font-weight:900;color:var(--c);margin-bottom:6px}
+.login-sub{font-size:13px;color:rgba(232,237,212,.35);margin-bottom:36px}
+.login-input{width:100%;padding:14px 18px;background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;margin-bottom:12px}
+.login-input:focus{border-color:var(--l);box-shadow:0 0 0 3px rgba(146,205,0,.1)}
+.login-btn{width:100%;background:var(--l);color:var(--k);font-family:var(--D);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:15px;border-radius:10px;border:none;cursor:pointer;transition:all .25s;margin-top:4px}
+.login-btn:hover{background:#a3e000;transform:translateY(-1px)}
+.login-err{font-size:12px;color:var(--err);margin-top:10px;display:none}
+
+/* ADMIN LAYOUT */
+#adminApp{display:none}
+.adm-header{background:#172718;border-bottom:1px solid rgba(146,205,0,.12);padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.adm-logo{height:32px;width:auto}
+.adm-hright{display:flex;align-items:center;gap:16px}
+.adm-tag{font-family:var(--D);font-size:10px;font-weight:700;color:var(--l);letter-spacing:2px;background:rgba(146,205,0,.12);padding:4px 12px;border-radius:100px}
+.adm-logout{background:none;border:1px solid rgba(232,237,212,.15);color:rgba(232,237,212,.5);font-family:var(--B);font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:100px;cursor:pointer;transition:all .2s}
+.adm-logout:hover{border-color:var(--err);color:var(--err)}
+.adm-main{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px)}
+.adm-sidebar{background:#111e12;border-right:1px solid rgba(146,205,0,.08);padding:28px 16px}
+.sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:4px}
+.sidebar-nav li a,.sidebar-nav li button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;border-radius:10px;font-family:var(--B);font-size:13px;font-weight:600;color:rgba(232,237,212,.5);text-decoration:none;background:none;border:none;cursor:pointer;transition:all .2s;text-align:left}
+.sidebar-nav li a:hover,.sidebar-nav li button:hover,.sidebar-nav li a.ac{background:rgba(146,205,0,.1);color:var(--c)}
+.sidebar-nav li a.ac{color:var(--l)}
+.sidebar-sep{height:1px;background:rgba(146,205,0,.08);margin:16px 0}
+.adm-content{padding:36px 40px;overflow-y:auto}
+
+/* PANELS */
+.panel{display:none}
+.panel.ac{display:block}
+.panel-title{font-family:var(--D);font-size:22px;font-weight:900;color:var(--c);margin-bottom:6px}
+.panel-sub{font-size:13px;color:rgba(232,237,212,.38);margin-bottom:32px}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px}
+.stat-card{background:#172718;border:1px solid rgba(146,205,0,.1);border-radius:14px;padding:22px 20px}
+.stat-n{font-family:var(--D);font-size:32px;font-weight:900;color:var(--l);margin-bottom:4px}
+.stat-l{font-size:11px;color:rgba(232,237,212,.38);text-transform:uppercase;letter-spacing:2px}
+
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.toolbar-title{font-family:var(--D);font-size:14px;font-weight:700;color:var(--c)}
+.add-btn{background:var(--l);color:var(--k);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:100px;border:none;cursor:pointer;transition:all .2s}
+.add-btn:hover{background:#a3e000;transform:translateY(-1px)}
+
+/* TABLE */
+.adm-table{width:100%;border-collapse:collapse;background:#172718;border-radius:14px;overflow:hidden;border:1px solid rgba(146,205,0,.1)}
+.adm-table th{background:rgba(146,205,0,.08);font-family:var(--D);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(232,237,212,.38);padding:12px 16px;text-align:left;border-bottom:1px solid rgba(146,205,0,.08)}
+.adm-table td{padding:14px 16px;font-size:13px;color:rgba(232,237,212,.7);border-bottom:1px solid rgba(146,205,0,.06)}
+.adm-table tr:last-child td{border-bottom:none}
+.adm-table tr:hover td{background:rgba(146,205,0,.04)}
+.tbl-actions{display:flex;gap:6px}
+.tbl-edit,.tbl-del{font-size:11px;font-weight:700;padding:5px 12px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;letter-spacing:.5px}
+.tbl-edit{background:rgba(146,205,0,.12);color:var(--l)}
+.tbl-edit:hover{background:rgba(146,205,0,.22)}
+.tbl-del{background:rgba(212,68,68,.1);color:#d44}
+.tbl-del:hover{background:rgba(212,68,68,.2)}
+.tbl-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;border-radius:100px;background:rgba(146,205,0,.12);color:var(--l)}
+.empty-state{text-align:center;padding:60px 20px;color:rgba(232,237,212,.25)}
+.empty-state p{font-family:var(--D);font-size:13px;font-weight:700;margin-bottom:6px}
+
+/* MODAL */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(14,19,15,.85);z-index:999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
+.modal-backdrop.show{display:flex}
+.modal{background:#1a2b1b;border:1px solid rgba(146,205,0,.15);border-radius:20px;padding:40px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-title{font-family:var(--D);font-size:18px;font-weight:900;color:var(--c);margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(232,237,212,.38)}
+.form-input,.form-select,.form-textarea{background:rgba(247,249,237,.05);border:1px solid rgba(247,249,237,.1);border-radius:10px;padding:12px 14px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;width:100%}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--l);box-shadow:0 0 0 3px rgba(146,205,0,.1)}
+.form-select option{background:#1a2b1b;color:var(--c)}
+.form-textarea{resize:vertical;min-height:120px}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;flex-wrap:wrap}
+.modal-save{background:var(--l);color:var(--k);font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s}
+.modal-save:hover{background:#a3e000}
+.modal-cancel{background:rgba(232,237,212,.07);color:rgba(232,237,212,.5);font-family:var(--B);font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:12px 24px;border-radius:100px;border:none;cursor:pointer;transition:all .2s}
+.modal-cancel:hover{background:rgba(232,237,212,.12)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2b1b;border:1px solid rgba(146,205,0,.3);color:var(--l);font-family:var(--D);font-size:11px;font-weight:700;letter-spacing:1px;padding:12px 24px;border-radius:100px;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* SETTINGS */
+.settings-group{background:#172718;border:1px solid rgba(146,205,0,.08);border-radius:14px;padding:28px;margin-bottom:16px}
+.settings-group-title{font-family:var(--D);font-size:12px;font-weight:700;color:var(--l);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.danger-btn{background:rgba(212,68,68,.1);color:#d44;border:1px solid rgba(212,68,68,.2);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:100px;cursor:pointer;transition:all .2s}
+.danger-btn:hover{background:rgba(212,68,68,.2);border-color:rgba(212,68,68,.4)}
+.success-btn{background:rgba(146,205,0,.12);color:var(--l);border:1px solid rgba(146,205,0,.2);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:100px;cursor:pointer;transition:all .2s}
+.success-btn:hover{background:rgba(146,205,0,.22)}
+
+@media(max-width:900px){.adm-main{grid-template-columns:1fr}.adm-sidebar{display:none}.stats-bar{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}}
+@media(max-width:480px){.adm-content{padding:24px 16px}.stats-bar{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <img src="../Photos/GS logo horizontal.svg" alt="Green Square" class="login-logo">
+    <div class="login-title">Content Manager</div>
+    <div class="login-sub">Sign in to manage events and blog posts</div>
+    <input type="password" id="loginPass" class="login-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <div class="login-err" id="loginErr">Incorrect password. Please try again.</div>
+    <p style="margin-top:20px;font-size:11px;color:rgba(232,237,212,.2)">Default password: greensquare</p>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="adminApp">
+  <div class="adm-header">
+    <img src="../Photos/GS logo horizontal.svg" alt="Green Square" class="adm-logo">
+    <div class="adm-hright">
+      <span class="adm-tag">ADMIN</span>
+      <button class="adm-logout" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+  <div class="adm-main">
+    <div class="adm-sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="#" class="ac" onclick="showPanel('dashboard',this)">📊 Dashboard</a></li>
+        <li><a href="#" onclick="showPanel('events',this)">📅 Events</a></li>
+        <li><a href="#" onclick="showPanel('blog',this)">📝 Blog Posts</a></li>
+        <div class="sidebar-sep"></div>
+        <li><a href="#" onclick="showPanel('settings',this)">⚙️ Settings</a></li>
+        <li><a href="index.html" target="_blank">🌐 View Website ↗</a></li>
+      </ul>
+    </div>
+    <div class="adm-content">
+
+      <!-- DASHBOARD -->
+      <div class="panel ac" id="panel-dashboard">
+        <div class="panel-title">Dashboard</div>
+        <div class="panel-sub">Welcome back. Manage your events and blog content below.</div>
+        <div class="stats-bar">
+          <div class="stat-card">
+            <div class="stat-n" id="statEvents">0</div>
+            <div class="stat-l">Total Events</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-n" id="statPosts">0</div>
+            <div class="stat-l">Blog Posts</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-n" id="statUpcoming">0</div>
+            <div class="stat-l">Upcoming Events</div>
+          </div>
+        </div>
+        <div style="background:#172718;border:1px solid rgba(146,205,0,.08);border-radius:14px;padding:24px">
+          <div style="font-family:var(--D);font-size:11px;font-weight:700;color:rgba(232,237,212,.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Quick Actions</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="add-btn" onclick="showPanel('events',document.querySelector('[onclick*=events]'));openEventModal()">+ New Event</button>
+            <button class="add-btn" style="background:var(--f);color:var(--c)" onclick="showPanel('blog',document.querySelector('[onclick*=blog]'));openPostModal()">+ New Post</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENTS -->
+      <div class="panel" id="panel-events">
+        <div class="panel-title">Events</div>
+        <div class="panel-sub">Add, edit, or remove collection events. Changes are saved automatically and appear live on the events page.</div>
+        <div class="toolbar">
+          <div class="toolbar-title" id="evtCount">0 events</div>
+          <button class="add-btn" onclick="openEventModal()">+ Add Event</button>
+        </div>
+        <div id="evtTable"></div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="panel" id="panel-blog">
+        <div class="panel-title">Blog Posts</div>
+        <div class="panel-sub">Manage blog articles, news updates, and impact reports. New posts appear immediately on the Blog page.</div>
+        <div class="toolbar">
+          <div class="toolbar-title" id="postCount">0 posts</div>
+          <button class="add-btn" onclick="openPostModal()">+ Add Post</button>
+        </div>
+        <div id="blogTable"></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="panel" id="panel-settings">
+        <div class="panel-title">Settings</div>
+        <div class="panel-sub">Manage password and content data.</div>
+        <div class="settings-group">
+          <div class="settings-group-title">Change Password</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:480px;margin-bottom:14px">
+            <input type="password" id="newPass" class="form-input" placeholder="New password">
+            <input type="password" id="newPass2" class="form-input" placeholder="Confirm password">
+          </div>
+          <button class="success-btn" onclick="changePass()">Save Password</button>
+        </div>
+        <div class="settings-group">
+          <div class="settings-group-title">Export / Import Data</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+            <button class="success-btn" onclick="exportData()">Export All Content (JSON)</button>
+            <button class="success-btn" onclick="document.getElementById('importFile').click()">Import Content (JSON)</button>
+            <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+          </div>
+          <p style="font-size:11px;color:rgba(232,237,212,.25);line-height:1.6">Export creates a backup file of all your events and blog posts. Use Import to restore from a backup or transfer content to another browser.</p>
+        </div>
+        <div class="settings-group">
+          <div class="settings-group-title">Reset to Defaults</div>
+          <button class="danger-btn" onclick="resetData()">Reset All Content to Defaults</button>
+          <p style="font-size:11px;color:rgba(232,237,212,.25);margin-top:10px;line-height:1.6">This will delete all custom events and blog posts and restore the default content. This action cannot be undone.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EVENT MODAL -->
+<div class="modal-backdrop" id="evtModal">
+  <div class="modal">
+    <div class="modal-title" id="evtModalTitle">Add New Event</div>
+    <input type="hidden" id="evtId">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Event Title *</label>
+        <input type="text" id="evtTitle" class="form-input" placeholder="e.g. DBS Corporate Textile Drive">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select id="evtCat" class="form-select">
+          <option value="corporate">Corporate</option>
+          <option value="school">School</option>
+          <option value="condo">Condominium</option>
+          <option value="community">Community</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Date *</label>
+        <input type="date" id="evtDate" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Emoji Icon</label>
+        <input type="text" id="evtEmoji" class="form-input" placeholder="🏢" maxlength="4">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Location</label>
+      <input type="text" id="evtLoc" class="form-input" placeholder="e.g. DBS Marina Bay, Level 12">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Image URL (optional — leave blank to use emoji)</label>
+      <input type="url" id="evtImg" class="form-input" placeholder="https://...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description *</label>
+      <textarea id="evtDesc" class="form-textarea" placeholder="Describe the event — what to bring, who can attend, what happens..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeEvtModal()">Cancel</button>
+      <button class="modal-save" onclick="saveEvent()">Save Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG MODAL -->
+<div class="modal-backdrop" id="blogModal">
+  <div class="modal">
+    <div class="modal-title" id="blogModalTitle">Add New Post</div>
+    <input type="hidden" id="postId">
+    <div class="form-group">
+      <label class="form-label">Post Title *</label>
+      <input type="text" id="postTitle" class="form-input" placeholder="e.g. 2024 Annual Impact Report">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select id="postCat" class="form-select">
+          <option value="impact">Impact Report</option>
+          <option value="education">Education</option>
+          <option value="community">Community</option>
+          <option value="press">Press</option>
+          <option value="news">News</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Publish Date *</label>
+        <input type="date" id="postDate" class="form-input">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Emoji Icon</label>
+        <input type="text" id="postEmoji" class="form-input" placeholder="🌿" maxlength="4">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Image URL (optional)</label>
+        <input type="url" id="postImg" class="form-input" placeholder="https://...">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Excerpt (short summary shown in grid) *</label>
+      <input type="text" id="postExcerpt" class="form-input" placeholder="One or two sentences that draw the reader in...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Full Content *</label>
+      <textarea id="postContent" class="form-textarea" style="min-height:180px" placeholder="Write the full article content here. Use line breaks for paragraphs. Basic HTML is supported."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeBlogModal()">Cancel</button>
+      <button class="modal-save" onclick="savePost()">Save Post</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── AUTH ── */
+const PASS_KEY='gs_admin_pass';
+let savedPass=localStorage.getItem(PASS_KEY)||'greensquare';
+
+function doLogin(){
+  const p=document.getElementById('loginPass').value;
+  if(p===savedPass){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('adminApp').style.display='block';
+    loadAll();
+    refreshDashboard();
+  } else {
+    document.getElementById('loginErr').style.display='block';
+    document.getElementById('loginPass').value='';
+  }
+}
+document.getElementById('loginPass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+
+function logout(){
+  document.getElementById('adminApp').style.display='none';
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('loginPass').value='';
+}
+
+function changePass(){
+  const a=document.getElementById('newPass').value.trim();
+  const b=document.getElementById('newPass2').value.trim();
+  if(!a||a.length<4){showToast('Password must be at least 4 characters');return;}
+  if(a!==b){showToast('Passwords do not match');return;}
+  localStorage.setItem(PASS_KEY,a);
+  savedPass=a;
+  document.getElementById('newPass').value='';
+  document.getElementById('newPass2').value='';
+  showToast('✓ Password updated');
+}
+
+/* ── PANELS ── */
+function showPanel(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('ac'));
+  document.querySelectorAll('.sidebar-nav a').forEach(a=>a.classList.remove('ac'));
+  document.getElementById('panel-'+id).classList.add('ac');
+  if(el){el.classList.add('ac');}
+  if(id==='events')renderEvtTable();
+  if(id==='blog')renderBlogTable();
+  if(id==='dashboard')refreshDashboard();
+}
+
+/* ── DATA ── */
+const DEFAULT_EVENTS=[
+  {id:1,title:'DBS Bank Corporate Textile Drive',date:'2025-07-15',category:'corporate',emoji:'🏦',image:'',description:'Join us for a company-wide textile collection event at DBS headquarters.',location:'DBS Marina Bay Financial Centre'},
+  {id:2,title:'Raffles Institution Green Week',date:'2025-07-22',category:'school',emoji:'🏫',image:'',description:'Green Square partners with Raffles Institution for their annual Green Week.',location:'Raffles Institution, Bishan'},
+  {id:3,title:'The Sail @ Marina Bay Condo Drive',date:'2025-08-02',category:'condo',emoji:'🏙️',image:'',description:'Residents of The Sail can drop off their clean textiles in the main lobby.',location:'The Sail @ Marina Bay, Main Lobby'},
+];
+const DEFAULT_POSTS=[
+  {id:1,title:'2024 Annual Impact: 850+ Tonnes Diverted',category:'impact',date:'2025-03-10',emoji:'🌿',image:'',excerpt:'Our biggest year yet.',content:'In 2024, Green Square collected over 850 tonnes of textiles across Singapore.'},
+  {id:2,title:'The Blue Bin Myth',category:'education',date:'2025-02-18',emoji:'♻️',image:'',excerpt:'HDB recycling bins aren\'t designed for textiles.',content:'Many Singaporeans believe placing clothes in the blue HDB recycling bin is responsible. It isn\'t — clothes contaminate other recyclables and end up incinerated.'},
+];
+
+let events=[],posts=[];
+
+function loadAll(){
+  try{const e=localStorage.getItem('gs_events');if(e)events=JSON.parse(e);else events=[...DEFAULT_EVENTS];}catch(x){events=[...DEFAULT_EVENTS];}
+  try{const b=localStorage.getItem('gs_blog');if(b)posts=JSON.parse(b);else posts=[...DEFAULT_POSTS];}catch(x){posts=[...DEFAULT_POSTS];}
+}
+
+function saveAll(){
+  localStorage.setItem('gs_events',JSON.stringify(events));
+  localStorage.setItem('gs_blog',JSON.stringify(posts));
+}
+
+/* ── DASHBOARD ── */
+function refreshDashboard(){
+  const now=new Date();now.setHours(0,0,0,0);
+  document.getElementById('statEvents').textContent=events.length;
+  document.getElementById('statPosts').textContent=posts.length;
+  document.getElementById('statUpcoming').textContent=events.filter(e=>new Date(e.date+'T00:00:00')>=now).length;
+}
+
+/* ── EVENTS TABLE ── */
+function renderEvtTable(){
+  const el=document.getElementById('evtTable');
+  document.getElementById('evtCount').textContent=events.length+' event'+(events.length!==1?'s':'');
+  if(!events.length){el.innerHTML='<div class="empty-state"><p>No events yet.</p><span>Click "+ Add Event" to create your first event.</span></div>';return;}
+  const sorted=[...events].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  el.innerHTML=`<table class="adm-table"><thead><tr>
+    <th>Title</th><th>Category</th><th>Date</th><th>Location</th><th>Actions</th>
+  </tr></thead><tbody>${sorted.map(e=>`<tr>
+    <td style="font-weight:600;color:var(--c)">${e.emoji||''} ${e.title}</td>
+    <td><span class="tbl-cat">${e.category}</span></td>
+    <td>${fmtDate(e.date)}</td>
+    <td style="font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.location||'—'}</td>
+    <td><div class="tbl-actions">
+      <button class="tbl-edit" onclick="openEventModal(${e.id})">Edit</button>
+      <button class="tbl-del" onclick="deleteEvt(${e.id})">Delete</button>
+    </div></td>
+  </tr>`).join('')}</tbody></table>`;
+}
+
+/* ── EVENTS MODAL ── */
+function openEventModal(id){
+  document.getElementById('evtModal').classList.add('show');
+  if(id){
+    const e=events.find(x=>x.id===id);
+    if(!e)return;
+    document.getElementById('evtModalTitle').textContent='Edit Event';
+    document.getElementById('evtId').value=id;
+    document.getElementById('evtTitle').value=e.title;
+    document.getElementById('evtCat').value=e.category;
+    document.getElementById('evtDate').value=e.date;
+    document.getElementById('evtEmoji').value=e.emoji||'';
+    document.getElementById('evtLoc').value=e.location||'';
+    document.getElementById('evtImg').value=e.image||'';
+    document.getElementById('evtDesc').value=e.description;
+  } else {
+    document.getElementById('evtModalTitle').textContent='Add New Event';
+    document.getElementById('evtId').value='';
+    ['evtTitle','evtDate','evtEmoji','evtLoc','evtImg','evtDesc'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('evtCat').value='corporate';
+    document.getElementById('evtDate').value=new Date().toISOString().split('T')[0];
+  }
+}
+
+function closeEvtModal(){document.getElementById('evtModal').classList.remove('show');}
+
+function saveEvent(){
+  const title=document.getElementById('evtTitle').value.trim();
+  const date=document.getElementById('evtDate').value;
+  const desc=document.getElementById('evtDesc').value.trim();
+  if(!title||!date||!desc){showToast('Please fill in all required fields');return;}
+  const id=parseInt(document.getElementById('evtId').value)||Date.now();
+  const obj={
+    id,title,date,
+    category:document.getElementById('evtCat').value,
+    emoji:document.getElementById('evtEmoji').value||'📅',
+    location:document.getElementById('evtLoc').value.trim(),
+    image:document.getElementById('evtImg').value.trim(),
+    description:desc
+  };
+  const idx=events.findIndex(e=>e.id===id);
+  if(idx>=0)events[idx]=obj;else events.push(obj);
+  saveAll();
+  closeEvtModal();
+  renderEvtTable();
+  refreshDashboard();
+  showToast('✓ Event saved');
+}
+
+function deleteEvt(id){
+  if(!confirm('Delete this event? This cannot be undone.'))return;
+  events=events.filter(e=>e.id!==id);
+  saveAll();
+  renderEvtTable();
+  refreshDashboard();
+  showToast('Event deleted');
+}
+
+/* ── BLOG TABLE ── */
+function renderBlogTable(){
+  const el=document.getElementById('blogTable');
+  document.getElementById('postCount').textContent=posts.length+' post'+(posts.length!==1?'s':'');
+  if(!posts.length){el.innerHTML='<div class="empty-state"><p>No posts yet.</p><span>Click "+ Add Post" to write your first article.</span></div>';return;}
+  const sorted=[...posts].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  el.innerHTML=`<table class="adm-table"><thead><tr>
+    <th>Title</th><th>Category</th><th>Published</th><th>Actions</th>
+  </tr></thead><tbody>${sorted.map(p=>`<tr>
+    <td style="font-weight:600;color:var(--c)">${p.emoji||''} ${p.title}</td>
+    <td><span class="tbl-cat">${p.category}</span></td>
+    <td>${fmtDate(p.date)}</td>
+    <td><div class="tbl-actions">
+      <button class="tbl-edit" onclick="openPostModal(${p.id})">Edit</button>
+      <button class="tbl-del" onclick="deletePost(${p.id})">Delete</button>
+    </div></td>
+  </tr>`).join('')}</tbody></table>`;
+}
+
+/* ── BLOG MODAL ── */
+function openPostModal(id){
+  document.getElementById('blogModal').classList.add('show');
+  if(id){
+    const p=posts.find(x=>x.id===id);
+    if(!p)return;
+    document.getElementById('blogModalTitle').textContent='Edit Post';
+    document.getElementById('postId').value=id;
+    document.getElementById('postTitle').value=p.title;
+    document.getElementById('postCat').value=p.category;
+    document.getElementById('postDate').value=p.date;
+    document.getElementById('postEmoji').value=p.emoji||'';
+    document.getElementById('postImg').value=p.image||'';
+    document.getElementById('postExcerpt').value=p.excerpt;
+    document.getElementById('postContent').value=p.content;
+  } else {
+    document.getElementById('blogModalTitle').textContent='Add New Post';
+    document.getElementById('postId').value='';
+    ['postTitle','postEmoji','postImg','postExcerpt','postContent'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('postCat').value='news';
+    document.getElementById('postDate').value=new Date().toISOString().split('T')[0];
+  }
+}
+
+function closeBlogModal(){document.getElementById('blogModal').classList.remove('show');}
+
+function savePost(){
+  const title=document.getElementById('postTitle').value.trim();
+  const date=document.getElementById('postDate').value;
+  const excerpt=document.getElementById('postExcerpt').value.trim();
+  const content=document.getElementById('postContent').value.trim();
+  if(!title||!date||!excerpt||!content){showToast('Please fill in all required fields');return;}
+  const id=parseInt(document.getElementById('postId').value)||Date.now();
+  const obj={
+    id,title,date,
+    category:document.getElementById('postCat').value,
+    emoji:document.getElementById('postEmoji').value||'📝',
+    image:document.getElementById('postImg').value.trim(),
+    excerpt,content
+  };
+  const idx=posts.findIndex(p=>p.id===id);
+  if(idx>=0)posts[idx]=obj;else posts.push(obj);
+  saveAll();
+  closeBlogModal();
+  renderBlogTable();
+  refreshDashboard();
+  showToast('✓ Post saved');
+}
+
+function deletePost(id){
+  if(!confirm('Delete this post? This cannot be undone.'))return;
+  posts=posts.filter(p=>p.id!==id);
+  saveAll();
+  renderBlogTable();
+  refreshDashboard();
+  showToast('Post deleted');
+}
+
+/* ── EXPORT / IMPORT ── */
+function exportData(){
+  const data={events,posts,exported:new Date().toISOString()};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='greensquare-content-'+new Date().toISOString().split('T')[0]+'.json';
+  a.click();
+  showToast('✓ Export complete');
+}
+
+function importData(e){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=r=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(d.events)events=d.events;
+      if(d.posts)posts=d.posts;
+      saveAll();
+      renderEvtTable();
+      renderBlogTable();
+      refreshDashboard();
+      showToast('✓ Import successful');
+    }catch(err){showToast('Invalid JSON file');}
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+function resetData(){
+  if(!confirm('Reset ALL content to defaults? This cannot be undone.'))return;
+  events=[...DEFAULT_EVENTS];
+  posts=[...DEFAULT_POSTS];
+  saveAll();
+  renderEvtTable();
+  renderBlogTable();
+  refreshDashboard();
+  showToast('Content reset to defaults');
+}
+
+/* ── HELPERS ── */
+function fmtDate(d){return new Date(d+'T00:00:00').toLocaleDateString('en-SG',{day:'numeric',month:'short',year:'numeric'});}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* ── CLOSE MODALS ON BACKDROP CLICK ── */
+document.getElementById('evtModal').addEventListener('click',e=>{if(e.target.id==='evtModal')closeEvtModal()});
+document.getElementById('blogModal').addEventListener('click',e=>{if(e.target.id==='blogModal')closeBlogModal()});
+</script>
+</body>
+</html>
