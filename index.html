@@ -404,7 +404,11 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   nav{padding:20px 36px}
   nav.s{padding:14px 36px}
   section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:80px 36px}
-  .hero-top{padding:130px 36px 0}
+  .hero-top{padding:130px 36px 0;align-items:flex-end;gap:0}
+  .spin-wrap{width:120px;height:120px;margin-left:24px}
+  .line-reuse    {font-size:clamp(56px,10vw,120px)}
+  .line-repurpose{font-size:clamp(40px,7.5vw,88px)}
+  .line-repair   {font-size:clamp(56px,10vw,120px)}
   .hero-meta{padding:28px 36px 0}
   .hstat{padding:24px 36px}
   footer{padding:48px 36px 20px}
@@ -571,15 +575,17 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   #gallery{padding:56px 0}
 
   /* ── HERO — mobile layout ── */
-  .hero-top{padding:96px 20px 0;flex-direction:column;gap:0}
-  .spin-wrap{display:none}  /* hide rotating badge on mobile */
+  .hero-top{padding:96px 20px 0;flex-direction:column;align-items:flex-start;gap:0}
+  .hero-hl{width:100%;padding-left:4px}
+  .spin-wrap{display:none}
   /* Unbounded 900 is very wide — clamp min values must be small enough to fit */
   .line-reuse    {font-size:clamp(38px,9.5vw,72px)}
   .line-repurpose{font-size:clamp(26px,6.2vw,52px)}
   .line-repair   {font-size:clamp(38px,9.5vw,72px)}
-  .h1w{overflow-x:visible;overflow-y:hidden}
-  /* Disable glass backdrop on mobile — heavy perf cost, not needed */
-  .hero-hl-glass{padding:0;transform:none!important}
+  .h1w{overflow-x:visible;overflow-y:hidden;text-align:left}
+  .hero-badge{align-self:flex-start}
+  /* Disable glass backdrop on mobile */
+  .hero-hl-glass{padding:0;transform:none!important;display:block;width:100%}
   .hero-hl-glass::before{display:none}
   .hero-meta{padding:20px 20px 0;flex-direction:column;align-items:flex-start;gap:14px}
   .hero-ctas{margin-left:0;flex-direction:column;width:100%}
@@ -687,7 +693,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   nav.s .nl img{height:24px}
 
   /* Hero — even tighter on small phones */
-  .hero-top{padding:82px 16px 0}
+  .hero-top{padding:82px 16px 0;align-items:flex-start}
+  .hero-hl{padding-left:2px}
   .hero-meta{padding:14px 16px 0}
   .line-reuse    {font-size:clamp(32px,9.5vw,48px)}
   .line-repurpose{font-size:clamp(22px,6.2vw,36px)}
