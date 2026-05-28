@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>What's New — Green Square Singapore</title>
+<meta name="description" content="Latest news, impact updates, and stories from Green Square Singapore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--c:#F7F9ED;--l:#92CD00;--g:#4B9F5F;--f:#0B4C09;--k:#0E130F;--w:#fff;--D:'Unbounded',sans-serif;--B:'Fira Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--B);background:var(--c);color:var(--k);overflow-x:hidden}
+img{display:block;max-width:100%}
+#cur,#curR{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:8px;height:8px;background:var(--l)}
+#curR{width:32px;height:32px;border:1.5px solid rgba(146,205,0,.45);transition:all .2s ease}
+body:has(a:hover) #cur{width:14px;height:14px}
+body:has(a:hover) #curR{width:48px;height:48px;border-color:var(--l)}
+@media(max-width:768px){#cur,#curR{display:none}body{cursor:auto}}
+#ann{background:var(--f);color:var(--c);text-align:center;padding:9px 52px;font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:.5px;position:relative;z-index:300}
+#ann a{color:var(--l);text-decoration:none;font-weight:700}
+#ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;opacity:.6}
+#ann-x:hover{opacity:1}
+#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
+.ldr-logo img{height:52px;width:auto}
+.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.6s ease .5s forwards;border-radius:2px}
+@keyframes lIn{to{opacity:1;transform:none}}
+@keyframes lBar{to{width:200px}}
+.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1s forwards}
+@keyframes lFade{to{opacity:1}}
+#ldr.out{animation:lOut .4s ease forwards}
+@keyframes lOut{to{opacity:0;pointer-events:none}}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:26px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:16px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+.nl img{height:46px;width:auto;transition:height .3s}
+nav.s .nl img{height:36px}
+.nlinks{display:flex;gap:28px;list-style:none;align-items:center}
+.nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
+.nlinks a:hover::after,.nlinks a.ac::after{width:100%}
+.nlinks a.nc{background:var(--f);color:var(--c)!important;padding:10px 22px;border-radius:100px;font-family:var(--D)!important;font-size:10px!important;transition:all .2s!important}
+.nlinks a.nc::after{display:none!important}
+.nlinks a.nc:hover{background:var(--l);color:var(--k)!important;transform:translateY(-1px)}
+.brg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.brg span{display:block;width:24px;height:1.5px;background:var(--f);transition:.3s;border-radius:1px}
+.mnav{display:none;position:fixed;inset:0;background:var(--f);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.mnav.o{display:flex}
+.mnav a{font-family:var(--D);font-size:22px;font-weight:700;color:var(--c);text-decoration:none;transition:color .2s}
+.mnav a:hover{color:var(--l)}
+.mnav-x{position:absolute;top:20px;right:28px;font-size:26px;color:var(--l);background:none;border:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:all .25s}
+.btn-dark{background:var(--f);color:var(--c)}
+.btn-dark:hover{background:var(--k);transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,76,9,.25)}
+.btn-lime{background:var(--l);color:var(--k)}
+.btn-lime:hover{background:#a3e000;transform:translateY(-2px)}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--l),var(--g));z-index:10000;width:0%;transition:width .08s linear;pointer-events:none}
+footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
+.ft-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.ft-logo img{height:24px;width:auto}
+.ft-tag{font-family:var(--D);font-size:clamp(11px,1.5vw,18px);font-weight:900;color:var(--l);letter-spacing:2px}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.ft-links a{font-family:var(--B);font-size:11px;font-weight:500;color:rgba(247,249,237,.32);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+.ft-links a:hover{color:var(--l)}
+.ft-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(247,249,237,.06);flex-wrap:wrap;gap:10px}
+.ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
+#fCta{position:fixed;bottom:24px;right:24px;z-index:190;background:var(--k);color:var(--l);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:.5px;padding:13px 22px;border-radius:100px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:all .4s;pointer-events:none}
+#fCta.show{opacity:1;transform:none;pointer-events:auto}
+#fCta:hover{background:var(--f);transform:translateY(-2px)}
+.fdot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:bdPulse 1.5s ease-in-out infinite}
+@keyframes bdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+
+/* PAGE */
+.pg-hero{padding:140px 52px 80px;background:var(--c);position:relative;overflow:hidden;border-bottom:1px solid rgba(11,76,9,.07)}
+.pg-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(11,76,9,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.pg-tag{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(14,19,15,.35);margin-bottom:20px}
+.pg-ttl{font-family:var(--D);font-size:clamp(40px,7vw,90px);font-weight:900;color:var(--f);line-height:.95;margin-bottom:24px}
+.pg-ttl em{color:var(--l);font-style:normal}
+.pg-sub{font-size:16px;color:rgba(14,19,15,.5);max-width:540px;line-height:1.7}
+.pg-hero-bg{position:absolute;font-family:var(--D);font-weight:900;font-size:clamp(100px,18vw,220px);color:rgba(11,76,9,.03);right:-10px;bottom:-20px;line-height:1;pointer-events:none;user-select:none}
+
+/* FILTER TABS */
+.filters{padding:24px 52px;background:var(--w);border-bottom:1px solid rgba(11,76,9,.07);display:flex;gap:8px;flex-wrap:wrap}
+.ftab{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:100px;border:1.5px solid rgba(11,76,9,.12);background:transparent;color:rgba(14,19,15,.5);cursor:pointer;transition:all .2s}
+.ftab:hover,.ftab.ac{background:var(--f);color:var(--c);border-color:var(--f)}
+
+/* BLOG GRID */
+#articles{background:var(--w);padding:80px 52px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.bcard{background:var(--c);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;text-decoration:none}
+.bcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,76,9,.08)}
+.bcard-img{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
+.bcard-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.bcard-tag{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:8px}
+.bcard-date{font-size:10px;color:rgba(14,19,15,.3);letter-spacing:1px;margin-bottom:10px}
+.bcard h3{font-family:var(--D);font-size:15px;font-weight:700;color:var(--f);margin-bottom:10px;line-height:1.3}
+.bcard p{font-size:13px;color:rgba(14,19,15,.5);line-height:1.6;margin-bottom:14px;flex:1}
+.bcard-rm{font-size:11px;font-weight:700;color:var(--l);letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+.bcard:hover .bcard-rm{gap:8px}
+
+/* PRESS SECTION */
+#press-mentions{background:var(--f);padding:80px 52px}
+.press-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:48px}
+.pcrd{background:rgba(247,249,237,.04);border:1px solid rgba(247,249,237,.08);border-radius:14px;padding:24px 16px;text-align:center;transition:all .3s}
+.pcrd:hover{border-color:var(--l);background:rgba(146,205,0,.06)}
+.pcrd-icon{font-size:28px;margin-bottom:10px;display:block}
+.pcrd-name{font-family:var(--D);font-size:11px;font-weight:700;color:var(--c);margin-bottom:4px}
+.pcrd-type{font-size:9px;color:rgba(247,249,237,.3);letter-spacing:2px;text-transform:uppercase}
+
+/* NEWSLETTER */
+.nl-strip{background:var(--l);padding:72px 52px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.nl-ttl{font-family:var(--D);font-size:clamp(22px,3.2vw,36px);font-weight:900;color:var(--k);line-height:1.1;margin-bottom:10px}
+.nl-sub{font-size:14px;color:rgba(14,19,15,.55);line-height:1.65}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap}
+.nl-input{flex:1;min-width:220px;background:rgba(14,19,15,.08);border:1.5px solid rgba(14,19,15,.15);border-radius:100px;padding:13px 20px;font-family:var(--B);font-size:14px;color:var(--k);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(14,19,15,.35)}
+.nl-input:focus{border-color:var(--k)}
+.nl-btn{background:var(--k);color:var(--c);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:13px 24px;border-radius:100px;border:none;cursor:pointer;white-space:nowrap;transition:all .2s}
+.nl-btn:hover{background:var(--f)}
+.nl-ok{display:none;font-family:var(--D);font-size:14px;font-weight:700;color:var(--k)}
+.nl-ok.show{display:block}
+
+@media(max-width:1024px){
+  nav{padding:20px 36px}nav.s{padding:14px 36px}
+  #articles{padding:64px 36px}
+  #press-mentions{padding:64px 36px}
+  .nl-strip{padding:56px 36px;grid-template-columns:1fr;gap:32px}
+  .press-grid{grid-template-columns:repeat(3,1fr)}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .filters{padding:20px 36px}
+  footer{padding:48px 36px 20px}
+}
+@media(max-width:768px){
+  body{overflow-x:hidden}
+  nav{padding:12px 20px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+  nav.s{padding:10px 20px}
+  .nl img{height:34px}nav.s .nl img{height:28px}
+  .nlinks{display:none}
+  .brg{display:flex;padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center}
+  #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.5}
+  .pg-hero{padding:100px 20px 56px}
+  .filters{padding:16px 20px}
+  #articles{padding:56px 20px}
+  #press-mentions{padding:56px 20px}
+  .nl-strip{padding:48px 20px;grid-template-columns:1fr;gap:24px}
+  .blog-grid{grid-template-columns:1fr}
+  .press-grid{grid-template-columns:1fr 1fr}
+  footer{padding:40px 20px 80px}
+  .ft-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .ft-links{gap:12px}
+  .ft-bot{flex-direction:column;gap:6px}
+  .ft-logo img{height:28px}
+  #fCta{bottom:14px;right:14px;font-size:9px;padding:10px 16px}
+  .btn{min-height:44px}
+  input,select,textarea{font-size:16px!important}
+  .mnav-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+}
+@media(max-width:480px){
+  nav{padding:10px 16px}nav.s{padding:8px 16px}
+  .nl img{height:28px}nav.s .nl img{height:24px}
+  .pg-hero{padding:84px 16px 48px}
+  #articles{padding:48px 16px}
+  #press-mentions{padding:48px 16px}
+  .nl-strip{padding:40px 16px}
+  .press-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  footer{padding:36px 16px 76px}
+  .ft-links{gap:10px;row-gap:8px}
+  #fCta{padding:0;font-size:0;gap:0;border-radius:50%;width:44px;height:44px;justify-content:center;bottom:12px;right:12px}
+  #fCta .fdot{width:10px;height:10px;margin:0}
+}
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+<div id="curR" aria-hidden="true"></div>
+<div id="ann">🌿 &nbsp;Our latest impact report is out — &nbsp;<a href="#articles">Read it →</a><button id="ann-x" aria-label="Close">✕</button></div>
+<div id="ldr" aria-hidden="true">
+  <div class="ldr-logo"><img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
+  <div class="ldr-line"></div>
+  <span class="ldr-tag">Reuse · Repurpose · Repair</span>
+</div>
+<div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
+  <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="corporate.html">Corporate Events</a>
+  <a href="schools.html">School Events</a>
+  <a href="condos.html">Condo Events</a>
+  <a href="index.html#locs">Drop-Off</a>
+  <a href="whats-new.html" style="color:var(--l)">What's New</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+<nav id="nav">
+  <a href="index.html" class="nl" aria-label="Green Square Home"><img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore"></a>
+  <ul class="nlinks">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#services">What We Do</a></li>
+    <li><a href="index.html#locs">Drop-Off</a></li>
+    <li><a href="whats-new.html" class="ac">What's New</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#involve" class="nc">Get Involved</a></li>
+  </ul>
+  <button class="brg" id="brg" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="pg-hero">
+  <p class="pg-tag">// News &amp; Stories</p>
+  <h1 class="pg-ttl">What's happening<br>at <em>Green Square.</em></h1>
+  <p class="pg-sub">Impact updates, education articles, community stories, and press coverage — everything that's new in Singapore's circular textile economy.</p>
+  <div class="pg-hero-bg" aria-hidden="true">NEWS</div>
+</div>
+
+<div class="filters">
+  <button class="ftab ac" onclick="filterPosts('all',this)">All</button>
+  <button class="ftab" onclick="filterPosts('impact',this)">Impact Reports</button>
+  <button class="ftab" onclick="filterPosts('education',this)">Education</button>
+  <button class="ftab" onclick="filterPosts('community',this)">Community</button>
+  <button class="ftab" onclick="filterPosts('press',this)">Press</button>
+</div>
+
+<section id="articles">
+  <div class="blog-grid" id="blog-grid">
+    <a class="bcard rv d1" href="#" data-cat="impact">
+      <div class="bcard-img" style="background:var(--f)">🌿</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Impact Report</div>
+        <div class="bcard-date">Dec 2024</div>
+        <h3>2024 Annual Impact: 850+ Tonnes Diverted and Counting</h3>
+        <p>Our biggest year yet. Here's exactly where your clothes went and how many lives they touched across Singapore's heartlands.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d2" href="#" data-cat="education">
+      <div class="bcard-img" style="background:var(--g)">♻️</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Education</div>
+        <div class="bcard-date">Nov 2024</div>
+        <h3>The Blue Bin Myth: Why Most Clothes Still End Up in Landfill</h3>
+        <p>HDB recycling bins aren't designed for textiles. Here's why, and what to do instead to ensure your donation counts.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d3" href="#" data-cat="community">
+      <div class="bcard-img" style="background:rgba(11,76,9,.9)">📍</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Community</div>
+        <div class="bcard-date">Oct 2024</div>
+        <h3>50 New Drop-Off Points Now Open Across Jurong and Woodlands</h3>
+        <p>West and North Singapore, we heard you. Find your nearest new location and start donating today.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d1" href="#" data-cat="impact">
+      <div class="bcard-img" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">👕</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Impact Report</div>
+        <div class="bcard-date">Aug 2024</div>
+        <h3>How 650,000 kg of Clothing Was Kept Out of Semakau in 2024</h3>
+        <p>A deep dive into our collection network — where donations come from, what happens to them, and who benefits.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d2" href="#" data-cat="education">
+      <div class="bcard-img" style="background:linear-gradient(135deg,var(--g),var(--f))">💧</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Education</div>
+        <div class="bcard-date">Jul 2024</div>
+        <h3>6,813 Litres: The Real Cost of a Pair of Jeans</h3>
+        <p>The cotton in one pair of jeans requires more water than most Singaporeans drink in 7 years. Here's why that number matters.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d3" href="#" data-cat="community">
+      <div class="bcard-img" style="background:linear-gradient(135deg,#1f3d00,var(--g))">🏫</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Community</div>
+        <div class="bcard-date">Jun 2024</div>
+        <h3>Green Square at 20 Singapore Schools: What We Collected in One Term</h3>
+        <p>From Ang Mo Kio to Pasir Ris — a recap of our school programme, the questions students asked, and the impact made.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d1" href="#" data-cat="press">
+      <div class="bcard-img" style="background:var(--k)">📺</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Press</div>
+        <div class="bcard-date">May 2024</div>
+        <h3>Channel NewsAsia: Green Square's Mission to Double Singapore's Textile Recycling Rate</h3>
+        <p>Our founder speaks to CNA about why 7% isn't good enough and what it will take to reach 14% by 2030.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d2" href="#" data-cat="press">
+      <div class="bcard-img" style="background:linear-gradient(135deg,var(--f),#2a5c00)">🍯</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Press</div>
+        <div class="bcard-date">Mar 2024</div>
+        <h3>The Honeycombers: "The Easiest Way to Be a More Sustainable Singaporean"</h3>
+        <p>Lifestyle guide The Honeycombers features Green Square as one of Singapore's most impactful sustainability startups.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+    <a class="bcard rv d3" href="#" data-cat="community">
+      <div class="bcard-img" style="background:linear-gradient(135deg,#0B4C09,#4B9F5F)">🤝</div>
+      <div class="bcard-body">
+        <div class="bcard-tag">// Community</div>
+        <div class="bcard-date">Jan 2024</div>
+        <h3>DBS, KPMG, and Netflix: What Corporate Singapore Did for Textile Recycling in 2023</h3>
+        <p>A look back at our biggest corporate partnerships — the numbers, the lessons, and what's next for CSR textile drives.</p>
+        <span class="bcard-rm">Read More →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="press-mentions">
+  <p style="font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(247,249,237,.3);margin-bottom:16px" class="rv">// As Featured In</p>
+  <h2 style="font-family:var(--D);font-size:clamp(24px,3.5vw,40px);font-weight:900;color:var(--c);line-height:1.06;margin-bottom:12px" class="rv d1">Green Square in the media.</h2>
+  <div class="press-grid rv d2">
+    <div class="pcrd"><span class="pcrd-icon">📺</span><div class="pcrd-name">Channel NewsAsia</div><div class="pcrd-type">TV &amp; Online News</div></div>
+    <div class="pcrd"><span class="pcrd-icon">👶</span><div class="pcrd-name">Sassy Mama SG</div><div class="pcrd-type">Lifestyle &amp; Family</div></div>
+    <div class="pcrd"><span class="pcrd-icon">🍯</span><div class="pcrd-name">The Honeycombers</div><div class="pcrd-type">Singapore Lifestyle</div></div>
+    <div class="pcrd"><span class="pcrd-icon">✨</span><div class="pcrd-name">Yahoo Style SG</div><div class="pcrd-type">Fashion &amp; Style</div></div>
+    <div class="pcrd"><span class="pcrd-icon">🌏</span><div class="pcrd-name">AsiaOne Lifestyle</div><div class="pcrd-type">News &amp; Lifestyle</div></div>
+  </div>
+</section>
+
+<div class="nl-strip">
+  <div>
+    <h2 class="nl-ttl">Stay in the loop.</h2>
+    <p class="nl-sub">Get our impact updates, sustainability tips, and event announcements direct to your inbox. No spam — just good news about recycling.</p>
+  </div>
+  <div>
+    <div class="nl-form" id="nl-form-wrap">
+      <input type="email" class="nl-input" id="nl-email" placeholder="Your email address">
+      <button class="nl-btn" onclick="subNL()">Subscribe →</button>
+    </div>
+    <div class="nl-ok" id="nl-ok">✓ You're subscribed. Thanks for joining us!</div>
+    <p style="font-size:11px;color:rgba(14,19,15,.3);margin-top:10px">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-top">
+    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
+    <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
+  </div>
+  <div class="ft-links">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="index.html#services">What We Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
+    <a href="condos.html">Condo Events</a><a href="index.html#locs">Find a Drop-Off</a>
+    <a href="index.html#involve">Get Involved</a><a href="whats-new.html">What's New</a><a href="index.html#contact">Contact</a>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2025 Greensquare Pte Ltd (UEN: 201731590G). All rights reserved.</p>
+    <p class="ft-made">Made in Singapore 🇸🇬</p>
+  </div>
+</footer>
+<a href="index.html#locs" id="fCta" aria-label="Find a drop-off"><span class="fdot"></span>Find a Drop-Off</a>
+
+<script>
+const c1=document.getElementById('cur'),c2=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
+document.getElementById('ann-x').addEventListener('click',()=>document.getElementById('ann').style.display='none');
+window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1600)});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('s',window.scrollY>60);document.getElementById('fCta').classList.toggle('show',window.scrollY>400)},{passive:true});
+const mn=document.getElementById('mnav');
+document.getElementById('brg').addEventListener('click',()=>{mn.classList.add('o');document.body.style.overflow='hidden'});
+document.getElementById('mnav-x').addEventListener('click',()=>{mn.classList.remove('o');document.body.style.overflow=''});
+const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.1}px,${(e.clientY-r.top-r.height/2)*.1}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;if(prog)prog.style.width=(dh>0?(st/dh*100):0)+'%'},{passive:true});
+function filterPosts(cat,btn){
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('ac'));
+  btn.classList.add('ac');
+  document.querySelectorAll('.bcard').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';
+  });
+}
+function subNL(){
+  const email=document.getElementById('nl-email').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('nl-email').style.borderColor='rgba(14,19,15,.4)';return}
+  document.getElementById('nl-form-wrap').style.display='none';
+  document.getElementById('nl-ok').classList.add('show');
+}
+</script>
+</body>
+</html>

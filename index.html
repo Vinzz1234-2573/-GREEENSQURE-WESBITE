@@ -408,12 +408,16 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .acc-grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:repeat(3,1fr);gap:28px}
   .steps::before{display:none}
+  #press{padding:64px 36px}
+  .press-grid{grid-template-columns:repeat(3,1fr)}
   .loc-grid{grid-template-columns:1fr}
   .mapbox{height:320px}
   .proc-grid{grid-template-columns:1fr 1fr;gap:2px}
   .con-grid{grid-template-columns:1fr;gap:44px}
   .blog-layout{grid-template-columns:1fr}
   .blog-feat{grid-row:auto}
+  #press{padding:64px 20px}
+  .press-grid{grid-template-columns:1fr 1fr}
 }
 /* ── SCROLL PROGRESS ── */
 #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--l),var(--g));z-index:10000;width:0%;transition:width .08s linear;pointer-events:none;box-shadow:0 0 10px rgba(146,205,0,.5)}
@@ -475,6 +479,17 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 /* ── IMPACT NUMBER FEATURE ── */
 .big-number{font-family:var(--D);font-size:clamp(80px,13vw,160px);font-weight:900;line-height:1;color:var(--f);opacity:.06;position:absolute;right:-20px;top:-20px;user-select:none;pointer-events:none}
+
+/* ── PRESS CARDS ── */
+#press{background:var(--c);padding:80px 52px;border-bottom:1px solid rgba(11,76,9,.07)}
+.press-lbl{text-align:center;font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(14,19,15,.28);margin-bottom:48px}
+.press-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.pcrd{background:var(--w);border-radius:16px;padding:28px 20px;border:1px solid rgba(11,76,9,.07);transition:all .3s;text-align:center}
+.pcrd:hover{border-color:var(--l);box-shadow:0 8px 32px rgba(146,205,0,.12);transform:translateY(-3px)}
+.pcrd-icon{font-size:32px;margin-bottom:14px}
+.pcrd-name{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f);margin-bottom:8px}
+.pcrd-type{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--l);margin-bottom:12px}
+.pcrd-quote{font-size:12px;color:rgba(14,19,15,.5);line-height:1.6;font-style:italic}
 
 /* ── HERO BACKGROUND GFX ── */
 .hero-gfx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
@@ -636,6 +651,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .hstat-n{font-size:clamp(18px,5.5vw,26px)}
 
   /* Single column on small phones */
+  #press{padding:52px 16px}
+  .press-grid{grid-template-columns:1fr}
   .acc-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
 
@@ -694,10 +711,12 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
   <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
   <a href="#hero" onclick="cm()">Home</a>
-  <a href="#services" onclick="cm()">What We Do</a>
+  <a href="about.html">About</a>
+  <a href="corporate.html">Corporate Events</a>
+  <a href="schools.html">School Events</a>
+  <a href="condos.html">Condo Events</a>
   <a href="#locs" onclick="cm()">Drop-Off</a>
-  <a href="#involve" onclick="cm()">Get Involved</a>
-  <a href="#blog" onclick="cm()">Blog</a>
+  <a href="whats-new.html">What's New</a>
   <a href="#contact" onclick="cm()">Contact</a>
 </div>
 
@@ -707,10 +726,10 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <img src="../Photos/GS logo horizontal.svg" alt="Green Square Singapore">
   </a>
   <ul class="nlinks">
+    <li><a href="about.html">About</a></li>
     <li><a href="#services">What We Do</a></li>
-    <li><a href="#how">How It Works</a></li>
     <li><a href="#locs">Drop-Off</a></li>
-    <li><a href="#blog">Blog</a></li>
+    <li><a href="whats-new.html">What's New</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#involve" class="nc">Get Involved</a></li>
   </ul>
@@ -1190,20 +1209,38 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 </section>
 
 <!-- ══════════════ PRESS ══════════════ -->
-<section id="press" style="background:var(--c);padding:60px 52px;border-bottom:1px solid rgba(11,76,9,.07)">
-  <p class="plbl" style="color:rgba(14,19,15,.28);margin-bottom:28px">As Featured In</p>
-  <div style="overflow:hidden">
-    <div class="mq" style="gap:32px">
-      <span class="plg">Channel NewsAsia</span>
-      <span class="plg">Sassy Mama SG</span>
-      <span class="plg">The Honeycombers</span>
-      <span class="plg">Yahoo Style Singapore</span>
-      <span class="plg">AsiaOne Lifestyle</span>
-      <span class="plg">Channel NewsAsia</span>
-      <span class="plg">Sassy Mama SG</span>
-      <span class="plg">The Honeycombers</span>
-      <span class="plg">Yahoo Style Singapore</span>
-      <span class="plg">AsiaOne Lifestyle</span>
+<section id="press">
+  <p class="press-lbl rv">As Featured In</p>
+  <div class="press-grid">
+    <div class="pcrd rv d1">
+      <div class="pcrd-icon">📺</div>
+      <div class="pcrd-name">Channel NewsAsia</div>
+      <div class="pcrd-type">TV &amp; Online News</div>
+      <p class="pcrd-quote">"Singapore's textile recycling movement is gaining momentum, led by homegrown changemakers."</p>
+    </div>
+    <div class="pcrd rv d2">
+      <div class="pcrd-icon">👶</div>
+      <div class="pcrd-name">Sassy Mama SG</div>
+      <div class="pcrd-type">Lifestyle &amp; Family</div>
+      <p class="pcrd-quote">"Green Square makes it effortless to give your family's clothes a second life."</p>
+    </div>
+    <div class="pcrd rv d3">
+      <div class="pcrd-icon">🍯</div>
+      <div class="pcrd-name">The Honeycombers</div>
+      <div class="pcrd-type">Singapore Lifestyle</div>
+      <p class="pcrd-quote">"One of Singapore's most impactful sustainability startups doing real, measurable good."</p>
+    </div>
+    <div class="pcrd rv d4">
+      <div class="pcrd-icon">✨</div>
+      <div class="pcrd-name">Yahoo Style SG</div>
+      <div class="pcrd-type">Fashion &amp; Style</div>
+      <p class="pcrd-quote">"The easiest way to make your wardrobe circular — and feel good about it."</p>
+    </div>
+    <div class="pcrd rv d5">
+      <div class="pcrd-icon">🌏</div>
+      <div class="pcrd-name">AsiaOne Lifestyle</div>
+      <div class="pcrd-type">News &amp; Lifestyle</div>
+      <p class="pcrd-quote">"Closing Singapore's textile loop, one collection at a time."</p>
     </div>
   </div>
 </section>
@@ -1324,10 +1361,11 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
   </div>
   <div class="ft-links">
-    <a href="#hero">Home</a><a href="#services">What We Do</a>
-    <a href="#accept">What We Accept</a><a href="#how">How It Works</a>
-    <a href="#locs">Find a Drop-Off</a><a href="#involve">Get Involved</a>
-    <a href="#quiz">Education</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+    <a href="#hero">Home</a><a href="about.html">About</a>
+    <a href="#services">What We Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
+    <a href="condos.html">Condo Events</a><a href="#locs">Find a Drop-Off</a>
+    <a href="#involve">Get Involved</a><a href="whats-new.html">What's New</a><a href="#contact">Contact</a>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2025 Greensquare Pte Ltd (UEN: 201731590G). All rights reserved.</p>
