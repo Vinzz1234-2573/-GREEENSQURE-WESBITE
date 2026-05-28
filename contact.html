@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Contact — Green Square Singapore</title>
+<meta name="description" content="Get in touch with Green Square Singapore. Reach us at +65 8383 8677 or visit us at 22 Sin Ming Lane, Singapore 573969.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--c:#F7F9ED;--l:#92CD00;--g:#4B9F5F;--f:#0B4C09;--k:#0E130F;--w:#fff;--D:'Unbounded',sans-serif;--B:'Fira Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--B);background:var(--c);color:var(--k);overflow-x:hidden}
+img{display:block;max-width:100%}
+#cur,#curR{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:8px;height:8px;background:var(--l);transition:width .15s,height .15s}
+#curR{width:32px;height:32px;border:1.5px solid rgba(146,205,0,.45);transition:all .2s ease}
+body:has(a:hover) #cur,body:has(button:hover) #cur{width:14px;height:14px}
+body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;border-color:var(--l)}
+@media(max-width:768px){#cur,#curR{display:none}body{cursor:auto}}
+#ann{background:var(--f);color:var(--c);text-align:center;padding:9px 52px;font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:.5px;position:relative;z-index:300}
+#ann a{color:var(--l);text-decoration:none;font-weight:700}
+#ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;opacity:.6}
+#ann-x:hover{opacity:1}
+#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
+.ldr-logo img{height:52px;width:auto}
+.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.6s ease .5s forwards;border-radius:2px}
+@keyframes lIn{to{opacity:1;transform:none}}
+@keyframes lBar{to{width:200px}}
+.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1s forwards}
+@keyframes lFade{to{opacity:1}}
+#ldr.out{animation:lOut .4s ease forwards}
+@keyframes lOut{to{opacity:0;pointer-events:none}}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:16px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+.nl img{height:64px;width:auto;transition:height .3s}
+nav.s .nl img{height:50px}
+.nlinks{display:flex;gap:20px;list-style:none;align-items:center}
+.nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
+.nlinks a:hover::after,.nlinks a.ac::after{width:100%}
+.nlinks a.nc{background:var(--f);color:var(--c)!important;padding:10px 22px;border-radius:100px;font-family:var(--D)!important;font-size:10px!important;transition:all .2s!important}
+.nlinks a.nc::after{display:none!important}
+.nlinks a.nc:hover{background:var(--l);color:var(--k)!important;transform:translateY(-1px)}
+.brg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.brg span{display:block;width:24px;height:1.5px;background:var(--f);transition:.3s;border-radius:1px}
+.mnav{display:none;position:fixed;inset:0;background:var(--f);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.mnav.o{display:flex}
+.mnav a{font-family:var(--D);font-size:22px;font-weight:700;color:var(--c);text-decoration:none;transition:color .2s}
+.mnav a:hover{color:var(--l)}
+.mnav-x{position:absolute;top:20px;right:28px;font-size:26px;color:var(--l);background:none;border:none;cursor:pointer}
+.nav-socials{display:flex;gap:6px;align-items:center}
+.nav-soc{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid rgba(11,76,9,.15);border-radius:50%;color:var(--f);transition:all .25s;text-decoration:none;flex-shrink:0}
+.nav-soc:hover{background:var(--f);color:var(--c);border-color:var(--f);transform:translateY(-1px)}
+.ft-socs{display:flex;gap:10px;margin-bottom:28px}
+.ft-soc{width:36px;height:36px;border:1px solid rgba(247,249,237,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(247,249,237,.5);transition:all .25s;text-decoration:none}
+.ft-soc:hover{border-color:var(--l);background:var(--l);color:var(--k);transform:translateY(-2px)}
+.mnav-socs{display:flex;gap:14px;margin-top:8px}
+.mnav-soc{width:44px;height:44px;border:1px solid rgba(247,249,237,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--c);transition:all .25s;text-decoration:none}
+.mnav-soc:hover{border-color:var(--l);color:var(--l)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:all .25s}
+.btn-dark{background:var(--f);color:var(--c)}
+.btn-dark:hover{background:var(--k);transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,76,9,.25)}
+.btn-lime{background:var(--l);color:var(--k);border:none}
+.btn-lime:hover{background:#a3e000;transform:translateY(-2px)}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.mono{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px}
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--l),var(--g));z-index:10000;width:0%;transition:width .08s linear;pointer-events:none;box-shadow:0 0 10px rgba(146,205,0,.5)}
+footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
+.ft-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.ft-logo img{height:40px;width:auto}
+.ft-tag{font-family:var(--D);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(247,249,237,.25)}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.ft-links a{font-family:var(--B);font-size:11px;font-weight:500;color:rgba(247,249,237,.32);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+.ft-links a:hover{color:var(--l)}
+.ft-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(247,249,237,.06);flex-wrap:wrap;gap:10px}
+.ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
+
+/* ── PAGE HERO ── */
+.pg-hero{background:var(--k);padding:140px 52px 80px;position:relative;overflow:hidden}
+.pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(146,205,0,.08),transparent 65%)}
+.pg-tag{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(146,205,0,.6);margin-bottom:20px}
+.pg-ttl{font-family:var(--D);font-size:clamp(36px,5.5vw,72px);font-weight:900;color:var(--c);line-height:1.02;margin-bottom:20px}
+.pg-ttl em{color:var(--l);font-style:normal}
+.pg-sub{font-size:16px;color:rgba(247,249,237,.5);line-height:1.7;max-width:520px}
+.pg-hero-bg{position:absolute;font-family:var(--D);font-weight:900;font-size:clamp(120px,18vw,220px);color:rgba(146,205,0,.04);right:40px;bottom:-20px;line-height:1;pointer-events:none;letter-spacing:-.02em}
+
+/* ── CONTACT LAYOUT ── */
+.con-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:0;min-height:600px}
+
+/* LEFT PANEL — details */
+.con-info{background:var(--f);padding:72px 52px;display:flex;flex-direction:column;gap:40px}
+.con-info-ttl{font-family:var(--D);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--c);line-height:1.1;margin-bottom:8px}
+.con-info-sub{font-size:14px;color:rgba(247,249,237,.45);line-height:1.7;max-width:340px}
+
+.con-detail-group{display:flex;flex-direction:column;gap:20px}
+.con-detail{display:flex;align-items:flex-start;gap:16px}
+.con-detail-icon{width:42px;height:42px;background:rgba(146,205,0,.1);border:1px solid rgba(146,205,0,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.con-detail-body{}
+.con-detail-label{font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(247,249,237,.3);margin-bottom:4px}
+.con-detail-val{font-family:var(--B);font-size:14px;font-weight:500;color:var(--c);line-height:1.55}
+.con-detail-val a{color:var(--l);text-decoration:none}
+.con-detail-val a:hover{text-decoration:underline}
+
+.con-socials{display:flex;gap:10px;margin-top:4px}
+.con-soc{width:40px;height:40px;border:1px solid rgba(247,249,237,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(247,249,237,.5);text-decoration:none;transition:all .25s;font-size:15px}
+.con-soc:hover{border-color:var(--l);background:var(--l);color:var(--k);transform:translateY(-2px)}
+
+.wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-family:var(--D);font-size:11px;font-weight:700;letter-spacing:.5px;text-decoration:none;padding:13px 22px;border-radius:100px;transition:all .25s;margin-top:4px;width:fit-content}
+.wa-btn:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+
+/* RIGHT PANEL — form */
+.con-form-panel{background:var(--c);padding:72px 52px}
+.con-form-ttl{font-family:var(--D);font-size:clamp(20px,2.5vw,28px);font-weight:900;color:var(--f);margin-bottom:8px}
+.con-form-sub{font-size:13px;color:rgba(14,19,15,.45);line-height:1.6;margin-bottom:36px}
+
+/* Form fields */
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fgrp{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.flbl{font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(14,19,15,.4)}
+.fi{width:100%;padding:13px 16px;border:1.5px solid rgba(11,76,9,.14);border-radius:10px;font-family:var(--B);font-size:14px;background:var(--w);color:var(--k);outline:none;transition:all .25s}
+.fi:focus{border-color:var(--l);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+.fsel{width:100%;padding:13px 16px;border:1.5px solid rgba(11,76,9,.14);border-radius:10px;font-family:var(--B);font-size:14px;background:var(--w);color:var(--k);outline:none;transition:all .25s;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230B4C09' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fsel:focus{border-color:var(--l);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+.fta{width:100%;padding:13px 16px;border:1.5px solid rgba(11,76,9,.14);border-radius:10px;font-family:var(--B);font-size:14px;background:var(--w);color:var(--k);outline:none;transition:all .25s;resize:vertical;min-height:140px;line-height:1.6}
+.fta:focus{border-color:var(--l);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+.fsub{width:100%;padding:15px 24px;background:var(--f);color:var(--c);border:none;border-radius:10px;font-family:var(--D);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .25s;margin-top:4px}
+.fsub:hover{background:var(--k);transform:translateY(-1px);box-shadow:0 8px 24px rgba(11,76,9,.2)}
+.fsuc{display:none;text-align:center;padding:48px 24px}
+.fsuc-icon{font-size:48px;margin-bottom:16px}
+.fsuc-ttl{font-family:var(--D);font-size:18px;font-weight:700;color:var(--f);margin-bottom:8px}
+.fsuc-txt{font-size:13px;color:rgba(14,19,15,.5);line-height:1.6}
+
+/* WhatsApp floating button */
+#waFloat{position:fixed;bottom:88px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;transform:scale(0);opacity:0}
+#waFloat.show{transform:scale(1);opacity:1}
+#waFloat:hover{background:#1ebe5d;transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+#waFloat svg{width:26px;height:26px;fill:#fff}
+.wa-pulse{position:absolute;inset:0;border-radius:50%;background:#25D366;animation:waPulse 2.2s ease-out infinite;z-index:-1}
+@keyframes waPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .con-wrap{grid-template-columns:1fr}
+  .con-info{padding:52px 36px}
+  .con-form-panel{padding:52px 36px}
+  .pg-hero{padding:120px 36px 60px}
+}
+@media(max-width:768px){
+  nav{padding:12px 20px}
+  nav.s{padding:10px 20px}
+  .nl img{height:36px}
+  nav.s .nl img{height:28px}
+  .nlinks{display:none}
+  .brg{display:flex}
+  #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.5}
+  .pg-hero{padding:100px 20px 52px}
+  .pg-ttl{font-size:clamp(28px,8vw,44px)}
+  .pg-sub{font-size:14px}
+  .con-info{padding:40px 20px}
+  .con-form-panel{padding:40px 20px}
+  .frow{grid-template-columns:1fr}
+  footer{padding:40px 20px 80px}
+  .ft-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .ft-links{gap:12px}
+  .ft-bot{flex-direction:column;gap:6px}
+  .ft-logo img{height:28px}
+  #waFloat{bottom:76px;right:16px;width:46px;height:46px}
+  input,select,textarea{font-size:16px!important}
+  .btn{min-height:44px}
+  .brg{padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center}
+  .mnav-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+}
+@media(max-width:480px){
+  nav{padding:10px 16px}
+  .con-info{padding:36px 16px}
+  .con-form-panel{padding:36px 16px}
+  .pg-hero{padding:90px 16px 44px}
+  footer{padding:36px 16px 72px}
+  .ft-links{gap:10px;row-gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div id="prog" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+<div id="curR" aria-hidden="true"></div>
+
+<!-- ANNOUNCE -->
+<div id="ann">
+  🌿 &nbsp;50 new drop-off points open in Jurong &amp; Woodlands — &nbsp;<a href="index.html#locs">Find your nearest bin →</a>
+  <button id="ann-x" aria-label="Close">✕</button>
+</div>
+
+<!-- LOADER -->
+<div id="ldr">
+  <div class="ldr-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
+  <div class="ldr-line"></div>
+  <span class="ldr-tag">Reuse · Repurpose · Repair</span>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
+  <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="what-to-do.html">What To Do</a>
+  <a href="index.html#locs">Drop Off</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html" style="color:var(--l)">Contact</a>
+  <div class="mnav-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="mnav-soc"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="mnav-soc"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nl" aria-label="Green Square Home">
+    <img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore">
+  </a>
+  <ul class="nlinks">
+    <li><a href="about.html">About</a></li>
+    <li><a href="what-to-do.html">What To Do</a></li>
+    <li><a href="index.html#locs">Drop Off</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="ac">Contact</a></li>
+    <li class="nav-socials">
+      <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" class="nav-soc" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" class="nav-soc" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    </li>
+    <li><a href="index.html#involve" class="nc">Get Involved</a></li>
+  </ul>
+  <button class="brg" id="brg" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="pg-hero">
+  <p class="pg-tag">// Get In Touch</p>
+  <h1 class="pg-ttl">Got a question?<br>We'd love to <em>hear from you.</em></h1>
+  <p class="pg-sub">Reach us by form, phone, or WhatsApp. We reply within 2 working days.</p>
+  <div class="pg-hero-bg" aria-hidden="true">HI</div>
+</div>
+
+<!-- CONTACT BODY -->
+<div class="con-wrap">
+
+  <!-- LEFT: Details -->
+  <div class="con-info">
+    <div>
+      <h2 class="con-info-ttl rv">Visit or call us.</h2>
+      <p class="con-info-sub rv d1">We're based in Singapore and love hearing from schools, companies, condo MCSTs, and individuals alike.</p>
+    </div>
+
+    <div class="con-detail-group rv d1">
+
+      <div class="con-detail">
+        <div class="con-detail-icon">🏢</div>
+        <div class="con-detail-body">
+          <div class="con-detail-label">Company</div>
+          <div class="con-detail-val">GRR Consultant Pte. Ltd.<br><span style="font-size:12px;color:rgba(247,249,237,.35)">(UEN: 202210672M)</span></div>
+        </div>
+      </div>
+
+      <div class="con-detail">
+        <div class="con-detail-icon">📍</div>
+        <div class="con-detail-body">
+          <div class="con-detail-label">Address</div>
+          <div class="con-detail-val">22 Sin Ming Lane,<br>#06-76 Singapore 573969</div>
+        </div>
+      </div>
+
+      <div class="con-detail">
+        <div class="con-detail-icon">📞</div>
+        <div class="con-detail-body">
+          <div class="con-detail-label">Phone / WhatsApp</div>
+          <div class="con-detail-val"><a href="tel:+6583838677">+65 8383 8677</a></div>
+        </div>
+      </div>
+
+      <div class="con-detail">
+        <div class="con-detail-icon">✉️</div>
+        <div class="con-detail-body">
+          <div class="con-detail-label">Email</div>
+          <div class="con-detail-val"><a href="mailto:hello@greensquare.com.sg">hello@greensquare.com.sg</a></div>
+        </div>
+      </div>
+
+      <div class="con-detail">
+        <div class="con-detail-icon">🌐</div>
+        <div class="con-detail-body">
+          <div class="con-detail-label">Website</div>
+          <div class="con-detail-val"><a href="https://www.greensquare.com.sg" target="_blank" rel="noopener noreferrer">www.greensquare.com.sg</a></div>
+        </div>
+      </div>
+
+      <div class="con-detail">
+        <div class="con-detail-icon">🕐</div>
+        <div class="con-detail-body">
+          <div class="con-detail-label">Office Hours</div>
+          <div class="con-detail-val">Mon – Fri &nbsp;·&nbsp; 9am – 6pm SGT</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WhatsApp CTA -->
+    <a href="https://wa.me/6583838677" target="_blank" rel="noopener noreferrer" class="wa-btn rv d2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+
+    <!-- Social icons -->
+    <div class="con-socials rv d2">
+      <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" class="con-soc" aria-label="Instagram">📸</a>
+      <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" class="con-soc" aria-label="Facebook">📘</a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="con-form-panel">
+    <h2 class="con-form-ttl rv">Send us a message.</h2>
+    <p class="con-form-sub rv d1">Fill in the form and we'll get back to you within 2 working days.</p>
+
+    <div id="con-form-wrap">
+      <form onsubmit="submitForm(event)" novalidate>
+        <div class="frow rv d1">
+          <div class="fgrp" style="margin-bottom:0">
+            <label class="flbl" for="cf-name">Your Name</label>
+            <input type="text" id="cf-name" class="fi" placeholder="Full name" required>
+          </div>
+          <div class="fgrp" style="margin-bottom:0">
+            <label class="flbl" for="cf-email">Email Address</label>
+            <input type="email" id="cf-email" class="fi" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="fgrp rv d1">
+          <label class="flbl" for="cf-phone">Phone / WhatsApp <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(14,19,15,.3)">(optional)</span></label>
+          <input type="tel" id="cf-phone" class="fi" placeholder="+65 XXXX XXXX">
+        </div>
+        <div class="fgrp rv d2">
+          <label class="flbl" for="cf-topic">I'm reaching out about…</label>
+          <select id="cf-topic" class="fsel">
+            <option value="">Select a topic</option>
+            <option value="school">Events @ Schools</option>
+            <option value="corporate">Events @ Corporates</option>
+            <option value="condo">Events @ Condominiums</option>
+            <option value="dropoff">Drop-off bin enquiry</option>
+            <option value="media">Media or press enquiry</option>
+            <option value="general">General question</option>
+          </select>
+        </div>
+        <div class="fgrp rv d2">
+          <label class="flbl" for="cf-msg">Message</label>
+          <textarea id="cf-msg" class="fta" placeholder="Tell us your organisation name, what you need, and the best time to reach you." required></textarea>
+        </div>
+        <button type="submit" class="fsub rv d3">Send Message →</button>
+      </form>
+    </div>
+    <div class="fsuc" id="con-suc">
+      <div class="fsuc-icon">✅</div>
+      <div class="fsuc-ttl">Message sent!</div>
+      <p class="fsuc-txt">Thanks for reaching out. We'll get back to you within 2 working days.<br>For urgent matters, WhatsApp us at <a href="https://wa.me/6583838677" style="color:var(--l);font-weight:600">+65 8383 8677</a>.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
+    <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
+  </div>
+  <div class="ft-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+  <div class="ft-links">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="what-to-do.html">What To Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="events.html">Events</a><a href="blog.html">Blog</a>
+    <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
+    <a href="condos.html">Condo Events</a><a href="index.html#locs">Find a Drop-Off</a>
+    <a href="index.html#involve">Get Involved</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2025 GRR Consultant Pte. Ltd. (UEN: 202210672M). All rights reserved.</p>
+    <p class="ft-made">Made in Singapore 🇸🇬</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/6583838677" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp us">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* CURSOR */
+const c1=document.getElementById('cur'),c2=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
+
+/* ANNOUNCE */
+document.getElementById('ann-x').addEventListener('click',()=>document.getElementById('ann').style.display='none');
+
+/* LOADER */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1800);
+});
+
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',window.scrollY>60),{passive:true});
+
+/* HAMBURGER */
+const mn=document.getElementById('mnav');
+document.getElementById('brg').addEventListener('click',()=>{mn.classList.add('o');document.body.style.overflow='hidden'});
+document.getElementById('mnav-x').addEventListener('click',()=>{mn.classList.remove('o');document.body.style.overflow=''});
+
+/* REVEAL */
+const rvObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target)}});
+},{threshold:.1,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* SCROLL PROGRESS */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
+  if(prog)prog.style.width=(dh>0?(st/dh*100):0)+'%';
+},{passive:true});
+
+/* WHATSAPP FLOAT */
+setTimeout(()=>document.getElementById('waFloat').classList.add('show'),1200);
+
+/* FORM SUBMIT */
+function submitForm(e){
+  e.preventDefault();
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const msg=document.getElementById('cf-msg').value.trim();
+  if(!name){document.getElementById('cf-name').style.borderColor='#ff7a7a';document.getElementById('cf-name').focus();return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('cf-email').style.borderColor='#ff7a7a';document.getElementById('cf-email').focus();return}
+  if(!msg){document.getElementById('cf-msg').style.borderColor='#ff7a7a';document.getElementById('cf-msg').focus();return}
+  document.getElementById('con-form-wrap').style.display='none';
+  document.getElementById('con-suc').style.display='block';
+}
+</script>
+</body>
+</html>

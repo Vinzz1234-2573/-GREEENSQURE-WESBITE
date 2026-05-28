@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(npx plugins add vercel/vercel-plugin)"
+      "PowerShell(npx plugins add vercel/vercel-plugin)",
+      "WebFetch(domain:www.greensquare.com.sg)",
+      "Bash(git add *)"
     ]
   }
 }
