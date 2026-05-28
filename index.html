@@ -507,6 +507,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .hero-depth{transform-style:preserve-3d}
 /* ── HERO BACKGROUND GFX ── */
 .hero-gfx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.hero-scene-bg{position:absolute;right:0;top:0;width:70%;height:100%;background:url('Photos/mainpagebackgorund.png') right top/cover no-repeat;opacity:.13;mask-image:linear-gradient(to left,rgba(0,0,0,.9) 0%,rgba(0,0,0,.5) 55%,transparent 100%);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,.9) 0%,rgba(0,0,0,.5) 55%,transparent 100%)}
+@media(max-width:768px){.hero-scene-bg{width:100%;opacity:.09}}
 .hero-glow{position:absolute;left:-60px;top:60px;width:min(780px,85vw);height:min(620px,75vh);border-radius:50%;background:radial-gradient(ellipse at 35% 38%,rgba(146,205,0,.18) 0%,rgba(75,159,95,.09) 30%,rgba(11,76,9,.04) 55%,transparent 70%);animation:glowPulse 7s ease-in-out infinite}
 .hero-glow2{position:absolute;left:20%;top:30%;width:min(400px,50vw);height:min(300px,40vh);border-radius:50%;background:radial-gradient(ellipse,rgba(146,205,0,.08) 0%,transparent 65%);animation:glowPulse 9s ease-in-out infinite;animation-delay:-3.5s}
 @keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1) translate(0,0)}50%{opacity:1;transform:scale(1.08) translate(12px,-14px)}}
@@ -515,9 +517,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   font-size:clamp(280px,44vw,580px);line-height:1;
   right:-20px;top:30px;user-select:none;letter-spacing:-.03em;
   /* Neon fill with animated scanning light */
-  color:rgba(146,205,0,.08);
-  -webkit-text-stroke:1px rgba(146,205,0,.28);
-  paint-order:stroke fill;
+  color:transparent;
+  filter:drop-shadow(0 0 8px rgba(146,205,0,.18));
   background:linear-gradient(
     105deg,
     rgba(146,205,0,.07) 0%,
@@ -798,6 +799,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   <div class="blob blob2" aria-hidden="true"></div>
   <div class="blob blob3" aria-hidden="true"></div>
   <div class="hero-gfx" aria-hidden="true">
+    <div class="hero-scene-bg"></div>
     <div class="hero-glow"></div>
     <div class="hero-glow2"></div>
     <span class="hero-bg-gs">GS</span>
