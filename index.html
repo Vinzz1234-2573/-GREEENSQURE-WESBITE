@@ -515,8 +515,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   font-size:clamp(280px,44vw,580px);line-height:1;
   right:-20px;top:30px;user-select:none;letter-spacing:-.03em;
   /* Neon fill with animated scanning light */
-  color:transparent;
-  -webkit-text-stroke:2px rgba(146,205,0,.22);
+  color:rgba(146,205,0,.08);
+  -webkit-text-stroke:1px rgba(146,205,0,.28);
+  paint-order:stroke fill;
   background:linear-gradient(
     105deg,
     rgba(146,205,0,.07) 0%,
