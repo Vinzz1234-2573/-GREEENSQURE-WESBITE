@@ -464,7 +464,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 @keyframes galMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .gcrd{width:300px;height:380px;border-radius:20px;flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;cursor:default;transition:transform .3s}
 .gcrd:hover{transform:translateY(-8px) scale(1.02)}
-.gcrd-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:72px}
+.gcrd-bg{position:absolute;inset:0;background-size:cover;background-position:center;font-size:0}
 .gcrd-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%)}
 .gcrd-tag{font-family:var(--B);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:6px;position:relative;z-index:1}
 .gcrd-title{font-family:var(--D);font-size:16px;font-weight:700;color:#fff;line-height:1.2;position:relative;z-index:1}
@@ -931,77 +931,71 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <a href="#impact" class="btn btn-cout rv d2">See Full Impact →</a>
   </div>
   <div class="gal-scroll">
-    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#1a7a1a)">
-      <div class="gcrd-bg">♻️</div><div class="gcrd-overlay"></div>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/factory-bales.jpg')"></div><div class="gcrd-overlay"></div>
       <p class="gcrd-tag">Tonnes Diverted</p>
       <p class="gcrd-stat">850+</p>
       <p class="gcrd-title">Textiles rescued from Semakau landfill</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#1f3d00,#3a6600)">
-      <div class="gcrd-bg">👕</div><div class="gcrd-overlay"></div>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-repurpose.jpg')"></div><div class="gcrd-overlay"></div>
       <p class="gcrd-tag">Items Reborn</p>
       <p class="gcrd-stat">1.2M+</p>
       <p class="gcrd-title">Garments given a second life</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#4B9F5F,#2d7a45)">
-      <div class="gcrd-bg">📍</div><div class="gcrd-overlay"></div>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-booth.jpg')"></div><div class="gcrd-overlay"></div>
       <p class="gcrd-tag">Collection Points</p>
       <p class="gcrd-stat">250+</p>
       <p class="gcrd-title">Drop-off bins across Singapore</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#0a3308,#155a12)">
-      <div class="gcrd-bg">🏙️</div><div class="gcrd-overlay"></div>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/factory-clothes.jpg')"></div><div class="gcrd-overlay"></div>
       <p class="gcrd-tag">kg from Landfill</p>
       <p class="gcrd-stat">650K+</p>
       <p class="gcrd-title">Keeping Semakau cleaner, longer</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#2a5c00,#4B9F5F)">
-      <div class="gcrd-bg">🤝</div><div class="gcrd-overlay"></div>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-team.jpg')"></div><div class="gcrd-overlay"></div>
       <p class="gcrd-tag">Partner Network</p>
       <p class="gcrd-stat">40+</p>
       <p class="gcrd-title">NGOs, enterprises & corporates</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">
-      <div class="gcrd-bg">📦</div><div class="gcrd-overlay"></div>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-visitors.jpg')"></div><div class="gcrd-overlay"></div>
       <p class="gcrd-tag">Events Hosted</p>
       <p class="gcrd-stat">500+</p>
       <p class="gcrd-title">Schools, offices & condos served</p>
     </div>
     <!-- duplicate for seamless loop -->
-    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#1a7a1a)">
-      <div class="gcrd-bg">♻️</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Tonnes Diverted</p>
-      <p class="gcrd-stat">850+</p>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/factory-bales.jpg')"></div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Tonnes Diverted</p><p class="gcrd-stat">850+</p>
       <p class="gcrd-title">Textiles rescued from Semakau landfill</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#1f3d00,#3a6600)">
-      <div class="gcrd-bg">👕</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Items Reborn</p>
-      <p class="gcrd-stat">1.2M+</p>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-repurpose.jpg')"></div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Items Reborn</p><p class="gcrd-stat">1.2M+</p>
       <p class="gcrd-title">Garments given a second life</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#4B9F5F,#2d7a45)">
-      <div class="gcrd-bg">📍</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Collection Points</p>
-      <p class="gcrd-stat">250+</p>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-booth.jpg')"></div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Collection Points</p><p class="gcrd-stat">250+</p>
       <p class="gcrd-title">Drop-off bins across Singapore</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#0a3308,#155a12)">
-      <div class="gcrd-bg">🏙️</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">kg from Landfill</p>
-      <p class="gcrd-stat">650K+</p>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/factory-clothes.jpg')"></div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">kg from Landfill</p><p class="gcrd-stat">650K+</p>
       <p class="gcrd-title">Keeping Semakau cleaner, longer</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#2a5c00,#4B9F5F)">
-      <div class="gcrd-bg">🤝</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Partner Network</p>
-      <p class="gcrd-stat">40+</p>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-team.jpg')"></div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Partner Network</p><p class="gcrd-stat">40+</p>
       <p class="gcrd-title">NGOs, enterprises & corporates</p>
     </div>
-    <div class="gcrd" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">
-      <div class="gcrd-bg">📦</div><div class="gcrd-overlay"></div>
-      <p class="gcrd-tag">Events Hosted</p>
-      <p class="gcrd-stat">500+</p>
+    <div class="gcrd">
+      <div class="gcrd-bg" style="background-image:url('Photos/event-visitors.jpg')"></div><div class="gcrd-overlay"></div>
+      <p class="gcrd-tag">Events Hosted</p><p class="gcrd-stat">500+</p>
       <p class="gcrd-title">Schools, offices & condos served</p>
     </div>
   </div>
@@ -1130,6 +1124,35 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
         <a href="#involve" class="btn btn-dark">Partner With Us →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════ COMMUNITY GALLERY ══════════════ -->
+<section style="background:var(--w);padding:100px 52px">
+  <p class="mono rv" style="color:var(--g)">// COMMUNITY · IN ACTION</p>
+  <h2 class="rv d1" style="font-family:var(--D);font-size:clamp(28px,4vw,50px);font-weight:900;color:var(--f);margin-bottom:48px;line-height:1.06">Real people.<br>Real impact.</h2>
+  <div class="rv d2" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:12px">
+    <div style="grid-column:1/3;border-radius:16px;overflow:hidden;aspect-ratio:16/9;position:relative">
+      <img src="Photos/event-team.jpg" alt="Green Square volunteers at community event" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s">
+    </div>
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/5;position:relative">
+      <img src="Photos/event-volunteer-1.jpg" alt="Volunteer at Green Square event" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s">
+    </div>
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative">
+      <img src="Photos/event-family.jpg" alt="Family participating in textile recycling" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s">
+    </div>
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative">
+      <img src="Photos/event-volunteer-2.jpg" alt="Community member at Green Square" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s">
+    </div>
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative">
+      <img src="Photos/event-community.jpg" alt="Community event at Green Square" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s">
+    </div>
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative">
+      <img src="Photos/event-visitors.jpg" alt="Visitors at Green Square booth" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s">
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:36px" class="rv d3">
+    <a href="events.html" class="btn btn-dark">See All Events →</a>
   </div>
 </section>
 
