@@ -234,15 +234,20 @@ nav.s .nl img{height:50px}
 .inv-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--c);margin-bottom:14px;line-height:1.06}
 .inv-sub{font-size:15px;color:rgba(247,249,237,.45);max-width:500px;margin-bottom:64px;line-height:1.7}
 .inv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px}
-.icrd{background:rgba(247,249,237,.04);padding:48px 36px;border-top:2px solid transparent;transition:all .3s;cursor:default;position:relative;overflow:hidden}
-.icrd::after{content:'';position:absolute;inset:0;background:rgba(146,205,0,.04);opacity:0;transition:.3s}
-.icrd:hover{background:rgba(247,249,237,.07);border-top-color:var(--l)}
-.icrd:hover::after{opacity:1}
+.icrd{padding:48px 36px;border-top:2px solid transparent;transition:all .35s;cursor:pointer;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.icrd-dimmer{position:absolute;inset:0;background:rgba(10,40,10,.72);transition:background .35s;z-index:0}
+.icrd:hover .icrd-dimmer{background:rgba(10,40,10,.55)}
+.icrd-inner{position:relative;z-index:1}
+.icrd:hover{border-top-color:var(--l);transform:translateY(-3px)}
+@keyframes icrdPop{0%{box-shadow:0 0 0 0 rgba(146,205,0,.6)}70%{box-shadow:0 0 0 18px rgba(146,205,0,0)}100%{box-shadow:0 0 0 0 rgba(146,205,0,0)}}
+.icrd.clicked{animation:icrdPop .6s ease-out forwards;border-top-color:var(--l)}
 .icrd-icon{font-size:44px;margin-bottom:22px;display:block}
 .icrd-title{font-family:var(--D);font-size:18px;font-weight:700;color:var(--c);margin-bottom:12px}
-.icrd-desc{font-size:13px;color:rgba(247,249,237,.5);line-height:1.72;margin-bottom:24px}
-.icrd-link{font-family:var(--B);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--l);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
-.icrd-link:hover{gap:12px}
+.icrd-desc{font-size:13px;color:rgba(247,249,237,.75);line-height:1.72;margin-bottom:24px}
+.icrd-link{font-family:var(--B);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--l);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s;background:rgba(146,205,0,.12);border:1px solid rgba(146,205,0,.35);padding:10px 18px;border-radius:100px}
+.icrd:hover .icrd-link,.icrd-link:hover{gap:12px;background:var(--l);color:var(--k);border-color:var(--l)}
+@keyframes formPulse{0%,100%{box-shadow:0 0 0 0 rgba(146,205,0,0)}50%{box-shadow:0 0 0 8px rgba(146,205,0,.3)}}
+.inv-signup.highlight{animation:formPulse .7s ease 2}
 .inv-signup{background:rgba(247,249,237,.04);border:1px solid rgba(247,249,237,.08);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .inv-signup-left h3{font-family:var(--D);font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--c);margin-bottom:10px;line-height:1.2}
 .inv-signup-left p{font-size:13px;color:rgba(247,249,237,.45);line-height:1.65}
@@ -643,7 +648,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .icrd{padding:32px 20px}
   .inv-signup{grid-template-columns:1fr;gap:24px;padding:28px 20px}
   /* Touch active state for icrd */
-  .icrd:active{background:rgba(247,249,237,.07);border-top-color:var(--l)}
+  .icrd:active{border-top-color:var(--l)}
+  .icrd:active .icrd-dimmer{background:rgba(10,40,10,.45)}
 
   /* Services touch active */
   .sc:active{background:var(--f)}
@@ -1172,23 +1178,32 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   <p class="inv-sub rv d2">There are many ways to be part of Green Square — volunteer your time, bring us into your building, or become an advocate in your community.</p>
 
   <div class="inv-cards rv d2">
-    <div class="icrd">
-      <span class="icrd-icon">🙋</span>
-      <div class="icrd-title">Volunteer</div>
-      <p class="icrd-desc">Join our sorting team, assist at collection drives, or help educate your estate on sustainable textile habits. No experience needed — just passion.</p>
-      <a href="#inv-signup" class="icrd-link">Sign Up →</a>
+    <div class="icrd" style="background-image:url('Photos/factory-sorting.jpg')" onclick="joinUs(this,'volunteer')">
+      <div class="icrd-dimmer"></div>
+      <div class="icrd-inner">
+        <span class="icrd-icon">🙋</span>
+        <div class="icrd-title">Volunteer</div>
+        <p class="icrd-desc">Join our sorting team, assist at collection drives, or help educate your estate on sustainable textile habits. No experience needed — just passion.</p>
+        <a class="icrd-link" onclick="joinUs(this.closest('.icrd'),'volunteer');event.preventDefault()">Sign Up →</a>
+      </div>
     </div>
-    <div class="icrd">
-      <span class="icrd-icon">🏢</span>
-      <div class="icrd-title">Corporate Partner</div>
-      <p class="icrd-desc">Get a Green Square bin installed in your office, condo, or retail space. We handle everything — logistics, signage, collections, and impact reporting for your ESG records.</p>
-      <a href="#inv-signup" class="icrd-link">Partner With Us →</a>
+    <div class="icrd" style="background-image:url('Photos/factory-bales.jpg')" onclick="joinUs(this,'corporate')">
+      <div class="icrd-dimmer"></div>
+      <div class="icrd-inner">
+        <span class="icrd-icon">🏢</span>
+        <div class="icrd-title">Corporate Partner</div>
+        <p class="icrd-desc">Get a Green Square bin installed in your office, condo, or retail space. We handle everything — logistics, signage, collections, and impact reporting for your ESG records.</p>
+        <a class="icrd-link" onclick="joinUs(this.closest('.icrd'),'corporate');event.preventDefault()">Partner With Us →</a>
+      </div>
     </div>
-    <div class="icrd">
-      <span class="icrd-icon">📣</span>
-      <div class="icrd-title">Community Ambassador</div>
-      <p class="icrd-desc">Spread the word in your HDB estate, school, or social circle. We'll give you resources, talking points, and support to make textile recycling the default in your neighbourhood.</p>
-      <a href="#inv-signup" class="icrd-link">Become an Ambassador →</a>
+    <div class="icrd" style="background-image:url('Photos/factory-shoes.jpg')" onclick="joinUs(this,'ambassador')">
+      <div class="icrd-dimmer"></div>
+      <div class="icrd-inner">
+        <span class="icrd-icon">📣</span>
+        <div class="icrd-title">Community Ambassador</div>
+        <p class="icrd-desc">Spread the word in your HDB estate, school, or social circle. We'll give you resources, talking points, and support to make textile recycling the default in your neighbourhood.</p>
+        <a class="icrd-link" onclick="joinUs(this.closest('.icrd'),'ambassador');event.preventDefault()">Become an Ambassador →</a>
+      </div>
     </div>
   </div>
 
@@ -1552,6 +1567,32 @@ const Qs=[
 let qi=0;
 function aQ(g){const q=Qs[qi];document.getElementById('qI').textContent=g===q.a?'✅':'❌';document.getElementById('qT').innerHTML=q.txt;document.getElementById('qAns').classList.add('show');const b=document.getElementById('qBtns');b.style.opacity='.3';b.style.pointerEvents='none'}
 function nQ(){qi=(qi+1)%Qs.length;document.getElementById('qQ').textContent=Qs[qi].q;document.getElementById('qAns').classList.remove('show');const b=document.getElementById('qBtns');b.style.opacity='1';b.style.pointerEvents='auto'}
+
+/* GET INVOLVED — card click */
+function joinUs(card, type){
+  /* Pulse the card */
+  card.classList.remove('clicked');
+  void card.offsetWidth; /* reflow to restart animation */
+  card.classList.add('clicked');
+  setTimeout(()=>card.classList.remove('clicked'),700);
+
+  /* Pre-select the form dropdown */
+  const sel=document.getElementById('inv-type');
+  if(sel){
+    const map={volunteer:'volunteer',corporate:'corporate',ambassador:'ambassador'};
+    sel.value=map[type]||'';
+  }
+
+  /* Smooth-scroll to form then pulse it */
+  const form=document.getElementById('inv-signup');
+  if(form){
+    form.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>{
+      form.classList.add('highlight');
+      setTimeout(()=>form.classList.remove('highlight'),1600);
+    },500);
+  }
+}
 
 /* CONTACT */
 function sC(e){e.preventDefault();const btn=document.getElementById('csub');btn.textContent='✓ Sent!';btn.style.background='var(--g)';btn.style.color='var(--c)';setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.style.color='';['cn','ce','cm','ctype'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''})},3000)}
