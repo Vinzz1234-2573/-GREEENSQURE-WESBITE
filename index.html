@@ -292,7 +292,9 @@ nav.s .nl img{height:50px}
 .pn{font-family:var(--D);font-size:68px;font-weight:900;color:var(--l);line-height:1;margin-bottom:14px}
 .pstep h3{font-family:var(--D);font-size:16px;font-weight:700;color:var(--c);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
 .pstep p{font-size:13px;color:rgba(247,249,237,.5);line-height:1.7;margin-bottom:22px}
-.pimg{width:100%;aspect-ratio:4/3;background:rgba(146,205,0,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:40px;border:1px solid rgba(146,205,0,.1)}
+.pimg{width:100%;aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:1px solid rgba(146,205,0,.1)}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.pstep:hover .pimg img{transform:scale(1.04)}
 
 /* ════════════════════════════════════════
    TESTIMONIALS
