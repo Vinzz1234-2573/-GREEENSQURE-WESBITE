@@ -1,0 +1,305 @@
+/*
+ * GREEN SQUARE — SHARED MOBILE CSS
+ * Covers: Z Flip (open + half-fold + cover), Z Fold, Galaxy series,
+ *         iPhone SE / 12 Mini / 15 Pro, landscape, safe-area, a11y
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/* ═══════════════════════════════════════════
+   1. GLOBAL RESET — prevent horizontal scroll
+═══════════════════════════════════════════ */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+img, video, iframe, embed, object { max-width: 100%; }
+
+/* ═══════════════════════════════════════════
+   2. DYNAMIC VIEWPORT (svh / dvh)
+   Fixes the iOS Safari bottom-bar jump
+═══════════════════════════════════════════ */
+#hero        { min-height: 100svh; }
+.mnav        { min-height: 100dvh; }
+.pg-hero     { padding-top: max(110px, calc(80px + env(safe-area-inset-top))); }
+
+/* ═══════════════════════════════════════════
+   3. SAFE AREA INSETS
+   Notches (iPhone X+), rounded corners, home bars
+═══════════════════════════════════════════ */
+@supports (padding: env(safe-area-inset-top)) {
+  nav {
+    padding-left:  max(52px, calc(24px + env(safe-area-inset-left)));
+    padding-right: max(52px, calc(24px + env(safe-area-inset-right)));
+  }
+  #fCta {
+    bottom: max(14px, calc(8px + env(safe-area-inset-bottom)));
+    right:  max(14px, calc(8px + env(safe-area-inset-right)));
+  }
+  #waFloat {
+    bottom: max(88px, calc(72px + env(safe-area-inset-bottom)));
+    right:  max(16px, calc(8px + env(safe-area-inset-right)));
+  }
+  footer {
+    padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+  }
+  .mnav {
+    padding-top:    env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   4. TAP HIGHLIGHT + TOUCH TARGETS
+═══════════════════════════════════════════ */
+a, button, [onclick], [role="button"] {
+  -webkit-tap-highlight-color: rgba(146, 205, 0, 0.15);
+  touch-action: manipulation;
+}
+
+/* ═══════════════════════════════════════════
+   5. SCROLL
+═══════════════════════════════════════════ */
+html { scroll-padding-top: 80px; }
+
+/* ═══════════════════════════════════════════
+   6. Z FLIP — COVER SCREEN  (~260 × 260px)
+   Shown on tiny cover display
+═══════════════════════════════════════════ */
+@media (max-width: 260px) {
+  nav { padding: 6px 10px !important; }
+  .nl img { height: 22px !important; }
+  .nlinks { display: none !important; }
+  .brg { display: flex !important; }
+  section, #impact, #services, #locs,
+  #involve, #contact, #accept, #proc {
+    padding: 36px 10px !important;
+  }
+  .pg-hero { padding: 76px 10px 36px !important; }
+  .hero-top { padding: 68px 10px 0 !important; }
+  .hero-meta { padding: 10px 10px 0 !important; }
+  h1, h2, h3, .pg-ttl { word-break: break-word; hyphens: auto; }
+  .btn { padding: 10px 14px !important; font-size: 9px !important; min-height: 40px; }
+  .hero-stats { grid-template-columns: 1fr 1fr !important; }
+  .hstat { padding: 8px 10px !important; }
+  .hstat-n { font-size: 18px !important; }
+  .mnav a { font-size: 16px !important; }
+  footer { padding: 28px 10px 60px !important; }
+  .ft-links { gap: 8px !important; font-size: 10px; }
+  .line-reuse, .line-repair { font-size: 28px !important; }
+  .line-repurpose { font-size: 18px !important; }
+}
+
+/* ═══════════════════════════════════════════
+   7. 320px — iPhone SE (1st/2nd gen), Galaxy A01
+═══════════════════════════════════════════ */
+@media (max-width: 320px) {
+  nav { padding: 8px 14px !important; }
+  .nl img { height: 26px !important; }
+  nav.s .nl img { height: 22px !important; }
+  section, #impact, #services, #locs,
+  #involve, #contact, #accept, #proc {
+    padding: 44px 14px !important;
+  }
+  .pg-hero { padding: 82px 14px 44px !important; }
+  .hero-top { padding: 76px 14px 0 !important; }
+  .hero-meta { padding: 12px 14px 0 !important; }
+  .hero-stats { grid-template-columns: 1fr 1fr !important; }
+  .hstat { padding: 10px 14px !important; }
+  .hstat-n { font-size: clamp(16px, 5vw, 22px) !important; }
+  .line-reuse, .line-repair { font-size: clamp(30px, 9.5vw, 44px) !important; }
+  .line-repurpose { font-size: clamp(20px, 6vw, 32px) !important; }
+  footer { padding: 32px 14px 68px !important; }
+  .ft-links { gap: 8px !important; }
+  .ft-copy, .ft-made { font-size: 10px !important; }
+  .inv-cards { gap: 10px !important; }
+  .icrd { min-height: 220px !important; padding: 24px 16px !important; }
+  .mnav a { font-size: 18px !important; gap: 18px; }
+  .mnav { gap: 18px; }
+  .con-grid, .con-wrap, .loc-grid { grid-template-columns: 1fr !important; }
+  input, select, textarea { font-size: 16px !important; }
+}
+
+/* ═══════════════════════════════════════════
+   8. STANDARD MOBILE  (≤768px)
+   Z Flip open, Galaxy S/A, iPhones 12-15
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Prevent overflow from any element */
+  * { max-width: 100%; box-sizing: border-box; }
+
+  /* iOS input zoom prevention */
+  input, select, textarea { font-size: 16px !important; }
+
+  /* Minimum touch targets */
+  .btn          { min-height: 44px; }
+  .nav-soc      { min-width: 44px; min-height: 44px; }
+  .mnav-soc     { min-width: 44px; min-height: 44px; }
+  .ft-soc       { min-width: 44px; min-height: 44px; }
+  .brg          { min-width: 44px; min-height: 44px;
+                  display: flex; align-items: center; justify-content: center; }
+  .mnav-x       { min-width: 44px; min-height: 44px;
+                  display: flex; align-items: center; justify-content: center; }
+
+  /* Smooth momentum scroll */
+  .llist        { -webkit-overflow-scrolling: touch; }
+  .gal-scroll   { -webkit-overflow-scrolling: touch; }
+  .mnav         { -webkit-overflow-scrolling: touch; }
+
+  /* Grid collapses */
+  .con-grid     { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .con-wrap     { grid-template-columns: 1fr !important; }
+  .loc-grid     { grid-template-columns: 1fr !important; }
+  .impact-inner { grid-template-columns: 1fr !important; gap: 36px !important; }
+
+  /* Cards */
+  .svc-grid     { grid-template-columns: 1fr !important; }
+  .proc-grid    { grid-template-columns: 1fr !important; }
+  .inv-cards    { grid-template-columns: 1fr !important; }
+  .blog-layout  { grid-template-columns: 1fr !important; }
+  .blog-feat    { grid-row: auto !important; }
+
+  /* Photo mosaic */
+  .photo-mosaic { grid-template-columns: 1fr 1fr !important; }
+  .photo-mosaic > div:first-child { grid-column: 1 / 3 !important; }
+
+  /* Floating elements */
+  #fCta   { bottom: 14px; right: 14px; font-size: 9px; padding: 10px 16px; }
+  #waFloat { right: 14px; }
+
+  /* Tables — make readable */
+  .adm-table { font-size: 12px; }
+  .adm-table th, .adm-table td { padding: 10px 10px; }
+}
+
+/* ═══════════════════════════════════════════
+   9. SMALL PHONES — 480px  (Galaxy A series, older flagships)
+═══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .photo-mosaic { grid-template-columns: 1fr !important; }
+  .photo-mosaic > div:first-child { grid-column: 1 / 1 !important; }
+
+  .press-grid   { grid-template-columns: 1fr !important; }
+  .acc-grid     { grid-template-columns: 1fr !important; }
+  .steps        { grid-template-columns: 1fr !important; }
+  .stats-grid   { grid-template-columns: 1fr 1fr !important; }
+  .inv-signup   { grid-template-columns: 1fr !important; }
+  .frow         { grid-template-columns: 1fr !important; }
+  .form-row     { grid-template-columns: 1fr !important; }
+
+  footer { padding: 36px 16px 72px !important; }
+  .ft-links { gap: 10px !important; row-gap: 8px !important; }
+
+  #fCta {
+    padding: 0 !important; font-size: 0 !important; gap: 0 !important;
+    border-radius: 50% !important; width: 44px !important; height: 44px !important;
+    justify-content: center !important; bottom: 12px !important; right: 12px !important;
+  }
+  #fCta .fdot { width: 10px !important; height: 10px !important; margin: 0 !important; }
+}
+
+/* ═══════════════════════════════════════════
+   10. LANDSCAPE PHONE  (held sideways)
+   e.g. Z Flip landscape, iPhone landscape
+═══════════════════════════════════════════ */
+@media (max-height: 500px) and (orientation: landscape) {
+  nav       { padding: 6px 24px !important; }
+  .nl img   { height: 28px !important; }
+  nav.s .nl img { height: 24px !important; }
+
+  #hero     { min-height: 100lvh; }
+  .hero-top { padding: 64px 32px 0 !important; flex-direction: row !important; }
+  .hero-meta { padding: 16px 32px 0 !important; }
+  .hero-stats { grid-template-columns: repeat(4, 1fr) !important; }
+  .spin-wrap  { display: none !important; }
+
+  .mnav {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    padding: 60px 24px 24px !important;
+    overflow-y: auto !important;
+    align-content: center !important;
+  }
+  .mnav a { font-size: 16px !important; }
+  .pg-hero { padding: 72px 24px 36px !important; }
+}
+
+/* ═══════════════════════════════════════════
+   11. Z FLIP — HALF-FOLDED (Flex Mode)
+   When snapped at ~90° — top half is viewport
+═══════════════════════════════════════════ */
+@media (screen-fold-posture: half-folded) {
+  nav { padding: 8px 20px !important; }
+  .nl img { height: 28px !important; }
+  .hero-top { padding-top: env(fold-top, 90px) !important; }
+  .pg-hero { padding-top: max(90px, env(fold-top, 90px)) !important; }
+  .hero-badge { display: none; }
+  .spin-wrap  { display: none !important; }
+  .hero-stats { display: none !important; }
+  .hero-meta  { padding: 12px 20px 0 !important; }
+  .hero-ctas  { flex-direction: row !important; flex-wrap: wrap; }
+}
+
+@media (vertical-viewport-segments: 2) {
+  /* Z Flip top half: compact hero */
+  .hero-top { padding-top: min(80px, 12vh) !important; }
+  .spin-wrap { display: none !important; }
+  .hero-stats { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ═══════════════════════════════════════════
+   12. Z FOLD — OPEN  (tablet-width foldable)
+   Two-panel spanning when open in landscape
+═══════════════════════════════════════════ */
+@media (horizontal-viewport-segments: 2) {
+  .hero-top    { padding: 120px 36px 0 !important; }
+  .loc-grid    { grid-template-columns: 1fr 1fr !important; }
+  .con-wrap    { grid-template-columns: 1fr 1fr !important; }
+  .blog-layout { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ═══════════════════════════════════════════
+   13. REDUCED MOTION  (accessibility)
+═══════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rv { opacity: 1 !important; transform: none !important; }
+  .gal-scroll, .mq-track, .ticker { animation: none !important; }
+}
+
+/* ═══════════════════════════════════════════
+   14. DARK MODE — respect system preference
+═══════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  /* Site uses its own dark/light palette — no override needed.
+     Only fix system-UI elements: */
+  ::-webkit-scrollbar { width: 6px; background: #0E130F; }
+  ::-webkit-scrollbar-thumb { background: #92CD00; border-radius: 3px; }
+  ::selection { background: rgba(146,205,0,.3); color: #F7F9ED; }
+}
+
+/* ═══════════════════════════════════════════
+   15. HIGH CONTRAST  (accessibility)
+═══════════════════════════════════════════ */
+@media (forced-colors: active) {
+  .btn, .nav-soc, .ft-soc, .mnav-soc { border: 2px solid ButtonText; }
+  .nlinks a::after { background: Highlight; }
+}
+
+/* ═══════════════════════════════════════════
+   16. PRINT
+═══════════════════════════════════════════ */
+@media print {
+  nav, .mnav, #fCta, #waFloat, #ann, #ldr,
+  #cur, #curR, #prog, .ticker-wrap, .brg { display: none !important; }
+  body { background: #fff; color: #000; }
+  a { color: #000; text-decoration: underline; }
+  section { padding: 24px 0 !important; }
+  footer { padding: 16px 0 !important; }
+}
