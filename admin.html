@@ -107,8 +107,31 @@ a{color:var(--l)}
 .success-btn{background:rgba(146,205,0,.12);color:var(--l);border:1px solid rgba(146,205,0,.2);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:100px;cursor:pointer;transition:all .2s}
 .success-btn:hover{background:rgba(146,205,0,.22)}
 
-@media(max-width:900px){.adm-main{grid-template-columns:1fr}.adm-sidebar{display:none}.stats-bar{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}}
-@media(max-width:480px){.adm-content{padding:24px 16px}.stats-bar{grid-template-columns:1fr}}
+/* MOBILE SIDEBAR DRAWER */
+.adm-mob-menu{display:none;background:none;border:1px solid rgba(146,205,0,.25);color:var(--l);font-size:20px;width:40px;height:40px;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.adm-mob-menu:hover{background:rgba(146,205,0,.1)}
+.sidebar-close{display:none;position:absolute;top:14px;right:14px;background:none;border:1px solid rgba(232,237,212,.15);color:rgba(232,237,212,.5);font-size:18px;width:36px;height:36px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;transition:all .2s}
+.sidebar-close:hover{border-color:rgba(212,68,68,.5);color:#d44}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:490;backdrop-filter:blur(2px)}
+@media(max-width:900px){
+  .adm-mob-menu{display:flex}
+  .sidebar-close{display:flex}
+  .adm-main{grid-template-columns:1fr}
+  .adm-sidebar{
+    display:block;position:fixed;top:0;left:0;bottom:0;width:260px;z-index:500;
+    transform:translateX(-110%);transition:transform .32s cubic-bezier(.22,1,.36,1);
+    overflow-y:auto;padding-top:60px
+  }
+  .adm-sidebar.mob-open{transform:translateX(0)}
+  .sidebar-overlay.show{display:block}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .adm-content{padding:24px 16px}
+  .stats-bar{grid-template-columns:1fr}
+  .adm-sidebar{width:100%;max-width:300px}
+}
 </style>
 </head>
 <body>
@@ -126,24 +149,35 @@ a{color:var(--l)}
   </div>
 </div>
 
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
 <!-- ADMIN APP -->
 <div id="adminApp">
   <div class="adm-header">
-    <img src="Photos/GS logo horizontal.svg" alt="Green Square" class="adm-logo">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="adm-mob-menu" id="mobMenuBtn" onclick="openSidebar()" aria-label="Open menu">☰</button>
+      <a href="index.html" title="Back to website" style="display:flex;align-items:center;text-decoration:none">
+        <img src="Photos/GS logo horizontal.svg" alt="Green Square" class="adm-logo">
+      </a>
+    </div>
     <div class="adm-hright">
       <span class="adm-tag">ADMIN</span>
+      <a href="index.html" style="font-size:11px;color:rgba(232,237,212,.4);text-decoration:none;letter-spacing:.5px;display:none" id="backHome">← Website</a>
       <button class="adm-logout" onclick="logout()">Sign Out</button>
     </div>
   </div>
   <div class="adm-main">
-    <div class="adm-sidebar">
+    <div class="adm-sidebar" id="admSidebar">
+      <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close menu">✕</button>
       <ul class="sidebar-nav">
         <li><a href="#" class="ac" onclick="showPanel('dashboard',this)">📊 Dashboard</a></li>
         <li><a href="#" onclick="showPanel('events',this)">📅 Events</a></li>
         <li><a href="#" onclick="showPanel('blog',this)">📝 Blog Posts</a></li>
         <div class="sidebar-sep"></div>
         <li><a href="#" onclick="showPanel('settings',this)">⚙️ Settings</a></li>
-        <li><a href="index.html" target="_blank">🌐 View Website ↗</a></li>
+        <li><a href="index.html" style="color:rgba(146,205,0,.7)">🌐 View Website ↗</a></li>
+        <li><a href="index.html">🏠 Back to Home</a></li>
       </ul>
     </div>
     <div class="adm-content">
@@ -169,8 +203,8 @@ a{color:var(--l)}
         <div style="background:#172718;border:1px solid rgba(146,205,0,.08);border-radius:14px;padding:24px">
           <div style="font-family:var(--D);font-size:11px;font-weight:700;color:rgba(232,237,212,.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Quick Actions</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="add-btn" onclick="showPanel('events',document.querySelector('[onclick*=events]'));openEventModal()">+ New Event</button>
-            <button class="add-btn" style="background:var(--f);color:var(--c)" onclick="showPanel('blog',document.querySelector('[onclick*=blog]'));openPostModal()">+ New Post</button>
+            <button class="add-btn" onclick="showPanel('events',document.querySelector('.sidebar-nav a[onclick*=events]'));openEventModal()">+ New Event</button>
+            <button class="add-btn" style="background:var(--f);color:var(--c)" onclick="showPanel('blog',document.querySelector('.sidebar-nav a[onclick*=blog]'));openPostModal()">+ New Post</button>
           </div>
         </div>
       </div>
@@ -368,15 +402,30 @@ function changePass(){
   showToast('✓ Password updated');
 }
 
+/* ── SIDEBAR MOBILE ── */
+function openSidebar(){
+  document.getElementById('admSidebar').classList.add('mob-open');
+  document.getElementById('sidebarOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeSidebar(){
+  document.getElementById('admSidebar').classList.remove('mob-open');
+  document.getElementById('sidebarOverlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+
 /* ── PANELS ── */
 function showPanel(id,el){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('ac'));
   document.querySelectorAll('.sidebar-nav a').forEach(a=>a.classList.remove('ac'));
-  document.getElementById('panel-'+id).classList.add('ac');
-  if(el){el.classList.add('ac');}
+  const panel=document.getElementById('panel-'+id);
+  if(panel)panel.classList.add('ac');
+  if(el)el.classList.add('ac');
   if(id==='events')renderEvtTable();
   if(id==='blog')renderBlogTable();
   if(id==='dashboard')refreshDashboard();
+  /* Auto-close sidebar on mobile after selecting */
+  if(window.innerWidth<=900)closeSidebar();
 }
 
 /* ── DATA ── */

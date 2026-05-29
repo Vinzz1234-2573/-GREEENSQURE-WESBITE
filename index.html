@@ -233,12 +233,12 @@ nav.s .nl img{height:50px}
 #involve .mono{color:var(--l)}
 .inv-ttl{font-family:var(--D);font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--c);margin-bottom:14px;line-height:1.06}
 .inv-sub{font-size:15px;color:rgba(247,249,237,.45);max-width:500px;margin-bottom:64px;line-height:1.7}
-.inv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px}
-.icrd{padding:48px 36px;border-top:2px solid transparent;transition:all .35s;cursor:pointer;position:relative;overflow:hidden;background-size:cover;background-position:center}
-.icrd-dimmer{position:absolute;inset:0;background:rgba(10,40,10,.72);transition:background .35s;z-index:0}
-.icrd:hover .icrd-dimmer{background:rgba(10,40,10,.55)}
+.inv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:64px}
+.icrd{padding:44px 32px 40px;border-top:3px solid transparent;border-radius:20px;transition:all .35s;cursor:pointer;position:relative;overflow:hidden;background-size:cover;background-position:center;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end}
+.icrd-dimmer{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,25,5,.9) 0%,rgba(5,25,5,.5) 50%,rgba(5,25,5,.2) 100%);transition:background .35s;z-index:0}
+.icrd:hover .icrd-dimmer{background:linear-gradient(to top,rgba(5,25,5,.85) 0%,rgba(5,25,5,.35) 60%,rgba(5,25,5,.1) 100%)}
 .icrd-inner{position:relative;z-index:1}
-.icrd:hover{border-top-color:var(--l);transform:translateY(-3px)}
+.icrd:hover{border-top-color:var(--l);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,.4)}
 @keyframes icrdPop{0%{box-shadow:0 0 0 0 rgba(146,205,0,.6)}70%{box-shadow:0 0 0 18px rgba(146,205,0,0)}100%{box-shadow:0 0 0 0 rgba(146,205,0,0)}}
 .icrd.clicked{animation:icrdPop .6s ease-out forwards;border-top-color:var(--l)}
 .icrd-icon{font-size:44px;margin-bottom:22px;display:block}
@@ -650,8 +650,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .photo-mosaic > div:first-child{grid-column:1/3}
 
   /* Get Involved */
-  .inv-cards{grid-template-columns:1fr;gap:3px}
-  .icrd{padding:32px 20px;min-height:220px}
+  .inv-cards{grid-template-columns:1fr;gap:12px}
+  .icrd{padding:32px 20px;min-height:260px;border-radius:16px}
   .icrd-icon{font-size:36px;margin-bottom:14px}
   .icrd-title{font-size:16px}
   .inv-signup{grid-template-columns:1fr;gap:24px;padding:28px 20px}
@@ -1190,7 +1190,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   <p class="inv-sub rv d2">There are many ways to be part of Green Square — volunteer your time, bring us into your building, or become an advocate in your community.</p>
 
   <div class="inv-cards rv d2">
-    <div class="icrd" style="background-image:url('Photos/factory-sorting.jpg')" onclick="joinUs(this,'volunteer')">
+    <div class="icrd" style="background-image:url('Photos/event-team.jpg')" onclick="joinUs(this,'volunteer')">
       <div class="icrd-dimmer"></div>
       <div class="icrd-inner">
         <span class="icrd-icon">🙋</span>
@@ -1199,7 +1199,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
         <a class="icrd-link" onclick="joinUs(this.closest('.icrd'),'volunteer');event.preventDefault()">Sign Up →</a>
       </div>
     </div>
-    <div class="icrd" style="background-image:url('Photos/factory-bales.jpg')" onclick="joinUs(this,'corporate')">
+    <div class="icrd" style="background-image:url('Photos/event-visitors.jpg')" onclick="joinUs(this,'corporate')">
       <div class="icrd-dimmer"></div>
       <div class="icrd-inner">
         <span class="icrd-icon">🏢</span>
@@ -1208,7 +1208,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
         <a class="icrd-link" onclick="joinUs(this.closest('.icrd'),'corporate');event.preventDefault()">Partner With Us →</a>
       </div>
     </div>
-    <div class="icrd" style="background-image:url('Photos/factory-shoes.jpg')" onclick="joinUs(this,'ambassador')">
+    <div class="icrd" style="background-image:url('Photos/event-community.jpg')" onclick="joinUs(this,'ambassador')">
       <div class="icrd-dimmer"></div>
       <div class="icrd-inner">
         <span class="icrd-icon">📣</span>
