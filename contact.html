@@ -447,7 +447,7 @@ window.addEventListener('scroll',()=>{
 /* WHATSAPP FLOAT */
 setTimeout(()=>document.getElementById('waFloat').classList.add('show'),1200);
 
-/* CONTACT FORM — sends to hello@greensquare.com.sg via Web3Forms */
+/* CONTACT FORM */
 async function submitForm(e){
   e.preventDefault();
   const name=document.getElementById('cf-name').value.trim();
@@ -461,30 +461,27 @@ async function submitForm(e){
   if(!msg){mark('cf-msg');document.getElementById('cf-msg').focus();return}
   const btn=document.querySelector('.fsub');
   btn.textContent='Sending…';btn.disabled=true;
+  const KEY='YOUR_WEB3FORMS_KEY';
+  if(KEY==='YOUR_WEB3FORMS_KEY'){
+    /* Fallback: native email client */
+    const sub=encodeURIComponent('Website Enquiry'+(topic?' — '+topic:'')+(name?' from '+name:''));
+    const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+(phone?'\nPhone: '+phone:'')+(topic?'\nTopic: '+topic:'')+'\n\nMessage:\n'+msg);
+    window.location.href='mailto:hello@greensquare.com.sg?subject='+sub+'&body='+body;
+    btn.textContent='✓ Opening Email App…';
+    setTimeout(()=>{btn.textContent='Send Message →';btn.disabled=false;},3000);
+    return;
+  }
   try{
-    const res=await fetch('https://api.web3forms.com/submit',{
-      method:'POST',
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        access_key:'YOUR_ACCESS_KEY',
-        subject:'New Contact Form Submission — Green Square Website',
-        from_name:name,
-        email:email,
-        phone:phone||'Not provided',
-        topic:topic||'General',
-        message:msg
-      })
-    });
+      body:JSON.stringify({access_key:KEY,subject:'New Enquiry — Green Square Website',
+        from_name:name,email:email,phone:phone||'—',topic:topic||'General',message:msg})});
     const data=await res.json();
     if(data.success){
       document.getElementById('con-form-wrap').style.display='none';
       document.getElementById('con-suc').style.display='block';
-    }else{
-      btn.textContent='Failed — Please Try Again';btn.disabled=false;
-    }
-  }catch{
-    btn.textContent='Network Error — Try Again';btn.disabled=false;
-  }
+    }else{btn.textContent='Failed — Please Try Again';btn.disabled=false;}
+  }catch{btn.textContent='Network Error — Try Again';btn.disabled=false;}
 }
 </script>
 </body>
