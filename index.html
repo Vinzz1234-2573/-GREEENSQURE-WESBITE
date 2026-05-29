@@ -527,15 +527,21 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .hero-hl-glass .hero-badge,.hero-hl-glass .h1w{position:relative;z-index:1}
 .hero-depth{transform-style:preserve-3d}
 /* ── COMMUNITY GALLERY ── */
-.community-sec{background:var(--w);padding:100px 52px}
-.community-ttl{font-family:var(--D);font-size:clamp(28px,4vw,50px);font-weight:900;color:var(--f);margin-bottom:48px;line-height:1.06}
-.community-cta{text-align:center;margin-top:36px}
-/* photo-mosaic base defined in .community-sec block above */
-.pm-wide{grid-column:1/3;border-radius:16px;overflow:hidden;aspect-ratio:16/9;position:relative}
-.pm-cell{border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative}
-.pm-cell:first-of-type{aspect-ratio:4/5}
-.pm-wide img,.pm-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.pm-wide:hover img,.pm-cell:hover img{transform:scale(1.04)}
+.community-sec{background:var(--w);padding:80px 52px}
+.community-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.community-ttl{font-family:var(--D);font-size:clamp(26px,3.5vw,44px);font-weight:900;color:var(--f);line-height:1.06;margin:0}
+.community-cta{text-align:center;margin-top:28px}
+/* Bento grid */
+.photo-mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:210px 190px 190px;gap:10px}
+.pm-a{grid-column:1/3;grid-row:1}
+.pm-b{grid-column:3/4;grid-row:1/3}
+.pm-c{grid-column:1/2;grid-row:2}
+.pm-d{grid-column:2/3;grid-row:2}
+.pm-e{grid-column:1/3;grid-row:3}
+.pm-f{grid-column:3/4;grid-row:3}
+.pm-a,.pm-b,.pm-c,.pm-d,.pm-e,.pm-f{border-radius:14px;overflow:hidden;position:relative;background:#1a2e1a}
+.pm-a img,.pm-b img,.pm-c img,.pm-d img,.pm-e img,.pm-f img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.pm-a:hover img,.pm-b:hover img,.pm-c:hover img,.pm-d:hover img,.pm-e:hover img,.pm-f:hover img{transform:scale(1.06)}
 
 /* ── HERO BACKGROUND GFX ── */
 .hero-gfx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
@@ -678,14 +684,23 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .loc-cta{margin-top:28px}
 
   /* ── COMMUNITY GALLERY ── */
-  /* Community Gallery — 2-col on mobile */
-  .community-sec{padding:60px 20px}
-  .community-ttl{font-size:clamp(26px,7.5vw,38px);margin-bottom:24px}
-  .community-cta{margin-top:24px}
-  .photo-mosaic{grid-template-columns:1fr 1fr;gap:8px}
-  .pm-wide{grid-column:1/3;aspect-ratio:16/9;border-radius:12px}
-  .pm-cell{aspect-ratio:1/1;border-radius:12px}
-  .pm-cell:first-of-type{aspect-ratio:1/1}
+  /* Community Gallery — 2-col bento on mobile */
+  .community-sec{padding:56px 20px}
+  .community-hdr{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:20px}
+  .community-ttl{font-size:clamp(24px,7vw,34px)}
+  .photo-mosaic{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:180px 140px 140px 140px;
+    gap:8px;
+  }
+  /* Mobile grid placements */
+  .pm-a{grid-column:1/3;grid-row:1}
+  .pm-b{grid-column:1/2;grid-row:2}
+  .pm-c{grid-column:2/3;grid-row:2}
+  .pm-d{grid-column:1/2;grid-row:3}
+  .pm-e{grid-column:2/3;grid-row:3}
+  .pm-f{grid-column:1/3;grid-row:4}
+  .pm-a,.pm-b,.pm-c,.pm-d,.pm-e,.pm-f{border-radius:12px}
 
   /* ── GET INVOLVED ── */
   .inv-ttl{font-size:clamp(26px,7vw,40px)}
@@ -805,11 +820,13 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .gcrd-title{font-size:12px}
 
   /* Photo mosaic */
-  .community-sec{padding:52px 16px}
-  .community-ttl{font-size:clamp(22px,7vw,32px);margin-bottom:20px}
-  .photo-mosaic{grid-template-columns:1fr 1fr;gap:6px}
-  .pm-wide{border-radius:10px}
-  .pm-cell{border-radius:10px}
+  .community-sec{padding:48px 16px}
+  .community-ttl{font-size:clamp(22px,7vw,30px)}
+  .photo-mosaic{
+    grid-template-rows:160px 130px 130px 130px;
+    gap:6px;
+  }
+  .pm-a,.pm-b,.pm-c,.pm-d,.pm-e,.pm-f{border-radius:10px}
 
   /* Marquee */
   .mq-item{font-size:clamp(14px,5vw,20px);padding:0 18px}
@@ -1231,30 +1248,20 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <!-- ══════════════ COMMUNITY GALLERY ══════════════ -->
 <section class="community-sec">
-  <p class="mono rv" style="color:var(--g)">// COMMUNITY · IN ACTION</p>
-  <h2 class="community-ttl rv d1">Real people.<br>Real impact.</h2>
-  <div class="rv d2 photo-mosaic">
-    <div class="pm-wide">
-      <img src="Photos/event-team.jpg" alt="Green Square volunteers at community event" loading="lazy">
+  <div class="community-hdr rv">
+    <div>
+      <p class="mono" style="color:var(--g);margin-bottom:10px">// COMMUNITY · IN ACTION</p>
+      <h2 class="community-ttl">Real people.<br>Real impact.</h2>
     </div>
-    <div class="pm-cell">
-      <img src="Photos/event-volunteer-1.jpg" alt="Volunteer at Green Square event" loading="lazy">
-    </div>
-    <div class="pm-cell">
-      <img src="Photos/event-family.jpg" alt="Family participating in textile recycling" loading="lazy">
-    </div>
-    <div class="pm-cell">
-      <img src="Photos/event-volunteer-2.jpg" alt="Community member at Green Square" loading="lazy">
-    </div>
-    <div class="pm-cell">
-      <img src="Photos/event-community.jpg" alt="Community event at Green Square" loading="lazy">
-    </div>
-    <div class="pm-cell">
-      <img src="Photos/event-visitors.jpg" alt="Visitors at Green Square booth" loading="lazy">
-    </div>
+    <a href="events.html" class="btn btn-dark rv d1" style="flex-shrink:0">See All Events →</a>
   </div>
-  <div class="community-cta rv d3">
-    <a href="events.html" class="btn btn-dark">See All Events →</a>
+  <div class="rv d1 photo-mosaic">
+    <div class="pm-a"><img src="Photos/event-team.jpg" alt="Green Square volunteers" loading="lazy"></div>
+    <div class="pm-b"><img src="Photos/event-volunteer-1.jpg" alt="Volunteer at Green Square" loading="lazy"></div>
+    <div class="pm-c"><img src="Photos/event-family.jpg" alt="Family at event" loading="lazy"></div>
+    <div class="pm-d"><img src="Photos/event-volunteer-2.jpg" alt="Community member" loading="lazy"></div>
+    <div class="pm-e"><img src="Photos/event-community.jpg" alt="Community event" loading="lazy"></div>
+    <div class="pm-f"><img src="Photos/event-visitors.jpg" alt="Visitors at booth" loading="lazy"></div>
   </div>
 </section>
 
