@@ -446,17 +446,44 @@ window.addEventListener('scroll',()=>{
 /* WHATSAPP FLOAT */
 setTimeout(()=>document.getElementById('waFloat').classList.add('show'),1200);
 
-/* FORM SUBMIT */
-function submitForm(e){
+/* CONTACT FORM — sends to hello@greensquare.com.sg via Web3Forms */
+async function submitForm(e){
   e.preventDefault();
   const name=document.getElementById('cf-name').value.trim();
   const email=document.getElementById('cf-email').value.trim();
+  const phone=document.getElementById('cf-phone').value.trim();
+  const topic=document.getElementById('cf-topic').value;
   const msg=document.getElementById('cf-msg').value.trim();
-  if(!name){document.getElementById('cf-name').style.borderColor='#ff7a7a';document.getElementById('cf-name').focus();return}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('cf-email').style.borderColor='#ff7a7a';document.getElementById('cf-email').focus();return}
-  if(!msg){document.getElementById('cf-msg').style.borderColor='#ff7a7a';document.getElementById('cf-msg').focus();return}
-  document.getElementById('con-form-wrap').style.display='none';
-  document.getElementById('con-suc').style.display='block';
+  const mark=c=>document.getElementById(c).style.borderColor='#ff7a7a';
+  if(!name){mark('cf-name');document.getElementById('cf-name').focus();return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){mark('cf-email');document.getElementById('cf-email').focus();return}
+  if(!msg){mark('cf-msg');document.getElementById('cf-msg').focus();return}
+  const btn=document.querySelector('.fsub');
+  btn.textContent='Sending…';btn.disabled=true;
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        access_key:'YOUR_ACCESS_KEY',
+        subject:'New Contact Form Submission — Green Square Website',
+        from_name:name,
+        email:email,
+        phone:phone||'Not provided',
+        topic:topic||'General',
+        message:msg
+      })
+    });
+    const data=await res.json();
+    if(data.success){
+      document.getElementById('con-form-wrap').style.display='none';
+      document.getElementById('con-suc').style.display='block';
+    }else{
+      btn.textContent='Failed — Please Try Again';btn.disabled=false;
+    }
+  }catch{
+    btn.textContent='Network Error — Try Again';btn.disabled=false;
+  }
 }
 </script>
 </body>

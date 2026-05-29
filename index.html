@@ -1623,7 +1623,40 @@ function joinUs(card, type){
 }
 
 /* CONTACT */
-function sC(e){e.preventDefault();const btn=document.getElementById('csub');btn.textContent='✓ Sent!';btn.style.background='var(--g)';btn.style.color='var(--c)';setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.style.color='';['cn','ce','cm','ctype'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''})},3000)}
+/* CONTACT FORM — sends to hello@greensquare.com.sg via Web3Forms */
+async function sC(e){
+  e.preventDefault();
+  const btn=document.getElementById('csub');
+  const name=document.getElementById('cn').value.trim();
+  const email=document.getElementById('ce').value.trim();
+  const msg=document.getElementById('cm').value.trim();
+  if(!name||!email||!msg){
+    if(!name)document.getElementById('cn').style.borderColor='rgba(255,100,100,.6)';
+    if(!email)document.getElementById('ce').style.borderColor='rgba(255,100,100,.6)';
+    if(!msg)document.getElementById('cm').style.borderColor='rgba(255,100,100,.6)';
+    return;
+  }
+  btn.textContent='Sending…';btn.disabled=true;
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        access_key:'YOUR_ACCESS_KEY',
+        subject:'New Contact Form Submission — Green Square Website',
+        from_name:name,
+        email:email,
+        topic:document.getElementById('ctype').value,
+        message:msg
+      })
+    });
+    const data=await res.json();
+    if(data.success){
+      btn.textContent='✓ Message Sent!';btn.style.background='var(--g)';btn.style.color='var(--c)';
+      setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.style.color='';btn.disabled=false;['cn','ce','cm','ctype'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=el.tagName==='SELECT'?'':''})},4000);
+    }else{btn.textContent='Failed — Try Again';btn.disabled=false;}
+  }catch{btn.textContent='Network Error — Try Again';btn.disabled=false;}
+}
 
 /* HERO 3D TILT */
 (function(){
