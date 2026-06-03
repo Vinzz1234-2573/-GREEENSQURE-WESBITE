@@ -1250,7 +1250,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
       <div class="mapbox" role="img" aria-label="Map of drop-off locations">
         <span style="font-size:52px">🗺️</span>
         <h3>Interactive Map</h3>
-        <p>All 250+ collection points across Singapore</p>
+        <p>24 verified drop-off locations across Singapore</p>
         <a href="https://maps.google.com/maps?q=green+square+singapore+textile+recycling" target="_blank" rel="noopener noreferrer" class="btn btn-dark" style="margin-top:8px;font-size:10px">Open in Google Maps ↗</a>
       </div>
       <div class="loc-cta">
@@ -1644,16 +1644,30 @@ new Swiper('#tSwiper',{slidesPerView:1,spaceBetween:20,loop:true,autoplay:{delay
 
 /* LOCATIONS */
 const locs=[
-  {n:'Bishan MRT Station',a:'514 Bishan Road S(579826)',h:'Open 24/7',area:'bishan'},
-  {n:'Tampines Community Centre',a:'10 Tampines St 23 S(529341)',h:'Mon–Sat 9am–6pm',area:'tampines'},
-  {n:'Clementi Mall',a:'3155 Commonwealth Ave West S(129588)',h:'Open 24/7',area:'clementi'},
-  {n:'Jurong East MRT',a:'10 Jurong East St 12 S(609690)',h:'Open 24/7',area:'jurong'},
-  {n:'Woodlands Civic Centre',a:'900 South Woodlands Dr S(730900)',h:'Mon–Fri 9am–5pm',area:'woodlands'},
-  {n:'AMK Hub',a:'53 Ang Mo Kio Ave 3 S(569933)',h:'Open 24/7',area:'ang mo kio'},
-  {n:'Bedok North MRT',a:'811 New Upper Changi Rd S(467360)',h:'Open 24/7',area:'bedok'},
-  {n:'Pasir Ris Town Park',a:'1 Pasir Ris Green S(518139)',h:'Open 24/7',area:'pasir ris'},
-  {n:'Hougang Avenue 10 CC',a:'35 Hougang Ave 3 S(538839)',h:'Mon–Sat 8am–9pm',area:'hougang'},
-  {n:'Toa Payoh Hub',a:'480 Lor 6 Toa Payoh S(310480)',h:'Open 24/7',area:'toa payoh'},
+  {n:'Alexandra Hospital',a:'Main Building Lobby, beside Information Counter — 378 Alexandra Road S159964',h:'During hospital hours',area:'alexandra queenstown'},
+  {n:'Changi General Hospital',a:'CGH Main Building Level 1, behind Kopitiam — 2 Simei Street 3 S529889',h:'During hospital hours',area:'changi simei'},
+  {n:'City Square Mall',a:'Textile Bin at B4 Travellator Lobby — 180 Kitchener Rd S208539',h:'Mall opening hours',area:'kitchener farrer park little india'},
+  {n:'Downtown East',a:'E!Avenue Level 1, Lift Lobby near 7-Eleven — 1 Pasir Ris Close S519599',h:'Open daily',area:'pasir ris'},
+  {n:'Fusionopolis One',a:'B2 North near toilets, escalator (next to MRT) — 1 Fusionopolis Way Connexis S138632',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
+  {n:'Fusionopolis Two',a:'Kinesis Level 1 Carpark Lift Lobby — 4 Fusionopolis Way S138635',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
+  {n:'G2000 Plaza Singapura',a:'68 Orchard Road #01-06 S238839',h:'During store hours',area:'orchard'},
+  {n:'International Plaza',a:'Level 2 Green Corner — 10 Anson Road S079903',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd'},
+  {n:'KK Women\'s and Children\'s Hospital',a:'Women\'s Tower Level 1, near Women\'s Specialist Clinic — 100 Bukit Timah Road S229899',h:'During hospital hours',area:'novena bukit timah kkh'},
+  {n:'Metro Paragon',a:'Customer Service Counter Level 3 — 290 Orchard Road S238859',h:'During mall hours',area:'orchard'},
+  {n:'Metro Woodlands',a:'Customer Service Counter — 1 Woodlands Square #01-18/19 Causeway Point S738099',h:'During mall hours',area:'woodlands causeway point'},
+  {n:'Millenia Walk',a:'Level 2, in front of Lift Lobby — 9 Raffles Blvd S039596',h:'Open daily',area:'raffles city hall marina'},
+  {n:'National Heart Centre Singapore',a:'Level 1, beside drop-off point — 5 Hospital Drive S169609',h:'During hospital hours',area:'outram'},
+  {n:'Northpoint City',a:'Level 2 in front of Green iT! corner, South Wing — 930 Yishun Ave 2 S769098',h:'Mall opening hours',area:'yishun'},
+  {n:'Our Tampines Hub',a:'Level 1, opposite hawker centre inside central plaza — 1 Tampines Walk S528523',h:'Open daily',area:'tampines'},
+  {n:'Quayside Isle',a:'B1 near Lift Lobby, next to Electronics & Food Donation bins — 31 Ocean Way S098375',h:'Open daily',area:'sentosa harbourfront'},
+  {n:'Sengkang General Hospital',a:'Level 1 in front of Cheers and Koi, beside drop-off point — 110 Sengkang E Way S544886',h:'During hospital hours',area:'sengkang'},
+  {n:'The Centrepoint',a:'Level 3 Green Corner — 176 Orchard Road S238843',h:'Mall opening hours',area:'orchard somerset'},
+  {n:'The Green Collective @ Funan Mall',a:'Pass to shop assistant at payment counter — 107 North Bridge Road S179105',h:'During store hours',area:'city hall funan bras basah'},
+  {n:'Tiong Bahru Plaza',a:'Level 1 next to taxi stand — 302 Tiong Bahru Road S168732',h:'Mall opening hours',area:'tiong bahru'},
+  {n:'Valley Point Shopping Centre',a:'B1 near Lift Lobby — 491 River Valley Road S248371',h:'Mall opening hours',area:'river valley'},
+  {n:'Velocity @ Novena Square',a:'Carpark Level 3B, outside cargo lift — 238 Thomson Road S307683',h:'Mall opening hours',area:'novena thomson'},
+  {n:'Woodlands Health Campus',a:'B1 Near the Cascading Waterfall — 17 Woodlands Drive 17 S737628',h:'During hospital hours',area:'woodlands'},
+  {n:'Yew Tee Point',a:'Green Corner at B1 between Challenger & Kleen Wash — 21 Choa Chu Kang North 6 S689578',h:'Mall opening hours',area:'choa chu kang yew tee'},
 ];
 function rL(d){document.getElementById('llist').innerHTML=d.length?d.map((l,i)=>`<div class="lcard" onclick="sL(this)"><div class="lcard-n">${l.n}</div><div class="lcard-a">${l.a}</div><div class="lcard-h">🕐 ${l.h}</div><a href="https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
 rL(locs);
