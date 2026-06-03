@@ -14,20 +14,58 @@ html{scroll-behavior:smooth}
 body{font-family:var(--B);background:#0f1a10;color:#e8edd4;min-height:100vh}
 a{color:var(--l)}
 
-/* LOGIN */
-#loginScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:linear-gradient(135deg,#0B4C09,#0E130F)}
-.login-box{background:#172718;border:1px solid rgba(146,205,0,.15);border-radius:20px;padding:52px 44px;max-width:400px;width:100%;text-align:center}
-.login-logo{height:40px;width:auto;margin:0 auto 32px}
-.login-title{font-family:var(--D);font-size:20px;font-weight:900;color:var(--c);margin-bottom:6px}
-.login-sub{font-size:13px;color:rgba(232,237,212,.35);margin-bottom:36px}
-.login-input{width:100%;padding:14px 18px;background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .25s;margin-bottom:12px}
-.login-input:focus{border-color:var(--l);box-shadow:0 0 0 3px rgba(146,205,0,.1)}
-.login-btn{width:100%;background:var(--l);color:var(--k);font-family:var(--D);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:15px;border-radius:10px;border:none;cursor:pointer;transition:all .25s;margin-top:4px}
-.login-btn:hover{background:#a3e000;transform:translateY(-1px)}
-.login-err{font-size:12px;color:var(--err);margin-top:10px;display:none}
+/* ══════════════════════════════════════
+   ANIMATIONS & KEYFRAMES
+══════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}
+@keyframes floatOrb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+@keyframes floatOrb2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-20px) scale(1.08)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(146,205,0,.3)}50%{box-shadow:0 0 0 12px rgba(146,205,0,0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rippleAnim{to{transform:scale(1);opacity:0}}
 
-/* ADMIN LAYOUT */
+/* ══════════════════════════════════════
+   LOGIN — PARALLAX EFFECT 1
+   Mouse-move orbs + box entrance
+══════════════════════════════════════ */
+#loginScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:#0B1a0c;overflow:hidden;position:relative}
+/* Parallax orbs — 3 layers at different depths */
+.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;will-change:transform}
+.orb1{width:400px;height:400px;background:radial-gradient(circle,rgba(146,205,0,.18),transparent 70%);top:-80px;left:-100px;animation:floatOrb 8s ease-in-out infinite}
+.orb2{width:300px;height:300px;background:radial-gradient(circle,rgba(75,159,95,.2),transparent 70%);bottom:-60px;right:-60px;animation:floatOrb2 11s ease-in-out infinite}
+.orb3{width:200px;height:200px;background:radial-gradient(circle,rgba(146,205,0,.1),transparent 70%);top:40%;left:60%;animation:floatOrb 14s ease-in-out infinite 2s}
+
+.login-box{
+  background:rgba(23,39,24,.85);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(146,205,0,.18);border-radius:24px;
+  padding:52px 44px;max-width:400px;width:100%;text-align:center;
+  position:relative;z-index:1;
+  animation:scaleIn .6s cubic-bezier(.22,1,.36,1) forwards;
+  box-shadow:0 24px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(146,205,0,.08);
+  transform-style:preserve-3d;transition:transform .1s linear;
+}
+.login-logo{height:40px;width:auto;margin:0 auto 32px;animation:fadeUp .5s ease .2s both}
+.login-title{font-family:var(--D);font-size:20px;font-weight:900;color:var(--c);margin-bottom:6px;animation:fadeUp .5s ease .3s both}
+.login-sub{font-size:13px;color:rgba(232,237,212,.35);margin-bottom:36px;animation:fadeUp .5s ease .4s both}
+.login-input{width:100%;padding:14px 18px;background:rgba(247,249,237,.06);border:1px solid rgba(247,249,237,.1);border-radius:10px;font-family:var(--B);font-size:14px;color:var(--c);outline:none;transition:all .3s;margin-bottom:12px;animation:fadeUp .5s ease .5s both}
+.login-input:focus{border-color:var(--l);background:rgba(146,205,0,.06);box-shadow:0 0 0 3px rgba(146,205,0,.12)}
+.login-btn{width:100%;background:var(--l);color:var(--k);font-family:var(--D);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:15px;border-radius:10px;border:none;cursor:pointer;transition:all .25s;margin-top:4px;animation:fadeUp .5s ease .6s both;position:relative;overflow:hidden}
+.login-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);background-size:200% 100%;animation:shimmer 2.5s linear infinite;opacity:0;transition:opacity .3s}
+.login-btn:hover{background:#a3e000;transform:translateY(-2px);box-shadow:0 8px 24px rgba(146,205,0,.35)}
+.login-btn:hover::after{opacity:1}
+.login-err{font-size:12px;color:var(--err);margin-top:10px;display:none;animation:fadeUp .3s ease}
+
+/* ══════════════════════════════════════
+   ADMIN APP ENTRANCE
+══════════════════════════════════════ */
 #adminApp{display:none}
+#adminApp.visible{animation:fadeIn .4s ease forwards}
 .adm-header{background:#172718;border-bottom:1px solid rgba(146,205,0,.12);padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
 .adm-logo{height:32px;width:auto}
 .adm-hright{display:flex;align-items:center;gap:16px}
@@ -37,22 +75,77 @@ a{color:var(--l)}
 .adm-main{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px)}
 .adm-sidebar{background:#111e12;border-right:1px solid rgba(146,205,0,.08);padding:28px 16px}
 .sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:4px}
-.sidebar-nav li a,.sidebar-nav li button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;border-radius:10px;font-family:var(--B);font-size:13px;font-weight:600;color:rgba(232,237,212,.5);text-decoration:none;background:none;border:none;cursor:pointer;transition:all .2s;text-align:left}
-.sidebar-nav li a:hover,.sidebar-nav li button:hover,.sidebar-nav li a.ac{background:rgba(146,205,0,.1);color:var(--c)}
-.sidebar-nav li a.ac{color:var(--l)}
+.sidebar-nav li a,.sidebar-nav li button{
+  display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;border-radius:10px;
+  font-family:var(--B);font-size:13px;font-weight:600;color:rgba(232,237,212,.5);
+  text-decoration:none;background:none;border:none;cursor:pointer;
+  transition:all .25s cubic-bezier(.22,1,.36,1);text-align:left;
+  position:relative;overflow:hidden;
+}
+.sidebar-nav li a::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--l);border-radius:0 3px 3px 0;
+  transform:scaleY(0);transition:transform .25s cubic-bezier(.22,1,.36,1);
+}
+.sidebar-nav li a:hover,.sidebar-nav li button:hover{
+  background:rgba(146,205,0,.08);color:var(--c);transform:translateX(3px);
+}
+.sidebar-nav li a.ac{background:rgba(146,205,0,.12);color:var(--l);transform:translateX(3px)}
+.sidebar-nav li a.ac::before,.sidebar-nav li a:hover::before{transform:scaleY(1)}
 .sidebar-sep{height:1px;background:rgba(146,205,0,.08);margin:16px 0}
 .adm-content{padding:36px 40px;overflow-y:auto}
 
-/* PANELS */
-.panel{display:none}
-.panel.ac{display:block}
+/* ══════════════════════════════════════
+   PANELS — SMOOTH TRANSITIONS
+══════════════════════════════════════ */
+.panel{display:none;opacity:0}
+.panel.ac{display:block;animation:fadeUp .35s cubic-bezier(.22,1,.36,1) forwards}
 .panel-title{font-family:var(--D);font-size:22px;font-weight:900;color:var(--c);margin-bottom:6px}
 .panel-sub{font-size:13px;color:rgba(232,237,212,.38);margin-bottom:32px}
 
-/* STATS BAR */
+/* ══════════════════════════════════════
+   PARALLAX 3 — HEADER DEPTH LAYER
+   Subtle floating gradient behind header
+══════════════════════════════════════ */
+.adm-header{position:relative;overflow:hidden}
+.adm-header::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(146,205,0,.04) 0%,transparent 50%,rgba(146,205,0,.04) 100%);
+  background-size:200% 100%;animation:shimmer 6s linear infinite;
+}
+.adm-header::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(146,205,0,.3),transparent);
+  animation:shimmer 4s linear infinite;
+}
+
+/* ══════════════════════════════════════
+   PARALLAX 2 — STAT CARDS 3D TILT
+   Cards tilt on mouse hover via JS
+══════════════════════════════════════ */
 .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px}
-.stat-card{background:#172718;border:1px solid rgba(146,205,0,.1);border-radius:14px;padding:22px 20px}
-.stat-n{font-family:var(--D);font-size:32px;font-weight:900;color:var(--l);margin-bottom:4px}
+.stat-card{
+  background:linear-gradient(135deg,#1c2f1d,#172718);
+  border:1px solid rgba(146,205,0,.12);border-radius:14px;padding:22px 20px;
+  transform-style:preserve-3d;transition:transform .15s ease,box-shadow .3s ease;
+  cursor:default;position:relative;overflow:hidden;will-change:transform;
+}
+.stat-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(146,205,0,.06),transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.stat-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.4),0 0 0 1px rgba(146,205,0,.2)}
+.stat-card:hover::before{opacity:1}
+/* Shimmer on stat card */
+.stat-card::after{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(146,205,0,.06),transparent);
+  transform:skewX(-20deg);transition:left .5s ease;
+}
+.stat-card:hover::after{left:150%}
+.stat-n{font-family:var(--D);font-size:32px;font-weight:900;color:var(--l);margin-bottom:4px;transition:transform .2s}
+.stat-card:hover .stat-n{transform:translateZ(8px) scale(1.04)}
 .stat-l{font-size:11px;color:rgba(232,237,212,.38);text-transform:uppercase;letter-spacing:2px}
 
 /* TOOLBAR */
@@ -78,9 +171,11 @@ a{color:var(--l)}
 .empty-state p{font-family:var(--D);font-size:13px;font-weight:700;margin-bottom:6px}
 
 /* MODAL */
-.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(14,19,15,.85);z-index:999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
-.modal-backdrop.show{display:flex}
-.modal{background:#1a2b1b;border:1px solid rgba(146,205,0,.15);border-radius:20px;padding:40px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(14,19,15,.85);z-index:999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.modal-backdrop.show{display:flex;animation:fadeIn .25s ease forwards}
+.modal-backdrop.show .modal{animation:scaleIn .35s cubic-bezier(.22,1,.36,1) forwards}
+.modal{background:linear-gradient(135deg,#1e2f1f,#1a2b1b);border:1px solid rgba(146,205,0,.18);border-radius:20px;padding:40px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.6);position:relative}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--l),transparent);border-radius:20px 20px 0 0}
 .modal-title{font-family:var(--D);font-size:18px;font-weight:900;color:var(--c);margin-bottom:28px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .form-group{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
@@ -224,7 +319,11 @@ a{color:var(--l)}
 
 <!-- LOGIN -->
 <div id="loginScreen">
-  <div class="login-box">
+  <!-- Parallax 1: floating depth orbs -->
+  <div class="orb orb1" id="orb1"></div>
+  <div class="orb orb2" id="orb2"></div>
+  <div class="orb orb3" id="orb3"></div>
+  <div class="login-box" id="loginBox">
     <img src="Photos/GS logo horizontal.svg" alt="Green Square" class="login-logo">
     <div class="login-title">Content Manager</div>
     <div class="login-sub">Sign in to manage events and blog posts</div>
@@ -460,7 +559,9 @@ function doLogin(){
   const p=document.getElementById('loginPass').value;
   if(p===savedPass){
     document.getElementById('loginScreen').style.display='none';
-    document.getElementById('adminApp').style.display='block';
+    const app=document.getElementById('adminApp');
+    app.style.display='block';
+    requestAnimationFrame(()=>app.classList.add('visible'));
     loadAll();
     refreshDashboard();
   } else {
@@ -757,6 +858,137 @@ function showToast(msg){
 /* ── CLOSE MODALS ON BACKDROP CLICK ── */
 document.getElementById('evtModal').addEventListener('click',e=>{if(e.target.id==='evtModal')closeEvtModal()});
 document.getElementById('blogModal').addEventListener('click',e=>{if(e.target.id==='blogModal')closeBlogModal()});
+
+/* ══════════════════════════════════════════════
+   PARALLAX 1 — LOGIN: Mouse-move orb depth
+   3 orbs move at different speeds on mouse move
+══════════════════════════════════════════════ */
+(function(){
+  const screen=document.getElementById('loginScreen');
+  if(!screen)return;
+  const o1=document.getElementById('orb1');
+  const o2=document.getElementById('orb2');
+  const o3=document.getElementById('orb3');
+  const box=document.getElementById('loginBox');
+  screen.addEventListener('mousemove',function(e){
+    const cx=window.innerWidth/2, cy=window.innerHeight/2;
+    const dx=(e.clientX-cx)/cx, dy=(e.clientY-cy)/cy;
+    /* Orbs move at different parallax depths */
+    if(o1)o1.style.transform=`translate(${dx*30}px,${dy*30}px)`;
+    if(o2)o2.style.transform=`translate(${-dx*20}px,${-dy*20}px)`;
+    if(o3)o3.style.transform=`translate(${dx*50}px,${dy*40}px)`;
+    /* Login box subtle 3D tilt */
+    if(box)box.style.transform=`perspective(800px) rotateY(${dx*6}deg) rotateX(${-dy*4}deg)`;
+  });
+  screen.addEventListener('mouseleave',function(){
+    if(o1)o1.style.transform='';
+    if(o2)o2.style.transform='';
+    if(o3)o3.style.transform='';
+    if(box)box.style.transform='';
+  });
+})();
+
+/* ══════════════════════════════════════════════
+   PARALLAX 2 — STAT CARDS: 3D mouse tilt
+   Each card tilts in 3D space on hover
+══════════════════════════════════════════════ */
+function initCardTilt(){
+  document.querySelectorAll('.stat-card').forEach(card=>{
+    card.addEventListener('mousemove',function(e){
+      const r=this.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      this.style.transform=`perspective(600px) rotateY(${x*16}deg) rotateX(${-y*12}deg) translateZ(8px)`;
+      this.style.boxShadow=`${-x*20}px ${-y*12}px 40px rgba(0,0,0,.4),0 0 0 1px rgba(146,205,0,.25)`;
+    });
+    card.addEventListener('mouseleave',function(){
+      this.style.transform='';
+      this.style.boxShadow='';
+    });
+  });
+}
+initCardTilt();
+
+/* ══════════════════════════════════════════════
+   PARALLAX 3 — CONTENT AREA: Scroll parallax
+   Sidebar nav items shift slightly on scroll
+══════════════════════════════════════════════ */
+(function(){
+  const content=document.querySelector('.adm-content');
+  const sidebar=document.getElementById('admSidebar');
+  if(!content||!sidebar)return;
+  content.addEventListener('scroll',function(){
+    const s=this.scrollTop;
+    const items=sidebar.querySelectorAll('.sidebar-nav li');
+    items.forEach((item,i)=>{
+      item.style.transform=`translateX(${Math.sin((s*.005)+i*.5)*3}px)`;
+    });
+  },{passive:true});
+})();
+
+/* ══════════════════════════════════════════════
+   TABLE ROWS — Stagger entrance animation
+══════════════════════════════════════════════ */
+function animateTableRows(){
+  const rows=document.querySelectorAll('.adm-table tbody tr');
+  rows.forEach((row,i)=>{
+    row.style.opacity='0';
+    row.style.transform='translateY(10px)';
+    row.style.transition=`opacity .3s ease ${i*.04}s, transform .3s ease ${i*.04}s`;
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        row.style.opacity='1';
+        row.style.transform='none';
+      });
+    });
+  });
+}
+
+/* ══════════════════════════════════════════════
+   BUTTON RIPPLE — all action buttons
+══════════════════════════════════════════════ */
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('.add-btn,.modal-save,.login-btn,.tbl-edit,.tbl-del');
+  if(!btn)return;
+  const r=document.createElement('span');
+  const rect=btn.getBoundingClientRect();
+  const size=Math.max(rect.width,rect.height)*2;
+  r.style.cssText=`position:absolute;width:${size}px;height:${size}px;border-radius:50%;`+
+    `background:rgba(255,255,255,.2);transform:scale(0);pointer-events:none;`+
+    `left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`+
+    `animation:rippleAnim .5s linear;`;
+  btn.style.position='relative';btn.style.overflow='hidden';
+  btn.appendChild(r);
+  setTimeout(()=>r.remove(),550);
+});
+
+/* ══════════════════════════════════════════════
+   STAT COUNTER — animate numbers on dashboard load
+══════════════════════════════════════════════ */
+function animateStatNumbers(){
+  document.querySelectorAll('.stat-n').forEach(el=>{
+    const target=parseInt(el.textContent)||0;
+    if(!target||target>999)return;
+    let v=0;const d=600,s=30;
+    const ti=setInterval(()=>{
+      v=Math.min(v+Math.ceil(target/s),target);
+      el.textContent=v;
+      if(v>=target)clearInterval(ti);
+    },d/s);
+  });
+}
+
+/* Hook into panel render & showPanel for animations */
+const _origShowPanel=showPanel;
+window.showPanel=function(id,el){
+  _origShowPanel(id,el);
+  setTimeout(()=>{
+    animateTableRows();
+    if(id==='dashboard'){animateStatNumbers();initCardTilt();}
+  },60);
+};
+/* Run on initial load */
+setTimeout(()=>{animateStatNumbers();},400);
 </script>
 </body>
 </html>
