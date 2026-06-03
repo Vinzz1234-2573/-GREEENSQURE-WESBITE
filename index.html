@@ -290,10 +290,10 @@ nav.s .nl img{height:50px}
 .qat strong{color:var(--l)}
 .qrst{margin-top:14px;background:none;border:1px solid rgba(247,249,237,.25);color:rgba(247,249,237,.6);font-family:var(--B);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:100px;cursor:pointer;transition:all .2s}
 .qrst:hover{background:rgba(247,249,237,.1);color:var(--c)}
-.q-progress{display:flex;align-items:center;gap:6px;justify-content:center;margin-bottom:28px}
-.q-dot{width:8px;height:8px;border-radius:50%;background:rgba(247,249,237,.2);transition:all .3s;cursor:pointer}
-.q-dot.ac{background:var(--l);transform:scale(1.3)}
-.q-dot.done{background:rgba(146,205,0,.45)}
+.q-progress{display:flex;align-items:center;gap:7px;justify-content:center;margin-bottom:28px}
+.q-dot{width:9px;height:9px;border-radius:50%;background:rgba(247,249,237,.22);transition:all .3s;flex-shrink:0}
+.q-dot.ac{background:var(--l);transform:scale(1.35);box-shadow:0 0 8px rgba(146,205,0,.5)}
+.q-dot.done{background:rgba(146,205,0,.5)}
 
 /* ════════════════════════════════════════
    PROCESS
@@ -720,10 +720,17 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .inv-signup{grid-template-columns:1fr;gap:24px;padding:28px 22px;border-radius:16px}
 
   /* ── QUIZ ── */
-  .qq{font-size:clamp(16px,4.5vw,22px);line-height:1.5;padding:0 4px}
-  .qbtns{flex-direction:row;justify-content:center;gap:12px}
-  .qb{width:auto;flex:1;max-width:160px;padding:14px 20px;font-size:14px;border-radius:100px}
-  .qans{padding:20px;border-radius:14px}
+  /* Quiz */
+  #quiz{text-align:center}
+  .q-progress{gap:8px;margin-bottom:20px}
+  .q-dot{width:10px;height:10px}
+  .qq{font-size:clamp(17px,5vw,24px);line-height:1.45;padding:0 4px;margin-bottom:28px}
+  .qbtns{flex-direction:row;justify-content:center;gap:12px;margin-bottom:28px}
+  .qb{flex:1;max-width:150px;padding:15px 12px;font-size:13px;border-radius:100px;min-height:52px}
+  .qans{padding:22px 20px;border-radius:14px}
+  .qai{font-size:28px;margin-bottom:8px}
+  .qat{font-size:13px;line-height:1.65}
+  .qrst{margin-top:16px;padding:10px 20px;font-size:10px;min-height:40px}
   .qai{font-size:28px;margin-bottom:8px}
 
   /* ── PROCESS ── */
@@ -836,8 +843,12 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .mq-item{font-size:clamp(14px,5vw,20px);padding:0 18px}
 
   /* Quiz */
+  /* Quiz small phones */
   .qbtns{flex-direction:column;align-items:center;gap:10px}
-  .qb{width:100%;max-width:280px}
+  .qb{width:100%;max-width:300px;min-height:52px;font-size:14px;padding:14px 20px}
+  .q-progress{gap:7px}
+  .q-dot{width:9px;height:9px}
+  .qq{font-size:clamp(16px,5.2vw,22px)}
 
   /* Process photos */
   .pimg{max-height:190px}
