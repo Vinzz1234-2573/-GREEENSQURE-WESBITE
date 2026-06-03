@@ -107,30 +107,116 @@ a{color:var(--l)}
 .success-btn{background:rgba(146,205,0,.12);color:var(--l);border:1px solid rgba(146,205,0,.2);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:100px;cursor:pointer;transition:all .2s}
 .success-btn:hover{background:rgba(146,205,0,.22)}
 
-/* MOBILE SIDEBAR DRAWER */
-.adm-mob-menu{display:none;background:none;border:1px solid rgba(146,205,0,.25);color:var(--l);font-size:20px;width:40px;height:40px;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+/* ── MOBILE SIDEBAR DRAWER ── */
+.adm-mob-menu{display:none;background:none;border:1px solid rgba(146,205,0,.3);color:var(--l);font-size:22px;width:44px;height:44px;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
 .adm-mob-menu:hover{background:rgba(146,205,0,.1)}
-.sidebar-close{display:none;position:absolute;top:14px;right:14px;background:none;border:1px solid rgba(232,237,212,.15);color:rgba(232,237,212,.5);font-size:18px;width:36px;height:36px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;transition:all .2s}
+.sidebar-close{display:none;position:absolute;top:14px;right:14px;background:none;border:1px solid rgba(232,237,212,.15);color:rgba(232,237,212,.5);font-size:18px;width:40px;height:40px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;transition:all .2s}
 .sidebar-close:hover{border-color:rgba(212,68,68,.5);color:#d44}
-.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:490;backdrop-filter:blur(2px)}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:490;backdrop-filter:blur(3px)}
+
+/* ── TABLE SCROLL WRAPPER ── */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px;border:1px solid rgba(146,205,0,.1)}
+.tbl-wrap .adm-table{border:none;border-radius:0}
+
+/* ── TABLET (900px) ── */
 @media(max-width:900px){
   .adm-mob-menu{display:flex}
   .sidebar-close{display:flex}
   .adm-main{grid-template-columns:1fr}
   .adm-sidebar{
-    display:block;position:fixed;top:0;left:0;bottom:0;width:260px;z-index:500;
+    display:block;position:fixed;top:0;left:0;bottom:0;width:270px;z-index:500;
     transform:translateX(-110%);transition:transform .32s cubic-bezier(.22,1,.36,1);
-    overflow-y:auto;padding-top:60px
+    overflow-y:auto;padding-top:64px;box-shadow:4px 0 32px rgba(0,0,0,.4)
   }
   .adm-sidebar.mob-open{transform:translateX(0)}
   .sidebar-overlay.show{display:block}
   .stats-bar{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
+  .adm-content{padding:28px 24px}
+  .panel-title{font-size:20px}
+  .modal{padding:28px 24px;border-radius:16px}
 }
-@media(max-width:480px){
-  .adm-content{padding:24px 16px}
+
+/* ── PHONE (600px) ── */
+@media(max-width:600px){
+  /* Header */
+  .adm-header{padding:12px 16px}
+  .adm-logo{height:26px}
+  .adm-tag{display:none}
+  .adm-logout{padding:8px 14px;font-size:10px}
+
+  /* Content */
+  .adm-content{padding:20px 16px}
+  .panel-title{font-size:18px;margin-bottom:4px}
+  .panel-sub{font-size:12px;margin-bottom:20px}
+
+  /* Stats */
+  .stats-bar{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+  .stat-card{padding:16px 14px;border-radius:12px}
+  .stat-n{font-size:26px}
+  .stat-l{font-size:9px}
+
+  /* Quick actions */
+  #panel-dashboard>div:last-child>div{flex-direction:column;gap:8px}
+  .add-btn{width:100%;justify-content:center;padding:12px 20px;min-height:44px;border-radius:10px}
+
+  /* Toolbar */
+  .toolbar{flex-direction:column;align-items:flex-start;gap:10px}
+  .toolbar-title{font-size:13px}
+  .toolbar .add-btn{width:100%;text-align:center;min-height:44px}
+
+  /* Table → scrollable card */
+  .tbl-wrap{border-radius:12px}
+  .adm-table th:nth-child(3),.adm-table td:nth-child(3){display:none}
+  .adm-table th,.adm-table td{padding:10px 12px;font-size:12px}
+  .tbl-edit,.tbl-del{padding:7px 10px;min-height:36px;font-size:10px}
+
+  /* Sidebar */
+  .adm-sidebar{width:100%;max-width:320px;padding-top:70px}
+  .sidebar-nav li a,.sidebar-nav li button{padding:14px 18px;font-size:14px;min-height:48px}
+
+  /* Modal → near full screen */
+  .modal-backdrop{padding:0;align-items:flex-end}
+  .modal{border-radius:20px 20px 0 0;max-height:92dvh;padding:24px 20px;max-width:100%;width:100%}
+  .modal-title{font-size:16px;margin-bottom:20px}
+  .modal-actions{flex-direction:column-reverse;gap:8px}
+  .modal-save,.modal-cancel{width:100%;justify-content:center;text-align:center;padding:14px;min-height:48px;border-radius:12px}
+  .form-row{grid-template-columns:1fr}
+  .form-input,.form-select,.form-textarea{font-size:16px!important;padding:13px 14px;min-height:48px}
+
+  /* Settings */
+  .settings-group{padding:20px 16px}
+  .danger-btn,.success-btn{width:100%;padding:12px 20px;min-height:44px}
+
+  /* Toast */
+  .toast{width:calc(100% - 32px);left:16px;right:16px;transform:translateY(20px);border-radius:12px;text-align:center}
+  .toast.show{transform:translateY(0)}
+
+  /* Login */
+  .login-box{padding:36px 24px;border-radius:16px}
+  .login-logo{height:36px}
+}
+
+/* ── SMALL PHONE (390px) ── */
+@media(max-width:390px){
+  .adm-header{padding:10px 14px}
+  .adm-content{padding:16px 14px}
   .stats-bar{grid-template-columns:1fr}
-  .adm-sidebar{width:100%;max-width:300px}
+  .stat-card{padding:14px 14px}
+}
+
+/* ── DESKTOP ENHANCEMENTS (1100px+) ── */
+@media(min-width:1100px){
+  .adm-main{grid-template-columns:240px 1fr}
+  .adm-content{padding:40px 52px}
+  .stats-bar{gap:16px}
+  .stat-card{padding:24px}
+  .stat-n{font-size:36px}
+  .modal{max-width:640px;padding:48px}
+}
+@media(min-width:1440px){
+  .adm-main{grid-template-columns:260px 1fr}
+  .adm-content{padding:48px 64px}
 }
 </style>
 </head>
@@ -465,7 +551,7 @@ function renderEvtTable(){
   document.getElementById('evtCount').textContent=events.length+' event'+(events.length!==1?'s':'');
   if(!events.length){el.innerHTML='<div class="empty-state"><p>No events yet.</p><span>Click "+ Add Event" to create your first event.</span></div>';return;}
   const sorted=[...events].sort((a,b)=>new Date(a.date)-new Date(b.date));
-  el.innerHTML=`<table class="adm-table"><thead><tr>
+  el.innerHTML=`<div class="tbl-wrap"><table class="adm-table"><thead><tr>
     <th>Title</th><th>Category</th><th>Date</th><th>Location</th><th>Actions</th>
   </tr></thead><tbody>${sorted.map(e=>`<tr>
     <td style="font-weight:600;color:var(--c)">${e.emoji||''} ${e.title}</td>
@@ -476,7 +562,7 @@ function renderEvtTable(){
       <button class="tbl-edit" onclick="openEventModal(${e.id})">Edit</button>
       <button class="tbl-del" onclick="deleteEvt(${e.id})">Delete</button>
     </div></td>
-  </tr>`).join('')}</tbody></table>`;
+  </tr>`).join('')}</tbody></table></div>`;
 }
 
 /* ── EVENTS MODAL ── */
@@ -543,7 +629,7 @@ function renderBlogTable(){
   document.getElementById('postCount').textContent=posts.length+' post'+(posts.length!==1?'s':'');
   if(!posts.length){el.innerHTML='<div class="empty-state"><p>No posts yet.</p><span>Click "+ Add Post" to write your first article.</span></div>';return;}
   const sorted=[...posts].sort((a,b)=>new Date(b.date)-new Date(a.date));
-  el.innerHTML=`<table class="adm-table"><thead><tr>
+  el.innerHTML=`<div class="tbl-wrap"><table class="adm-table"><thead><tr>
     <th>Title</th><th>Category</th><th>Published</th><th>Actions</th>
   </tr></thead><tbody>${sorted.map(p=>`<tr>
     <td style="font-weight:600;color:var(--c)">${p.emoji||''} ${p.title}</td>
@@ -553,7 +639,7 @@ function renderBlogTable(){
       <button class="tbl-edit" onclick="openPostModal(${p.id})">Edit</button>
       <button class="tbl-del" onclick="deletePost(${p.id})">Delete</button>
     </div></td>
-  </tr>`).join('')}</tbody></table>`;
+  </tr>`).join('')}</tbody></table></div>`;
 }
 
 /* ── BLOG MODAL ── */
