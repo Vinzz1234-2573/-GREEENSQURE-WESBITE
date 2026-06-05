@@ -14,6 +14,8 @@ html, body {
   text-size-adjust: 100%;
 }
 img, video, iframe, embed, object { max-width: 100%; }
+/* Mobile-only pin icon inside #fCta — hidden by default, shown at ≤480px */
+.ficon { display: none; }
 
 /* ═══════════════════════════════════════════
    2. DYNAMIC VIEWPORT (svh / dvh)
@@ -192,10 +194,12 @@ html { scroll-padding-top: 80px; }
 
   #fCta {
     padding: 0 !important; font-size: 0 !important; gap: 0 !important;
-    border-radius: 50% !important; width: 44px !important; height: 44px !important;
-    justify-content: center !important; bottom: 12px !important; right: 12px !important;
+    border-radius: 50% !important; width: 48px !important; height: 48px !important;
+    justify-content: center !important; bottom: 14px !important; right: 14px !important;
   }
-  #fCta .fdot { width: 10px !important; height: 10px !important; margin: 0 !important; }
+  #fCta .fdot  { display: none !important; }
+  #fCta .ficon { display: block !important; font-size: 22px !important; line-height: 1 !important; }
+  #waFloat { bottom: 74px !important; right: 14px !important; width: 48px !important; height: 48px !important; }
 }
 
 /* ═══════════════════════════════════════════
