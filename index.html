@@ -413,6 +413,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 #fCta.show{opacity:1;transform:none;pointer-events:auto}
 #fCta:hover{background:var(--f);transform:translateY(-2px)}
 .fdot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:bdPulse 1.5s ease-in-out infinite}
+.ficon{display:none;font-size:22px;line-height:1}
 
 /* ════════════════════════════════════════
    RESPONSIVE — 1200px (large tablet / small laptop)
@@ -874,10 +875,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   footer{padding:36px 16px 80px}
   .ft-links{gap:10px;row-gap:8px}
 
-  /* Floating CTA → dot */
-  #fCta{padding:0;font-size:0;gap:0;border-radius:50%;width:44px;height:44px;justify-content:center;bottom:12px;right:12px}
-  #fCta .fdot{width:10px;height:10px;margin:0}
-  #waFloat{bottom:66px;right:12px;width:44px;height:44px}
+  /* Floating CTA → pin icon circle on mobile */
+  #fCta{padding:0;font-size:0;gap:0;border-radius:50%;width:48px;height:48px;justify-content:center;bottom:14px;right:14px}
+  #fCta .fdot{display:none}
+  #fCta .ficon{display:block}
+  #waFloat{bottom:74px;right:14px;width:48px;height:48px}
 }
 </style>
 </head>
@@ -1593,8 +1595,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 </footer>
 
 <!-- Floating CTA -->
-<a href="#locs" id="fCta" aria-label="Find a drop-off">
-  <span class="fdot"></span>Find a Drop-Off
+<a href="#locs" id="fCta" aria-label="Find a drop-off bin near you">
+  <span class="fdot"></span><span class="ficon">📍</span>Find a Drop-Off
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
