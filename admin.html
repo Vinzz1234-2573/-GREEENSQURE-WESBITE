@@ -213,6 +213,30 @@ a{color:var(--l)}
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px;border:1px solid rgba(146,205,0,.1)}
 .tbl-wrap .adm-table{border:none;border-radius:0}
 
+/* ── MOBILE BOTTOM TAB NAV (phone only ≤600px) ── */
+.mob-nav{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:250;
+  background:rgba(15,26,16,.97);border-top:1px solid rgba(146,205,0,.14);
+  padding-bottom:env(safe-area-inset-bottom,0);
+  box-shadow:0 -8px 24px rgba(0,0,0,.5);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.mob-nav-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;padding:10px 4px 8px;background:none;border:none;cursor:pointer;
+  color:rgba(232,237,212,.32);transition:color .2s,background .15s;
+  min-height:56px;width:100%;position:relative;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.mob-nav-btn:active{background:rgba(146,205,0,.07)}
+.mob-nav-btn.ac{color:var(--l)}
+.mob-nav-btn.ac::before{
+  content:'';position:absolute;top:0;left:18%;right:18%;height:2px;
+  background:var(--l);border-radius:0 0 100px 100px;
+}
+.mob-nav-icon{font-size:19px;line-height:1.2;display:block}
+.mob-nav-label{font-family:var(--B);font-size:9px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;display:block}
+
 /* ── TABLET (900px) ── */
 @media(max-width:900px){
   .adm-mob-menu{display:flex}
@@ -234,14 +258,18 @@ a{color:var(--l)}
 
 /* ── PHONE (600px) ── */
 @media(max-width:600px){
+  /* Show bottom tab nav, hide hamburger */
+  .mob-nav{display:grid;grid-template-columns:repeat(4,1fr)}
+  .adm-mob-menu{display:none!important}
+
   /* Header */
   .adm-header{padding:12px 16px}
   .adm-logo{height:26px}
   .adm-tag{display:none}
   .adm-logout{padding:8px 14px;font-size:10px}
 
-  /* Content */
-  .adm-content{padding:20px 16px}
+  /* Content — extra padding for bottom tab bar */
+  .adm-content{padding:20px 16px calc(66px + env(safe-area-inset-bottom,8px))}
   .panel-title{font-size:18px;margin-bottom:4px}
   .panel-sub{font-size:12px;margin-bottom:20px}
 
@@ -260,17 +288,51 @@ a{color:var(--l)}
   .toolbar-title{font-size:13px}
   .toolbar .add-btn{width:100%;text-align:center;min-height:44px}
 
-  /* Table → scrollable card */
-  .tbl-wrap{border-radius:12px}
-  .adm-table th:nth-child(3),.adm-table td:nth-child(3){display:none}
-  .adm-table th,.adm-table td{padding:10px 12px;font-size:12px}
-  .tbl-edit,.tbl-del{padding:7px 10px;min-height:36px;font-size:10px}
+  /* ── TABLE → CARD LAYOUT (no horizontal scroll on phone) ── */
+  .tbl-wrap{border:none;border-radius:0;background:transparent;overflow-x:visible}
+  .adm-table{display:block;border:none;border-radius:0;background:transparent}
+  .adm-table thead{display:none!important}
+  .adm-table tbody{display:flex;flex-direction:column;gap:10px}
+  .adm-table tr{
+    display:block;
+    background:linear-gradient(135deg,#172718,#1a2b1a);
+    border:1px solid rgba(146,205,0,.12);border-radius:14px;padding:16px 14px;
+  }
+  .adm-table td{display:block;padding:0;border:none;font-size:13px}
+  .adm-table tr:hover td{background:transparent}
+  /* Title */
+  .adm-table td:first-child{
+    font-weight:700;color:var(--c);font-size:14px;line-height:1.35;
+    padding-bottom:10px;margin-bottom:8px;
+    border-bottom:1px solid rgba(146,205,0,.08);
+    white-space:normal;overflow:visible;max-width:100%;
+  }
+  /* Category badge + date — inline row */
+  .adm-table td:nth-child(2),.adm-table td:nth-child(3){
+    display:inline-block;vertical-align:middle;margin-bottom:6px;
+  }
+  .adm-table td:nth-child(2){margin-right:8px}
+  /* Un-hide date column (was hidden in old rule) */
+  .adm-table th:nth-child(3),.adm-table td:nth-child(3){
+    display:inline-block;font-size:12px;color:rgba(232,237,212,.5);
+  }
+  /* Location — events only (4th td that is NOT the last child) */
+  .adm-table td:nth-child(4):not(:last-child){
+    display:block;font-size:11px;color:rgba(232,237,212,.38);
+    padding:4px 0 8px;white-space:normal;overflow:visible;
+  }
+  /* Actions row — always last td */
+  .adm-table td:last-child{
+    display:flex;gap:8px;padding-top:10px;margin-top:4px;
+    border-top:1px solid rgba(146,205,0,.08);
+  }
+  .tbl-edit,.tbl-del{flex:1;text-align:center;padding:10px;min-height:40px;font-size:11px}
 
-  /* Sidebar */
+  /* Sidebar — still works if opened manually on phone */
   .adm-sidebar{width:100%;max-width:320px;padding-top:70px}
   .sidebar-nav li a,.sidebar-nav li button{padding:14px 18px;font-size:14px;min-height:48px}
 
-  /* Modal → near full screen */
+  /* Modal → bottom sheet */
   .modal-backdrop{padding:0;align-items:flex-end}
   .modal{border-radius:20px 20px 0 0;max-height:92dvh;padding:24px 20px;max-width:100%;width:100%}
   .modal-title{font-size:16px;margin-bottom:20px}
@@ -282,9 +344,14 @@ a{color:var(--l)}
   /* Settings */
   .settings-group{padding:20px 16px}
   .danger-btn,.success-btn{width:100%;padding:12px 20px;min-height:44px}
+  #panel-settings .settings-group>div[style*=grid]{grid-template-columns:1fr!important;max-width:100%!important}
 
-  /* Toast */
-  .toast{width:calc(100% - 32px);left:16px;right:16px;transform:translateY(20px);border-radius:12px;text-align:center}
+  /* Toast — floats above tab bar */
+  .toast{
+    width:calc(100% - 32px);left:16px;right:16px;
+    bottom:calc(68px + env(safe-area-inset-bottom,0));
+    transform:translateY(20px);border-radius:12px;text-align:center;
+  }
   .toast.show{transform:translateY(0)}
 
   /* Login */
@@ -295,9 +362,19 @@ a{color:var(--l)}
 /* ── SMALL PHONE (390px) ── */
 @media(max-width:390px){
   .adm-header{padding:10px 14px}
-  .adm-content{padding:16px 14px}
+  .adm-content{padding:16px 12px calc(62px + env(safe-area-inset-bottom,8px))}
   .stats-bar{grid-template-columns:1fr}
   .stat-card{padding:14px 14px}
+  .mob-nav-icon{font-size:17px}
+  .mob-nav-label{font-size:8px}
+}
+
+/* ── VERY SMALL (320px, iPhone SE) ── */
+@media(max-width:320px){
+  .adm-content{padding:14px 10px calc(60px + env(safe-area-inset-bottom,8px))}
+  .mob-nav-icon{font-size:15px}
+  .mob-nav-label{display:none}
+  .mob-nav-btn{min-height:48px}
 }
 
 /* ── DESKTOP ENHANCEMENTS (1100px+) ── */
@@ -446,6 +523,25 @@ a{color:var(--l)}
 
     </div>
   </div>
+  <!-- MOBILE BOTTOM TAB NAV (phone only) -->
+  <nav class="mob-nav" id="mobNav">
+    <button class="mob-nav-btn ac" id="mobt-dashboard" onclick="showPanel('dashboard',null)">
+      <span class="mob-nav-icon">📊</span>
+      <span class="mob-nav-label">Dashboard</span>
+    </button>
+    <button class="mob-nav-btn" id="mobt-events" onclick="showPanel('events',null)">
+      <span class="mob-nav-icon">📅</span>
+      <span class="mob-nav-label">Events</span>
+    </button>
+    <button class="mob-nav-btn" id="mobt-blog" onclick="showPanel('blog',null)">
+      <span class="mob-nav-icon">📝</span>
+      <span class="mob-nav-label">Blog</span>
+    </button>
+    <button class="mob-nav-btn" id="mobt-settings" onclick="showPanel('settings',null)">
+      <span class="mob-nav-icon">⚙️</span>
+      <span class="mob-nav-label">Settings</span>
+    </button>
+  </nav>
 </div>
 
 <!-- EVENT MODAL -->
@@ -982,6 +1078,10 @@ function animateStatNumbers(){
 const _origShowPanel=showPanel;
 window.showPanel=function(id,el){
   _origShowPanel(id,el);
+  /* Sync bottom tab nav active state */
+  document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.remove('ac'));
+  const mobt=document.getElementById('mobt-'+id);
+  if(mobt)mobt.classList.add('ac');
   setTimeout(()=>{
     animateTableRows();
     if(id==='dashboard'){animateStatNumbers();initCardTilt();}
