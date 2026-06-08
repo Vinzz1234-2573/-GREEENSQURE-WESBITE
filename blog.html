@@ -285,7 +285,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <footer>
   <div class="ft-top">
-    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
+    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore" loading="lazy"></div></a>
     <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
   </div>
   <div class="ft-socs">
@@ -366,7 +366,7 @@ function renderFeatured(post){
   const el=document.getElementById('featuredPost');
   if(!post){el.innerHTML='';return;}
   el.innerHTML=`<div class="blog-feat-card">
-    <div class="blog-feat-img" style="${post.image?'overflow:hidden':bgForPost(post)}">${post.image?`<img src="${post.image}" alt="${post.title}" style="width:100%;height:100%;object-fit:cover;display:block">`:`<span>${post.emoji}</span>`}</div>
+    <div class="blog-feat-img" style="${post.image?'overflow:hidden':bgForPost(post)}">${post.image?`<img src="${post.image}" alt="${post.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:`<span>${post.emoji}</span>`}</div>
     <div class="blog-feat-body">
       <div class="blog-label">${catLabel(post.category)}</div>
       <h2 class="blog-feat-title">${post.title}</h2>
@@ -381,7 +381,7 @@ function renderGrid(posts){
   const grid=document.getElementById('blogGrid');
   if(!posts.length){grid.innerHTML='<p style="color:rgba(14,19,15,.35);font-size:13px;grid-column:1/-1;text-align:center;padding:40px 0">No posts found in this category.</p>';return;}
   grid.innerHTML=posts.map(p=>`<div class="blog-card">
-    <div class="blog-card-img" style="${p.image?'overflow:hidden':bgForPost(p)}">${p.image?`<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;display:block">`:`<span>${p.emoji}</span>`}<div class="ov"></div></div>
+    <div class="blog-card-img" style="${p.image?'overflow:hidden':bgForPost(p)}">${p.image?`<img src="${p.image}" alt="${p.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:`<span>${p.emoji}</span>`}<div class="ov"></div></div>
     <div class="blog-card-body">
       <div class="blog-card-cat">${catLabel(p.category)}</div>
       <div class="blog-card-title">${p.title}</div>
@@ -419,7 +419,7 @@ function openPost(id,e){
   const modal=document.createElement('div');
   modal.style.cssText='position:fixed;inset:0;background:rgba(14,19,15,.85);z-index:9990;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)';
   modal.innerHTML=`<div style="background:var(--w);border-radius:20px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;padding:0">
-    <div style="${p.image?'overflow:hidden':bgForPost(p)};height:240px;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:center;font-size:72px">${p.image?`<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;display:block">`:`<span>${p.emoji}</span>`}</div>
+    <div style="${p.image?'overflow:hidden':bgForPost(p)};height:240px;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:center;font-size:72px">${p.image?`<img src="${p.image}" alt="${p.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:`<span>${p.emoji}</span>`}</div>
     <div style="padding:40px">
       <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:10px">${catLabel(p.category)} · ${fmtDate(p.date)}</div>
       <h2 style="font-family:var(--D);font-size:clamp(18px,2.5vw,28px);font-weight:900;color:var(--f);margin-bottom:20px;line-height:1.2">${p.title}</h2>

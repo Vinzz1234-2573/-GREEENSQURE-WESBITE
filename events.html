@@ -277,7 +277,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <footer>
   <div class="ft-top">
-    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
+    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore" loading="lazy"></div></a>
     <p class="ft-tag">REUSE. REPURPOSE. REPAIR.</p>
   </div>
   <div class="ft-socs">
@@ -366,7 +366,7 @@ function renderGrid(){
   grid.innerHTML=slice.map(e=>{
     const isPast=new Date(e.date+'T00:00:00')<now;
     return`<div class="ev-card">
-      <div class="ev-img" style="overflow:hidden;background:var(--f)">${e.img?`<img src="${e.img}" alt="${e.title}" style="width:100%;height:100%;object-fit:cover;display:block">`:`<div style="font-size:52px;display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--f),var(--g))">${e.emoji||'📦'}</div>`}<div class="ev-img-overlay"></div></div>
+      <div class="ev-img" style="overflow:hidden;background:var(--f)">${e.img?`<img src="${e.img}" alt="${e.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:`<div style="font-size:52px;display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--f),var(--g))">${e.emoji||'📦'}</div>`}<div class="ev-img-overlay"></div></div>
       <div class="ev-body">
         <div class="ev-cat cat-${e.category}">${catLabel(e.category)}</div>
         <div class="ev-title">${e.title}</div>
