@@ -16,16 +16,6 @@ html{scroll-behavior:smooth}
 body{font-family:var(--B);background:var(--c);color:var(--k);overflow-x:hidden}
 html{background:var(--k)}
 img{display:block;max-width:100%}
-#cur,#curR{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-#cur{width:8px;height:8px;background:var(--l);transition:width .15s,height .15s}
-#curR{width:32px;height:32px;border:1.5px solid rgba(146,205,0,.45);transition:all .2s ease}
-body:has(a:hover) #cur,body:has(button:hover) #cur{width:14px;height:14px}
-body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;border-color:var(--l)}
-@media(max-width:768px){#cur,#curR{display:none}body{cursor:auto}}
-#ann{background:var(--f);color:var(--c);text-align:center;padding:9px 52px;font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:.5px;position:relative;z-index:300}
-#ann a{color:var(--l);text-decoration:none;font-weight:700}
-#ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;opacity:.6}
-#ann-x:hover{opacity:1}
 #ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
 .ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
 .ldr-logo img{height:52px;width:auto}
@@ -160,7 +150,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   nav.s .nl img{height:28px}
   .nlinks{display:none}
   .brg{display:flex}
-  #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.5}
   .pg-hero{padding:100px 20px 52px}
   .pg-ttl{font-size:clamp(28px,8vw,44px)}
   .pg-sub{font-size:14px}
@@ -191,14 +180,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <body>
 
 <div id="prog" aria-hidden="true"></div>
-<div id="cur" aria-hidden="true"></div>
-<div id="curR" aria-hidden="true"></div>
 
-<!-- ANNOUNCE -->
-<div id="ann">
-  🌿 &nbsp;50 new drop-off points open in Jurong &amp; Woodlands — &nbsp;<a href="index.html#locs">Find your nearest bin →</a>
-  <button id="ann-x" aria-label="Close">✕</button>
-</div>
 
 <!-- LOADER -->
 <div id="ldr">
@@ -409,14 +391,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 </a>
 
 <script>
-/* CURSOR */
-const c1=document.getElementById('cur'),c2=document.getElementById('curR');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
-
 /* ANNOUNCE */
-document.getElementById('ann-x').addEventListener('click',()=>document.getElementById('ann').style.display='none');
 
 /* LOADER */
 window.addEventListener('load',()=>{
