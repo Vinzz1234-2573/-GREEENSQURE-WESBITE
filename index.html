@@ -24,19 +24,7 @@ html{background:var(--k)}
 html{background:var(--k)}
 img{display:block;max-width:100%}
 
-/* ── CUSTOM CURSOR ── */
-#cur,#curR{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-#cur{width:8px;height:8px;background:var(--l);transition:width .15s,height .15s}
-#curR{width:32px;height:32px;border:1.5px solid rgba(146,205,0,.45);transition:all .2s ease}
-body:has(a:hover) #cur,body:has(button:hover) #cur{width:14px;height:14px}
-body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;border-color:var(--l)}
-@media(max-width:768px){#cur,#curR{display:none}body{cursor:auto}}
 
-/* ── ANNOUNCE BAR ── */
-#ann{background:var(--f);color:var(--c);text-align:center;padding:9px 52px;font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:.5px;position:relative;z-index:300}
-#ann a{color:var(--l);text-decoration:none;font-weight:700}
-#ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;line-height:1;opacity:.6}
-#ann-x:hover{opacity:1}
 
 /* ── LOADER ── */
 #ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
@@ -886,14 +874,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 <body>
 
 <div id="prog" aria-hidden="true"></div>
-<div id="cur" aria-hidden="true"></div>
-<div id="curR" aria-hidden="true"></div>
-
-<!-- ANNOUNCE -->
-<div id="ann">
-  🌿 &nbsp;50 new drop-off points open in Jurong &amp; Woodlands — &nbsp;<a href="#locs">Find your nearest bin →</a>
-  <button id="ann-x" aria-label="Close">✕</button>
-</div>
 
 <!-- LOADER -->
 <div id="ldr" aria-hidden="true">
@@ -1497,14 +1477,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script>
-/* CURSOR */
-const c1=document.getElementById('cur'),c2=document.getElementById('curR');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
-
-/* ANNOUNCE */
-document.getElementById('ann-x').addEventListener('click',()=>document.getElementById('ann').style.display='none');
 
 /* LOADER */
 window.addEventListener('load',()=>{
