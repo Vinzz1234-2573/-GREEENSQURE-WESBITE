@@ -70,7 +70,7 @@ html { scroll-padding-top: 80px; }
 ═══════════════════════════════════════════ */
 @media (max-width: 260px) {
   nav { padding: 6px 10px !important; }
-  .nl img { height: 22px !important; }
+  .nl img { height: 26px !important; }
   .nlinks { display: none !important; }
   .brg { display: flex !important; }
   section, #impact, #services, #locs,
@@ -97,8 +97,8 @@ html { scroll-padding-top: 80px; }
 ═══════════════════════════════════════════ */
 @media (max-width: 320px) {
   nav { padding: 8px 14px !important; }
-  .nl img { height: 26px !important; }
-  nav.s .nl img { height: 22px !important; }
+  .nl img { height: 30px !important; }
+  nav.s .nl img { height: 24px !important; }
   section, #impact, #services, #locs,
   #involve, #contact, #accept, #proc {
     padding: 44px 14px !important;
@@ -169,6 +169,11 @@ html { scroll-padding-top: 80px; }
   #fCta   { bottom: 14px; right: 14px; font-size: 9px; padding: 10px 16px; }
   #waFloat { right: 14px; }
 
+  /* Logo sizes */
+  .nl img { height: 44px !important; }
+  nav.s .nl img { height: 36px !important; }
+  .ft-logo img { height: 44px !important; }
+
   /* Tables — make readable */
   .adm-table { font-size: 12px; }
   .adm-table th, .adm-table td { padding: 10px 10px; }
@@ -189,6 +194,10 @@ html { scroll-padding-top: 80px; }
   .frow         { grid-template-columns: 1fr !important; }
   .form-row     { grid-template-columns: 1fr !important; }
 
+  .nl img { height: 36px !important; }
+  nav.s .nl img { height: 28px !important; }
+  .ft-logo img { height: 36px !important; }
+
   footer { padding: 36px 16px 72px !important; }
   .ft-links { gap: 10px !important; row-gap: 8px !important; }
 
@@ -208,8 +217,8 @@ html { scroll-padding-top: 80px; }
 ═══════════════════════════════════════════ */
 @media (max-height: 500px) and (orientation: landscape) {
   nav       { padding: 6px 24px !important; }
-  .nl img   { height: 28px !important; }
-  nav.s .nl img { height: 24px !important; }
+  .nl img   { height: 34px !important; }
+  nav.s .nl img { height: 28px !important; }
 
   #hero     { min-height: 100lvh; }
   .hero-top { padding: 64px 32px 0 !important; flex-direction: row !important; }
@@ -235,7 +244,7 @@ html { scroll-padding-top: 80px; }
 ═══════════════════════════════════════════ */
 @media (screen-fold-posture: half-folded) {
   nav { padding: 8px 20px !important; }
-  .nl img { height: 28px !important; }
+  .nl img { height: 34px !important; }
   .hero-top { padding-top: env(fold-top, 90px) !important; }
   .pg-hero { padding-top: max(90px, env(fold-top, 90px)) !important; }
   .hero-badge { display: none; }
@@ -324,8 +333,8 @@ html { scroll-padding-top: 80px; }
 @media (min-width: 769px) and (max-width: 900px) {
   nav  { padding: 14px 32px; }
   nav.s{ padding: 10px 32px; }
-  .nl img { height: 48px; }
-  nav.s .nl img { height: 38px; }
+  .nl img { height: 54px; }
+  nav.s .nl img { height: 44px; }
   .nlinks { gap: 14px; }
   .nlinks a { font-size: 11px; letter-spacing: 1px; }
 
@@ -365,7 +374,7 @@ html { scroll-padding-top: 80px; }
 
   footer { padding: 48px 32px 24px; }
   .ft-top { margin-bottom: 20px; }
-  .ft-logo img { height: 32px; }
+  .ft-logo img { height: 44px; }
   .adm-main { grid-template-columns: 200px 1fr; }
 }
 
@@ -376,8 +385,8 @@ html { scroll-padding-top: 80px; }
 @media (min-width: 901px) and (max-width: 1024px) {
   nav  { padding: 16px 36px; }
   nav.s{ padding: 12px 36px; }
-  .nl img { height: 52px; }
-  nav.s .nl img { height: 42px; }
+  .nl img { height: 60px; }
+  nav.s .nl img { height: 50px; }
   .nlinks { gap: 16px; }
   .nlinks a { font-size: 11px; letter-spacing: 1px; }
 
@@ -409,7 +418,7 @@ html { scroll-padding-top: 80px; }
 
   .gal-hdr { padding: 0 36px; }
   footer { padding: 48px 36px 24px; }
-  .ft-logo img { height: 34px; }
+  .ft-logo img { height: 48px; }
   .adm-main { grid-template-columns: 210px 1fr; }
 }
 
@@ -420,8 +429,8 @@ html { scroll-padding-top: 80px; }
 @media (min-width: 1025px) and (max-width: 1280px) {
   nav  { padding: 16px 44px; }
   nav.s{ padding: 12px 44px; }
-  .nl img { height: 58px; }
-  nav.s .nl img { height: 46px; }
+  .nl img { height: 68px; }
+  nav.s .nl img { height: 56px; }
   .nlinks { gap: 18px; }
 
   section,
@@ -453,8 +462,8 @@ html { scroll-padding-top: 80px; }
 @media (min-width: 1281px) and (max-width: 1600px) {
   nav  { padding: 16px 64px; }
   nav.s{ padding: 12px 64px; }
-  .nl img { height: 64px; }
-  nav.s .nl img { height: 50px; }
+  .nl img { height: 78px; }
+  nav.s .nl img { height: 64px; }
   .nlinks { gap: 22px; }
 
   section,
@@ -480,8 +489,8 @@ html { scroll-padding-top: 80px; }
 @media (min-width: 1601px) {
   nav  { padding: 18px 80px; }
   nav.s{ padding: 14px 80px; }
-  .nl img { height: 68px; }
-  nav.s .nl img { height: 54px; }
+  .nl img { height: 78px; }
+  nav.s .nl img { height: 64px; }
   .nlinks { gap: 26px; }
   .nlinks a { font-size: 13px; }
 
@@ -505,7 +514,7 @@ html { scroll-padding-top: 80px; }
   footer         { padding: 64px 80px 28px; }
   .gal-hdr       { padding: 0 80px; }
   .gal-scroll    { padding: 0 80px; }
-  .ft-logo img   { height: 48px; }
+  .ft-logo img   { height: 72px; }
 
   /* Larger headline on big screens */
   .line-reuse    { font-size: clamp(140px, 13vw, 200px); }
