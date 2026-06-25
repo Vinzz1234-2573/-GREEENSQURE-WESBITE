@@ -36,8 +36,8 @@ body:has(a:hover) #curR{width:48px;height:48px;border-color:var(--l)}
 @keyframes lFade{to{opacity:1}}
 #ldr.out{animation:lOut .4s ease forwards}
 @keyframes lOut{to{opacity:0;pointer-events:none}}
-nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:16px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
-nav.s{padding:12px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:5px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+nav.s{padding:3px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
 .nl img{height:78px;width:auto;transition:height .3s}
 nav.s .nl img{height:64px}
 .nlinks{display:flex;gap:20px;list-style:none;align-items:center}
@@ -138,13 +138,13 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .nl-ok.show{display:block}
 
 @media(max-width:1024px){
-  nav{padding:20px 36px}nav.s{padding:14px 36px}
+  nav{padding:5px 36px}nav.s{padding:3px 36px}
   #articles{padding:64px 36px}
   #press-mentions{padding:64px 36px}
   .nl-strip{padding:56px 36px;grid-template-columns:1fr;gap:32px}
   .press-grid{grid-template-columns:repeat(3,1fr)}
   .blog-grid{grid-template-columns:1fr 1fr}
-  .filters{padding:20px 36px}
+  .filters{padding:5px 36px}
   footer{padding:48px 36px 20px}
 }
 @media(max-width:768px){
