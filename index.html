@@ -195,29 +195,6 @@ nav.s .nl img{height:64px}
 .step p{font-size:12px;color:rgba(14,19,15,.55);line-height:1.65}
 
 /* ════════════════════════════════════════
-   LOCATIONS
-════════════════════════════════════════ */
-#locs{background:var(--w);padding:100px 52px}
-#locs .mono{color:var(--g)}
-.loc-ttl{font-family:var(--D);font-size:clamp(28px,4vw,50px);font-weight:900;color:var(--f);margin-bottom:48px;line-height:1.06}
-.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.search{width:100%;padding:14px 20px;border:1.5px solid rgba(11,76,9,.14);border-radius:100px;font-family:var(--B);font-size:14px;outline:none;transition:all .3s;background:var(--c);color:var(--k);margin-bottom:16px}
-.search:focus{border-color:var(--l);box-shadow:0 0 0 4px rgba(146,205,0,.12)}
-.llist{max-height:460px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}
-.llist::-webkit-scrollbar{width:3px}.llist::-webkit-scrollbar-thumb{background:var(--l);border-radius:2px}
-.lcard{background:var(--c);border:1.5px solid transparent;border-radius:12px;padding:18px 20px;cursor:pointer;transition:all .25s}
-.lcard:hover,.lcard.ac{border-color:var(--l);background:var(--w);transform:translateX(4px)}
-.lcard-n{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f);margin-bottom:4px}
-.lcard-a{font-size:11px;color:rgba(14,19,15,.5);margin-bottom:5px}
-.lcard-h{font-size:11px;color:rgba(14,19,15,.38);margin-bottom:7px}
-.lcard-d{font-size:10px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase}
-.mapbox{border-radius:16px;overflow:hidden;border:1.5px solid rgba(11,76,9,.1);width:100%;height:460px;background:linear-gradient(135deg,rgba(11,76,9,.04),rgba(146,205,0,.07));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
-.mapbox h3{font-family:var(--D);font-size:16px;font-weight:700;color:var(--f)}
-.mapbox p{font-size:12px;color:rgba(11,76,9,.4);max-width:180px}
-.loc-cta{margin-top:40px;text-align:center}
-.loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
-
-/* ════════════════════════════════════════
    GET INVOLVED
 ════════════════════════════════════════ */
 #involve{background:var(--f);padding:100px 52px}
@@ -420,7 +397,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 @media(max-width:1024px){
   nav{padding:5px 36px}
   nav.s{padding:3px 36px}
-  section,#impact,#services,#how,#locs,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:80px 36px}
+  section,#impact,#services,#how,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:80px 36px}
   .hero-top{padding:130px 36px 0;align-items:flex-end;gap:0}
   .spin-wrap{width:120px;height:120px;margin-left:24px}
   .line-reuse    {font-size:clamp(56px,10vw,120px)}
@@ -440,8 +417,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   .steps::before{display:none}
   #press{padding:64px 36px}
   .press-grid{grid-template-columns:repeat(3,1fr)}
-  .loc-grid{grid-template-columns:1fr}
-  .mapbox{height:320px}
   .proc-grid{grid-template-columns:1fr 1fr;gap:2px}
   .con-grid{grid-template-columns:1fr;gap:44px}
   .blog-layout{grid-template-columns:1fr}
@@ -603,7 +578,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   #ann{padding:8px 40px 8px 16px;font-size:10px;text-align:left;line-height:1.5}
 
   /* ── SECTIONS ── */
-  section,#impact,#services,#how,#locs,#involve,
+  section,#impact,#services,#how,#involve,
   #quiz,#proc,#testi,#blog,#contact,#accept{padding:60px 20px}
   #gallery{padding:52px 0}
 
@@ -675,13 +650,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   .steps::before{display:none}
   .step h3{font-size:11px}
   .step p{font-size:11px}
-
-  /* ── LOCATIONS ── */
-  .loc-grid{grid-template-columns:1fr;gap:20px}
-  .mapbox{height:240px;border-radius:14px}
-  .llist{max-height:260px;-webkit-overflow-scrolling:touch}
-  .lcard{padding:16px 18px}
-  .loc-cta{margin-top:28px}
 
   /* ── COMMUNITY GALLERY ── */
   /* Community Gallery — 2-col bento on mobile */
@@ -790,7 +758,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
    RESPONSIVE — 480px (small phones)
 ════════════════════════════════════════ */
 @media(max-width:480px){
-  section,#impact,#services,#how,#locs,#involve,
+  section,#impact,#services,#how,#involve,
   #quiz,#proc,#testi,#blog,#contact,#accept{padding:52px 16px}
   #gallery{padding:44px 0}
 
@@ -890,7 +858,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   <a href="#hero" onclick="cm()">Home</a>
   <a href="about.html">About</a>
   <a href="what-to-do.html">What To Do</a>
-  <a href="#locs" onclick="cm()">Drop Off</a>
+  <a href="drop-off.html" onclick="cm()">Drop Off</a>
   <a href="events.html">Events</a>
   <a href="blog.html">Blog</a>
   <a href="contact.html" onclick="cm()">Contact</a>
@@ -908,7 +876,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   <ul class="nlinks">
     <li><a href="about.html">About</a></li>
     <li><a href="what-to-do.html">What To Do</a></li>
-    <li><a href="#locs">Drop Off</a></li>
+    <li><a href="drop-off.html">Drop Off</a></li>
     <li><a href="events.html">Events</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -966,7 +934,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   <div class="hero-meta">
     <p class="hero-sub">We collect textiles across Singapore so they don't end up in Semakau. 250+ drop-off points. Home collection. Zero excuses.</p>
     <div class="hero-ctas">
-      <a href="#locs" class="btn btn-dark">Find a Drop-Off →</a>
+      <a href="drop-off.html" class="btn btn-dark">Find a Drop-Off →</a>
       <a href="#involve" class="btn btn-out">Get Involved</a>
     </div>
   </div>
@@ -1155,7 +1123,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
     <div>
       <div style="font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7a6000;margin-bottom:4px">Service Update</div>
       <p style="font-family:var(--B);font-size:13px;font-weight:600;color:#3d2f00;margin-bottom:3px">Doorstep collection has been discontinued.</p>
-      <p style="font-family:var(--B);font-size:12px;color:#6b5200;line-height:1.6">Please use one of our <strong>250+ drop-off bins</strong> across Singapore — free, no booking needed, most open 24/7. <a href="#locs" style="color:#7a6000;font-weight:700;text-decoration:none;border-bottom:1px solid #e8c800">Find a bin near you →</a></p>
+      <p style="font-family:var(--B);font-size:12px;color:#6b5200;line-height:1.6">Please use one of our <strong>250+ drop-off bins</strong> across Singapore — free, no booking needed, most open 24/7. <a href="drop-off.html" style="color:#7a6000;font-weight:700;text-decoration:none;border-bottom:1px solid #e8c800">Find a bin near you →</a></p>
     </div>
   </div>
 
@@ -1180,30 +1148,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
       <div class="sc-title">Events @ Condominiums</div>
       <p class="sc-desc">Collection events for your condo residents — we handle all logistics end-to-end.</p>
       <a href="condos.html" class="sc-link">Learn More →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ LOCATIONS ══════════════ -->
-<section id="locs">
-  <p class="mono rv">// 05 · DROP-OFF</p>
-  <h2 class="loc-ttl rv d1">Find a bin<br>near you.</h2>
-  <div class="loc-grid">
-    <div>
-      <input type="text" id="lsrch" class="search" placeholder="🔍  Search by area, MRT, or postal code…" aria-label="Search locations">
-      <div class="llist" id="llist"></div>
-    </div>
-    <div>
-      <div class="mapbox" role="img" aria-label="Map of drop-off locations">
-        <span style="font-size:52px">🗺️</span>
-        <h3>Interactive Map</h3>
-        <p>24 verified drop-off locations across Singapore</p>
-        <a href="https://maps.google.com/maps?q=green+square+singapore+textile+recycling" target="_blank" rel="noopener noreferrer" class="btn btn-dark" style="margin-top:8px;font-size:10px">Open in Google Maps ↗</a>
-      </div>
-      <div class="loc-cta">
-        <p>Want to install a bin at your building?</p>
-        <a href="#involve" class="btn btn-dark">Partner With Us →</a>
-      </div>
     </div>
   </div>
 </section>
@@ -1460,7 +1404,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
     <a href="what-to-do.html">What To Do</a><a href="what-we-collect.html">What We Accept</a>
     <a href="events.html">Events</a><a href="blog.html">Blog</a>
     <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
-    <a href="condos.html">Condo Events</a><a href="#locs">Find a Drop-Off</a>
+    <a href="condos.html">Condo Events</a><a href="drop-off.html">Find a Drop-Off</a>
     <a href="#involve">Get Involved</a><a href="contact.html">Contact</a>
   </div>
   <div class="ft-bot">
@@ -1470,7 +1414,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 </footer>
 
 <!-- Floating CTA -->
-<a href="#locs" id="fCta" aria-label="Find a drop-off bin near you">
+<a href="drop-off.html" id="fCta" aria-label="Find a drop-off bin near you">
   <span class="fdot"></span><span class="ficon">📍</span>Find a Drop-Off
 </a>
 
@@ -1525,38 +1469,6 @@ if(typeof VanillaTilt!=='undefined')VanillaTilt.init(document.querySelectorAll('
 
 /* SWIPER */
 new Swiper('#tSwiper',{slidesPerView:1,spaceBetween:20,loop:true,autoplay:{delay:5500,disableOnInteraction:false},pagination:{el:'.swiper-pagination',clickable:true},breakpoints:{768:{slidesPerView:2},1100:{slidesPerView:3}}});
-
-/* LOCATIONS */
-const locs=[
-  {n:'Alexandra Hospital',a:'Main Building Lobby, beside Information Counter — 378 Alexandra Road S159964',h:'During hospital hours',area:'alexandra queenstown'},
-  {n:'Changi General Hospital',a:'CGH Main Building Level 1, behind Kopitiam — 2 Simei Street 3 S529889',h:'During hospital hours',area:'changi simei'},
-  {n:'City Square Mall',a:'Textile Bin at B4 Travellator Lobby — 180 Kitchener Rd S208539',h:'Mall opening hours',area:'kitchener farrer park little india'},
-  {n:'Downtown East',a:'E!Avenue Level 1, Lift Lobby near 7-Eleven — 1 Pasir Ris Close S519599',h:'Open daily',area:'pasir ris'},
-  {n:'Fusionopolis One',a:'B2 North near toilets, escalator (next to MRT) — 1 Fusionopolis Way Connexis S138632',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
-  {n:'Fusionopolis Two',a:'Kinesis Level 1 Carpark Lift Lobby — 4 Fusionopolis Way S138635',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
-  {n:'G2000 Plaza Singapura',a:'68 Orchard Road #01-06 S238839',h:'During store hours',area:'orchard'},
-  {n:'International Plaza',a:'Level 2 Green Corner — 10 Anson Road S079903',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd'},
-  {n:'KK Women\'s and Children\'s Hospital',a:'Women\'s Tower Level 1, near Women\'s Specialist Clinic — 100 Bukit Timah Road S229899',h:'During hospital hours',area:'novena bukit timah kkh'},
-  {n:'Metro Paragon',a:'Customer Service Counter Level 3 — 290 Orchard Road S238859',h:'During mall hours',area:'orchard'},
-  {n:'Metro Woodlands',a:'Customer Service Counter — 1 Woodlands Square #01-18/19 Causeway Point S738099',h:'During mall hours',area:'woodlands causeway point'},
-  {n:'Millenia Walk',a:'Level 2, in front of Lift Lobby — 9 Raffles Blvd S039596',h:'Open daily',area:'raffles city hall marina'},
-  {n:'National Heart Centre Singapore',a:'Level 1, beside drop-off point — 5 Hospital Drive S169609',h:'During hospital hours',area:'outram'},
-  {n:'Northpoint City',a:'Level 2 in front of Green iT! corner, South Wing — 930 Yishun Ave 2 S769098',h:'Mall opening hours',area:'yishun'},
-  {n:'Our Tampines Hub',a:'Level 1, opposite hawker centre inside central plaza — 1 Tampines Walk S528523',h:'Open daily',area:'tampines'},
-  {n:'Quayside Isle',a:'B1 near Lift Lobby, next to Electronics & Food Donation bins — 31 Ocean Way S098375',h:'Open daily',area:'sentosa harbourfront'},
-  {n:'Sengkang General Hospital',a:'Level 1 in front of Cheers and Koi, beside drop-off point — 110 Sengkang E Way S544886',h:'During hospital hours',area:'sengkang'},
-  {n:'The Centrepoint',a:'Level 3 Green Corner — 176 Orchard Road S238843',h:'Mall opening hours',area:'orchard somerset'},
-  {n:'The Green Collective @ Funan Mall',a:'Pass to shop assistant at payment counter — 107 North Bridge Road S179105',h:'During store hours',area:'city hall funan bras basah'},
-  {n:'Tiong Bahru Plaza',a:'Level 1 next to taxi stand — 302 Tiong Bahru Road S168732',h:'Mall opening hours',area:'tiong bahru'},
-  {n:'Valley Point Shopping Centre',a:'B1 near Lift Lobby — 491 River Valley Road S248371',h:'Mall opening hours',area:'river valley'},
-  {n:'Velocity @ Novena Square',a:'Carpark Level 3B, outside cargo lift — 238 Thomson Road S307683',h:'Mall opening hours',area:'novena thomson'},
-  {n:'Woodlands Health Campus',a:'B1 Near the Cascading Waterfall — 17 Woodlands Drive 17 S737628',h:'During hospital hours',area:'woodlands'},
-  {n:'Yew Tee Point',a:'Green Corner at B1 between Challenger & Kleen Wash — 21 Choa Chu Kang North 6 S689578',h:'Mall opening hours',area:'choa chu kang yew tee'},
-];
-function rL(d){document.getElementById('llist').innerHTML=d.length?d.map((l,i)=>`<div class="lcard" onclick="sL(this)"><div class="lcard-n">${l.n}</div><div class="lcard-a">${l.a}</div><div class="lcard-h">🕐 ${l.h}</div><a href="https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
-rL(locs);
-function sL(el){document.querySelectorAll('.lcard').forEach(c=>c.classList.remove('ac'));el.classList.add('ac')}
-document.getElementById('lsrch').addEventListener('input',function(){const v=this.value.toLowerCase();rL(locs.filter(l=>l.n.toLowerCase().includes(v)||l.a.toLowerCase().includes(v)||l.area.includes(v)))});
 
 /* GET INVOLVED FORM */
 document.getElementById('inv-form').addEventListener('submit',function(e){

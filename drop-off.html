@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Drop-Off Locations — Green Square Singapore</title>
+<meta name="description" content="Find 250+ textile drop-off bin locations across Singapore. Search by area, MRT, or postal code. Free, no booking needed, most open 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mobile.css">
+<style>
+:root{--c:#F7F9ED;--l:#92CD00;--g:#4B9F5F;--f:#0B4C09;--k:#0E130F;--w:#fff;--D:'Unbounded',sans-serif;--B:'Fira Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--B);background:var(--c);color:var(--k);overflow-x:hidden}
+html{background:var(--k)}
+img{display:block;max-width:100%}
+#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
+.ldr-logo img{height:52px;width:auto}
+.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.6s ease .5s forwards;border-radius:2px}
+@keyframes lIn{to{opacity:1;transform:none}}
+@keyframes lBar{to{width:200px}}
+.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1s forwards}
+@keyframes lFade{to{opacity:1}}
+#ldr.out{animation:lOut .4s ease forwards}
+@keyframes lOut{to{opacity:0;pointer-events:none}}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:5px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+nav.s{padding:3px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+.nl img{height:78px;width:auto;transition:height .3s}
+nav.s .nl img{height:64px}
+.nlinks{display:flex;gap:20px;list-style:none;align-items:center}
+.nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
+.nlinks a:hover::after,.nlinks a.ac::after{width:100%}
+.nlinks a.nc{background:var(--f);color:var(--c)!important;padding:10px 22px;border-radius:100px;font-family:var(--D)!important;font-size:10px!important;transition:all .2s!important}
+.nlinks a.nc::after{display:none!important}
+.nlinks a.nc:hover{background:var(--l);color:var(--k)!important;transform:translateY(-1px)}
+.brg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.brg span{display:block;width:24px;height:1.5px;background:var(--f);transition:.3s;border-radius:1px}
+.mnav{display:none;position:fixed;inset:0;background:var(--f);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.mnav.o{display:flex}
+.mnav a{font-family:var(--D);font-size:22px;font-weight:700;color:var(--c);text-decoration:none;transition:color .2s}
+.mnav a:hover{color:var(--l)}
+.mnav-x{position:absolute;top:20px;right:28px;font-size:26px;color:var(--l);background:none;border:none;cursor:pointer}
+.nav-socials{display:flex;gap:6px;align-items:center}
+.nav-soc{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid rgba(11,76,9,.15);border-radius:50%;color:var(--f);transition:all .25s;text-decoration:none;flex-shrink:0}
+.nav-soc:hover{background:var(--f);color:var(--c);border-color:var(--f);transform:translateY(-1px)}
+.mnav-socs{display:flex;gap:14px;margin-top:8px}
+.mnav-soc{width:44px;height:44px;border:1px solid rgba(247,249,237,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--c);transition:all .25s;text-decoration:none}
+.mnav-soc:hover{border-color:var(--l);color:var(--l)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:all .25s}
+.btn-dark{background:var(--f);color:var(--c)}
+.btn-dark:hover{background:var(--k);transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,76,9,.25)}
+.btn-out{background:transparent;border-color:var(--f);color:var(--f)}
+.btn-out:hover{background:var(--f);color:var(--c);transform:translateY(-2px)}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.mono{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px}
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--l),var(--g));z-index:10000;width:0%;transition:width .08s linear;pointer-events:none;box-shadow:0 0 10px rgba(146,205,0,.5)}
+.ft-socs{display:flex;gap:10px;margin-bottom:28px}
+.ft-soc{width:36px;height:36px;border:1px solid rgba(247,249,237,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(247,249,237,.5);transition:all .25s;text-decoration:none}
+.ft-soc:hover{border-color:var(--l);background:var(--l);color:var(--k);transform:translateY(-2px)}
+footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
+.ft-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.ft-logo img{height:78px;width:auto}
+.ft-tag{font-family:var(--D);font-size:clamp(11px,1.5vw,18px);font-weight:900;color:var(--l);letter-spacing:2px}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.ft-links a{font-family:var(--B);font-size:11px;font-weight:500;color:rgba(247,249,237,.32);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+.ft-links a:hover{color:var(--l)}
+.ft-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(247,249,237,.06);flex-wrap:wrap;gap:10px}
+.ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
+
+/* PAGE HERO */
+.pg-hero{padding:140px 52px 80px;background:var(--f);position:relative;overflow:hidden}
+.pg-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(146,205,0,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.pg-tag{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(247,249,237,.4);margin-bottom:20px}
+.pg-ttl{font-family:var(--D);font-size:clamp(40px,7vw,90px);font-weight:900;color:var(--c);line-height:.95;margin-bottom:24px}
+.pg-ttl em{color:var(--l);font-style:normal}
+.pg-sub{font-size:16px;color:rgba(247,249,237,.55);max-width:560px;line-height:1.7}
+.pg-hero-bg{position:absolute;font-family:var(--D);font-weight:900;font-size:clamp(120px,20vw,260px);color:rgba(247,249,237,.03);right:-10px;bottom:-30px;line-height:1;pointer-events:none;user-select:none;letter-spacing:-.03em}
+
+/* LOCATIONS */
+#locs{background:var(--w);padding:100px 52px}
+.loc-ttl{font-family:var(--D);font-size:clamp(28px,4vw,50px);font-weight:900;color:var(--f);margin-bottom:48px;line-height:1.06}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.search{width:100%;padding:14px 20px;border:1.5px solid rgba(11,76,9,.14);border-radius:100px;font-family:var(--B);font-size:14px;outline:none;transition:all .3s;background:var(--c);color:var(--k);margin-bottom:16px}
+.search:focus{border-color:var(--l);box-shadow:0 0 0 4px rgba(146,205,0,.12)}
+.llist{max-height:520px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}
+.llist::-webkit-scrollbar{width:3px}.llist::-webkit-scrollbar-thumb{background:var(--l);border-radius:2px}
+.lcard{background:var(--c);border:1.5px solid transparent;border-radius:12px;padding:18px 20px;cursor:pointer;transition:all .25s}
+.lcard:hover,.lcard.ac{border-color:var(--l);background:var(--w);transform:translateX(4px)}
+.lcard-n{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f);margin-bottom:4px}
+.lcard-a{font-size:11px;color:rgba(14,19,15,.5);margin-bottom:5px}
+.lcard-h{font-size:11px;color:rgba(14,19,15,.38);margin-bottom:7px}
+.lcard-d{font-size:10px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.mapbox{border-radius:16px;overflow:hidden;border:1.5px solid rgba(11,76,9,.1);width:100%;height:520px;background:linear-gradient(135deg,rgba(11,76,9,.04),rgba(146,205,0,.07));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.mapbox h3{font-family:var(--D);font-size:16px;font-weight:700;color:var(--f)}
+.mapbox p{font-size:12px;color:rgba(11,76,9,.4);max-width:180px}
+.loc-cta{margin-top:40px;text-align:center}
+.loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
+
+@media(max-width:1024px){
+  nav{padding:5px 36px}nav.s{padding:3px 36px}
+  .pg-hero{padding:120px 36px 64px}
+  #locs{padding:80px 36px}
+  .loc-grid{grid-template-columns:1fr}
+  .mapbox{height:320px}
+  footer{padding:48px 36px 20px}
+}
+@media(max-width:768px){
+  body{overflow-x:hidden}
+  nav{padding:12px 20px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+  nav.s{padding:10px 20px}
+  .nl img{height:34px}nav.s .nl img{height:28px}
+  .nlinks{display:none}
+  .brg{display:flex;padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center}
+  .pg-hero{padding:100px 20px 56px}
+  #locs{padding:56px 20px}
+  .loc-grid{grid-template-columns:1fr;gap:20px}
+  .mapbox{height:260px;border-radius:14px}
+  .llist{max-height:320px;-webkit-overflow-scrolling:touch}
+  .lcard{padding:16px 18px}
+  .loc-cta{margin-top:28px}
+  footer{padding:40px 20px 80px}
+  .ft-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .ft-links{gap:12px}
+  .ft-bot{flex-direction:column;gap:6px}
+  .ft-logo img{height:28px}
+  .btn{min-height:44px}
+  input,select,textarea{font-size:16px!important}
+  .mnav-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+}
+@media(max-width:480px){
+  nav{padding:10px 16px}nav.s{padding:8px 16px}
+  .nl img{height:28px}nav.s .nl img{height:24px}
+  .pg-hero{padding:84px 16px 48px}
+  #locs{padding:48px 16px}
+  footer{padding:36px 16px 76px}
+  .ft-links{gap:10px;row-gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div id="prog" aria-hidden="true"></div>
+
+<div id="ldr" aria-hidden="true">
+  <div class="ldr-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
+  <div class="ldr-line"></div>
+  <span class="ldr-tag">Reuse · Repurpose · Recycle</span>
+</div>
+
+<div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
+  <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="what-to-do.html">What To Do</a>
+  <a href="drop-off.html" style="color:var(--l)">Drop Off</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <div class="mnav-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="mnav-soc"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="mnav-soc"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+</div>
+
+<nav id="nav">
+  <a href="index.html" class="nl" aria-label="Green Square Home">
+    <img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore">
+  </a>
+  <ul class="nlinks">
+    <li><a href="about.html">About</a></li>
+    <li><a href="what-to-do.html">What To Do</a></li>
+    <li><a href="drop-off.html" class="ac">Drop Off</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="nav-socials">
+      <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" class="nav-soc" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" class="nav-soc" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    </li>
+    <li><a href="index.html#involve" class="nc">Get Involved</a></li>
+  </ul>
+  <button class="brg" id="brg" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="pg-hero">
+  <p class="pg-tag">// Find A Bin</p>
+  <h1 class="pg-ttl">250+ drop-off<br>points <em>island-wide.</em></h1>
+  <p class="pg-sub">Free, no booking needed, most open 24/7. Search for your nearest Green Square textile bin below.</p>
+  <div class="pg-hero-bg" aria-hidden="true">DROP</div>
+</div>
+
+<!-- LOCATIONS -->
+<section id="locs">
+  <p class="mono rv" style="color:var(--g)">// Drop-Off Locations</p>
+  <h2 class="loc-ttl rv d1">Find a bin<br>near you.</h2>
+  <div class="loc-grid">
+    <div>
+      <input type="text" id="lsrch" class="search" placeholder="🔍  Search by area, MRT, or postal code…" aria-label="Search locations">
+      <div class="llist" id="llist"></div>
+    </div>
+    <div>
+      <div class="mapbox" role="img" aria-label="Map of drop-off locations">
+        <span style="font-size:52px">🗺️</span>
+        <h3>Interactive Map</h3>
+        <p>24 verified drop-off locations across Singapore</p>
+        <a href="https://maps.google.com/maps?q=green+square+singapore+textile+recycling" target="_blank" rel="noopener noreferrer" class="btn btn-dark" style="margin-top:8px;font-size:10px">Open in Google Maps ↗</a>
+      </div>
+      <div class="loc-cta">
+        <p>Want to install a bin at your building?</p>
+        <a href="index.html#involve" class="btn btn-dark">Partner With Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-top">
+    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore" loading="lazy"></div></a>
+    <p class="ft-tag">REUSE. REPURPOSE. RECYCLE.</p>
+  </div>
+  <div class="ft-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+  <div class="ft-links">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="what-to-do.html">What To Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="events.html">Events</a><a href="blog.html">Blog</a>
+    <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
+    <a href="condos.html">Condo Events</a><a href="drop-off.html">Find a Drop-Off</a>
+    <a href="index.html#involve">Get Involved</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2025 GRR Consultant Pte. Ltd. (UEN: 202210672M). All rights reserved.</p>
+    <p class="ft-made">Made in Singapore 🇸🇬</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/6583838677" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Green Square" style="position:fixed;bottom:24px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;opacity:0;transform:scale(0)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1600)});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('s',window.scrollY>60)},{passive:true});
+const mn=document.getElementById('mnav');
+document.getElementById('brg').addEventListener('click',()=>{mn.classList.add('o');document.body.style.overflow='hidden'});
+document.getElementById('mnav-x').addEventListener('click',()=>{mn.classList.remove('o');document.body.style.overflow=''});
+const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;if(prog)prog.style.width=(dh>0?(st/dh*100):0)+'%'},{passive:true});
+setTimeout(()=>{const w=document.getElementById('waFloat');if(w){w.style.opacity='1';w.style.transform='scale(1)'}},1500);
+
+/* LOCATIONS */
+const locs=[
+  {n:'Alexandra Hospital',a:'Main Building Lobby, beside Information Counter — 378 Alexandra Road S159964',h:'During hospital hours',area:'alexandra queenstown'},
+  {n:'Changi General Hospital',a:'CGH Main Building Level 1, behind Kopitiam — 2 Simei Street 3 S529889',h:'During hospital hours',area:'changi simei'},
+  {n:'City Square Mall',a:'Textile Bin at B4 Travellator Lobby — 180 Kitchener Rd S208539',h:'Mall opening hours',area:'kitchener farrer park little india'},
+  {n:'Downtown East',a:'E!Avenue Level 1, Lift Lobby near 7-Eleven — 1 Pasir Ris Close S519599',h:'Open daily',area:'pasir ris'},
+  {n:'Fusionopolis One',a:'B2 North near toilets, escalator (next to MRT) — 1 Fusionopolis Way Connexis S138632',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
+  {n:'Fusionopolis Two',a:'Kinesis Level 1 Carpark Lift Lobby — 4 Fusionopolis Way S138635',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
+  {n:'G2000 Plaza Singapura',a:'68 Orchard Road #01-06 S238839',h:'During store hours',area:'orchard'},
+  {n:'International Plaza',a:'Level 2 Green Corner — 10 Anson Road S079903',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd'},
+  {n:'KK Women\'s and Children\'s Hospital',a:'Women\'s Tower Level 1, near Women\'s Specialist Clinic — 100 Bukit Timah Road S229899',h:'During hospital hours',area:'novena bukit timah kkh'},
+  {n:'Metro Paragon',a:'Customer Service Counter Level 3 — 290 Orchard Road S238859',h:'During mall hours',area:'orchard'},
+  {n:'Metro Woodlands',a:'Customer Service Counter — 1 Woodlands Square #01-18/19 Causeway Point S738099',h:'During mall hours',area:'woodlands causeway point'},
+  {n:'Millenia Walk',a:'Level 2, in front of Lift Lobby — 9 Raffles Blvd S039596',h:'Open daily',area:'raffles city hall marina'},
+  {n:'National Heart Centre Singapore',a:'Level 1, beside drop-off point — 5 Hospital Drive S169609',h:'During hospital hours',area:'outram'},
+  {n:'Northpoint City',a:'Level 2 in front of Green iT! corner, South Wing — 930 Yishun Ave 2 S769098',h:'Mall opening hours',area:'yishun'},
+  {n:'Our Tampines Hub',a:'Level 1, opposite hawker centre inside central plaza — 1 Tampines Walk S528523',h:'Open daily',area:'tampines'},
+  {n:'Quayside Isle',a:'B1 near Lift Lobby, next to Electronics & Food Donation bins — 31 Ocean Way S098375',h:'Open daily',area:'sentosa harbourfront'},
+  {n:'Sengkang General Hospital',a:'Level 1 in front of Cheers and Koi, beside drop-off point — 110 Sengkang E Way S544886',h:'During hospital hours',area:'sengkang'},
+  {n:'The Centrepoint',a:'Level 3 Green Corner — 176 Orchard Road S238843',h:'Mall opening hours',area:'orchard somerset'},
+  {n:'The Green Collective @ Funan Mall',a:'Pass to shop assistant at payment counter — 107 North Bridge Road S179105',h:'During store hours',area:'city hall funan bras basah'},
+  {n:'Tiong Bahru Plaza',a:'Level 1 next to taxi stand — 302 Tiong Bahru Road S168732',h:'Mall opening hours',area:'tiong bahru'},
+  {n:'Valley Point Shopping Centre',a:'B1 near Lift Lobby — 491 River Valley Road S248371',h:'Mall opening hours',area:'river valley'},
+  {n:'Velocity @ Novena Square',a:'Carpark Level 3B, outside cargo lift — 238 Thomson Road S307683',h:'Mall opening hours',area:'novena thomson'},
+  {n:'Woodlands Health Campus',a:'B1 Near the Cascading Waterfall — 17 Woodlands Drive 17 S737628',h:'During hospital hours',area:'woodlands'},
+  {n:'Yew Tee Point',a:'Green Corner at B1 between Challenger & Kleen Wash — 21 Choa Chu Kang North 6 S689578',h:'Mall opening hours',area:'choa chu kang yew tee'},
+];
+function rL(d){document.getElementById('llist').innerHTML=d.length?d.map(l=>`<div class="lcard" onclick="sL(this)"><div class="lcard-n">${l.n}</div><div class="lcard-a">${l.a}</div><div class="lcard-h">🕐 ${l.h}</div><a href="https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
+rL(locs);
+function sL(el){document.querySelectorAll('.lcard').forEach(c=>c.classList.remove('ac'));el.classList.add('ac')}
+document.getElementById('lsrch').addEventListener('input',function(){const v=this.value.toLowerCase();rL(locs.filter(l=>l.n.toLowerCase().includes(v)||l.a.toLowerCase().includes(v)||l.area.includes(v)))});
+</script>
+</body>
+</html>
