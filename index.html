@@ -39,8 +39,8 @@ img{display:block;max-width:100%}
 @keyframes lOut{to{opacity:0;pointer-events:none}}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:16px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
-nav.s{background:rgba(247,249,237,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:16px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+nav.s{padding:12px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
 .nl img{height:78px;width:auto;transition:height .3s}
 nav.s .nl img{height:64px}
 .nlinks{display:flex;gap:20px;list-style:none;align-items:center}
@@ -589,7 +589,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   .blob{display:none}
 
   /* ── NAV ── */
-  nav{padding:12px 20px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right));background:rgba(247,249,237,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  nav{padding:12px 20px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right));background:#fff}
   nav.s{padding:10px 20px}
   .nl img{height:36px}
   nav.s .nl img{height:30px}
