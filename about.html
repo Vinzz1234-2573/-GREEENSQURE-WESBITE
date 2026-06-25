@@ -269,13 +269,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <body>
 
 <div id="prog" aria-hidden="true"></div>
-<div id="cur" aria-hidden="true"></div>
-<div id="curR" aria-hidden="true"></div>
 
-<div id="ann">
-  🌿 &nbsp;250+ drop-off points island-wide — &nbsp;<a href="index.html#locs">Find yours →</a>
-  <button id="ann-x" aria-label="Close">✕</button>
-</div>
+
 
 <div id="ldr" aria-hidden="true">
   <div class="ldr-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
@@ -567,7 +562,6 @@ const c1=document.getElementById('cur'),c2=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
-document.getElementById('ann-x').addEventListener('click',()=>document.getElementById('ann').style.display='none');
 window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1600)});
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('s',window.scrollY>60);document.getElementById('fCta').classList.toggle('show',window.scrollY>400)},{passive:true});
