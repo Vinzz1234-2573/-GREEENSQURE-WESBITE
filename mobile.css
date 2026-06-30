@@ -578,3 +578,98 @@ html { scroll-padding-top: 80px; }
   .gcrd:hover       { transform: translateY(-8px) scale(1.02); }
 }
 
+/* ═══════════════════════════════════════════
+   26. FOOTER — FEATURED IN STRIP
+   Appears at the top of every page footer
+═══════════════════════════════════════════ */
+.ft-featured {
+  background: #f7f9ed;
+  margin: -64px -52px 52px;
+  padding: 56px 52px;
+  border-bottom: 1px solid rgba(11,76,9,.07);
+}
+.press-lbl {
+  text-align: center;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(14,19,15,.28);
+  margin-bottom: 36px;
+}
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.pcrd {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 20px;
+  border: 1px solid rgba(11,76,9,.07);
+  transition: all .3s;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pcrd:hover {
+  border-color: #92cd00;
+  box-shadow: 0 8px 32px rgba(146,205,0,.12);
+  transform: translateY(-3px);
+}
+.pcrd-logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.pcrd-logo img {
+  max-height: 64px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.pcrd-name {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0b4c09;
+  margin-bottom: 8px;
+}
+.pcrd-type {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #92cd00;
+  margin-bottom: 12px;
+}
+.pcrd-quote {
+  font-size: 12px;
+  color: rgba(14,19,15,.5);
+  line-height: 1.6;
+  font-style: italic;
+}
+@media (max-width: 1024px) {
+  .ft-featured { margin: -80px -36px 48px; padding: 48px 36px; }
+  .press-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .ft-featured { margin: -44px -20px 40px; padding: 40px 20px; }
+  .press-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .pcrd { padding: 20px 14px; }
+  .pcrd-logo { height: 48px; margin-bottom: 12px; }
+  .pcrd-logo img { max-height: 48px; }
+  .pcrd-name { font-size: 11px; }
+  .pcrd-quote { font-size: 11px; }
+}
+@media (max-width: 480px) {
+  .ft-featured { margin: -36px -16px 32px; padding: 36px 16px; }
+  .press-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
