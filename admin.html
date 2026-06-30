@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Admin — Green Square CMS</title>
+<title>Admin | Green Square CMS</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -30,11 +30,11 @@ a{color:var(--l)}
 @keyframes rippleAnim{to{transform:scale(1);opacity:0}}
 
 /* ══════════════════════════════════════
-   LOGIN — PARALLAX EFFECT 1
+   LOGIN: PARALLAX EFFECT 1
    Mouse-move orbs + box entrance
 ══════════════════════════════════════ */
 #loginScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:#0B1a0c;overflow:hidden;position:relative}
-/* Parallax orbs — 3 layers at different depths */
+/* Parallax orbs: 3 layers at different depths */
 .orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;will-change:transform}
 .orb1{width:400px;height:400px;background:radial-gradient(circle,rgba(146,205,0,.18),transparent 70%);top:-80px;left:-100px;animation:floatOrb 8s ease-in-out infinite}
 .orb2{width:300px;height:300px;background:radial-gradient(circle,rgba(75,159,95,.2),transparent 70%);bottom:-60px;right:-60px;animation:floatOrb2 11s ease-in-out infinite}
@@ -96,7 +96,7 @@ a{color:var(--l)}
 .adm-content{padding:36px 40px;overflow-y:auto}
 
 /* ══════════════════════════════════════
-   PANELS — SMOOTH TRANSITIONS
+   PANELS: SMOOTH TRANSITIONS
 ══════════════════════════════════════ */
 .panel{display:none;opacity:0}
 .panel.ac{display:block;animation:fadeUp .35s cubic-bezier(.22,1,.36,1) forwards}
@@ -104,7 +104,7 @@ a{color:var(--l)}
 .panel-sub{font-size:13px;color:rgba(232,237,212,.38);margin-bottom:32px}
 
 /* ══════════════════════════════════════
-   PARALLAX 3 — HEADER DEPTH LAYER
+   PARALLAX 3: HEADER DEPTH LAYER
    Subtle floating gradient behind header
 ══════════════════════════════════════ */
 .adm-header{position:relative;overflow:hidden}
@@ -120,7 +120,7 @@ a{color:var(--l)}
 }
 
 /* ══════════════════════════════════════
-   PARALLAX 2 — STAT CARDS 3D TILT
+   PARALLAX 2: STAT CARDS 3D TILT
    Cards tilt on mouse hover via JS
 ══════════════════════════════════════ */
 .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px}
@@ -268,7 +268,7 @@ a{color:var(--l)}
   .adm-tag{display:none}
   .adm-logout{padding:8px 14px;font-size:10px}
 
-  /* Content — extra padding for bottom tab bar */
+  /* Content: extra padding for bottom tab bar */
   .adm-content{padding:20px 16px calc(66px + env(safe-area-inset-bottom,8px))}
   .panel-title{font-size:18px;margin-bottom:4px}
   .panel-sub{font-size:12px;margin-bottom:20px}
@@ -307,7 +307,7 @@ a{color:var(--l)}
     border-bottom:1px solid rgba(146,205,0,.08);
     white-space:normal;overflow:visible;max-width:100%;
   }
-  /* Category badge + date — inline row */
+  /* Category badge + date: inline row */
   .adm-table td:nth-child(2),.adm-table td:nth-child(3){
     display:inline-block;vertical-align:middle;margin-bottom:6px;
   }
@@ -316,19 +316,19 @@ a{color:var(--l)}
   .adm-table th:nth-child(3),.adm-table td:nth-child(3){
     display:inline-block;font-size:12px;color:rgba(232,237,212,.5);
   }
-  /* Location — events only (4th td that is NOT the last child) */
+  /* Location: events only (4th td that is NOT the last child) */
   .adm-table td:nth-child(4):not(:last-child){
     display:block;font-size:11px;color:rgba(232,237,212,.38);
     padding:4px 0 8px;white-space:normal;overflow:visible;
   }
-  /* Actions row — always last td */
+  /* Actions row: always last td */
   .adm-table td:last-child{
     display:flex;gap:8px;padding-top:10px;margin-top:4px;
     border-top:1px solid rgba(146,205,0,.08);
   }
   .tbl-edit,.tbl-del{flex:1;text-align:center;padding:10px;min-height:40px;font-size:11px}
 
-  /* Sidebar — still works if opened manually on phone */
+  /* Sidebar: still works if opened manually on phone */
   .adm-sidebar{width:100%;max-width:320px;padding-top:70px}
   .sidebar-nav li a,.sidebar-nav li button{padding:14px 18px;font-size:14px;min-height:48px}
 
@@ -346,7 +346,7 @@ a{color:var(--l)}
   .danger-btn,.success-btn{width:100%;padding:12px 20px;min-height:44px}
   #panel-settings .settings-group>div[style*=grid]{grid-template-columns:1fr!important;max-width:100%!important}
 
-  /* Toast — floats above tab bar */
+  /* Toast: floats above tab bar */
   .toast{
     width:calc(100% - 32px);left:16px;right:16px;
     bottom:calc(68px + env(safe-area-inset-bottom,0));
@@ -579,12 +579,12 @@ a{color:var(--l)}
       <input type="text" id="evtLoc" class="form-input" placeholder="e.g. DBS Marina Bay, Level 12">
     </div>
     <div class="form-group">
-      <label class="form-label">Image URL (optional — leave blank to use emoji)</label>
+      <label class="form-label">Image URL (optional, leave blank to use emoji)</label>
       <input type="url" id="evtImg" class="form-input" placeholder="https://...">
     </div>
     <div class="form-group">
       <label class="form-label">Description *</label>
-      <textarea id="evtDesc" class="form-textarea" placeholder="Describe the event — what to bring, who can attend, what happens..."></textarea>
+      <textarea id="evtDesc" class="form-textarea" placeholder="Describe the event: what to bring, who can attend, what happens..."></textarea>
     </div>
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeEvtModal()">Cancel</button>
@@ -719,7 +719,7 @@ const DEFAULT_EVENTS=[
 ];
 const DEFAULT_POSTS=[
   {id:1,title:'2024 Annual Impact: 850+ Tonnes Diverted',category:'impact',date:'2025-03-10',emoji:'🌿',image:'',excerpt:'Our biggest year yet.',content:'In 2024, Green Square collected over 850 tonnes of textiles across Singapore.'},
-  {id:2,title:'The Blue Bin Myth',category:'education',date:'2025-02-18',emoji:'♻️',image:'',excerpt:'HDB recycling bins aren\'t designed for textiles.',content:'Many Singaporeans believe placing clothes in the blue HDB recycling bin is responsible. It isn\'t — clothes contaminate other recyclables and end up incinerated.'},
+  {id:2,title:'The Blue Bin Myth',category:'education',date:'2025-02-18',emoji:'♻️',image:'',excerpt:'HDB recycling bins aren\'t designed for textiles.',content:'Many Singaporeans believe placing clothes in the blue HDB recycling bin is responsible. It isn't. Clothes contaminate other recyclables and end up incinerated.'},
 ];
 
 let events=[],posts=[];
@@ -754,7 +754,7 @@ function renderEvtTable(){
     <td style="font-weight:600;color:var(--c)">${e.emoji||''} ${e.title}</td>
     <td><span class="tbl-cat">${e.category}</span></td>
     <td>${fmtDate(e.date)}</td>
-    <td style="font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.location||'—'}</td>
+    <td style="font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.location||'N/A'}</td>
     <td><div class="tbl-actions">
       <button class="tbl-edit" onclick="openEventModal(${e.id})">Edit</button>
       <button class="tbl-del" onclick="deleteEvt(${e.id})">Delete</button>
@@ -956,7 +956,7 @@ document.getElementById('evtModal').addEventListener('click',e=>{if(e.target.id=
 document.getElementById('blogModal').addEventListener('click',e=>{if(e.target.id==='blogModal')closeBlogModal()});
 
 /* ══════════════════════════════════════════════
-   PARALLAX 1 — LOGIN: Mouse-move orb depth
+   PARALLAX 1 - LOGIN: Mouse-move orb depth
    3 orbs move at different speeds on mouse move
 ══════════════════════════════════════════════ */
 (function(){
@@ -985,7 +985,7 @@ document.getElementById('blogModal').addEventListener('click',e=>{if(e.target.id
 })();
 
 /* ══════════════════════════════════════════════
-   PARALLAX 2 — STAT CARDS: 3D mouse tilt
+   PARALLAX 2 - STAT CARDS: 3D mouse tilt
    Each card tilts in 3D space on hover
 ══════════════════════════════════════════════ */
 function initCardTilt(){
@@ -1006,7 +1006,7 @@ function initCardTilt(){
 initCardTilt();
 
 /* ══════════════════════════════════════════════
-   PARALLAX 3 — CONTENT AREA: Scroll parallax
+   PARALLAX 3 - CONTENT AREA: Scroll parallax
    Sidebar nav items shift slightly on scroll
 ══════════════════════════════════════════════ */
 (function(){
@@ -1023,7 +1023,7 @@ initCardTilt();
 })();
 
 /* ══════════════════════════════════════════════
-   TABLE ROWS — Stagger entrance animation
+   TABLE ROWS: Stagger entrance animation
 ══════════════════════════════════════════════ */
 function animateTableRows(){
   const rows=document.querySelectorAll('.adm-table tbody tr');
@@ -1041,7 +1041,7 @@ function animateTableRows(){
 }
 
 /* ══════════════════════════════════════════════
-   BUTTON RIPPLE — all action buttons
+   BUTTON RIPPLE: all action buttons
 ══════════════════════════════════════════════ */
 document.addEventListener('click',function(e){
   const btn=e.target.closest('.add-btn,.modal-save,.login-btn,.tbl-edit,.tbl-del');
@@ -1059,7 +1059,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ══════════════════════════════════════════════
-   STAT COUNTER — animate numbers on dashboard load
+   STAT COUNTER: animate numbers on dashboard load
 ══════════════════════════════════════════════ */
 function animateStatNumbers(){
   document.querySelectorAll('.stat-n').forEach(el=>{
