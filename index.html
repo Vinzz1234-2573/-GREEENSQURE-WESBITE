@@ -489,9 +489,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 #press{background:var(--c);padding:80px 52px;border-bottom:1px solid rgba(11,76,9,.07)}
 .press-lbl{text-align:center;font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(14,19,15,.28);margin-bottom:48px}
 .press-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.pcrd{background:var(--w);border-radius:16px;padding:28px 20px;border:1px solid rgba(11,76,9,.07);transition:all .3s;text-align:center}
+.pcrd{background:var(--w);border-radius:16px;padding:28px 20px;border:1px solid rgba(11,76,9,.07);transition:all .3s;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center}
 .pcrd:hover{border-color:var(--l);box-shadow:0 8px 32px rgba(146,205,0,.12);transform:translateY(-3px)}
-.pcrd-icon{font-size:32px;margin-bottom:14px}
+.pcrd-logo{height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.pcrd-logo img{max-height:64px;max-width:100%;width:auto;object-fit:contain;display:block}
 .pcrd-name{font-family:var(--D);font-size:12px;font-weight:700;color:var(--f);margin-bottom:8px}
 .pcrd-type{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--l);margin-bottom:12px}
 .pcrd-quote{font-size:12px;color:rgba(14,19,15,.5);line-height:1.6;font-style:italic}
@@ -915,20 +916,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
       </div>
     </div>
 
-    <!-- Rotating circular badge -->
-    <div class="spin-wrap" aria-hidden="true">
-      <svg class="spin-svg" viewBox="0 0 200 200" width="160" height="160">
-        <defs>
-          <path id="cp" d="M100,100 m-68,0 a68,68 0 1,1 136,0 a68,68 0 1,1 -136,0"/>
-        </defs>
-        <text fill="var(--f)" font-family="'Fira Sans',sans-serif" font-size="11.5" font-weight="600" letter-spacing="1.5">
-          <textPath href="#cp">Reuse · Repurpose · Recycle · GREEN SQ · </textPath>
-        </text>
-        <circle cx="100" cy="100" r="44" fill="var(--l)"/>
-        <text x="100" y="96" text-anchor="middle" fill="var(--k)" font-family="'Unbounded',sans-serif" font-size="13" font-weight="900">GREEN</text>
-        <text x="100" y="113" text-anchor="middle" fill="var(--k)" font-family="'Unbounded',sans-serif" font-size="13" font-weight="900">SQUARE</text>
-      </svg>
-    </div>
   </div>
 
   <div class="hero-meta">
@@ -1140,36 +1127,36 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 <section id="press">
   <p class="press-lbl rv">As Featured In</p>
   <div class="press-grid">
-    <div class="pcrd rv d1">
-      <div class="pcrd-icon">📺</div>
+    <a class="pcrd rv d1" href="https://www.channelnewsasia.com/news/singapore/recycling-in-singapore-what-will-it-take-to-bring-the-numbers-up-11058394" target="_blank" rel="noopener noreferrer">
+      <div class="pcrd-logo"><img src="Photos/Featured/CNA.gif" alt="Channel NewsAsia"></div>
       <div class="pcrd-name">Channel NewsAsia</div>
       <div class="pcrd-type">TV &amp; Online News</div>
       <p class="pcrd-quote">"Singapore's textile recycling movement is gaining momentum, led by homegrown changemakers."</p>
-    </div>
-    <div class="pcrd rv d2">
-      <div class="pcrd-icon">👶</div>
+    </a>
+    <a class="pcrd rv d2" href="https://www.sassymamasg.com/family-life-donate-clothes-toys-singapore-upcycle/" target="_blank" rel="noopener noreferrer">
+      <div class="pcrd-logo"><img src="Photos/Featured/sassy+mama.webp" alt="Sassy Mama Singapore"></div>
       <div class="pcrd-name">Sassy Mama SG</div>
       <div class="pcrd-type">Lifestyle &amp; Family</div>
       <p class="pcrd-quote">"Green Square makes it effortless to give your family's clothes a second life."</p>
-    </div>
-    <div class="pcrd rv d3">
-      <div class="pcrd-icon">🍯</div>
+    </a>
+    <a class="pcrd rv d3" href="https://thehoneycombers.com/singapore/where-to-donate-your-things-in-singapore-give-away-your-pre-loved-or-gently-used-goods-to-charity/" target="_blank" rel="noopener noreferrer">
+      <div class="pcrd-logo"><img src="Photos/Featured/honeycomber.webp" alt="The Honeycombers"></div>
       <div class="pcrd-name">The Honeycombers</div>
       <div class="pcrd-type">Singapore Lifestyle</div>
       <p class="pcrd-quote">"One of Singapore's most impactful sustainability startups doing real, measurable good."</p>
-    </div>
-    <div class="pcrd rv d4">
-      <div class="pcrd-icon">✨</div>
+    </a>
+    <a class="pcrd rv d4" href="https://sg.style.yahoo.com/best-places-to-recycle-your-old-clothes-in-singapore-073810316.html" target="_blank" rel="noopener noreferrer">
+      <div class="pcrd-logo"><img src="Photos/Featured/Yahoo.webp" alt="Yahoo Lifestyle SG"></div>
       <div class="pcrd-name">Yahoo Style SG</div>
       <div class="pcrd-type">Fashion &amp; Style</div>
       <p class="pcrd-quote">"The easiest way to make your wardrobe circular — and feel good about it."</p>
-    </div>
-    <div class="pcrd rv d5">
-      <div class="pcrd-icon">🌏</div>
+    </a>
+    <a class="pcrd rv d5" href="https://www.asiaone.com/lifestyle/8-places-donate-your-used-clothing-singapore-other-salvation-army" target="_blank" rel="noopener noreferrer">
+      <div class="pcrd-logo"><img src="Photos/Featured/asiaone.webp" alt="AsiaOne"></div>
       <div class="pcrd-name">AsiaOne Lifestyle</div>
       <div class="pcrd-type">News &amp; Lifestyle</div>
       <p class="pcrd-quote">"Closing Singapore's textile loop, one collection at a time."</p>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1436,4 +1423,3 @@ window.addEventListener('scroll',()=>{
 <script>setTimeout(()=>{const w=document.getElementById('waFloat');if(w){w.style.opacity='1';w.style.transform='scale(1)'}},1500)</script>
 </body>
 </html>
-S
