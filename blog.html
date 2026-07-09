@@ -146,6 +146,45 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .nl-btn{background:var(--l);color:var(--k);font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .25s;white-space:nowrap}
 .nl-btn:hover{background:#a3e000;transform:translateY(-1px)}
 
+/* SUBPAGE TABS */
+.subpage-tabs{background:var(--k);padding:0 52px;display:flex;border-bottom:2px solid rgba(146,205,0,.15);overflow-x:auto}
+.stab{font-family:var(--D);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:22px 32px;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;color:rgba(247,249,237,.35);cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.stab:hover{color:var(--c)}
+.stab.ac{color:var(--l);border-bottom-color:var(--l)}
+.subpanel{display:none}
+.subpanel.active{display:block}
+/* WHAT'S NEW EMBED */
+#panel-whatsnew .filters{padding:24px 52px;background:var(--w);border-bottom:1px solid rgba(11,76,9,.07);display:flex;gap:8px;flex-wrap:wrap}
+#articles{background:var(--w);padding:80px 52px}
+.bcard{background:var(--c);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;text-decoration:none}
+.bcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,76,9,.08)}
+.bcard-img{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
+.bcard-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.bcard-tag{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:8px}
+.bcard-date{font-size:10px;color:rgba(14,19,15,.3);letter-spacing:1px;margin-bottom:10px}
+.bcard h3{font-family:var(--D);font-size:15px;font-weight:700;color:var(--f);margin-bottom:10px;line-height:1.3}
+.bcard p{font-size:13px;color:rgba(14,19,15,.5);line-height:1.6;margin-bottom:14px;flex:1}
+.bcard-rm{font-size:11px;font-weight:700;color:var(--l);letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+.bcard:hover .bcard-rm{gap:8px}
+#press-mentions{background:var(--f);padding:80px 52px}
+#panel-whatsnew .press-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:48px}
+#panel-whatsnew .pcrd{background:rgba(247,249,237,.04);border:1px solid rgba(247,249,237,.08);border-radius:14px;padding:24px 16px;text-align:center;transition:all .3s;text-decoration:none}
+#panel-whatsnew .pcrd:hover{border-color:var(--l);background:rgba(146,205,0,.06)}
+.pcrd-icon{font-size:28px;margin-bottom:10px;display:block}
+#panel-whatsnew .pcrd-name{font-family:var(--D);font-size:11px;font-weight:700;color:var(--c);margin-bottom:4px}
+#panel-whatsnew .pcrd-type{font-size:9px;color:rgba(247,249,237,.3);letter-spacing:2px;text-transform:uppercase}
+.nl-strip{background:var(--l);padding:72px 52px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.nl-ttl{font-family:var(--D);font-size:clamp(22px,3.2vw,36px);font-weight:900;color:var(--k);line-height:1.1;margin-bottom:10px}
+.nl-sub{font-size:14px;color:rgba(14,19,15,.55);line-height:1.65}
+#panel-whatsnew .nl-form{display:flex;gap:10px;flex-wrap:wrap;max-width:none;margin:0;justify-content:flex-start}
+#panel-whatsnew .nl-input{flex:1;min-width:220px;background:rgba(14,19,15,.08);border:1.5px solid rgba(14,19,15,.15);border-radius:100px;padding:13px 20px;font-family:var(--B);font-size:14px;color:var(--k);outline:none;transition:border-color .2s}
+#panel-whatsnew .nl-input::placeholder{color:rgba(14,19,15,.35)}
+#panel-whatsnew .nl-input:focus{border-color:var(--k);background:transparent;box-shadow:none}
+#panel-whatsnew .nl-btn{background:var(--k);color:var(--c);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:13px 24px;border-radius:100px;border:none;cursor:pointer;white-space:nowrap;transition:all .2s}
+#panel-whatsnew .nl-btn:hover{background:var(--f);transform:none}
+.nl-ok{display:none;font-family:var(--D);font-size:14px;font-weight:700;color:var(--k)}
+.nl-ok.show{display:block}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
   nav{padding:5px 36px}
@@ -158,6 +197,11 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .blog-feat-img{min-height:220px;aspect-ratio:16/9}
   .blog-grid{grid-template-columns:repeat(2,1fr)}
   footer{padding:48px 36px 20px}
+  #articles,#press-mentions{padding:64px 36px}
+  #panel-whatsnew .filters{padding:16px 36px}
+  .nl-strip{padding:56px 36px;grid-template-columns:1fr;gap:32px}
+  #panel-whatsnew .press-grid{grid-template-columns:repeat(3,1fr)}
+  .subpage-tabs{padding:0 36px}
 }
 @media(max-width:768px){
   nav{padding:12px 20px}
@@ -181,6 +225,14 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .mnav-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
   .nl-form{flex-direction:column}
   .nl-input{min-width:100%}
+  #articles,#press-mentions{padding:56px 20px}
+  #panel-whatsnew .filters{padding:12px 20px}
+  .nl-strip{padding:48px 20px}
+  #panel-whatsnew .blog-grid{grid-template-columns:1fr}
+  #panel-whatsnew .press-grid{grid-template-columns:1fr 1fr}
+  #panel-whatsnew .nl-form{flex-direction:column}
+  #panel-whatsnew .nl-input{min-width:100%}
+  .subpage-tabs{padding:0 20px}
 }
 @media(max-width:480px){
   nav{padding:10px 16px}
@@ -191,6 +243,11 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .newsletter{padding:52px 16px}
   footer{padding:36px 16px 76px}
   .ft-links{gap:10px;row-gap:8px}
+  #articles,#press-mentions{padding:48px 16px}
+  .nl-strip{padding:40px 16px}
+  #panel-whatsnew .press-grid{grid-template-columns:1fr}
+  #panel-whatsnew .blog-grid{grid-template-columns:1fr}
+  .subpage-tabs{padding:0 16px}
 }
 </style>
 </head>
@@ -250,7 +307,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 </div>
 
 <!-- FILTERS -->
-<div class="filters">
+<div class="filters" id="blogFilters">
   <button class="ftab ac" onclick="filterBlog('all',this)">All</button>
   <button class="ftab" onclick="filterBlog('impact',this)">Impact Reports</button>
   <button class="ftab" onclick="filterBlog('education',this)">Education</button>
@@ -276,6 +333,144 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <input type="email" class="nl-input" placeholder="your@email.com" required id="nlEmail">
     <button type="submit" class="nl-btn" id="nlBtn">Subscribe →</button>
   </form>
+</div>
+
+<!-- WHAT'S NEW TAB -->
+<div class="subpage-tabs" id="wnSubTabs">
+  <button class="stab ac" data-tab="whatsnew" onclick="showWNTab('whatsnew',this)">What's New</button>
+</div>
+<div class="subpanel active" id="panel-whatsnew">
+
+  <div class="filters">
+    <button class="ftab ac" onclick="filterWN('all',this)">All</button>
+    <button class="ftab" onclick="filterWN('impact',this)">Impact Reports</button>
+    <button class="ftab" onclick="filterWN('education',this)">Education</button>
+    <button class="ftab" onclick="filterWN('community',this)">Community</button>
+    <button class="ftab" onclick="filterWN('press',this)">Press</button>
+  </div>
+
+  <section id="articles">
+    <div class="blog-grid">
+      <a class="bcard rv d1" href="#" data-cat="impact">
+        <div class="bcard-img" style="background:var(--f)">🌿</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Impact Report</div>
+          <div class="bcard-date">Dec 2024</div>
+          <h3>2024 Annual Impact: 850+ Tonnes Diverted and Counting</h3>
+          <p>Our biggest year yet. Here's exactly where your clothes went and how many lives they touched across Singapore's heartlands.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d2" href="#" data-cat="education">
+        <div class="bcard-img" style="background:var(--g)">♻️</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Education</div>
+          <div class="bcard-date">Nov 2024</div>
+          <h3>The Blue Bin Myth: Why Most Clothes Still End Up in Landfill</h3>
+          <p>HDB recycling bins aren't designed for textiles. Here's why, and what to do instead to ensure your donation counts.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d3" href="#" data-cat="community">
+        <div class="bcard-img" style="background:rgba(11,76,9,.9)">📍</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Community</div>
+          <div class="bcard-date">Oct 2024</div>
+          <h3>50 New Drop-Off Points Now Open Across Jurong and Woodlands</h3>
+          <p>West and North Singapore, we heard you. Find your nearest new location and start donating today.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d1" href="#" data-cat="impact">
+        <div class="bcard-img" style="background:linear-gradient(135deg,#0B4C09,#92CD00)">👕</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Impact Report</div>
+          <div class="bcard-date">Aug 2024</div>
+          <h3>How 650,000 kg of Clothing Was Kept Out of Semakau in 2024</h3>
+          <p>A deep dive into our collection network: where donations come from, what happens to them, and who benefits.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d2" href="#" data-cat="education">
+        <div class="bcard-img" style="background:linear-gradient(135deg,var(--g),var(--f))">💧</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Education</div>
+          <div class="bcard-date">Jul 2024</div>
+          <h3>6,813 Litres: The Real Cost of a Pair of Jeans</h3>
+          <p>The cotton in one pair of jeans requires more water than most Singaporeans drink in 7 years. Here's why that number matters.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d3" href="#" data-cat="community">
+        <div class="bcard-img" style="background:linear-gradient(135deg,#1f3d00,var(--g))">🏫</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Community</div>
+          <div class="bcard-date">Jun 2024</div>
+          <h3>Green Square at 20 Singapore Schools: What We Collected in One Term</h3>
+          <p>From Ang Mo Kio to Pasir Ris: a recap of our school programme, the questions students asked, and the impact made.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d1" href="#" data-cat="press">
+        <div class="bcard-img" style="background:var(--k)">📺</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Press</div>
+          <div class="bcard-date">May 2024</div>
+          <h3>Channel NewsAsia: Green Square's Mission to Double Singapore's Textile Recycling Rate</h3>
+          <p>Our founder speaks to CNA about why 7% isn't good enough and what it will take to reach 14% by 2030.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d2" href="#" data-cat="press">
+        <div class="bcard-img" style="background:linear-gradient(135deg,var(--f),#2a5c00)">🍯</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Press</div>
+          <div class="bcard-date">Mar 2024</div>
+          <h3>The Honeycombers: "The Easiest Way to Be a More Sustainable Singaporean"</h3>
+          <p>Lifestyle guide The Honeycombers features Green Square as one of Singapore's most impactful sustainability startups.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+      <a class="bcard rv d3" href="#" data-cat="community">
+        <div class="bcard-img" style="background:linear-gradient(135deg,#0B4C09,#4B9F5F)">🤝</div>
+        <div class="bcard-body">
+          <div class="bcard-tag">// Community</div>
+          <div class="bcard-date">Jan 2024</div>
+          <h3>DBS, KPMG, and Netflix: What Corporate Singapore Did for Textile Recycling in 2023</h3>
+          <p>A look back at our biggest corporate partnerships: the numbers, the lessons, and what's next for CSR textile drives.</p>
+          <span class="bcard-rm">Read More →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="press-mentions">
+    <p style="font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(247,249,237,.3);margin-bottom:16px" class="rv">// As Featured In</p>
+    <h2 style="font-family:var(--D);font-size:clamp(24px,3.5vw,40px);font-weight:900;color:var(--c);line-height:1.06;margin-bottom:12px" class="rv d1">Green Square in the media.</h2>
+    <div class="press-grid rv d2">
+      <div class="pcrd"><span class="pcrd-icon">📺</span><div class="pcrd-name">Channel NewsAsia</div><div class="pcrd-type">TV &amp; Online News</div></div>
+      <div class="pcrd"><span class="pcrd-icon">👶</span><div class="pcrd-name">Sassy Mama SG</div><div class="pcrd-type">Lifestyle &amp; Family</div></div>
+      <div class="pcrd"><span class="pcrd-icon">🍯</span><div class="pcrd-name">The Honeycombers</div><div class="pcrd-type">Singapore Lifestyle</div></div>
+      <div class="pcrd"><span class="pcrd-icon">✨</span><div class="pcrd-name">Yahoo Style SG</div><div class="pcrd-type">Fashion &amp; Style</div></div>
+      <div class="pcrd"><span class="pcrd-icon">🌏</span><div class="pcrd-name">AsiaOne Lifestyle</div><div class="pcrd-type">News &amp; Lifestyle</div></div>
+    </div>
+  </section>
+
+  <div class="nl-strip">
+    <div>
+      <h2 class="nl-ttl">Stay in the loop.</h2>
+      <p class="nl-sub">Get our impact updates, sustainability tips, and event announcements direct to your inbox. No spam, just good news about recycling.</p>
+    </div>
+    <div>
+      <div class="nl-form" id="wn-nl-form-wrap">
+        <input type="email" class="nl-input" id="wn-nl-email" placeholder="Your email address">
+        <button class="nl-btn" onclick="subNLwn()">Subscribe →</button>
+      </div>
+      <div class="nl-ok" id="wn-nl-ok">✓ You're subscribed. Thanks for joining us!</div>
+      <p style="font-size:11px;color:rgba(14,19,15,.3);margin-top:10px">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -435,7 +630,7 @@ function render(){
 
 function filterBlog(cat,btn){
   curFilter=cat;visibleCount=5;
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('ac'));
+  document.querySelectorAll('#blogFilters .ftab').forEach(b=>b.classList.remove('ac'));
   btn.classList.add('ac');
   render();
 }
@@ -472,6 +667,32 @@ function subNL(e){
 
 loadPosts();
 render();
+function showWNTab(name,btn){
+  document.querySelectorAll('.subpanel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#wnSubTabs .stab').forEach(b=>b.classList.remove('ac'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('ac');
+  history.replaceState(null,'','#'+name);
+  document.querySelectorAll('#panel-'+name+' .ftab').forEach(b=>b.classList.remove('ac'));
+  const firstFtab=document.querySelector('#panel-'+name+' .ftab:first-child');
+  if(firstFtab)firstFtab.classList.add('ac');
+  document.querySelectorAll('#panel-'+name+' .bcard').forEach(c=>c.style.display='flex');
+  document.querySelectorAll('#panel-'+name+' .rv:not(.in)').forEach(el=>rvObs.observe(el));
+}
+(function(){const h=location.hash.slice(1);if(['whatsnew'].includes(h)){const btn=document.querySelector('#wnSubTabs .stab[data-tab="'+h+'"]');if(btn)showWNTab(h,btn);}})();
+function filterWN(cat,btn){
+  document.querySelectorAll('#panel-whatsnew .ftab').forEach(t=>t.classList.remove('ac'));
+  btn.classList.add('ac');
+  document.querySelectorAll('#panel-whatsnew .bcard').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';
+  });
+}
+function subNLwn(){
+  const email=document.getElementById('wn-nl-email').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('wn-nl-email').style.borderColor='rgba(14,19,15,.4)';return}
+  document.getElementById('wn-nl-form-wrap').style.display='none';
+  document.getElementById('wn-nl-ok').classList.add('show');
+}
 </script>
 <!-- WhatsApp Float -->
 <a href="https://wa.me/6583838677" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Green Square" style="position:fixed;bottom:88px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;opacity:0;transform:scale(0)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
