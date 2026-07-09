@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <link rel="stylesheet" href="mobile.css">
 <style>
 :root{--c:#F7F9ED;--l:#92CD00;--g:#4B9F5F;--f:#0B4C09;--k:#0E130F;--w:#fff;--D:'Unbounded',sans-serif;--B:'Fira Sans',sans-serif}
@@ -96,9 +97,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .lcard-a{font-size:11px;color:rgba(14,19,15,.5);margin-bottom:5px}
 .lcard-h{font-size:11px;color:rgba(14,19,15,.38);margin-bottom:7px}
 .lcard-d{font-size:10px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase}
-.mapbox{border-radius:16px;overflow:hidden;border:1.5px solid rgba(11,76,9,.1);width:100%;height:520px;background:linear-gradient(135deg,rgba(11,76,9,.04),rgba(146,205,0,.07));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
-.mapbox h3{font-family:var(--D);font-size:16px;font-weight:700;color:var(--f)}
-.mapbox p{font-size:12px;color:rgba(11,76,9,.4);max-width:180px}
+.mapbox{border-radius:16px;overflow:hidden;border:1.5px solid rgba(11,76,9,.1);width:100%;height:520px;background:rgba(11,76,9,.04)}
 .loc-cta{margin-top:40px;text-align:center}
 .loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
 
@@ -208,12 +207,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
       <div class="llist" id="llist"></div>
     </div>
     <div>
-      <div class="mapbox" role="img" aria-label="Map of drop-off locations">
-        <span style="font-size:52px">🗺️</span>
-        <h3>Interactive Map</h3>
-        <p>24 verified drop-off locations across Singapore</p>
-        <a href="https://maps.google.com/maps?q=green+square+singapore+textile+recycling" target="_blank" rel="noopener noreferrer" class="btn btn-dark" style="margin-top:8px;font-size:10px">Open in Google Maps ↗</a>
-      </div>
+      <div class="mapbox" id="bin-map" role="img" aria-label="Map of drop-off locations"></div>
       <div class="loc-cta">
         <p>Want to install a bin at your building?</p>
         <a href="index.html#involve" class="btn btn-dark">Partner With Us →</a>
@@ -284,6 +278,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <!-- WhatsApp Float -->
 <a href="https://wa.me/6583838677" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Green Square" style="position:fixed;bottom:24px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;opacity:0;transform:scale(0)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1600)});
 const nav=document.getElementById('nav');
@@ -299,34 +294,46 @@ setTimeout(()=>{const w=document.getElementById('waFloat');if(w){w.style.opacity
 
 /* LOCATIONS */
 const locs=[
-  {n:'Alexandra Hospital',a:'Main Building Lobby, beside Information Counter, 378 Alexandra Road S159964',h:'During hospital hours',area:'alexandra queenstown'},
-  {n:'Changi General Hospital',a:'CGH Main Building Level 1, behind Kopitiam, 2 Simei Street 3 S529889',h:'During hospital hours',area:'changi simei'},
-  {n:'City Square Mall',a:'Textile Bin at B4 Travellator Lobby, 180 Kitchener Rd S208539',h:'Mall opening hours',area:'kitchener farrer park little india'},
-  {n:'Downtown East',a:'E!Avenue Level 1, Lift Lobby near 7-Eleven, 1 Pasir Ris Close S519599',h:'Open daily',area:'pasir ris'},
-  {n:'Fusionopolis One',a:'B2 North near toilets, escalator (next to MRT), 1 Fusionopolis Way Connexis S138632',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
-  {n:'Fusionopolis Two',a:'Kinesis Level 1 Carpark Lift Lobby, 4 Fusionopolis Way S138635',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis'},
-  {n:'G2000 Plaza Singapura',a:'68 Orchard Road #01-06 S238839',h:'During store hours',area:'orchard'},
-  {n:'International Plaza',a:'Level 2 Green Corner, 10 Anson Road S079903',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd'},
-  {n:'KK Women\'s and Children\'s Hospital',a:'Women\'s Tower Level 1, near Women\'s Specialist Clinic, 100 Bukit Timah Road S229899',h:'During hospital hours',area:'novena bukit timah kkh'},
-  {n:'Metro Paragon',a:'Customer Service Counter Level 3, 290 Orchard Road S238859',h:'During mall hours',area:'orchard'},
-  {n:'Metro Woodlands',a:'Customer Service Counter, 1 Woodlands Square #01-18/19 Causeway Point S738099',h:'During mall hours',area:'woodlands causeway point'},
-  {n:'Millenia Walk',a:'Level 2, in front of Lift Lobby, 9 Raffles Blvd S039596',h:'Open daily',area:'raffles city hall marina'},
-  {n:'National Heart Centre Singapore',a:'Level 1, beside drop-off point, 5 Hospital Drive S169609',h:'During hospital hours',area:'outram'},
-  {n:'Northpoint City',a:'Level 2 in front of Green iT! corner, South Wing, 930 Yishun Ave 2 S769098',h:'Mall opening hours',area:'yishun'},
-  {n:'Our Tampines Hub',a:'Level 1, opposite hawker centre inside central plaza, 1 Tampines Walk S528523',h:'Open daily',area:'tampines'},
-  {n:'Quayside Isle',a:'B1 near Lift Lobby, next to Electronics & Food Donation bins, 31 Ocean Way S098375',h:'Open daily',area:'sentosa harbourfront'},
-  {n:'Sengkang General Hospital',a:'Level 1 in front of Cheers and Koi, beside drop-off point, 110 Sengkang E Way S544886',h:'During hospital hours',area:'sengkang'},
-  {n:'The Centrepoint',a:'Level 3 Green Corner, 176 Orchard Road S238843',h:'Mall opening hours',area:'orchard somerset'},
-  {n:'The Green Collective @ Funan Mall',a:'Pass to shop assistant at payment counter, 107 North Bridge Road S179105',h:'During store hours',area:'city hall funan bras basah'},
-  {n:'Tiong Bahru Plaza',a:'Level 1 next to taxi stand, 302 Tiong Bahru Road S168732',h:'Mall opening hours',area:'tiong bahru'},
-  {n:'Valley Point Shopping Centre',a:'B1 near Lift Lobby, 491 River Valley Road S248371',h:'Mall opening hours',area:'river valley'},
-  {n:'Velocity @ Novena Square',a:'Carpark Level 3B, outside cargo lift, 238 Thomson Road S307683',h:'Mall opening hours',area:'novena thomson'},
-  {n:'Woodlands Health Campus',a:'B1 Near the Cascading Waterfall, 17 Woodlands Drive 17 S737628',h:'During hospital hours',area:'woodlands'},
-  {n:'Yew Tee Point',a:'Green Corner at B1 between Challenger & Kleen Wash, 21 Choa Chu Kang North 6 S689578',h:'Mall opening hours',area:'choa chu kang yew tee'},
+  {n:'Alexandra Hospital',a:'Main Building Lobby, beside Information Counter, 378 Alexandra Road S159964',h:'During hospital hours',area:'alexandra queenstown',lat:1.2865901,lng:103.7997435},
+  {n:'Changi General Hospital',a:'CGH Main Building Level 1, behind Kopitiam, 2 Simei Street 3 S529889',h:'During hospital hours',area:'changi simei',lat:1.3408259,lng:103.9494655},
+  {n:'City Square Mall',a:'Textile Bin at B4 Travellator Lobby, 180 Kitchener Rd S208539',h:'Mall opening hours',area:'kitchener farrer park little india',lat:1.311421046,lng:103.856624},
+  {n:'Downtown East',a:'E!Avenue Level 1, Lift Lobby near 7-Eleven, 1 Pasir Ris Close S519599',h:'Open daily',area:'pasir ris',lat:1.379127168,lng:103.9554448},
+  {n:'Fusionopolis One',a:'B2 North near toilets, escalator (next to MRT), 1 Fusionopolis Way Connexis S138632',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis',lat:1.299441336,lng:103.7875421},
+  {n:'Fusionopolis Two',a:'Kinesis Level 1 Carpark Lift Lobby, 4 Fusionopolis Way S138635',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis',lat:1.2984772,lng:103.7891696},
+  {n:'G2000 Plaza Singapura',a:'68 Orchard Road #01-06 S238839',h:'During store hours',area:'orchard',lat:1.3011105,lng:103.8449984},
+  {n:'International Plaza',a:'Level 2 Green Corner, 10 Anson Road S079903',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd',lat:1.275886763,lng:103.8459238},
+  {n:'KK Women\'s and Children\'s Hospital',a:'Women\'s Tower Level 1, near Women\'s Specialist Clinic, 100 Bukit Timah Road S229899',h:'During hospital hours',area:'novena bukit timah kkh',lat:1.310490068,lng:103.8468133},
+  {n:'Metro Paragon',a:'Customer Service Counter Level 3, 1 Woodlands Square #01-18/19 Causeway Point S738099',h:'During mall hours',area:'woodlands causeway point',lat:1.4361993,lng:103.7859991},
+  {n:'Metro Woodlands',a:'Customer Service Counter, 1 Woodlands Square #01-18/19 Causeway Point S738099',h:'During mall hours',area:'woodlands causeway point',lat:1.4361993,lng:103.7859991},
+  {n:'Millenia Walk',a:'Level 2, in front of Lift Lobby, 9 Raffles Blvd S039596',h:'Open daily',area:'raffles city hall marina',lat:1.292965059,lng:103.859344},
+  {n:'National Heart Centre Singapore',a:'Level 1, beside drop-off point, 5 Hospital Drive S169609',h:'During hospital hours',area:'outram',lat:1.2784981,lng:103.8361062},
+  {n:'Northpoint City',a:'Level 2 in front of Green iT! corner, South Wing, 930 Yishun Ave 2 S769098',h:'Mall opening hours',area:'yishun',lat:1.4292976,lng:103.8357691},
+  {n:'Our Tampines Hub',a:'Level 1, opposite hawker centre inside central plaza, 1 Tampines Walk S528523',h:'Open daily',area:'tampines',lat:1.353133587,lng:103.9404082},
+  {n:'Quayside Isle',a:'B1 near Lift Lobby, next to Electronics & Food Donation bins, 31 Ocean Way S098375',h:'Open daily',area:'sentosa harbourfront',lat:1.247993801,lng:103.8416778},
+  {n:'Sengkang General Hospital',a:'Level 1 in front of Cheers and Koi, beside drop-off point, 110 Sengkang E Way S544886',h:'During hospital hours',area:'sengkang',lat:1.394393086,lng:103.8931641},
+  {n:'The Centrepoint',a:'Level 3 Green Corner, 176 Orchard Road S238843',h:'Mall opening hours',area:'orchard somerset',lat:1.301978371,lng:103.839759},
+  {n:'Tiong Bahru Plaza',a:'Level 1 next to taxi stand, 302 Tiong Bahru Road S168732',h:'Mall opening hours',area:'tiong bahru',lat:1.2862383,lng:103.8279807},
+  {n:'Valley Point Shopping Centre',a:'B1 near Lift Lobby, 491 River Valley Road S248371',h:'Mall opening hours',area:'river valley',lat:1.293072263,lng:103.8270759},
+  {n:'Velocity @ Novena Square',a:'Carpark Level 3B, outside cargo lift, 238 Thomson Road S307683',h:'Mall opening hours',area:'novena thomson',lat:1.3203162,lng:103.8437113},
+  {n:'Woodlands Health Campus',a:'B1 Near the Cascading Waterfall, 17 Woodlands Drive 17 S737628',h:'During hospital hours',area:'woodlands',lat:1.424681387,lng:103.7947438},
+  {n:'Yew Tee Point',a:'Green Corner at B1 between Challenger & Kleen Wash, 21 Choa Chu Kang North 6 S689578',h:'Mall opening hours',area:'choa chu kang yew tee',lat:1.396969935,lng:103.7464432},
 ];
-function rL(d){document.getElementById('llist').innerHTML=d.length?d.map(l=>`<div class="lcard" onclick="sL(this)"><div class="lcard-n">${l.n}</div><div class="lcard-a">${l.a}</div><div class="lcard-h">🕐 ${l.h}</div><a href="https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
+function dirLink(l){return l.lat&&l.lng?`https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}`:`https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}`}
+function rL(d){document.getElementById('llist').innerHTML=d.length?d.map(l=>`<div class="lcard" onclick="sL(this,'${l.n.replace(/'/g,"\\'")}')"><div class="lcard-n">${l.n}</div><div class="lcard-a">${l.a}</div><div class="lcard-h">🕐 ${l.h}</div><a href="${dirLink(l)}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
 rL(locs);
-function sL(el){document.querySelectorAll('.lcard').forEach(c=>c.classList.remove('ac'));el.classList.add('ac')}
+
+/* MAP */
+const binMap=L.map('bin-map').setView([1.3521,103.8198],11);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19}).addTo(binMap);
+const binMarkers={};
+locs.forEach(l=>{
+  if(l.lat==null||l.lng==null)return;
+  const m=L.marker([l.lat,l.lng]).addTo(binMap).bindPopup(`<strong>${l.n}</strong><br>${l.a}<br>🕐 ${l.h}<br><a href="${dirLink(l)}" target="_blank" rel="noopener">Get Directions ↗</a>`);
+  binMarkers[l.n]=m;
+});
+if(Object.keys(binMarkers).length)binMap.fitBounds(L.featureGroup(Object.values(binMarkers)).getBounds(),{padding:[24,24]});
+
+function sL(el,name){document.querySelectorAll('.lcard').forEach(c=>c.classList.remove('ac'));el.classList.add('ac');const m=binMarkers[name];if(m){binMap.flyTo(m.getLatLng(),16);m.openPopup()}}
 document.getElementById('lsrch').addEventListener('input',function(){const v=this.value.toLowerCase();rL(locs.filter(l=>l.n.toLowerCase().includes(v)||l.a.toLowerCase().includes(v)||l.area.includes(v)))});
 </script>
 </body>
