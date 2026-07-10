@@ -124,6 +124,25 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .logo-item.xl img{height:80px}
 .logo-item.xxl img{height:104px}
 .logo-item.xxxl img{height:140px}
+/* Past-events photo gallery */
+.gal-sec{padding:100px 52px;background:var(--w)}
+.gal-event{margin-bottom:64px}
+.gal-event:last-child{margin-bottom:0}
+.gal-ttl{font-family:var(--D);font-weight:700;font-size:19px;color:var(--f);margin-bottom:10px;line-height:1.3}
+.gal-cap{font-size:14px;color:rgba(14,19,15,.62);line-height:1.75;margin-bottom:22px;max-width:700px;white-space:pre-line}
+.gal-cap a{color:var(--l);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(146,205,0,.4)}
+.gal-cap a:hover{border-bottom-color:var(--l)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gal-photo{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--c)}
+.gal-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.gal-photo:hover img{transform:scale(1.07)}
+.gal-logos{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+.gal-logo{background:var(--w);border:1px solid rgba(11,76,9,.1);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:center;height:76px}
+.gal-logo img{height:40px;width:auto;max-width:170px;object-fit:contain}
+.gal-note{background:var(--c);border-radius:16px;padding:36px 40px}
+.gal-note ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+.gal-note li{font-size:14px;color:rgba(14,19,15,.65);line-height:1.6}
+.gal-note li strong{color:var(--f)}
 /* Corporate how-it-works */
 .how-sec{background:var(--f);padding:100px 52px}
 .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px}
@@ -259,6 +278,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .ls-stat{text-align:left}
   .enq-grid{gap:44px}
   .subpage-tabs{padding:0 36px}
+  .gal-sec{padding:80px 36px}
+  .gal-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:768px){
   nav{padding:12px 20px}
@@ -293,6 +314,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .subpage-tabs{padding:0 20px}
   input,select,textarea{font-size:16px!important}
   #panel-condos .ben-grid{grid-template-columns:1fr}
+  .gal-sec{padding:64px 20px}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-note{padding:28px 24px}
 }
 @media(max-width:480px){
   nav{padding:10px 16px}
@@ -311,6 +335,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .logo-grid{grid-template-columns:1fr 1fr}
   .learn-strip{padding:44px 16px}
   .subpage-tabs{padding:0 16px}
+  .gal-sec{padding:52px 16px}
+  .gal-grid{grid-template-columns:1fr 1fr;gap:8px}
 }
 </style>
 </head>
@@ -461,6 +487,119 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
       <div class="logo-item xxxl"><img src="Photos/Events/CSR Partners/Logo%20(1).webp" alt="Partner" loading="lazy"></div>
     </div>
   </div>
+  <div class="gal-sec">
+    <p class="sec-label rv">// Past Events</p>
+    <h2 class="sec-ttl rv d1">See it in action.</h2>
+    <p class="sec-body rv d2" style="margin-bottom:52px">A look back at the corporate drives, CSR campaigns, and partnerships Green Square has delivered across Singapore.</p>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Collaboration with Taobao</h3>
+      <p class="gal-cap">Drop your bags of unwanted clothes at Taobao Home space @ NOMADX and get rewarded with a thank-you-code! Promo code for use this Spring/Summer 2019 Sale (27 – 28 Mar) to maximize savings!
+
+Collection Dates: 24 Mar – 28 Mar 2019
+Address: 68 Orchard Road, #03-65 to 69, Plaza Singapura, Singapore 238839
+Opening hours: 12pm – 8pm</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Collaboration with Taobao/Taobao.jpg" alt="Collaboration with Taobao" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Collaboration with Taobao/Taobao.png" alt="Collaboration with Taobao" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">NEA Clean &amp; Green Campaign @ Wisma Geylang Serai</h3>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7055.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7071.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7072.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7075.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7096.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">MEWR Towards Zero Waste Event @ My Tampines Hub</h3>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/5d9a9bd4-cd4c-4c84-a3e9-ef8724684be7.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/IMG_8681.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/TOWARDS+ZERO+WASTE.jpg" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/fdd87841-9c6c-4338-b008-9bd6669f065f.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">KPMG Giving Month Campaign</h3>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/KPMG Giving Month Campaign/IMG_7481.JPG" alt="KPMG Giving Month Campaign" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/KPMG Giving Month Campaign/IMG_7487.JPG" alt="KPMG Giving Month Campaign" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/KPMG Giving Month Campaign/IMG_7490.JPG" alt="KPMG Giving Month Campaign" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">National University Polyclinics Working Towards Zero-Waste SG!</h3>
+      <p class="gal-cap">Kudos to all… Thanks to all doctors and nurses for participating in uniforms recycling and textile drives!</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/National University Polyclinics working towards Zero-Waste SG!/SG+Polyclinics.jpg" alt="National University Polyclinics Working Towards Zero-Waste SG!" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Yishion Going Green</h3>
+      <p class="gal-cap">Good news for eco-conscious fashionista! Check out these textile recycling boxes (only collect clean clothes, any brands) in stores now:
+
+1. Yishion Westgate – 3 Gateway Dr, #02-44
+2. Yishion Waterway Point – 83 Punggol Central, #01-02/03
+3. Yishion Ang Mo Kio Hub – 53 Ang Mo Kio Ave 3, #B1-29</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/AMK.jpg" alt="Yishion Going Green" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6823.JPG" alt="Yishion Going Green" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6826.JPG" alt="Yishion Going Green" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6827.JPG" alt="Yishion Going Green" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Our 1st Textile Recycling Box in a Mall!</h3>
+      <p class="gal-cap">750 Chai Chee Road, lift Lobby A</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Our 1st textile recycling bos in a Mall!/Greensquare+recycling+box.png" alt="Our 1st Textile Recycling Box in a Mall!" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Singapore's First Collective</h3>
+      <p class="gal-cap">The Green Collective SG is Singapore's first collective of sustainable brands showcasing a range of eco-friendly and socially conscious products. Kickstarted in April 2018, The Green Collective works with consumers as well as businesses to reduce their footprint through its retail concept, workshops, as well as advisory services.</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Singapore's first collective/The+Green+Collective.jpg" alt="Singapore's First Collective" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">30th Anniversary of SDT</h3>
+      <p class="gal-cap">We are honoured to be the official textile recycling partner of Singapore Dance Theatre (SDT). We are looking forward to working with an organisation which plays such a large part in Singapore's arts culture. In conjunction with their 30th anniversary, SDT is making sustainability part of their corporate identity.
+
+We hope to see more organisations step forward to make corporate social responsibility and environmental stewardship part of their mission!</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/30th Anniversary of SDT/Singapore+Dance+Theatre.jpg" alt="30th Anniversary of SDT" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">12 Weeks Zero-Waste Challenge</h3>
+      <p class="gal-cap">Let's do this! In partnership with EarthFest Singapore.</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/12 Weeks Zero-Waste Challenge/EarthFest+Singapore.jpg" alt="12 Weeks Zero-Waste Challenge" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv" style="margin-bottom:0">
+      <h3 class="gal-ttl">ZERRIN</h3>
+      <p class="gal-cap">ZERRIN is a multi-label retail platform carrying conscious brands from around the world.</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Corporate Events/ZERRIN/Zerrin.jpg" alt="ZERRIN" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
   <div class="how-sec">
     <p style="font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--l);margin-bottom:16px" class="rv">// How It Works</p>
     <h2 style="font-family:var(--D);font-size:clamp(28px,4.5vw,52px);font-weight:900;color:var(--c);line-height:1.06;margin-bottom:12px" class="rv d1">Four steps to your<br>company's textile drive.</h2>
@@ -529,6 +668,163 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
       <p class="ls-stat-l">Current textile recycling rate in Singapore.<br>Our goal: <strong>14% by 2030.</strong></p>
     </div>
   </div>
+  <div class="gal-sec">
+    <p class="sec-label rv">// Past Events</p>
+    <h2 class="sec-ttl rv d1">See it in action.</h2>
+    <p class="sec-body rv d2" style="margin-bottom:52px">A look back at the recycling drives, workshops, and student projects Green Square has run with schools across Singapore.</p>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Recycling Art by Students from Yale-NUS College</h3>
+      <p class="gal-cap">There's always a better use of resources. Think twice before throwing anything!</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Art by Students from Yale-NUS College/00C35B21-821F-46A1-9F54-440F47499707.jpg" alt="Recycling Art by Students from Yale-NUS College" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Art by Students from Yale-NUS College/17C8F3B7-858B-4D60-B247-A0A30A3BA4B6.jpg" alt="Recycling Art by Students from Yale-NUS College" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Art by Students from Yale-NUS College/17E1B2B9-4066-41A1-88AD-6B68F380E661.jpg" alt="Recycling Art by Students from Yale-NUS College" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Art by Students from Yale-NUS College/23AE0327-2124-4655-8B32-496FEFBBA033.jpg" alt="Recycling Art by Students from Yale-NUS College" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Art by Students from Yale-NUS College/4B6C22F5-4205-4367-AB93-056DC089675A.jpg" alt="Recycling Art by Students from Yale-NUS College" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Regent Secondary School X Limbang Community</h3>
+      <p class="gal-cap">Students and residents come together to promote textile recycling!</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Regent Secondary School X Limbang Community/0fa72011-a7bf-4063-b0d9-efc41735ee51.jpg" alt="Regent Secondary School X Limbang Community" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Regent Secondary School X Limbang Community/38a2390a-c072-49d7-a335-ee9841ae9d21.jpg" alt="Regent Secondary School X Limbang Community" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Regent Secondary School X Limbang Community/c6e71fcd-b6b7-42da-9d9b-ec95a0d1ca54.jpg" alt="Regent Secondary School X Limbang Community" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Regent Secondary School X Limbang Community/cee71bd0-951d-4aba-8e75-c567dba5eec5.jpg" alt="Regent Secondary School X Limbang Community" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Partnering NUS Environment Group – 'Green Wardrobe'</h3>
+      <p class="gal-cap">Steering Singapore towards a zero-waste nation! 4 green wardrobes on campus to encourage students to recycle their unwanted textiles.
+Read more: <a href="https://www.straitstimes.com/singapore/nus-environment-group-launches-green-wardrobe-initiative-to-collect-old-clothes" target="_blank" rel="noopener noreferrer">The Straits Times</a></p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4602(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4754(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4755(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4758(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Victoria JC Students Up-Cycled Denim into Ear-phones Pouch</h3>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Victoria JC Students Up-Cycled Denim into Ear-phones Pouch/11.jpg" alt="Victoria JC Students Up-Cycled Denim into Ear-phones Pouch" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Victoria JC Students Up-Cycled Denim into Ear-phones Pouch/IMG_6175.JPG" alt="Victoria JC Students Up-Cycled Denim into Ear-phones Pouch" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Victoria JC Students Up-Cycled Denim into Ear-phones Pouch/front.jpg" alt="Victoria JC Students Up-Cycled Denim into Ear-phones Pouch" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Uniform Up-Cycling Project @ Cambridge Preschool</h3>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Uniform Up-Cycling Project @ Cambridge Preschool/IMG_7460.JPG" alt="Uniform Up-Cycling Project @ Cambridge Preschool" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Uniform Up-Cycling Project @ Cambridge Preschool/IMG_7657.JPG" alt="Uniform Up-Cycling Project @ Cambridge Preschool" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Uniform Up-Cycling Project @ Cambridge Preschool/IMG_7722.JPG" alt="Uniform Up-Cycling Project @ Cambridge Preschool" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Recycling Project with K2 Students @ Newton Kindergarten</h3>
+      <p class="gal-cap">A fun-filled day with the K2 smarties!
+– Classroom sharing session on 3Rs (Reduce, Reuse, Recycle)
+– Educational games on recycling
+– Textile recyclables collection</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Project with K2 Students @ Newton Kindergarten/IMG_5488.JPG" alt="Recycling Project with K2 Students @ Newton Kindergarten" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Project with K2 Students @ Newton Kindergarten/IMG_5533.JPG" alt="Recycling Project with K2 Students @ Newton Kindergarten" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Project with K2 Students @ Newton Kindergarten/IMG_5541.JPG" alt="Recycling Project with K2 Students @ Newton Kindergarten" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Recycling Project with K2 Students @ Newton Kindergarten/Recycle+here.jpg" alt="Recycling Project with K2 Students @ Newton Kindergarten" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Textile Drive @ NUS Kent Ridge Hall &amp; Sheares Hall</h3>
+      <p class="gal-cap">Our young green warriors actively organizing recycling events...</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Drive @ NUS Kent Ridge Hall %26 Sheares Hall/IMG_4607.JPG" alt="Textile Drive @ NUS Kent Ridge Hall &amp; Sheares Hall" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Drive @ NUS Kent Ridge Hall %26 Sheares Hall/IMG_4608.JPG" alt="Textile Drive @ NUS Kent Ridge Hall &amp; Sheares Hall" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Drive @ NUS Kent Ridge Hall %26 Sheares Hall/IMG_4609.JPG" alt="Textile Drive @ NUS Kent Ridge Hall &amp; Sheares Hall" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Drive @ NUS Kent Ridge Hall %26 Sheares Hall/Sheares+Hall.jpg" alt="Textile Drive @ NUS Kent Ridge Hall &amp; Sheares Hall" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Our Way of Celebrating Earth Day</h3>
+      <p class="gal-cap">…playing recycling games with kids
+…enjoying the fresh produce from the farmers' market
+…recycling textiles
+
+Special thanks to: EtonHouse International Pre-school Claymore, EtonHouse Pre-school Vanda, EtonHouse ZhongHua</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4364.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4367.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4369.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4370.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4372.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4374.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4378.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Our Way of Celebrating Earth Day/IMG_4380.JPG" alt="Our Way of Celebrating Earth Day" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Green Technology Exhibition @ NEXUS International School</h3>
+      <p class="gal-cap">Impressive green innovation by the Grade 9 students, including:
+– Miniature hydroponic gardening systems
+– Bicycle energy generator
+– Eco-friendly house made of plastic bottles
+
+We were happy to be part of this event, exchanging ideas with the future green warriors!</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4409.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4413.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4416.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4418.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4421.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4424.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4428.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Green Technology Exhibition @ NEXUS International School/IMG_4437.JPG" alt="Green Technology Exhibition @ NEXUS International School" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv">
+      <h3 class="gal-ttl">Textile Recycling Drive @ Anderson Sec School</h3>
+      <p class="gal-cap">Together with the school's Green Club, we organised a textile drive during the national Girl Guide event. Many schools participated to showcase different ways of recycling as well! Here's a few:
+– Using a t-shirt to make a bag – by Anderson Sec School
+– Using magazine &amp; straw to make a pin-wheel craft – by St. Nicholas Girls' School (SNGS)
+– Using mineral water bottles to make a piggy bank – by Singapore Chinese Girls' School (SCGS)
+– Using a plastic bag to make a flower – Endeavour Primary School</p>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4186.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4189.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4191.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4192.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4200.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4202.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4207.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4209.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4211.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG-4212.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@School/Textile Recycling Drive @ Anderson Sec School/IMG_4205.JPG" alt="Textile Recycling Drive @ Anderson Sec School" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="gal-event rv" style="margin-bottom:0">
+      <h3 class="gal-ttl">Supporting Students in Projects &amp; Research Work</h3>
+      <div class="gal-note">
+        <ol>
+          <li><strong>ACJC</strong> – project to investigate issues of textile waste in Singapore</li>
+          <li><strong>Ngee Ann Polytechnic</strong> – project aims to inculcate environmental-friendly habits among children aged 4–6 years old</li>
+          <li><strong>NUS</strong> – an honours project on textile waste management in Singapore</li>
+          <li><strong>SJI</strong> – participating in the Youth Innovation Challenge organised by Singapore Management University, to improve the recycling rate in Singapore</li>
+          <li><strong>Hwa Chong Institution</strong> – project work to improve textile recycling in Singapore and promote awareness of the harmful impacts of fast fashion</li>
+        </ol>
+      </div>
+    </div>
+  </div>
   <section class="sec" style="background:var(--c)">
     <p class="sec-label rv">// Book a Session</p>
     <div class="enq-grid">
@@ -580,6 +876,30 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
       <div class="step-crd rv d4"><div class="step-n">04</div><h3>Impact Report</h3><p>We collect everything and send your estate's impact certificate within 7 days. Share it proudly with your residents.</p></div>
     </div>
   </section>
+  <div class="gal-sec">
+    <p class="sec-label rv">// Past Events</p>
+    <h2 class="sec-ttl rv d1">See it in action.</h2>
+    <p class="sec-body rv d2" style="margin-bottom:52px">A look back at the residential drives Green Square has run for condominiums and private estates across Singapore.</p>
+
+    <div class="gal-event rv" style="margin-bottom:0">
+      <h3 class="gal-ttl">Chinese New Year Recycling Event @ Condominiums</h3>
+      <div class="gal-grid">
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2763.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2885.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2907.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2942.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2944.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-295.jpg" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2950.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-296.jpg" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/resident.jpg" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+      </div>
+      <div class="gal-logos">
+        <div class="gal-logo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/Sophia+Residence.jpg" alt="Sophia Residence" loading="lazy"></div>
+        <div class="gal-logo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/Junction-Nine-Residences.jpg" alt="Junction Nine Residences" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
   <section class="sec" style="background:var(--c)">
     <p class="sec-label rv">// Enquire Now</p>
     <div class="enq-grid">
