@@ -88,7 +88,7 @@ nav.s .nl img{height:64px}
 /* ════════════════════════════════════════
    HERO
 ════════════════════════════════════════ */
-#hero{min-height:100vh;min-height:100svh;background:var(--c);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;padding-top:0}
+#hero{min-height:100vh;min-height:100svh;background:var(--c);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;padding-top:0}
 /* Subtle dot grid bg */
 #hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(11,76,9,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
 .hero-top{display:flex;align-items:flex-end;justify-content:space-between;padding:140px 52px 0;position:relative;z-index:2}
@@ -389,6 +389,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   .hero-ctas{margin-left:0}
   .inv-cards{grid-template-columns:1fr 1fr}
   .acc-grid{grid-template-columns:repeat(4,1fr)}
+  .nlinks{display:none}
+  .brg{display:flex}
 }
 
 /* ════════════════════════════════════════
