@@ -136,6 +136,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .gal-photo{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--c)}
 .gal-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
 .gal-photo:hover img{transform:scale(1.07)}
+.gal-photo.contain img{object-fit:contain}
 .gal-logos{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
 .gal-logo{background:var(--w);border:1px solid rgba(11,76,9,.1);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:center;height:76px}
 .gal-logo img{height:40px;width:auto;max-width:170px;object-fit:contain}
@@ -395,23 +396,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   <div class="pg-hero-bg" aria-hidden="true">EVT</div>
 </div>
 
-<!-- FILTERS -->
-<div class="filters" id="filterBar">
-  <button class="ftab ac" onclick="filterEvt('all',this)">All</button>
-  <button class="ftab" onclick="filterEvt('corporate',this)">Corporate</button>
-  <button class="ftab" onclick="filterEvt('school',this)">Schools</button>
-  <button class="ftab" onclick="filterEvt('condo',this)">Condominiums</button>
-  <button class="ftab" onclick="filterEvt('community',this)">Community</button>
-</div>
-
-<!-- EVENTS -->
-<div class="events-sec">
-  <div class="events-grid" id="eventsGrid"></div>
-  <div class="load-more-wrap">
-    <button class="load-more" id="loadMoreBtn" onclick="loadMore()">Load More Events</button>
-  </div>
-</div>
-
 <!-- HOST A COLLECTION -->
 <div class="host-strip">
   <div class="host-inner">
@@ -500,8 +484,7 @@ Collection Dates: 24 Mar – 28 Mar 2019
 Address: 68 Orchard Road, #03-65 to 69, Plaza Singapura, Singapore 238839
 Opening hours: 12pm – 8pm</p>
       <div class="gal-grid">
-        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Collaboration with Taobao/Taobao.jpg" alt="Collaboration with Taobao" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Collaboration with Taobao/Taobao.png" alt="Collaboration with Taobao" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Corporate Events/Collaboration with Taobao/Taobao.jpg" alt="Collaboration with Taobao" loading="lazy"></div>
       </div>
     </div>
 
@@ -512,7 +495,7 @@ Opening hours: 12pm – 8pm</p>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7071.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7072.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7075.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7096.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7096.JPG" alt="NEA Clean &amp; Green Campaign @ Wisma Geylang Serai" loading="lazy"></div>
       </div>
     </div>
 
@@ -522,7 +505,7 @@ Opening hours: 12pm – 8pm</p>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/5d9a9bd4-cd4c-4c84-a3e9-ef8724684be7.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/IMG_8681.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/TOWARDS+ZERO+WASTE.jpg" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/fdd87841-9c6c-4338-b008-9bd6669f065f.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/fdd87841-9c6c-4338-b008-9bd6669f065f.JPG" alt="MEWR Towards Zero Waste Event @ My Tampines Hub" loading="lazy"></div>
       </div>
     </div>
 
@@ -553,7 +536,7 @@ Opening hours: 12pm – 8pm</p>
       <div class="gal-grid">
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/AMK.jpg" alt="Yishion Going Green" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6823.JPG" alt="Yishion Going Green" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6826.JPG" alt="Yishion Going Green" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6826.JPG" alt="Yishion Going Green" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Corporate Events/Yishion Going Green/IMG_6827.JPG" alt="Yishion Going Green" loading="lazy"></div>
       </div>
     </div>
@@ -701,10 +684,10 @@ We hope to see more organisations step forward to make corporate social responsi
       <p class="gal-cap">Steering Singapore towards a zero-waste nation! 4 green wardrobes on campus to encourage students to recycle their unwanted textiles.
 Read more: <a href="https://www.straitstimes.com/singapore/nus-environment-group-launches-green-wardrobe-initiative-to-collect-old-clothes" target="_blank" rel="noopener noreferrer">The Straits Times</a></p>
       <div class="gal-grid">
-        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4602(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4754(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4755(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4758(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4602(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4754(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4755(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Events@School/Partnering NUS Environment Group - 'Green Wardrobe'/IMG_4758(1).JPG" alt="Partnering NUS Environment Group – 'Green Wardrobe'" loading="lazy"></div>
       </div>
     </div>
 
@@ -890,7 +873,7 @@ We were happy to be part of this event, exchanging ideas with the future green w
         <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2942.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2944.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-295.jpg" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
-        <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2950.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
+        <div class="gal-photo contain"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-2950.JPG" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/IMG-296.jpg" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
         <div class="gal-photo"><img src="Photos/Events/Events@Condominium/Chinese New Year Recycling Event @ Condominiums/resident.jpg" alt="Chinese New Year Recycling Event @ Condominiums" loading="lazy"></div>
       </div>
@@ -1009,73 +992,6 @@ const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 const prog=document.getElementById('prog');
 window.addEventListener('scroll',()=>{const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;if(prog)prog.style.width=(dh>0?(st/dh*100):0)+'%'},{passive:true});
-
-/* ── EVENTS DATA & RENDERING ── */
-const DEFAULT_EVENTS=[
-  {id:1,title:'DBS Bank Corporate Textile Drive',date:'2025-07-15',category:'corporate',emoji:'🏦',img:'Photos/event-team.jpg',description:'Join us for a company-wide textile collection event at DBS headquarters. Bring clean clothing, paired shoes, and accessories. All items will be sorted and redistributed across our NEA-approved network.',location:'DBS Marina Bay Financial Centre',spots:'Open to all DBS employees & guests'},
-  {id:2,title:'Raffles Institution Green Week',date:'2025-07-22',category:'school',emoji:'🏫',img:'Photos/event-booth.jpg',description:'Green Square partners with Raffles Institution for their annual Green Week. Students can drop off textiles and attend our 3Rs education workshop on Singapore\'s textile waste challenge.',location:'Raffles Institution, Bishan',spots:'Open to RI students & staff'},
-  {id:3,title:'The Sail @ Marina Bay Condo Drive',date:'2025-08-02',category:'condo',emoji:'🏙️',img:'Photos/event-visitors.jpg',description:'Residents of The Sail can drop off their clean textiles in the main lobby. Our team will be on-site to assist and answer questions. A great chance to clear out wardrobe clutter sustainably.',location:'The Sail @ Marina Bay, Main Lobby',spots:'Open to all residents'},
-  {id:4,title:'Tampines Community Collection Day',date:'2025-08-10',category:'community',emoji:'🤝',img:'Photos/event-team-2.jpg',description:'A community-organised textile collection at Tampines Community Centre. Open to all Tampines residents. Help us reach our target of 5,000 kg collected this quarter.',location:'Tampines CC, Main Hall',spots:'Open to all Tampines residents'},
-  {id:5,title:'KPMG ESG Textile Collection',date:'2025-08-18',category:'corporate',emoji:'🏢',img:'Photos/event-family.jpg',description:'KPMG Singapore runs its quarterly CSR textile drive in partnership with Green Square. All employees are encouraged to bring pre-owned textiles. ESG impact reports provided.',location:'KPMG Singapore, One Raffles Quay',spots:'Open to KPMG employees'},
-  {id:6,title:'Anglo-Chinese School Green Drive',date:'2025-09-05',category:'school',emoji:'🎒',img:'Photos/event-repurpose.jpg',description:'ACS(I) partners with Green Square for a student-led textile recycling initiative. CCA points available for participants. Includes a sustainability workshop for upper secondary students.',location:'Anglo-Chinese School (Independent), Dover Rd',spots:'Open to ACS(I) students'},
-  {id:7,title:'Reflections at Keppel Bay Resident Drive',date:'2025-09-12',category:'condo',emoji:'🌊',description:'Exclusive collection event for Reflections at Keppel Bay residents. Drop off at the concierge level. Free textile recycling for all residents, no booking required.',location:'Reflections at Keppel Bay, Concierge Level',spots:'Open to all residents'},
-  {id:8,title:'Netflix Singapore Office Collection',date:'2025-09-20',category:'corporate',emoji:'🎬',description:'Netflix Singapore runs an employee textile drive as part of their sustainability week. All textiles collected will be sorted and donated or repurposed through our network.',location:'Netflix Singapore, One Holland Village',spots:'Open to Netflix Singapore team'},
-  {id:9,title:'Buona Vista Community Green Day',date:'2025-10-04',category:'community',emoji:'🌱',description:'A neighbourhood-level textile drop-off at Buona Vista CC. Families, students, and seniors welcome. Face-to-face education sessions on Singapore\'s textile recycling landscape.',location:'Buona Vista CC, Main Hall',spots:'Open to all'}
-];
-
-let allEvts=[],visible=6,curFilter='all';
-
-function loadEvents(){
-  try{const s=localStorage.getItem('gs_events');if(s)allEvts=JSON.parse(s);}catch(e){}
-  if(!allEvts.length)allEvts=[...DEFAULT_EVENTS];
-}
-
-function fmtDate(d){
-  const dt=new Date(d+'T00:00:00');
-  return dt.toLocaleDateString('en-SG',{day:'numeric',month:'long',year:'numeric'});
-}
-
-function catLabel(c){
-  return{corporate:'Corporate',school:'School',condo:'Condominium',community:'Community'}[c]||c;
-}
-
-function renderGrid(){
-  const grid=document.getElementById('eventsGrid');
-  const now=new Date();now.setHours(0,0,0,0);
-  let filtered=allEvts.filter(e=>curFilter==='all'||e.category===curFilter)
-    .sort((a,b)=>new Date(a.date)-new Date(b.date));
-  const slice=filtered.slice(0,visible);
-  document.getElementById('loadMoreBtn').disabled=slice.length>=filtered.length;
-  if(!filtered.length){
-    grid.innerHTML='<div class="ev-empty" style="grid-column:1/-1"><p>No events found.</p><span>Check back soon or contact us to book an event.</span></div>';
-    return;
-  }
-  grid.innerHTML=slice.map(e=>{
-    const isPast=new Date(e.date+'T00:00:00')<now;
-    return`<div class="ev-card">
-      <div class="ev-img" style="overflow:hidden;background:var(--f)">${e.img?`<img src="${e.img}" alt="${e.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:`<div style="font-size:52px;display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--f),var(--g))">${e.emoji||'📦'}</div>`}<div class="ev-img-overlay"></div></div>
-      <div class="ev-body">
-        <div class="ev-cat cat-${e.category}">${catLabel(e.category)}</div>
-        <div class="ev-title">${e.title}</div>
-        <div class="ev-date">📅 ${fmtDate(e.date)}${isPast?' · <em style="color:#c44;font-style:normal;font-size:10px">Past event</em>':''}</div>
-        ${e.location?`<div class="ev-loc">📍 ${e.location}</div>`:''}
-        <p class="ev-desc">${e.description}</p>
-        <a href="contact.html" class="ev-more">Register Interest →</a>
-      </div>
-    </div>`}).join('');
-}
-
-function filterEvt(cat,btn){
-  curFilter=cat;visible=6;
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('ac'));
-  btn.classList.add('ac');
-  renderGrid();
-}
-
-function loadMore(){visible+=6;renderGrid();}
-
-loadEvents();
-renderGrid();
 
 /* ── SUBPAGE TABS ── */
 function showTab(name,btn){
