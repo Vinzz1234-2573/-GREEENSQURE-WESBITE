@@ -531,7 +531,7 @@ html { scroll-padding-top: 80px; }
 @media (min-width: 1601px) {
   #hero .hero-top,
   #hero .hero-meta,
-  #hero .hero-stats { max-width: 1600px; margin-left: auto; margin-right: auto; }
+  #hero .hero-stats { max-width: 1600px; margin-left: 0; margin-right: auto; }
 }
 
 /* ═══════════════════════════════════════════
