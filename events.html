@@ -925,8 +925,8 @@ We were happy to be part of this event, exchanging ideas with the future green w
     <a href="index.html">Home</a><a href="about.html">About</a>
     <a href="what-to-do.html">What We Do</a><a href="what-we-collect.html">What We Accept</a>
     <a href="events.html">Events</a><a href="blog.html">Blog</a>
-    <a href="corporate.html">Corporate Events</a><a href="schools.html">School Events</a>
-    <a href="condos.html">Condo Events</a><a href="drop-off.html">Find a Drop-Off</a>
+    <a href="events.html#corporate">Corporate Events</a><a href="events.html#schools">School Events</a>
+    <a href="events.html#condos">Condo Events</a><a href="drop-off.html">Find a Drop-Off</a>
     <a href="contact.html">Get Involved</a><a href="contact.html">Contact</a>
   </div>
   <div class="ft-bot">
@@ -968,18 +968,22 @@ function showTab(name,btn){
   history.replaceState(null,'','#'+name);
   document.querySelectorAll('#panel-'+name+' .rv:not(.in)').forEach(el=>rvObs.observe(el));
 }
-(function(){
+function activateTabFromHash(){
   const h=location.hash.slice(1);
   if(['corporate','schools','condos'].includes(h)){
     const btn=document.querySelector('.stab[data-tab="'+h+'"]');
     if(btn){
       document.querySelectorAll('.subpanel').forEach(p=>p.classList.remove('active'));
       document.querySelectorAll('.stab').forEach(b=>b.classList.remove('ac'));
-      document.getElementById('panel-'+h).classList.add('active');
+      const panel=document.getElementById('panel-'+h);
+      panel.classList.add('active');
       btn.classList.add('ac');
+      panel.querySelectorAll('.rv:not(.in)').forEach(el=>rvObs.observe(el));
     }
   }
-})();
+}
+activateTabFromHash();
+window.addEventListener('hashchange',activateTabFromHash);
 
 /* ── PANEL FORMS ── */
 function setupPanelForm(prefix,req){
