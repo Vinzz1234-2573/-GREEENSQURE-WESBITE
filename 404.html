@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>404 — Page Not Found | Green Square Singapore</title>
+<meta name="description" content="The page you're looking for can't be found. Head back to Green Square — Singapore's textile recycling platform.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="Photos/GS logo favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--c:#F7F9ED;--l:#92CD00;--g:#4B9F5F;--f:#0B4C09;--k:#0E130F;--w:#fff;--D:'Unbounded',sans-serif;--B:'Fira Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--k)}
+body{font-family:var(--B);background:var(--k);color:var(--c);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+img{display:block;max-width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:5px 52px;display:flex;align-items:center;justify-content:space-between;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
+.nl img{height:78px;width:auto}
+.nlinks{display:flex;gap:20px;list-style:none;align-items:center}
+.nlinks a{font-family:var(--B);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--f);text-decoration:none;position:relative;padding-bottom:2px}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--l);transition:width .3s}
+.nlinks a:hover::after{width:100%}
+.nlinks a.nc{background:var(--f);color:var(--c);padding:10px 22px;border-radius:100px;font-family:var(--D);font-size:10px}
+.nlinks a.nc::after{display:none}
+.nlinks a.nc:hover{background:var(--l);color:var(--k)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:all .25s}
+.btn-lime{background:var(--l);color:var(--k)}
+.btn-lime:hover{background:#a3e000;transform:translateY(-2px);box-shadow:0 10px 28px rgba(146,205,0,.3)}
+.btn-cout{background:transparent;border-color:rgba(247,249,237,.35);color:var(--c)}
+.btn-cout:hover{background:rgba(247,249,237,.1);border-color:var(--c);transform:translateY(-2px)}
+
+/* 404 HERO */
+main{flex:1;position:relative;display:flex;align-items:center;overflow:hidden;padding:150px 52px 90px}
+main::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(146,205,0,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.e404-glow{position:absolute;left:-10%;top:20%;width:min(680px,80vw);height:min(560px,70vh);border-radius:50%;background:radial-gradient(ellipse at 40% 40%,rgba(146,205,0,.14) 0%,rgba(75,159,95,.06) 40%,transparent 70%);pointer-events:none}
+.e404-bg{position:absolute;right:-4%;bottom:-8%;font-family:var(--D);font-weight:900;font-size:clamp(220px,40vw,560px);line-height:1;color:rgba(146,205,0,.04);-webkit-text-stroke:2px rgba(146,205,0,.06);user-select:none;pointer-events:none;z-index:0}
+.e404-inner{position:relative;z-index:2;max-width:760px}
+.e404-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--l);margin-bottom:22px}
+.e404-dot{width:7px;height:7px;border-radius:50%;background:var(--l)}
+.e404-num{font-family:var(--D);font-weight:900;font-size:clamp(96px,20vw,220px);line-height:.9;letter-spacing:-4px;color:var(--l);margin-bottom:8px}
+.e404-title{font-family:var(--D);font-weight:900;font-size:clamp(28px,4.5vw,52px);line-height:1.05;color:var(--c);margin-bottom:20px}
+.e404-sub{font-size:17px;line-height:1.65;color:rgba(247,249,237,.62);max-width:520px;margin-bottom:36px}
+.e404-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.e404-links{display:flex;gap:10px 26px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(247,249,237,.1)}
+.e404-links span{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(247,249,237,.3);margin-right:4px}
+.e404-links a{font-family:var(--B);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(247,249,237,.5);text-decoration:none;transition:color .2s}
+.e404-links a:hover{color:var(--l)}
+
+/* FOOTER (standardized) */
+footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px;position:relative}
+.ft-top{margin-bottom:32px}
+.ft-logo img{height:78px;width:auto}
+.ft-socs{display:flex;gap:10px;margin-bottom:32px}
+.ft-soc{width:38px;height:38px;border:1px solid rgba(247,249,237,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(247,249,237,.45);transition:all .25s;text-decoration:none}
+.ft-soc:hover{border-color:var(--l);background:var(--l);color:var(--k);transform:translateY(-2px)}
+.ft-links{display:flex;gap:14px 28px;flex-wrap:wrap;margin-bottom:36px}
+.ft-links a{font-family:var(--B);font-size:11px;font-weight:500;color:rgba(247,249,237,.35);text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+.ft-links a:hover{color:var(--l)}
+.ft-bot{display:flex;justify-content:space-between;padding-top:20px;border-top:1px solid rgba(247,249,237,.07);flex-wrap:wrap;gap:8px}
+.ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
+
+@media(max-width:768px){
+  nav{padding:6px 20px}
+  .nl img{height:44px}
+  .nlinks{display:none}
+  main{padding:120px 24px 64px}
+  .e404-sub{font-size:16px}
+  footer{padding:48px 20px 24px}
+  .ft-bot{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nl" aria-label="Green Square Home">
+    <img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore">
+  </a>
+  <ul class="nlinks">
+    <li><a href="about.html">About</a></li>
+    <li><a href="what-to-do.html">What We Do</a></li>
+    <li><a href="drop-off.html">Drop Off</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="drop-off.html" class="nc">Find a GreenSquare Bin</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="e404-glow" aria-hidden="true"></div>
+  <span class="e404-bg" aria-hidden="true">404</span>
+  <div class="e404-inner">
+    <span class="e404-eyebrow"><span class="e404-dot"></span>Error 404</span>
+    <div class="e404-num">404</div>
+    <h1 class="e404-title">This page has been<br>reused, repurposed &amp; recycled.</h1>
+    <p class="e404-sub">The page you're looking for doesn't exist or may have moved. But nothing here goes to waste — let's get you back on track.</p>
+    <div class="e404-ctas">
+      <a href="index.html" class="btn btn-lime">Back to Home →</a>
+      <a href="drop-off.html" class="btn btn-cout">Find a Drop-Off</a>
+    </div>
+    <div class="e404-links">
+      <span>Or try:</span>
+      <a href="about.html">About</a>
+      <a href="what-to-do.html">What We Do</a>
+      <a href="what-we-collect.html">What We Accept</a>
+      <a href="events.html">Events</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="ft-top">
+    <a href="index.html" aria-label="Green Square"><div class="ft-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div></a>
+  </div>
+  <div class="ft-socs">
+    <a href="https://www.facebook.com/greensquare.sg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/greensquare.sg/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ft-soc"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+  <div class="ft-links">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="what-to-do.html">What We Do</a><a href="what-we-collect.html">What We Accept</a>
+    <a href="events.html">Events</a><a href="blog.html">Blog</a>
+    <a href="events.html#corporate">Corporate Events</a><a href="events.html#schools">School Events</a>
+    <a href="events.html#condos">Condo Events</a><a href="drop-off.html">Find a Drop-Off</a>
+    <a href="contact.html">Get Involved</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2025 GRR Consultant Pte. Ltd. (UEN: 202210672M). All rights reserved.</p>
+    <p class="ft-made">Made in Singapore 🇸🇬</p>
+  </div>
+</footer>
+
+</body>
+</html>
