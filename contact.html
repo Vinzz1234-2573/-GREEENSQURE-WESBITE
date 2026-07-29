@@ -74,13 +74,13 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
 
 /* ── PAGE HERO ── */
-.pg-hero{background:var(--k);padding:140px 52px 80px;position:relative;overflow:hidden}
+.pg-hero{background:var(--k);padding:140px 52px 80px;position:relative;z-index:0;overflow:hidden}
 .pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(146,205,0,.08),transparent 65%)}
 .pg-tag{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(146,205,0,.6);margin-bottom:20px}
 .pg-ttl{font-family:var(--D);font-size:clamp(36px,5.5vw,72px);font-weight:900;color:var(--c);line-height:1.02;margin-bottom:20px}
 .pg-ttl em{color:var(--l);font-style:normal}
 .pg-sub{font-size:18px;color:rgba(247,249,237,.5);line-height:1.7;max-width:520px}
-.pg-hero-bg{position:absolute;font-family:var(--D);font-weight:900;font-size:clamp(120px,18vw,220px);color:rgba(146,205,0,.04);right:40px;bottom:-20px;line-height:1;pointer-events:none;letter-spacing:-.02em}
+.pg-hero-bg{position:absolute;z-index:-1;font-family:var(--D);font-weight:900;font-size:clamp(120px,18vw,220px);color:rgba(146,205,0,.04);right:40px;bottom:-20px;line-height:1;pointer-events:none;letter-spacing:-.02em}
 
 /* ── CONTACT LAYOUT ── */
 .con-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:0;min-height:600px}
@@ -129,7 +129,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .fsuc-txt{font-size:15px;color:rgba(14,19,15,.5);line-height:1.6}
 
 /* WhatsApp floating button */
-#waFloat{position:fixed;bottom:88px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;transform:scale(0);opacity:0}
+#waFloat{position:fixed;bottom:24px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;transform:scale(0);opacity:0}
 #waFloat.show{transform:scale(1);opacity:1}
 #waFloat:hover{background:#1ebe5d;transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
 #waFloat svg{width:26px;height:26px;fill:#fff}
@@ -165,7 +165,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .ft-links{gap:12px}
   .ft-bot{flex-direction:column;gap:6px}
   .ft-logo img{height:28px}
-  #waFloat{bottom:76px;right:16px;width:46px;height:46px}
+  #waFloat{bottom:16px;right:16px;width:46px;height:46px}
   input,select,textarea{font-size:16px!important}
   .btn{min-height:44px}
   .brg{padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center}
@@ -357,8 +357,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     </div>
     <div class="fsuc" id="con-suc">
       <div class="fsuc-icon">✅</div>
-      <div class="fsuc-ttl">Message sent!</div>
-      <p class="fsuc-txt">Thanks for reaching out. We'll get back to you within 2 working days.<br>For urgent matters, WhatsApp us at <a href="https://wa.me/6583838677" style="color:var(--l);font-weight:600">+65 8383 8677</a>.</p>
+      <div class="fsuc-ttl">Thank you!</div>
+      <p class="fsuc-txt">We are not accepting any form requests for now, but if you have enquiries, please call or email us as per the contact information above. Thank you!</p>
     </div>
   </div>
 
@@ -463,40 +463,10 @@ window.addEventListener('scroll',()=>{
 setTimeout(()=>document.getElementById('waFloat').classList.add('show'),1200);
 
 /* CONTACT FORM */
-async function submitForm(e){
+function submitForm(e){
   e.preventDefault();
-  const name=document.getElementById('cf-name').value.trim();
-  const email=document.getElementById('cf-email').value.trim();
-  const phone=document.getElementById('cf-phone').value.trim();
-  const topic=document.getElementById('cf-topic').value;
-  const msg=document.getElementById('cf-msg').value.trim();
-  const mark=c=>document.getElementById(c).style.borderColor='#ff7a7a';
-  if(!name){mark('cf-name');document.getElementById('cf-name').focus();return}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){mark('cf-email');document.getElementById('cf-email').focus();return}
-  if(!msg){mark('cf-msg');document.getElementById('cf-msg').focus();return}
-  const btn=document.querySelector('.fsub');
-  btn.textContent='Sending…';btn.disabled=true;
-  const KEY='YOUR_WEB3FORMS_KEY';
-  if(KEY==='YOUR_WEB3FORMS_KEY'){
-    /* Fallback: native email client */
-    const sub=encodeURIComponent('Website Enquiry'+(topic?': '+topic:'')+(name?' from '+name:''));
-    const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+(phone?'\nPhone: '+phone:'')+(topic?'\nTopic: '+topic:'')+'\n\nMessage:\n'+msg);
-    window.location.href='mailto:hello@greensquare.com.sg?subject='+sub+'&body='+body;
-    btn.textContent='✓ Opening Email App…';
-    setTimeout(()=>{btn.textContent='Send Message →';btn.disabled=false;},3000);
-    return;
-  }
-  try{
-    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({access_key:KEY,subject:'New Enquiry | Green Square Website',
-        from_name:name,email:email,phone:phone||'N/A',topic:topic||'General',message:msg})});
-    const data=await res.json();
-    if(data.success){
-      document.getElementById('con-form-wrap').style.display='none';
-      document.getElementById('con-suc').style.display='block';
-    }else{btn.textContent='Failed. Please Try Again';btn.disabled=false;}
-  }catch{btn.textContent='Network Error. Try Again';btn.disabled=false;}
+  document.getElementById('con-form-wrap').style.display='none';
+  document.getElementById('con-suc').style.display='block';
 }
 </script>
 </body>

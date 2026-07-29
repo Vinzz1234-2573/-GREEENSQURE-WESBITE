@@ -75,13 +75,13 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
 
 /* PAGE HERO */
-.pg-hero{padding:140px 52px 80px;background:var(--f);position:relative;overflow:hidden}
+.pg-hero{padding:140px 52px 80px;background:var(--f);position:relative;z-index:0;overflow:hidden}
 .pg-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(146,205,0,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
 .pg-tag{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(247,249,237,.4);margin-bottom:20px}
-.pg-ttl{font-family:var(--D);font-size:clamp(40px,7vw,90px);font-weight:900;color:var(--c);line-height:.95;margin-bottom:24px}
+.pg-ttl{font-family:var(--D);font-size:clamp(40px,7vw,90px);font-weight:900;color:var(--c);line-height:1.08;margin-bottom:24px}
 .pg-ttl em{color:var(--l);font-style:normal}
 .pg-sub{font-size:18px;color:rgba(247,249,237,.55);max-width:560px;line-height:1.7}
-.pg-hero-bg{position:absolute;font-family:var(--D);font-weight:900;font-size:clamp(120px,20vw,260px);color:rgba(247,249,237,.03);right:-10px;bottom:-30px;line-height:1;pointer-events:none;user-select:none;letter-spacing:-.03em}
+.pg-hero-bg{position:absolute;z-index:-1;font-family:var(--D);font-weight:900;font-size:clamp(120px,20vw,260px);color:rgba(247,249,237,.03);right:-10px;bottom:-30px;line-height:1;pointer-events:none;user-select:none;letter-spacing:-.03em}
 
 /* LOCATIONS */
 #locs{background:var(--w);padding:100px 52px}
@@ -106,6 +106,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .popup-desc{font-family:var(--B);font-size:11px;font-weight:600;color:rgba(14,19,15,.68);margin-bottom:5px}
 .popup-h{font-family:var(--B);font-size:11px;color:rgba(14,19,15,.38);margin-bottom:7px}
 .popup-dir{font-family:var(--B);font-size:10px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.popup-n-link{font-family:var(--D);font-size:14px;font-weight:700;color:var(--f);text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.popup-n-link:after{content:'→';color:var(--l)}
 .loc-cta{margin-top:40px;text-align:center}
 .loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
 
@@ -129,6 +131,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .nlinks{display:none}
   .brg{display:flex;padding:10px;min-height:44px;min-width:44px;align-items:center;justify-content:center}
   .pg-hero{padding:100px 20px 56px}
+  .pg-ttl{font-size:clamp(38px,calc(8.63vw - 3.5px),63px)}
   #locs{padding:56px 20px}
   .loc-grid{grid-template-columns:1fr;gap:20px}
   .mapbox{height:260px;border-radius:14px}
@@ -148,6 +151,7 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   nav{padding:10px 16px}nav.s{padding:8px 16px}
   .nl img{height:28px}nav.s .nl img{height:24px}
   .pg-hero{padding:84px 16px 48px}
+  .pg-ttl{font-size:clamp(19px,calc(8.63vw - 3px),39px)}
   #locs{padding:48px 16px}
   footer{padding:36px 16px 76px}
   .ft-links{gap:10px;row-gap:8px}
@@ -338,9 +342,13 @@ rL(locs);
 const binMap=L.map('bin-map').setView([1.3521,103.8198],11);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19}).addTo(binMap);
 const binMarkers={};
+const isMobileMap=window.matchMedia('(max-width:768px)').matches;
 locs.forEach(l=>{
   if(l.lat==null||l.lng==null)return;
-  const m=L.marker([l.lat,l.lng]).addTo(binMap).bindPopup(`<div class="popup-n">${l.n}</div>${locBlock(l,'popup-addr','popup-desc','popup-h')}<a href="${dirLink(l)}" target="_blank" rel="noopener" class="popup-dir">Get Directions ↗</a>`);
+  const popupHTML=isMobileMap
+    ? `<a href="${dirLink(l)}" target="_blank" rel="noopener" class="popup-n-link">${l.n}</a>`
+    : `<div class="popup-n">${l.n}</div>${locBlock(l,'popup-addr','popup-desc','popup-h')}<a href="${dirLink(l)}" target="_blank" rel="noopener" class="popup-dir">Get Directions ↗</a>`;
+  const m=L.marker([l.lat,l.lng]).addTo(binMap).bindPopup(popupHTML,isMobileMap?{minWidth:20,maxWidth:280,autoPan:true}:{});
   binMarkers[l.n]=m;
 });
 if(Object.keys(binMarkers).length)binMap.fitBounds(L.featureGroup(Object.values(binMarkers)).getBounds(),{padding:[24,24]});

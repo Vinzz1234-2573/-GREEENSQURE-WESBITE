@@ -81,19 +81,14 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .ft-links a:hover{color:var(--l)}
 .ft-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(247,249,237,.06);flex-wrap:wrap;gap:10px}
 .ft-copy,.ft-made{font-size:11px;color:rgba(247,249,237,.22)}
-#fCta{position:fixed;bottom:24px;right:24px;z-index:190;background:var(--k);color:var(--l);font-family:var(--D);font-weight:700;font-size:10px;letter-spacing:.5px;padding:13px 22px;border-radius:100px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transform:translateY(16px);transition:all .4s;pointer-events:none}
-#fCta.show{opacity:1;transform:none;pointer-events:auto}
-#fCta:hover{background:var(--f);transform:translateY(-2px)}
-.fdot{width:6px;height:6px;border-radius:50%;background:var(--l);animation:bdPulse 1.5s ease-in-out infinite}
-@keyframes bdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 
 /* PAGE HERO */
-.pg-hero{padding:140px 52px 72px;background:var(--k);position:relative;overflow:hidden}
+.pg-hero{padding:140px 52px 72px;background:var(--k);position:relative;z-index:0;overflow:hidden}
 .pg-tag{font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--l);margin-bottom:20px}
 .pg-ttl{font-family:var(--D);font-size:clamp(36px,6vw,80px);font-weight:900;color:var(--c);line-height:1;margin-bottom:20px}
 .pg-ttl em{color:var(--l);font-style:normal}
 .pg-sub{font-size:18px;color:rgba(247,249,237,.45);line-height:1.7;max-width:520px}
-.pg-hero-bg{position:absolute;font-family:var(--D);font-weight:900;font-size:clamp(140px,22vw,300px);line-height:1;color:rgba(146,205,0,.04);-webkit-text-stroke:2px rgba(146,205,0,.1);right:-10px;bottom:-10px;user-select:none;pointer-events:none}
+.pg-hero-bg{position:absolute;z-index:-1;font-family:var(--D);font-weight:900;font-size:clamp(140px,22vw,300px);line-height:1;color:rgba(146,205,0,.04);-webkit-text-stroke:2px rgba(146,205,0,.1);right:-10px;bottom:-10px;user-select:none;pointer-events:none}
 
 /* FILTERS */
 .filters{display:flex;gap:8px;flex-wrap:wrap;padding:48px 52px 0;background:var(--c);border-bottom:1px solid rgba(11,76,9,.07)}
@@ -166,13 +161,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .bcard p{font-size:13px;color:rgba(14,19,15,.5);line-height:1.6;margin-bottom:14px;flex:1}
 .bcard-rm{font-size:11px;font-weight:700;color:var(--l);letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
 .bcard:hover .bcard-rm{gap:8px}
-#press-mentions{background:var(--f);padding:80px 52px}
-#panel-whatsnew .press-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:48px}
-#panel-whatsnew .pcrd{background:rgba(247,249,237,.04);border:1px solid rgba(247,249,237,.08);border-radius:14px;padding:24px 16px;text-align:center;transition:all .3s;text-decoration:none}
-#panel-whatsnew .pcrd:hover{border-color:var(--l);background:rgba(146,205,0,.06)}
-.pcrd-icon{font-size:28px;margin-bottom:10px;display:block}
-#panel-whatsnew .pcrd-name{font-family:var(--D);font-size:11px;font-weight:700;color:var(--c);margin-bottom:4px}
-#panel-whatsnew .pcrd-type{font-size:9px;color:rgba(247,249,237,.3);letter-spacing:2px;text-transform:uppercase}
 .nl-strip{background:var(--l);padding:72px 52px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .nl-ttl{font-family:var(--D);font-size:clamp(22px,3.2vw,36px);font-weight:900;color:var(--k);line-height:1.1;margin-bottom:10px}
 .nl-sub{font-size:16px;color:rgba(14,19,15,.55);line-height:1.65}
@@ -201,10 +189,9 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .blog-feat-img{min-height:220px;aspect-ratio:16/9}
   .blog-grid{grid-template-columns:repeat(2,1fr)}
   footer{padding:48px 36px 20px}
-  #articles,#press-mentions{padding:64px 36px}
+  #articles{padding:64px 36px}
   #panel-whatsnew .filters{padding:16px 36px}
   .nl-strip{padding:56px 36px;grid-template-columns:1fr;gap:32px}
-  #panel-whatsnew .press-grid{grid-template-columns:repeat(3,1fr)}
   .subpage-tabs{padding:0 36px}
 }
 @media(max-width:768px){
@@ -229,11 +216,10 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .mnav-x{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
   .nl-form{flex-direction:column}
   .nl-input{min-width:100%}
-  #articles,#press-mentions{padding:56px 20px}
+  #articles{padding:56px 20px}
   #panel-whatsnew .filters{padding:12px 20px}
   .nl-strip{padding:48px 20px}
   #panel-whatsnew .blog-grid{grid-template-columns:1fr}
-  #panel-whatsnew .press-grid{grid-template-columns:1fr 1fr}
   #panel-whatsnew .nl-form{flex-direction:column}
   #panel-whatsnew .nl-input{min-width:100%}
   .subpage-tabs{padding:0 20px}
@@ -247,9 +233,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   .newsletter{padding:52px 16px}
   footer{padding:36px 16px 76px}
   .ft-links{gap:10px;row-gap:8px}
-  #articles,#press-mentions{padding:48px 16px}
+  #articles{padding:48px 16px}
   .nl-strip{padding:40px 16px}
-  #panel-whatsnew .press-grid{grid-template-columns:1fr}
   #panel-whatsnew .blog-grid{grid-template-columns:1fr}
   .subpage-tabs{padding:0 16px}
 }
@@ -448,18 +433,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     </div>
   </section>
 
-  <section id="press-mentions">
-    <p style="font-family:var(--B);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(247,249,237,.3);margin-bottom:16px" class="rv">// As Featured In</p>
-    <h2 style="font-family:var(--D);font-size:clamp(24px,3.5vw,40px);font-weight:900;color:var(--c);line-height:1.06;margin-bottom:12px" class="rv d1">Green Square in the media.</h2>
-    <div class="press-grid rv d2">
-      <div class="pcrd"><span class="pcrd-icon">📺</span><div class="pcrd-name">Channel NewsAsia</div><div class="pcrd-type">TV &amp; Online News</div></div>
-      <div class="pcrd"><span class="pcrd-icon">👶</span><div class="pcrd-name">Sassy Mama SG</div><div class="pcrd-type">Lifestyle &amp; Family</div></div>
-      <div class="pcrd"><span class="pcrd-icon">🍯</span><div class="pcrd-name">The Honeycombers</div><div class="pcrd-type">Singapore Lifestyle</div></div>
-      <div class="pcrd"><span class="pcrd-icon">✨</span><div class="pcrd-name">Yahoo Style SG</div><div class="pcrd-type">Fashion &amp; Style</div></div>
-      <div class="pcrd"><span class="pcrd-icon">🌏</span><div class="pcrd-name">AsiaOne Lifestyle</div><div class="pcrd-type">News &amp; Lifestyle</div></div>
-    </div>
-  </section>
-
   <div class="nl-strip">
     <div>
       <h2 class="nl-ttl">Stay in the loop.</h2>
@@ -535,10 +508,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
   </div>
 </footer>
 
-<a href="drop-off.html" id="fCta" aria-label="Find a drop-off">
-  <span class="fdot"></span><span class="ficon">📍</span>Find a Drop-Off
-</a>
-
 <script>
 const c1=document.getElementById('cur'),c2=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
@@ -548,7 +517,6 @@ window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementB
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{
   nav.classList.toggle('s',window.scrollY>60);
-  document.getElementById('fCta').classList.toggle('show',window.scrollY>300);
 },{passive:true});
 const mn=document.getElementById('mnav');
 document.getElementById('brg').addEventListener('click',()=>{mn.classList.add('o');document.body.style.overflow='hidden'});
@@ -698,7 +666,7 @@ function subNLwn(){
 }
 </script>
 <!-- WhatsApp Float -->
-<a href="https://wa.me/6583838677" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Green Square" style="position:fixed;bottom:88px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;opacity:0;transform:scale(0)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/6583838677" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Green Square" style="position:fixed;bottom:24px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;opacity:0;transform:scale(0)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script>setTimeout(()=>{const w=document.getElementById('waFloat');if(w){w.style.opacity='1';w.style.transform='scale(1)'}},1500)</script>
 </body>
 </html>
