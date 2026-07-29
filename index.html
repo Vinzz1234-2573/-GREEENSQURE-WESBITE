@@ -103,9 +103,9 @@ nav.s .nl img{height:64px}
 .h1w:nth-child(3) span{animation-delay:2.5s}
 .h1w:nth-child(4) span{animation-delay:2.7s}
 @keyframes hUp{to{transform:translateY(0)}}
-.line-reuse    {font-size:clamp(72px,12vw,168px);color:var(--f)}
-.line-reduce{font-size:clamp(52px,8.8vw,126px);color:var(--l)}
-.line-repair   {font-size:clamp(72px,12vw,168px);color:var(--f)}
+.line-reuse    {font-size:clamp(60px,10vw,140px);color:var(--f)}
+.line-reduce{font-size:clamp(60px,10vw,140px);color:var(--l)}
+.line-repair   {font-size:clamp(60px,10vw,140px);color:var(--f)}
 /* Rotating badge right */
 .spin-wrap{flex-shrink:0;width:160px;height:160px;display:flex;align-items:center;justify-content:center;margin-left:48px;margin-bottom:8px;opacity:0;animation:fadeUp .5s ease 3.1s forwards}
 @keyframes fadeUp{to{opacity:1}}
@@ -402,9 +402,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   section,#impact,#services,#how,#involve,#quiz,#proc,#testi,#blog,#contact,#accept{padding:80px 36px}
   .hero-top{padding:130px 36px 0;align-items:flex-end;gap:0}
   .spin-wrap{width:120px;height:120px;margin-left:24px}
-  .line-reuse    {font-size:clamp(56px,10vw,120px)}
-  .line-reduce{font-size:clamp(40px,7.5vw,88px)}
-  .line-repair   {font-size:clamp(56px,10vw,120px)}
+  .line-reuse    {font-size:clamp(48px,8.5vw,100px)}
+  .line-reduce{font-size:clamp(48px,8.5vw,100px)}
+  .line-repair   {font-size:clamp(48px,8.5vw,100px)}
   .hero-meta{padding:28px 36px 0}
   .hstat{padding:24px 36px}
   footer{padding:48px 36px 20px}
@@ -527,15 +527,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
 .hero-banners{position:absolute;right:0;top:0;width:70%;height:100%;z-index:1;overflow:hidden;pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,1) 0%,rgba(0,0,0,.7) 55%,transparent 100%);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,1) 0%,rgba(0,0,0,.7) 55%,transparent 100%)}
 .hero-banner{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
 .hero-banner.active{opacity:1}
-.hb-grid{position:absolute;inset:0;display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:10px;padding:10px}
-.hb-tile{border-radius:14px;overflow:hidden;position:relative;background:#1a2e1a}
-.hb-tile img{width:100%;height:100%;object-fit:cover;display:block}
-.hb-flip-earth{object-position:left center;transform:scaleX(-1)}
-.hb-pos-lion{object-position:85% center}
-.hb-a{grid-column:1;grid-row:1/3}
-.hb-b{grid-column:2;grid-row:1}
-.hb-c{grid-column:2;grid-row:2}
-.hb-b.hb-full{grid-row:1/3}
+.hb-solo{position:absolute;inset:0;background:#1a2e1a}
+.hb-solo img{width:100%;height:100%;object-fit:cover;display:block}
+.hb-flip{transform:scaleX(-1)}
 .hb-badge{position:absolute;right:26px;top:110px;height:34px;width:auto;background:rgba(255,255,255,.92);border-radius:100px;padding:8px 16px;box-shadow:0 6px 20px rgba(0,0,0,.18);z-index:2}
 @media(max-width:768px){.hero-banners{width:100%}.hb-badge{height:26px;right:16px;top:80px;padding:6px 12px}}
 
@@ -582,9 +576,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   .hero-hl-glass::before{display:none}
   .h1w{overflow-x:visible;overflow-y:hidden;text-align:left;line-height:.9}
   /* Larger, bolder hero text on mobile: bigger visual punch */
-  .line-reuse    {font-size:clamp(46px,12.5vw,76px)}
-  .line-reduce{font-size:clamp(32px,8.8vw,56px)}
-  .line-repair   {font-size:clamp(46px,12.5vw,76px)}
+  .line-reuse    {font-size:clamp(40px,10.5vw,64px)}
+  .line-reduce{font-size:clamp(40px,10.5vw,64px)}
+  .line-repair   {font-size:clamp(40px,10.5vw,64px)}
   .hero-badge{display:inline-flex;align-self:flex-start;font-size:10px;padding:6px 14px;margin-bottom:18px}
   .hero-meta{padding:22px 20px 0;flex-direction:column;align-items:flex-start;gap:16px}
   .hero-sub{font-size:16px;max-width:100%;line-height:1.65;color:rgba(14,19,15,.6)}
@@ -764,9 +758,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   /* Hero */
   .hero-top{padding:78px 16px 0;align-items:flex-start}
   .hero-meta{padding:14px 16px 0}
-  .line-reuse    {font-size:clamp(38px,11vw,56px)}
-  .line-reduce{font-size:clamp(26px,7.8vw,40px)}
-  .line-repair   {font-size:clamp(38px,11vw,56px)}
+  .line-reuse    {font-size:clamp(34px,9.5vw,48px)}
+  .line-reduce{font-size:clamp(34px,9.5vw,48px)}
+  .line-repair   {font-size:clamp(34px,9.5vw,48px)}
   .hero-stats{grid-template-columns:1fr 1fr}
   .hstat{padding:14px 16px}
   .hstat-n{font-size:clamp(20px,6vw,28px)}
@@ -891,30 +885,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;ba
   <div class="blob blob3" aria-hidden="true"></div>
   <div class="hero-banners" aria-hidden="true">
     <div class="hero-banner active" data-banner="0">
-      <div class="hb-grid">
-        <div class="hb-tile hb-a"><img class="hb-flip-earth" src="Photos/donate+clothes.jpg" alt="" loading="eager"></div>
-        <div class="hb-tile hb-b hb-full"><img src="Photos/Textile+Recycling+Bin.jpg" alt="" loading="eager"></div>
-      </div>
+      <div class="hb-solo"><img src="Photos/IMG_7940.jpg" alt="" loading="eager"></div>
       <img class="hb-badge" src="Photos/GS logo-horizontal.png" alt="">
     </div>
     <div class="hero-banner" data-banner="1">
-      <div class="hb-grid">
-        <div class="hb-tile hb-a"><img src="Photos/event-team-2.jpg" alt="" loading="lazy"></div>
-        <div class="hb-tile hb-b"><img src="Photos/Events/Corporate Events/MEWR Towards Zero Waste Event @ My Tampines Hub/TOWARDS+ZERO+WASTE.jpg" alt="" loading="lazy"></div>
-        <div class="hb-tile hb-c"><img src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7055.JPG" alt="" loading="lazy"></div>
-      </div>
+      <div class="hb-solo"><img class="hb-flip" src="Photos/Events/Corporate Events/NEA Clean %26 Green Campaign @ Wisma Geylang Serai/IMG_7055.JPG" alt="" loading="lazy"></div>
     </div>
     <div class="hero-banner" data-banner="2">
-      <div class="hb-grid">
-        <div class="hb-tile hb-a"><img src="Photos/donate+shoes.jpg" alt="" loading="lazy"></div>
-        <div class="hb-tile hb-b hb-full"><img src="Photos/Clothes+Recycling+Singapore.jpg" alt="" loading="lazy"></div>
-      </div>
+      <div class="hb-solo"><img src="Photos/donate+shoes.jpg" alt="" loading="lazy"></div>
     </div>
     <div class="hero-banner" data-banner="3">
-      <div class="hb-grid">
-        <div class="hb-tile hb-a"><img class="hb-pos-lion" src="Photos/joshua-ang-Gf_KqXHU-PY-unsplash.jpg" alt="" loading="lazy"></div>
-        <div class="hb-tile hb-b hb-full"><img src="Photos/hu-chen-__cBlRzLSTg-unsplash.jpg" alt="" loading="lazy"></div>
-      </div>
+      <div class="hb-solo"><img src="Photos/Clothes+Recycling+Singapore.jpg" alt="" loading="lazy"></div>
     </div>
   </div>
   <div class="hero-banner-nav" aria-label="Hero banner selector">
