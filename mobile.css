@@ -118,7 +118,7 @@ html { scroll-padding-top: 80px; }
 ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
   /* Prevent overflow from any element (excludes intentional full-bleed elements like .ft-featured) */
-  *:not(.ft-featured) { max-width: 100%; box-sizing: border-box; }
+  *:not(.ft-featured):not([class*="leaflet-"]) { max-width: 100%; box-sizing: border-box; }
 
   /* iOS input zoom prevention */
   input, select, textarea { font-size: 16px !important; }

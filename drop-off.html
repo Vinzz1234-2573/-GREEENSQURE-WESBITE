@@ -106,8 +106,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .popup-desc{font-family:var(--B);font-size:11px;font-weight:600;color:rgba(14,19,15,.68);margin-bottom:5px}
 .popup-h{font-family:var(--B);font-size:11px;color:rgba(14,19,15,.38);margin-bottom:7px}
 .popup-dir{font-family:var(--B);font-size:10px;font-weight:700;color:var(--l);text-decoration:none;letter-spacing:1px;text-transform:uppercase}
-.popup-n-link{font-family:var(--D);font-size:14px;font-weight:700;color:var(--f);text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.popup-n-link:after{content:'→';color:var(--l)}
+.popup-n-link{font-family:var(--D);font-size:14px;font-weight:700;color:var(--f);text-decoration:none;white-space:nowrap}
+.popup-n-link:after{content:'→';color:var(--l);margin-left:6px}
 .loc-cta{margin-top:40px;text-align:center}
 .loc-cta p{font-size:12px;color:rgba(14,19,15,.4);margin-bottom:14px}
 
@@ -348,7 +348,7 @@ locs.forEach(l=>{
   const popupHTML=isMobileMap
     ? `<a href="${dirLink(l)}" target="_blank" rel="noopener" class="popup-n-link">${l.n}</a>`
     : `<div class="popup-n">${l.n}</div>${locBlock(l,'popup-addr','popup-desc','popup-h')}<a href="${dirLink(l)}" target="_blank" rel="noopener" class="popup-dir">Get Directions ↗</a>`;
-  const m=L.marker([l.lat,l.lng]).addTo(binMap).bindPopup(popupHTML,isMobileMap?{minWidth:20,maxWidth:280,autoPan:true}:{});
+  const m=L.marker([l.lat,l.lng]).addTo(binMap).bindPopup(popupHTML,isMobileMap?{maxWidth:240}:{});
   binMarkers[l.n]=m;
 });
 if(Object.keys(binMarkers).length)binMap.fitBounds(L.featureGroup(Object.values(binMarkers)).getBounds(),{padding:[24,24]});
