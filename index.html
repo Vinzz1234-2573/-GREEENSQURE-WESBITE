@@ -1313,7 +1313,7 @@ async function sC(e){
     /* Fallback: open native email client */
     const sub=encodeURIComponent('Website Enquiry from '+name+(topic?': '+topic:''));
     const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+(topic?'\nTopic: '+topic:'')+'\n\nMessage:\n'+msg);
-    window.location.href='mailto:hello@greensquare.com.sg?subject='+sub+'&body='+body;
+    window.location.href='mailto:support@greensquare.com.sg?subject='+sub+'&body='+body;
     btn.textContent='✓ Opening Email App…';
     setTimeout(()=>{btn.textContent='Send Message →';btn.disabled=false;},3000);
     return;
