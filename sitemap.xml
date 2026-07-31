@@ -2,55 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.greensquare.com.sg/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/about.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.greensquare.com.sg/what-we-do.html</loc>
+    <loc>https://www.greensquare.com.sg/about</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/what-we-collect.html</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://www.greensquare.com.sg/what-we-do</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/drop-off.html</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://www.greensquare.com.sg/what-we-collect</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/events.html</loc>
+    <loc>https://www.greensquare.com.sg/drop-off</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.greensquare.com.sg/events</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/blog.html</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://www.greensquare.com.sg/blog</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/whats-new.html</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://www.greensquare.com.sg/whats-new</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.greensquare.com.sg/contact.html</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://www.greensquare.com.sg/contact</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
