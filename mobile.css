@@ -298,7 +298,7 @@ html { scroll-padding-top: 80px; }
    16. PRINT
 ═══════════════════════════════════════════ */
 @media print {
-  nav, .mnav, #waFloat, #ann, #ldr,
+  nav, .mnav, #waFloat, #ann,
   #cur, #curR, #prog, .ticker-wrap, .brg { display: none !important; }
   body { background: #fff; color: #000; }
   a { color: #000; text-decoration: underline; }
