@@ -3,7 +3,9 @@
     "allow": [
       "PowerShell(npx plugins add vercel/vercel-plugin)",
       "WebFetch(domain:www.greensquare.com.sg)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

@@ -31,16 +31,6 @@ body:has(a:hover) #curR,body:has(button:hover) #curR{width:48px;height:48px;bord
 #ann a{color:var(--l);text-decoration:none;font-weight:700}
 #ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;opacity:.6}
 #ann-x:hover{opacity:1}
-#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
-.ldr-logo img{height:52px;width:auto}
-.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.6s ease .5s forwards;border-radius:2px}
-@keyframes lIn{to{opacity:1;transform:none}}
-@keyframes lBar{to{width:200px}}
-.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1s forwards}
-@keyframes lFade{to{opacity:1}}
-#ldr.out{animation:lOut .4s ease forwards}
-@keyframes lOut{to{opacity:0;pointer-events:none}}
 nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:5px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
 nav.s{padding:3px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
 .nl img{height:78px;width:auto;transition:height .3s}
@@ -315,13 +305,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <div id="prog" aria-hidden="true"></div>
 
 
-
-<div id="ldr" aria-hidden="true">
-  <div class="ldr-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
-  <div class="ldr-line"></div>
-  <span class="ldr-tag">Reuse · Reduce · Recycle</span>
-</div>
-
 <div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
   <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
   <a href="/" onclick="cm()">Home</a>
@@ -375,19 +358,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <!-- CORPORATE PANEL -->
 <div class="subpanel active" id="panel-corporate">
-  <section class="sec" style="background:var(--w)">
-    <p class="sec-label rv">// Why Partner With Us</p>
-    <h2 class="sec-ttl rv d1">Everything you need<br>for meaningful ESG impact.</h2>
-    <p class="sec-body rv d2">From bin installation to collection logistics, impact reporting to staff engagement, Green Square handles the full programme so your team can focus on participation, not planning.</p>
-    <div class="ben-grid">
-      <div class="bcrd rv d1"><span class="bcrd-icon">📦</span><div class="bcrd-ttl">Full Logistics, Zero Effort</div><p class="bcrd-desc">We bring the bins, collection bags, and signage. We collect everything at the end. Your team just participates.</p></div>
-      <div class="bcrd rv d2"><span class="bcrd-icon">📊</span><div class="bcrd-ttl">Impact Report for ESG</div><p class="bcrd-desc">After each drive, receive a full impact report: kilograms collected, items reused vs. downcycled, and CO₂ equivalent saved. Ready for your sustainability reports.</p></div>
-      <div class="bcrd rv d3"><span class="bcrd-icon">🎤</span><div class="bcrd-ttl">Staff Engagement</div><p class="bcrd-desc">Optional education sessions on Singapore's textile waste challenge. We make your employees care and participate.</p></div>
-      <div class="bcrd rv d1"><span class="bcrd-icon">🏆</span><div class="bcrd-ttl">Branding &amp; Recognition</div><p class="bcrd-desc">Co-branding on collection materials, social media shout-out, and inclusion in Green Square's partner wall and annual impact report.</p></div>
-      <div class="bcrd rv d2"><span class="bcrd-icon">🔄</span><div class="bcrd-ttl">Ongoing Bin Programme</div><p class="bcrd-desc">Want a permanent drop-off bin in your office or lobby? We install and maintain it, empty it regularly, and keep your team engaged year-round.</p></div>
-      <div class="bcrd rv d3"><span class="bcrd-icon">🤝</span><div class="bcrd-ttl">NEA-Approved Network</div><p class="bcrd-desc">Green Square is recognised by the National Environment Agency. Your partnership meets Singapore's sustainability standards and supports national targets.</p></div>
-    </div>
-  </section>
   <div class="partners-sec">
     <h2 class="partners-headline rv"><span>UNIFORMS RECYCLING</span><span class="ph-sep">/</span><br><span>TEXTILE DRIVES</span><span class="ph-sep">/</span><br><span>CSR EVENTS</span><span class="ph-sep">/</span><br><span>SUSTAINABILITY EVENTS</span></h2>
     <div class="logo-grid rv d1">
@@ -437,11 +407,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
     <div class="gal-event rv">
       <h3 class="gal-ttl">Collaboration with Taobao</h3>
-      <p class="gal-cap">Drop your bags of unwanted clothes at Taobao Home space @ NOMADX and get rewarded with a thank-you-code! Promo code for use this Spring/Summer 2019 Sale (27 – 28 Mar) to maximize savings!
-
-Collection Dates: 24 Mar – 28 Mar 2019
-Address: 68 Orchard Road, #03-65 to 69, Plaza Singapura, Singapore 238839
-Opening hours: 12pm – 8pm</p>
       <div class="gal-grid">
         <div class="gal-photo contain"><img src="Photos/Events/Corporate Events/Collaboration with Taobao/Taobao.jpg" alt="Collaboration with Taobao" loading="lazy"></div>
       </div>
@@ -531,16 +496,6 @@ We hope to see more organisations step forward to make corporate social responsi
 
 <!-- SCHOOLS PANEL -->
 <div class="subpanel" id="panel-schools">
-  <section class="sec" style="background:var(--w)">
-    <p class="sec-label rv">// What We Offer</p>
-    <h2 class="sec-ttl rv d1">Two programmes.<br>One mission.</h2>
-    <p style="font-size:15px;color:rgba(14,19,15,.6);line-height:1.72;max-width:600px" class="rv d2">Green Square school programmes are fully free and run by our team. All you need to do is set a date and promote it to your school community.</p>
-    <div class="off-grid">
-      <div class="ofrd rv d1"><span class="ofrd-icon">♻️</span><div class="ofrd-ttl">Textile Recycling Drive</div><p class="ofrd-desc">We install collection bins at your school for 1–3 weeks. Students and staff bring in clean clothes, shoes, and accessories. Our team collects and processes everything at the end of the drive.</p></div>
-      <div class="ofrd rv d2"><span class="ofrd-icon">📚</span><div class="ofrd-ttl">3Rs Education Workshop</div><p class="ofrd-desc">An interactive 45–60 minute session for students (Primary 3 to Secondary 4) on Singapore's textile waste challenge, the 3Rs, and what happens to donated clothes. Curriculum-aligned and hands-on.</p></div>
-      <div class="ofrd rv d3"><span class="ofrd-icon">🏆</span><div class="ofrd-ttl">School Impact Report</div><p class="ofrd-desc">After every drive, your school receives a full impact certificate and report covering total weight collected, items reused, environmental impact in CO₂ and water saved. Perfect for SLT presentations and EcoSchool programmes.</p></div>
-    </div>
-  </section>
   <div class="gal-sec">
     <p class="sec-label rv">// Past Events</p>
     <h2 class="sec-ttl rv d1">See it in action.</h2>
@@ -702,17 +657,6 @@ We were happy to be part of this event, exchanging ideas with the future green w
 
 <!-- CONDOS PANEL -->
 <div class="subpanel" id="panel-condos">
-  <section class="sec" style="background:var(--w)">
-    <p class="sec-label rv">// Why Run a Drive</p>
-    <h2 class="sec-ttl rv d1">Benefits for your<br>MCST and residents.</h2>
-    <p style="font-size:15px;color:rgba(14,19,15,.6);line-height:1.72;max-width:600px" class="rv d2">A textile recycling event is a meaningful, easy win for your estate's sustainability programme, and residents love it. Here's what you get.</p>
-    <div class="ben-grid">
-      <div class="bcrd rv d1"><span class="bcrd-icon">🏘️</span><div class="bcrd-ttl">Community Building</div><p class="bcrd-desc">A drive gives residents a shared sustainability goal. It builds community spirit and demonstrates that your management committee cares about more than maintenance.</p></div>
-      <div class="bcrd rv d2"><span class="bcrd-icon">📦</span><div class="bcrd-ttl">Zero Admin for MCST</div><p class="bcrd-desc">We deliver, install, and collect everything. Your team doesn't lift a finger. Just send one newsletter to residents.</p></div>
-      <div class="bcrd rv d3"><span class="bcrd-icon">🌿</span><div class="bcrd-ttl">Sustainability Report</div><p class="bcrd-desc">Receive a full impact certificate after the event: total kg collected, CO₂ saved, and items reused. Share it in your AGM report or residents' newsletter.</p></div>
-      <div class="bcrd rv d4"><span class="bcrd-icon">🔄</span><div class="bcrd-ttl">Ongoing Bin Option</div><p class="bcrd-desc">Want year-round impact? Install a permanent Green Square bin in your lobby or carpark. We maintain and empty it regularly, at no cost to your estate.</p></div>
-    </div>
-  </section>
   <div class="gal-sec">
     <p class="sec-label rv">// Past Events</p>
     <h2 class="sec-ttl rv d1">See it in action.</h2>
@@ -787,9 +731,8 @@ We were happy to be part of this event, exchanging ideas with the future green w
     <a href="/">Home</a><a href="about">About</a>
     <a href="what-we-do">What We Do</a><a href="what-we-collect">What We Accept</a>
     <a href="events">Events</a><a href="404">Blog</a>
-    <a href="events#corporate">Corporate Events</a><a href="events#schools">School Events</a>
-    <a href="events#condos">Condo Events</a><a href="drop-off">Find a Drop-Off</a>
-    <a href="contact">Get Involved</a><a href="contact">Contact</a>
+    <a href="drop-off">Find a Drop-Off</a>
+    <a href="contact">Contact</a>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2025 GRR Consultant Pte. Ltd. (UEN: 202210672M). All rights reserved.</p>
@@ -802,7 +745,6 @@ const c1=document.getElementById('cur'),c2=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
-window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1800)});
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{
   nav.classList.toggle('s',window.scrollY>60);

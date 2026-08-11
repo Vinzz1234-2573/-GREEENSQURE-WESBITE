@@ -22,16 +22,6 @@ html{scroll-behavior:smooth}
 body{font-family:var(--B);background:var(--c);color:var(--k);overflow-x:hidden}
 html{background:var(--k)}
 img{display:block;max-width:100%}
-#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
-.ldr-logo img{height:52px;width:auto}
-.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.6s ease .5s forwards;border-radius:2px}
-@keyframes lIn{to{opacity:1;transform:none}}
-@keyframes lBar{to{width:200px}}
-.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1s forwards}
-@keyframes lFade{to{opacity:1}}
-#ldr.out{animation:lOut .4s ease forwards}
-@keyframes lOut{to{opacity:0;pointer-events:none}}
 nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:5px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
 nav.s{padding:3px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
 .nl img{height:78px;width:auto;transition:height .3s}
@@ -167,12 +157,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <div id="prog" aria-hidden="true"></div>
 
-<div id="ldr" aria-hidden="true">
-  <div class="ldr-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
-  <div class="ldr-line"></div>
-  <span class="ldr-tag">Reuse · Reduce · Recycle</span>
-</div>
-
 <div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
   <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
   <a href="/">Home</a>
@@ -283,9 +267,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <a href="/">Home</a><a href="about">About</a>
     <a href="what-we-do">What We Do</a><a href="what-we-collect">What We Accept</a>
     <a href="events">Events</a><a href="404">Blog</a>
-    <a href="events#corporate">Corporate Events</a><a href="events#schools">School Events</a>
-    <a href="events#condos">Condo Events</a><a href="drop-off">Find a Drop-Off</a>
-    <a href="contact">Get Involved</a><a href="contact">Contact</a>
+    <a href="drop-off">Find a Drop-Off</a>
+    <a href="contact">Contact</a>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2025 GRR Consultant Pte. Ltd. (UEN: 202210672M). All rights reserved.</p>
@@ -298,7 +281,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1600)});
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('s',window.scrollY>60)},{passive:true});
 const mn=document.getElementById('mnav');
@@ -312,28 +294,28 @@ setTimeout(()=>{const w=document.getElementById('waFloat');if(w){w.style.opacity
 
 /* LOCATIONS */
 const locs=[
-  {n:'Alexandra Hospital',addr:'378 Alexandra Road S159964',desc:'Main Building Lobby, beside Information Counter',h:'During hospital hours',area:'alexandra queenstown',lat:1.2865901,lng:103.7997435},
-  {n:'Changi General Hospital',addr:'2 Simei Street 3 S529889',desc:'CGH Main Building Level 1, behind Kopitiam',h:'During hospital hours',area:'changi simei',lat:1.3408259,lng:103.9494655},
-  {n:'City Square Mall',addr:'180 Kitchener Rd S208539',desc:'Textile Bin at B4 Travellator Lobby',h:'Mall opening hours',area:'kitchener farrer park little india',lat:1.311421046,lng:103.856624},
-  {n:'Downtown East',addr:'1 Pasir Ris Close S519599',desc:'E!Avenue Level 1, Lift Lobby near 7-Eleven',h:'Open daily',area:'pasir ris',lat:1.379127168,lng:103.9554448},
+  {n:'Alexandra Hospital',addr:'378 Alexandra Road S159964',desc:'Main Building Lobby, beside Information Counter',h:'During hospital hours',area:'alexandra queenstown',lat:1.2865882,lng:103.8012749},
+  {n:'Changi General Hospital',addr:'2 Simei Street 3 S529889',desc:'CGH Main Building Level 1, behind Kopitiam',h:'During hospital hours',area:'changi simei',lat:1.3401915,lng:103.9495701},
+  {n:'City Square Mall',addr:'180 Kitchener Rd S208539',desc:'Textile Bin at B4 Travellator Lobby',h:'Mall opening hours',area:'kitchener farrer park little india',lat:1.3114516,lng:103.8561608},
+  {n:'Downtown East',addr:'1 Pasir Ris Close S519599',desc:'E!Avenue Level 1, Lift Lobby near 7-Eleven',h:'Open daily',area:'pasir ris',lat:1.3775631,lng:103.954703},
   {n:'Fusionopolis One',addr:'1 Fusionopolis Way Connexis S138632',desc:'B2 North near toilets, escalator (next to MRT)',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis',lat:1.299441336,lng:103.7875421},
   {n:'Fusionopolis Two',addr:'4 Fusionopolis Way S138635',desc:'Kinesis Level 1 Carpark Lift Lobby',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis',lat:1.2984772,lng:103.7891696},
-  {n:'G2000 Plaza Singapura',addr:'68 Orchard Road #01-06 S238839',desc:'',h:'During store hours',area:'orchard',lat:1.3011105,lng:103.8449984},
-  {n:'International Plaza',addr:'10 Anson Road S079903',desc:'Level 2 Green Corner',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd',lat:1.275886763,lng:103.8459238},
+  {n:'G2000 Plaza Singapura',addr:'68 Orchard Road #01-06 S238839',desc:'',h:'During store hours',area:'orchard',lat:1.3003375,lng:103.845139},
+  {n:'International Plaza',addr:'10 Anson Road S079903',desc:'Level 2 Green Corner',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd',lat:1.2757889,lng:103.8460959},
   {n:'KK Women\'s and Children\'s Hospital',addr:'100 Bukit Timah Road S229899',desc:'Women\'s Tower Level 1, near Women\'s Specialist Clinic',h:'During hospital hours',area:'novena bukit timah kkh',lat:1.310490068,lng:103.8468133},
-  {n:'Metro Paragon',addr:'1 Woodlands Square #01-18/19 Causeway Point S738099',desc:'Customer Service Counter Level 3',h:'During mall hours',area:'woodlands causeway point',lat:1.4361993,lng:103.7859991},
+  {n:'Metro Paragon',addr:'290 Orchard Road #02-28 S238859',desc:'Customer Service Counter',h:'During mall hours',area:'orchard',lat:1.3043349,lng:103.8361743},
   {n:'Metro Woodlands',addr:'1 Woodlands Square #01-18/19 Causeway Point S738099',desc:'Customer Service Counter',h:'During mall hours',area:'woodlands causeway point',lat:1.4361993,lng:103.7859991},
-  {n:'Millenia Walk',addr:'9 Raffles Blvd S039596',desc:'Level 2, in front of Lift Lobby',h:'Open daily',area:'raffles city hall marina',lat:1.292965059,lng:103.859344},
-  {n:'National Heart Centre Singapore',addr:'5 Hospital Drive S169609',desc:'Level 1, beside drop-off point',h:'During hospital hours',area:'outram',lat:1.2784981,lng:103.8361062},
-  {n:'Northpoint City',addr:'930 Yishun Ave 2 S769098',desc:'Level 2 in front of Green iT! corner, South Wing',h:'Mall opening hours',area:'yishun',lat:1.4292976,lng:103.8357691},
-  {n:'Our Tampines Hub',addr:'1 Tampines Walk S528523',desc:'Level 1, opposite hawker centre inside central plaza',h:'Open daily',area:'tampines',lat:1.353133587,lng:103.9404082},
+  {n:'Millenia Walk',addr:'9 Raffles Blvd S039596',desc:'Level 2, in front of Lift Lobby',h:'Open daily',area:'raffles city hall marina',lat:1.2916585,lng:103.8597629},
+  {n:'National Heart Centre Singapore',addr:'5 Hospital Drive S169609',desc:'Level 1, beside drop-off point',h:'During hospital hours',area:'outram',lat:1.2785753,lng:103.8361084},
+  {n:'Northpoint City',addr:'930 Yishun Ave 2 S769098',desc:'Level 2 in front of Green iT! corner, South Wing',h:'Mall opening hours',area:'yishun',lat:1.4293478,lng:103.8358671},
+  {n:'Our Tampines Hub',addr:'1 Tampines Walk S528523',desc:'Level 1, opposite hawker centre inside central plaza',h:'Open daily',area:'tampines',lat:1.3535348,lng:103.9402531},
   {n:'Quayside Isle',addr:'31 Ocean Way S098375',desc:'B1 near Lift Lobby, next to Electronics & Food Donation bins',h:'Open daily',area:'sentosa harbourfront',lat:1.247993801,lng:103.8416778},
-  {n:'Sengkang General Hospital',addr:'110 Sengkang E Way S544886',desc:'Level 1 in front of Cheers and Koi, beside drop-off point',h:'During hospital hours',area:'sengkang',lat:1.394393086,lng:103.8931641},
-  {n:'The Centrepoint',addr:'176 Orchard Road S238843',desc:'Level 3 Green Corner',h:'Mall opening hours',area:'orchard somerset',lat:1.301978371,lng:103.839759},
-  {n:'Tiong Bahru Plaza',addr:'302 Tiong Bahru Road S168732',desc:'Level 1 next to taxi stand',h:'Mall opening hours',area:'tiong bahru',lat:1.2862383,lng:103.8279807},
+  {n:'Sengkang General Hospital',addr:'110 Sengkang E Way S544886',desc:'Level 1 in front of Cheers and Koi, beside drop-off point',h:'During hospital hours',area:'sengkang',lat:1.3954449,lng:103.8934578},
+  {n:'The Centrepoint',addr:'176 Orchard Road S238843',desc:'Level 3 Green Corner',h:'Mall opening hours',area:'orchard somerset',lat:1.3012253,lng:103.8398652},
+  {n:'Tiong Bahru Plaza',addr:'302 Tiong Bahru Road S168732',desc:'Level 1 next to taxi stand',h:'Mall opening hours',area:'tiong bahru',lat:1.2866535,lng:103.8271459},
   {n:'Valley Point Shopping Centre',addr:'491 River Valley Road S248371',desc:'B1 near Lift Lobby',h:'Mall opening hours',area:'river valley',lat:1.293072263,lng:103.8270759},
   {n:'Velocity @ Novena Square',addr:'238 Thomson Road S307683',desc:'Carpark Level 3B, outside cargo lift',h:'Mall opening hours',area:'novena thomson',lat:1.3203162,lng:103.8437113},
-  {n:'Woodlands Health Campus',addr:'17 Woodlands Drive 17 S737628',desc:'B1 Near the Cascading Waterfall',h:'During hospital hours',area:'woodlands',lat:1.424681387,lng:103.7947438},
+  {n:'Woodlands Health Campus',addr:'17 Woodlands Drive 17 S737628',desc:'B1 Near the Cascading Waterfall',h:'During hospital hours',area:'woodlands',lat:1.4250207,lng:103.7946271},
   {n:'Yew Tee Point',addr:'21 Choa Chu Kang North 6 S689578',desc:'Green Corner at B1 between Challenger & Kleen Wash',h:'Mall opening hours',area:'choa chu kang yew tee',lat:1.396969935,lng:103.7464432},
 ];
 function dirLink(l){return l.lat&&l.lng?`https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}`:`https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}`}

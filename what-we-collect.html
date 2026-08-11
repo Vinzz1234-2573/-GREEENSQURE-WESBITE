@@ -31,16 +31,6 @@ body:has(a:hover) #curR{width:48px;height:48px;border-color:var(--l)}
 #ann a{color:var(--l);text-decoration:none;font-weight:700}
 #ann-x{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--c);font-size:16px;cursor:pointer;opacity:.6}
 #ann-x:hover{opacity:1}
-#ldr{position:fixed;inset:0;background:var(--c);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-.ldr-logo{opacity:0;transform:translateY(16px) scale(.9);animation:lIn .8s cubic-bezier(.22,1,.36,1) .2s forwards}
-.ldr-logo img{height:52px;width:auto}
-.ldr-line{width:0;height:2px;background:var(--l);animation:lBar 1.6s ease .5s forwards;border-radius:2px}
-@keyframes lIn{to{opacity:1;transform:none}}
-@keyframes lBar{to{width:200px}}
-.ldr-tag{font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(14,19,15,.35);text-transform:uppercase;opacity:0;animation:lFade .4s ease 1s forwards}
-@keyframes lFade{to{opacity:1}}
-#ldr.out{animation:lOut .4s ease forwards}
-@keyframes lOut{to{opacity:0;pointer-events:none}}
 nav{position:fixed;top:0;left:0;width:100%;z-index:200;background:#fff;box-shadow:0 1px 16px rgba(0,0,0,.07);padding:5px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;padding-left:max(52px,env(safe-area-inset-left));padding-right:max(52px,env(safe-area-inset-right))}
 nav.s{padding:3px 52px;box-shadow:0 1px 32px rgba(0,0,0,.08)}
 .nl img{height:78px;width:auto;transition:height .3s}
@@ -203,13 +193,6 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 <body>
 <div id="prog" aria-hidden="true"></div>
 
-
-
-<div id="ldr" aria-hidden="true">
-  <div class="ldr-logo"><img src="Photos/GS logo horizontal.svg" alt="Green Square Singapore"></div>
-  <div class="ldr-line"></div>
-  <span class="ldr-tag">Reuse · Reduce · Recycle</span>
-</div>
 
 <div class="mnav" id="mnav" role="dialog" aria-label="Navigation">
   <button class="mnav-x" id="mnav-x" aria-label="Close menu">✕</button>
@@ -399,9 +382,8 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
     <a href="/">Home</a><a href="about">About</a>
     <a href="what-we-do">What We Do</a><a href="what-we-collect">What We Accept</a>
     <a href="events">Events</a><a href="404">Blog</a>
-    <a href="events#corporate">Corporate Events</a><a href="events#schools">School Events</a>
-    <a href="events#condos">Condo Events</a><a href="drop-off">Find a Drop-Off</a>
-    <a href="contact">Get Involved</a><a href="contact">Contact</a>
+    <a href="drop-off">Find a Drop-Off</a>
+    <a href="contact">Contact</a>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2025 GRR Consultant Pte. Ltd. (UEN: 202210672M). All rights reserved.</p>
@@ -414,7 +396,6 @@ const c1=document.getElementById('cur'),c2=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function animC(){if(c1){c1.style.left=mx+'px';c1.style.top=my+'px'}if(c2){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;c2.style.left=rx+'px';c2.style.top=ry+'px'}requestAnimationFrame(animC)})();
-window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('ldr');l.classList.add('out');setTimeout(()=>l.style.display='none',420)},1600)});
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('s',window.scrollY>60)},{passive:true});
 const mn=document.getElementById('mnav');
