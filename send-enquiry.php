@@ -18,7 +18,7 @@
 header('Content-Type: application/json');
 
 // ============ CONFIG ============
-const RECIPIENT_EMAIL = 'arif@Gamutpro.my'; // TODO: change to support@greensquare.com.sg once confirmed working
+const RECIPIENT_EMAIL = 'abdarifsaser@gmail.com'; // TODO: change to support@greensquare.com.sg once confirmed working
 const SITE_NAME       = 'Green Square Singapore';
 const FROM_ADDRESS    = 'noreply@greensquare.com.sg'; // should be a real/allowed address on your sending domain
 const SEND_AUTOREPLY  = true;
