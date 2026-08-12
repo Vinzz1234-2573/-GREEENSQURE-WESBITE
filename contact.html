@@ -133,6 +133,22 @@ footer{background:var(--k);border-top:2px solid var(--l);padding:56px 52px 24px}
 .cf-status.err{color:#c0392b}
 @media(max-width:640px){.cf-row{grid-template-columns:1fr}.con-form-wrap{padding:56px 20px}}
 
+/* Large desktop: details and form side-by-side */
+@media(min-width:1200px){
+  .con-wrap{display:flex;align-items:stretch}
+  .con-info,.con-form-wrap{flex:1 1 50%}
+  .con-info-inner{max-width:460px;margin:0 auto}
+  .con-info-ttl{text-align:left}
+  .con-detail-group{flex-direction:column;column-gap:0;row-gap:28px}
+  .con-detail{flex:none}
+  .con-actions{flex-direction:row;justify-content:flex-start}
+  .con-socials{display:flex;gap:10px}
+  .con-socials .con-soc:first-child,.con-socials .con-soc:last-child{order:0}
+  .con-form-inner{max-width:460px;margin:0 auto}
+  .con-form-head{text-align:left}
+  .con-form-sub{margin:0}
+}
+
 /* WhatsApp floating button */
 #waFloat{position:fixed;bottom:24px;right:24px;z-index:190;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:all .35s;transform:scale(0);opacity:0}
 #waFloat.show{transform:scale(1);opacity:1}
