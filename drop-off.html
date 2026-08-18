@@ -305,15 +305,15 @@ const locs=[
   {n:'Fusionopolis One',addr:'1 Fusionopolis Way Connexis S138632',desc:'B2 North near toilets, escalator (next to MRT)',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis',lat:1.299441336,lng:103.7875421},
   {n:'Fusionopolis Two',addr:'4 Fusionopolis Way S138635',desc:'Kinesis Level 1 Carpark Lift Lobby',h:'Mon–Fri 8am–10pm',area:'one north buona vista fusionopolis',lat:1.2984772,lng:103.7891696},
   {n:'G2000 Plaza Singapura',addr:'68 Orchard Road #01-06 S238839',desc:'',h:'During store hours',area:'orchard',lat:1.3003375,lng:103.845139},
-  {n:'International Plaza',addr:'10 Anson Road S079903',desc:'Level 2 Green Corner',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd',lat:1.2757889,lng:103.8460959},
+  {n:'International Plaza',addr:'10 Anson Road S079903',desc:'Level 2 Green Corner',h:'Mon–Fri office hours',area:'tanjong pagar anson cbd',lat:1.2760108,lng:103.8459827},
   {n:'KK Women\'s and Children\'s Hospital',addr:'100 Bukit Timah Road S229899',desc:'Women\'s Tower Level 1, near Women\'s Specialist Clinic',h:'During hospital hours',area:'novena bukit timah kkh',lat:1.310490068,lng:103.8468133},
   {n:'Metro Paragon',addr:'290 Orchard Road #02-28 S238859',desc:'Customer Service Counter',h:'During mall hours',area:'orchard',lat:1.3043349,lng:103.8361743},
-  {n:'Metro Woodlands',addr:'1 Woodlands Square #01-18/19 Causeway Point S738099',desc:'Customer Service Counter',h:'During mall hours',area:'woodlands causeway point',lat:1.4361993,lng:103.7859991},
+  {n:'Metro Woodlands',addr:'1 Woodlands Square #01-18/19 Causeway Point S738099',desc:'Customer Service Counter',h:'During mall hours',area:'woodlands causeway point',lat:1.4361425,lng:103.7855552},
   {n:'Millenia Walk',addr:'9 Raffles Blvd S039596',desc:'Level 2, in front of Lift Lobby',h:'Open daily',area:'raffles city hall marina',lat:1.2916585,lng:103.8597629},
   {n:'National Heart Centre Singapore',addr:'5 Hospital Drive S169609',desc:'Level 1, beside drop-off point',h:'During hospital hours',area:'outram',lat:1.2785753,lng:103.8361084},
   {n:'Northpoint City',addr:'930 Yishun Ave 2 S769098',desc:'Level 2 in front of Green iT! corner, South Wing',h:'Mall opening hours',area:'yishun',lat:1.4293478,lng:103.8358671},
   {n:'Our Tampines Hub',addr:'1 Tampines Walk S528523',desc:'Level 1, opposite hawker centre inside central plaza',h:'Open daily',area:'tampines',lat:1.3535348,lng:103.9402531},
-  {n:'Quayside Isle',addr:'31 Ocean Way S098375',desc:'B1 near Lift Lobby, next to Electronics & Food Donation bins',h:'Open daily',area:'sentosa harbourfront',lat:1.247993801,lng:103.8416778},
+  {n:'Quayside Isle',addr:'31 Ocean Way S098375',desc:'B1 near Lift Lobby, next to Electronics & Food Donation bins',h:'Open daily',area:'sentosa harbourfront',lat:1.2476808,lng:103.8420723},
   {n:'Sengkang General Hospital',addr:'110 Sengkang E Way S544886',desc:'Level 1 in front of Cheers and Koi, beside drop-off point',h:'During hospital hours',area:'sengkang',lat:1.3954449,lng:103.8934578},
   {n:'The Centrepoint',addr:'176 Orchard Road S238843',desc:'Level 3 Green Corner',h:'Mall opening hours',area:'orchard somerset',lat:1.3012253,lng:103.8398652},
   {n:'Tiong Bahru Plaza',addr:'302 Tiong Bahru Road S168732',desc:'Level 1 next to taxi stand',h:'Mall opening hours',area:'tiong bahru',lat:1.2866535,lng:103.8271459},
@@ -322,7 +322,7 @@ const locs=[
   {n:'Woodlands Health Campus',addr:'17 Woodlands Drive 17 S737628',desc:'B1 Near the Cascading Waterfall',h:'During hospital hours',area:'woodlands',lat:1.4250207,lng:103.7946271},
   {n:'Yew Tee Point',addr:'21 Choa Chu Kang North 6 S689578',desc:'Green Corner at B1 between Challenger & Kleen Wash',h:'Mall opening hours',area:'choa chu kang yew tee',lat:1.396969935,lng:103.7464432},
 ];
-function dirLink(l){return l.lat&&l.lng?`https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}`:`https://maps.google.com/maps?q=${encodeURIComponent(l.n+' Singapore')}`}
+function dirLink(l){return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(l.n+', '+l.addr)}`}
 function locBlock(l,addrCls,descCls,hCls){return `<div class="${addrCls}">${l.addr}</div>${l.desc?`<div class="${descCls}">${l.desc}</div>`:''}<div class="${hCls}">🕐 ${l.h}</div>`}
 function rL(d){document.getElementById('llist').innerHTML=d.length?d.map(l=>`<div class="lcard" onclick="sL(this,'${l.n.replace(/'/g,"\\'")}')"><div class="lcard-n">${l.n}</div>${locBlock(l,'lcard-addr','lcard-desc','lcard-h')}<a href="${dirLink(l)}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
 rL(locs);
