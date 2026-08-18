@@ -322,7 +322,7 @@ const locs=[
   {n:'Woodlands Health Campus',addr:'17 Woodlands Drive 17 S737628',desc:'B1 Near the Cascading Waterfall',h:'During hospital hours',area:'woodlands',lat:1.4250207,lng:103.7946271},
   {n:'Yew Tee Point',addr:'21 Choa Chu Kang North 6 S689578',desc:'Green Corner at B1 between Challenger & Kleen Wash',h:'Mall opening hours',area:'choa chu kang yew tee',lat:1.396969935,lng:103.7464432},
 ];
-function dirLink(l){return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(l.n+', '+l.addr)}`}
+function dirLink(l){return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(l.n+' Singapore')}`}
 function locBlock(l,addrCls,descCls,hCls){return `<div class="${addrCls}">${l.addr}</div>${l.desc?`<div class="${descCls}">${l.desc}</div>`:''}<div class="${hCls}">🕐 ${l.h}</div>`}
 function rL(d){document.getElementById('llist').innerHTML=d.length?d.map(l=>`<div class="lcard" onclick="sL(this,'${l.n.replace(/'/g,"\\'")}')"><div class="lcard-n">${l.n}</div>${locBlock(l,'lcard-addr','lcard-desc','lcard-h')}<a href="${dirLink(l)}" target="_blank" rel="noopener" class="lcard-d">Get Directions ↗</a></div>`).join(''):'<p style="font-size:12px;color:rgba(14,19,15,.38);padding:12px 0">No results found.</p>'}
 rL(locs);
